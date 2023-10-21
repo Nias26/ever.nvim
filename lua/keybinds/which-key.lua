@@ -64,6 +64,11 @@ wk.register({
 		r = { ":Rename<Space>", "Rename current file", silent = false },
 		m = { ":Move<Space>", "Move current file", silent = false },
 		R = { "<cmd>lua require('persistence').load({ last = true })<CR>", "Restore last session" },
+		S = {
+		    name = "󰏮 - Sudo",
+		    w = { "<cmd>SudaWrite<CR>", "Write with [sudo] priviledges" },
+		    o = { ":SudaRead", "Open with [sudo] priviledges", silent = false },
+		}
 	}
 })
 
