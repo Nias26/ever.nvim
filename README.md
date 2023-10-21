@@ -6,6 +6,11 @@
 ![Screenshot_20231021_203354](https://github.com/Nias26/ever.nvim/assets/74266952/2d6899bf-0215-4f09-9944-95c6f340db4b)
 ![Screenshot_20231021_203620](https://github.com/Nias26/ever.nvim/assets/74266952/5ea740fe-3f33-4130-b8b6-6b34a5829dd5)
 
+## Requirements
+Neovim >= 0.10.0
+ripgrep (rg)
+git
+
 ## Installation
 Clone this repo to your config folder
 #### https
