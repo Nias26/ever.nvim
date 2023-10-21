@@ -8,7 +8,9 @@
 
 ## Requirements
 Neovim >= 0.10.0
+
 ripgrep (rg)
+
 git
 
 ## Installation
