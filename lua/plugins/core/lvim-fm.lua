@@ -1,5 +1,6 @@
 return {
 	"lvim-tech/lvim-fm",
+	enabled = false,
 	dependencies = { "lvim-tech/lvim-shell" },
 	config = function()
     	require("lvim-fm").setup({
