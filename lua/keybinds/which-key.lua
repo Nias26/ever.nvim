@@ -67,7 +67,7 @@ wk.register({
 		S = {
 		    name = "󰏮 - Sudo",
 		    w = { "<cmd>SudaWrite<CR>", "Write with [sudo] priviledges" },
-		    o = { ":SudaRead", "Open with [sudo] priviledges", silent = false },
+		    o = { "<cmd>SudaRead<CR>", "Open with [sudo] priviledges" },
 		}
 	}
 })
