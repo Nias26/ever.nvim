@@ -1,0 +1,2 @@
+# Exclude this files from git
+lua/current-theme.lua
