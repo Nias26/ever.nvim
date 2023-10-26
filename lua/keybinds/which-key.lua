@@ -45,6 +45,7 @@ wk.register({
 		c = { "<cmd>cd $HOME/.config/nvim | NvimTreeOpen<CR>", "Edit config" },
 		l = { "<cmd>Lazy<CR>", "󰒲 Lazy" },
 		g = { "<cmd>lua vim.ui.open('https://github.com/Nias26/ever.nvim')<CR>", " Git repo" },
+		t = { "<cmd>Telescope themes<CR>", "Change theme" },
 	}
 })
 
