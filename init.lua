@@ -31,12 +31,16 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     -- Core Files
     { import = "plugins.core" },
-    { import = "plugins.core.nvim-treesitter"},
+    { import = "plugins.core.nvim-treesitter" },
     { import = "plugins.core.lsp" },
-    { import = "plugins.core.cmp"},
-    { import = "plugins.core.telescope"},
+    { import = "plugins.core.cmp" },
+    { import = "plugins.core.telescope" },
     { import = "plugins.core.dap" },
-    -- Lazy.nvim Opts
+	-- User Files
+	{ import = "plugins.user" },
+	{ import = "plugins.user.config" },
+
+	-- Lazy.nvim Opts
     ui = {
         icons = {
             cmd = " ",
