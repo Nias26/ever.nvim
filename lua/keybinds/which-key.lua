@@ -1,5 +1,11 @@
 local wk = require("which-key")
 
+local function map(mode, lhs, rhs, opts)
+    local options = {noremap = true}
+    if opts then options = vim.tbl_extend('force', options, opts) end
+	vim.keymap.set(mode, lhs, rhs, options)
+end
+
 -- Example
 --wk.register({
 --  ["<leader>f"] = {
@@ -31,6 +37,8 @@ wk.register({
 	}
 })
 
+
+-- Ever.nvim -> 
 wk.register({
 	["<leader>e"] = {
 		name = " - Ever.nvim",
@@ -40,6 +48,8 @@ wk.register({
 	}
 })
 
+
+-- Code -> 
 wk.register({
 	["<leader>c"] = {
 		name = " - Code",
@@ -52,9 +62,16 @@ wk.register({
 			i = { "<cmd>LspInfo<CR>", "Info LSP" },
 		},
 		d = { "<cmd>lua require('dropbar.api').pick()<CR>", "Dropbar" },
+		p = { "<cmd>lua require('actions-preview').code_actions<CR>", "Code Actions" },
+		t = { "<cmd>TroubleToggle<CR>", "Trouble" },
 	}
 })
+map({'n', 'v'}, 'cc', '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>')
+map('n', '<A-1>', '<cmd>lua require("dropbar.api").pick()<CR>')
+map('n', 'ca', '<cmd>lua require("actions-preview").code_actions()<CR>')
+map('n', 'ct', '<cmd>TroubleToggle<CR>')
 
+-- File -> 
 wk.register({
 	["<leader>f"] = {
 		name = " - File",
@@ -68,10 +85,23 @@ wk.register({
 		    name = "󰏮 - Sudo",
 		    w = { "<cmd>SudaWrite<CR>", "Write with [sudo] priviledges" },
 		    o = { "<cmd>SudaRead<CR>", "Open with [sudo] priviledges" },
-		}
+		},
+		l = { "<cmd>LegendaryScratchToggle", "Popup Scratch file"},
 	}
 })
+map('n', 'fs', '<cmd>Scratch<CR>')
+map('n', 'fw', '<cmd>wq<CR>')
+map('n', 'fd', '<cmd>call delete(@%)<CR>')
+map('n', 'fr', ':Rename<Space>')
+map('n', 'fm', ':Move<Space>')
+map('n', 'fR', '<cmd>lua require("persistence").load({ last = true })')
+map('n', 'fSw', '<cmd>SudaWrite<CR>')
+map('n', 'fSo', '<cmd>SudaRead<CR>')
+map('n', 'fl', '<cmd>LegendaryScratchToggle<CR>')
+map('n', 'ff', 'za')
+map('n', 'ft', 'zi')
 
+-- Search -> 
 wk.register({
 	["<leader>s"] = {
 		name = " - Search",
@@ -88,7 +118,11 @@ wk.register({
 		r = { "<cmd>Ranger<CR>", "Ranger" },
 	}
 })
+map({'n', 'v'}, 'st', '<cmd>Telescope<CR>')
+map('n', 'sl', '<cmd>LvimFileManager<CR>')
+map('n', 'sr', '<cmd>Ranger<CR>')
 
+-- Buffer -> 󰓩
 wk.register({
 	["<leader>b"] = {
 		name = "󰓩 - Buffer",
@@ -103,7 +137,16 @@ wk.register({
 		j = { "<cmd>JABSOpen<CR>", "JABS" },
 	}
 })
+map('n', 'bc', ':badd<Space>')
+map('n', 'bd', '<cmd>bdel<CR>')
+map('n', 'bsd', '<cmd>NvimTreeClose | bdel | NvimTreeOpen<CR>')
+map('n', '[', '<cmd>bprevious<CR>')
+map('n', ']', '<cmd>bnext<CR>')
+map('n', 'bj', '<cmd>JABSOpen<CR>')
+map('n', '<Tab>', '<cmd>bnext<CR>')
+map('n', '<S-Tab>', '<cmd>bprevious<CR>')
 
+-- Open -> 󰏌
 wk.register({
 	["<leader>o"] = {
 		name = "󰏌 - Open",
@@ -116,7 +159,17 @@ wk.register({
 		n = { "<cmd>Nerdy<CR>", "Choose Nerd Font Icon" },
 	}
 })
+map('n', 'oe', '<cmd>NvimTreeToggle<CR>')
+map('n', 'om', '<cmd>MinimapToggle<CR>')
+map('n', '<F5>', '<cmd>MinimapToggle<CR>')
+map('n', 'ot', '<cmd>ToggleTerm<CR>')
+map({'n', 'v', 'i'}, '<F4>', '<cmd>ToggleTerm<CR>')
+map('n', 'ol', '<cmd>Legendary<CR>')
+map('n', 'od', '<cmd>Dashboard<CR>')
+map('n', 'on', '<cmd>Nerdy<CR>')
 
+
+-- Debug ->  
 wk.register({
 	["<leader>d"] = {
 		name = " - Debug",
@@ -124,16 +177,23 @@ wk.register({
 		b = { "<cmd>lua require('dapui').toggle_breakpoint()<CR>", "Set breakpoint" },
 	}
 })
+map({'n', 'v'}, 'do', '<cmd>lua require("dapui"),toggle()<CR>')
+map({'n', 'v'}, 'db', '<cmd>lua require("dapui").toggle_breakpoint()<CR>')
 
+-- Help -> 󰋖
 wk.register({
 	["<leader>h"] = {
 		name = "󰋖 - Help",
-		v = { "<cmd>DocsViewToggle<CR>", "View code docs" },
-		d = { "<cmd>DevdocsOpenCurrentFloat<CR>", "View current language docs" },
+		c = { "<cmd>DocsViewToggle<CR>", "View code docs" },
+		l = { "<cmd>DevdocsOpenCurrentFloat<CR>", "View current language docs" },
 		n = { "<cmd>Telescope help_tags<CR>", "View Neovim docs" },
 	}
 })
+map({'n', 'v'}, 'hc', '<cmd>DocsViewToggle<CR>')
+map({'n', 'v'}, 'hl', '<cmd>DevdocsOpenCurrentFloat<CR>')
+map({'n', 'v'}, 'hn', '<cmd>Telescope help_tags<CR>')
 
+-- Zen -> 󰚀
 wk.register({
 	["<leader>z"] = {
 		name = "󰚀 - Zen",
@@ -141,6 +201,8 @@ wk.register({
 		m = { "<cmd>TZMinimalist<CR>", " Minimal " },
 	}
 })
+map({'n', 'v'}, 'zf', '<cmd>TZAtaraxis<CR>')
+map({'n', 'v'}, 'zm', '<cmd>TZMinimalist<CR>')
 
 -- Legendary setup
 require('legendary').setup({
@@ -155,20 +217,4 @@ require('legendary').setup({
 })
 
 -- Manual keybinds
-local function map(mode, lhs, rhs, opts)
-    local options = {noremap = true}
-    if opts then options = vim.tbl_extend('force', options, opts) end
---    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-	  vim.keymap.set(mode, lhs, rhs, options)
-end
-
-map('n', '<F5>', '<cmd>MinimapToggle<CR>')
-map('n', '<Tab>', '<cmd>bnext<CR>')
-map('n', '<S-Tab>', '<cmd>bprevious<CR>')
-map({'n', 'v', 'i'}, '<F4>', '<cmd>ToggleTerm<CR>')
-map('n', 'fo', '<cmd>foldopen<CR>')
-map('n', 'fc', '<cmd>foldclose<CR>')
-map('n', 'ff', 'za')
-map('n', 'ft', 'zi')
-map('n', '<A-1>', '<cmd>lua require("dropbar.api").pick()<CR>')
 

@@ -4,7 +4,7 @@ return {
     opts = {},
     config = function()
         require("trouble").setup({
-            position = "right",
+            -- position = "right",
             width = 50,
             icons = true,
             mode = "workspace_diagnostics",
