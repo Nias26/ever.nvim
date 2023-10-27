@@ -1,5 +1,6 @@
 return {
     "petertriho/cmp-git",
+	lazy = true,
     dependencies = {
         "nvim-lua/plenary.nvim",
         "hrsh7th/nvim-cmp"

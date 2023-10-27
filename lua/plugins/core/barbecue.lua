@@ -30,7 +30,7 @@ return {
                 require("barbecue.ui").update()
             end,
         })
-        
+
         --local function commons(client, bufnr)
         --    if client.server_capabilities.documentSymbolProvider then -- this guard prevents error
         --        require("nvim-navic").attach(client, bufnr)

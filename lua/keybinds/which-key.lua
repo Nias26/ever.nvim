@@ -178,7 +178,7 @@ wk.register({
 		b = { "<cmd>lua require('dapui').toggle_breakpoint()<CR>", "Set breakpoint" },
 	}
 })
-map({'n', 'v'}, 'do', '<cmd>lua require("dapui"),toggle()<CR>')
+map({'n', 'v'}, 'do', '<cmd>lua require("dapui").toggle()<CR>')
 map({'n', 'v'}, 'db', '<cmd>lua require("dapui").toggle_breakpoint()<CR>')
 
 -- Help -> 󰋖

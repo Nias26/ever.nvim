@@ -7,6 +7,6 @@ return {
 		        twilight = true,
 		        lualine = true,
 		    },
-		 }
+		}
     end
 }

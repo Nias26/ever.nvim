@@ -5,7 +5,7 @@ return {
 		vim.o.foldcolumn = '1'
 		vim.o.foldlevel = 99
 		vim.o.foldlevelstart = 99
-		vim.opt.foldenable = true
+		vim.opt.foldenable = false
 		vim.o.foldmethod = "indent"
 		vim.g.markdown_folding = 1
 		-- Tell the server the capability of foldingRange,

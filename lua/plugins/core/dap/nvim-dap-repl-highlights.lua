@@ -1,5 +1,6 @@
 return {
     "LiadOz/nvim-dap-repl-highlights",
+	lazy = true,
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = function()
         require('nvim-dap-repl-highlights').setup()

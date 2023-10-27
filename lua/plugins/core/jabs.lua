@@ -1,3 +1,5 @@
 return {
-	"matbme/JABS.nvim"
+	"matbme/JABS.nvim",
+	enabled = false,
+	lazy = true
 }

@@ -13,6 +13,10 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 
+-- Set cursorline
+vim.o.cursorline = true
+
+
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then

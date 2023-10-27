@@ -1,5 +1,6 @@
 return {
     "gregorias/nvim-mapper",
+	enabled = false,
     dependencies = {
         "nvim-telescope/telescope.nvim",
         dependencies = {
