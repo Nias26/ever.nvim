@@ -1,3 +1,4 @@
 # Exclude this files from git
 /lua/current-theme.lua
+/lua/test
 lazy-lock.json

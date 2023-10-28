@@ -65,12 +65,21 @@ wk.register({
 		d = { "<cmd>lua require('dropbar.api').pick()<CR>", "Dropbar" },
 		p = { "<cmd>lua require('actions-preview').code_actions<CR>", "Code Actions" },
 		t = { "<cmd>TroubleToggle<CR>", "Trouble" },
+		r = {
+			name = " - Run",
+			r = { "<cmd>ExecutorRun<CR>", "Run a command" },
+			c = { "<cmd>ExecutorReset<CR>", "Reset saved command" },
+			s = { "<cmd>ExecutorToggleDetail<CR>", "Show command details" },
+		},
 	}
 })
 map({'n', 'v'}, 'cc', '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>')
 map('n', '<A-1>', '<cmd>lua require("dropbar.api").pick()<CR>')
 map('n', 'ca', '<cmd>lua require("actions-preview").code_actions()<CR>')
 map('n', 'ct', '<cmd>TroubleToggle<CR>')
+map('n', 'crr', '<cmd>ExecutorRun<CR>')
+map('n', 'crc', '<cmd>ExecutorReset<CR>')
+map('n', 'crs', '<cmd>ExecutorToggleDetail<CR>')
 
 -- File -> 
 wk.register({
@@ -87,7 +96,7 @@ wk.register({
 		    w = { "<cmd>SudaWrite<CR>", "Write with [sudo] priviledges" },
 		    o = { "<cmd>SudaRead<CR>", "Open with [sudo] priviledges" },
 		},
-		l = { "<cmd>LegendaryScratchToggle", "Popup Scratch file"},
+		l = { "<cmd>LegendaryScratchToggle<CR>", "Popup Scratch file"},
 	}
 })
 map('n', 'fs', '<cmd>Scratch<CR>')
@@ -95,7 +104,7 @@ map('n', 'fw', '<cmd>wq<CR>')
 map('n', 'fd', '<cmd>call delete(@%)<CR>')
 map('n', 'fr', ':Rename<Space>')
 map('n', 'fm', ':Move<Space>')
-map('n', 'fR', '<cmd>lua require("persistence").load({ last = true })')
+map('n', 'fR', '<cmd>lua require("persistence").load({ last = true })<CR>')
 map('n', 'fSw', '<cmd>SudaWrite<CR>')
 map('n', 'fSo', '<cmd>SudaRead<CR>')
 map('n', 'fl', '<cmd>LegendaryScratchToggle<CR>')

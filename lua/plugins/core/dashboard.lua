@@ -42,6 +42,12 @@ return {
 	    	            action = 'Lazy',
     	    	        key = 'l',
                 	},
+					{
+						desc = '󰑓 Reload Last Session',
+						group = '@variable',
+						action = 'lua require("persistence").load({ last = true })',
+						key = 'r',
+					},
 	            },
 				project = {
 					enable = true,

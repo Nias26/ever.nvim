@@ -1,6 +1,5 @@
 return {
     "tzachar/cmp-fuzzy-path",
-	lazy = true,
     dependencies = {
         {
             "nvim-telescope/telescope-fzf-native.nvim",

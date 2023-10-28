@@ -6,7 +6,7 @@ return {
         end,
     },
     {
-	"rebelot/kanagawa.nvim",
+		"rebelot/kanagawa.nvim",
     },
     {
         "sainnhe/sonokai",
@@ -44,5 +44,28 @@ return {
 		},
 		lazy = false,
 		priority = 1000
+	},
+	{
+		"neanias/everforest-nvim",
+		version = false,
+		lazy = false,
+		priority = 1000, -- make sure to load this before all the other start plugins
+	},
+	{
+		"rose-pine/neovim",
+		name = 'rose-pine'
+	},
+	{
+		"metalelf0/jellybeans-nvim",
+		dependencies = { "rktjmp/lush.nvim" }
+	},
+	{
+		"navarasu/onedark.nvim"
+	},
+	{
+		"kdheepak/monochrome.nvim"
+	},
+	{
+		"projekt0n/github-nvim-theme"
 	}
 }
