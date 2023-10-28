@@ -21,7 +21,7 @@ git clone https://github.com/Nias26/ever.nvim.git --depth 1 $HOME/.config/nvim
 ```
 #### ssh
 ```
-git clone git@github.com/Nias26/ever.nvim.git --depth 1 $HOME/.config/nvim
+git clone git@github.com:Nias26/ever.nvim.git --depth 1 $HOME/.config/nvim
 ```
 
 ## Docs
