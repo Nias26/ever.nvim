@@ -167,6 +167,7 @@ wk.register({
 		l = { "<cmd>Legendary<CR>", "Legendary" },
 		d = { "<cmd>Dashboard<CR>", "Dashboard" },
 		n = { "<cmd>Nerdy<CR>", "Choose Nerd Font Icon" },
+		h = { "<cmd>Noice<CR>", "Notification history" },
 	}
 })
 map('n', 'oe', '<cmd>NvimTreeToggle<CR>')
@@ -177,7 +178,7 @@ map({'n', 'v', 'i'}, '<F4>', '<cmd>ToggleTerm<CR>')
 map('n', 'ol', '<cmd>Legendary<CR>')
 map('n', 'od', '<cmd>Dashboard<CR>')
 map('n', 'on', '<cmd>Nerdy<CR>')
-
+map('n', 'oh', '<cmd>Noice<CR>')
 
 -- Debug ->  
 wk.register({

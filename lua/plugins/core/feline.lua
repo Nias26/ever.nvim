@@ -1,6 +1,5 @@
 return {
 	"famiu/feline.nvim",
-	enabled = false,
 	config = function()
 		local present, feline = pcall(require, "feline")
 		if not present then return end
