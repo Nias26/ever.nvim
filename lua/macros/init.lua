@@ -29,3 +29,6 @@ vim.api.nvim_create_autocmd("QuitPre", {
 		end
 	end
 })
+
+-- Set global statusbar
+vim.opt.laststatus = 3

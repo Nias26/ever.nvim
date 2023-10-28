@@ -9,7 +9,7 @@ return {
     config = function()
         require("noice").setup({
             lsp = {
-                progress = { enabled = true },
+                progress = { enabled = false },
                 -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
                 override = {
                     ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
@@ -84,14 +84,14 @@ return {
 				},
 		    }
         })
-		require("lualine").setup({
-			sections = {
-    			lualine_x = {{
-			        require("noice").api.statusline.mode.get,
-				    cond = require("noice").api.statusline.mode.has,
-			        color = { fg = "#ff9e64" },
-				}},
-			},
-		})
+		-- require("lualine").setup({
+			-- sections = {
+    			-- lualine_x = {{
+			        -- require("noice").api.statusline.mode.get,
+				    -- cond = require("noice").api.statusline.mode.has,
+			        -- color = { fg = "#ff9e64" },
+				-- }},
+			-- },
+		-- })
     end
 }
