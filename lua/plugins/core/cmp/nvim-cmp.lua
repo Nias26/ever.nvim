@@ -105,7 +105,6 @@ return {
             sources = cmp.config.sources({
                 { name = 'nvim_lsp' },
                 { name = 'luasnip' }, -- For luasnip users.
-            }, {
                 { name = 'buffer' },
                 { name = 'fonts', option = { space_filter = "-" } },
                 { name =  'look',  keyword_length = 2, option = {
@@ -116,6 +115,8 @@ return {
                 { name = 'nvim_lsp_signature_help' },
                 { name = 'calc' },
                 { name = 'treesitter' },
+					 { name = 'fuzzy_path' },
+					 { name = 'neorg' },
             }),
             enabled = function()
                 -- disable completion in comments

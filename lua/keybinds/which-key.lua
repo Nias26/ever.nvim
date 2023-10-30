@@ -26,6 +26,7 @@ end
 -- Debug ->  
 -- Help -> 󰋖
 -- Zen -> 󰚀
+-- Neorg -> 󰭃 
 
 wk.register({
 	["<leader>"] = {
@@ -71,6 +72,7 @@ wk.register({
 			c = { "<cmd>ExecutorReset<CR>", "Reset saved command" },
 			s = { "<cmd>ExecutorToggleDetail<CR>", "Show command details" },
 		},
+		g = { "<cmd>GitBlameToggle<CR>", "Toggle git status" },
 	}
 })
 map({'n', 'v'}, 'cc', '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>')
@@ -80,7 +82,7 @@ map('n', 'ct', '<cmd>TroubleToggle<CR>')
 map('n', 'crr', '<cmd>ExecutorRun<CR>')
 map('n', 'crc', '<cmd>ExecutorReset<CR>')
 map('n', 'crs', '<cmd>ExecutorToggleDetail<CR>')
-
+map('n', 'cg', '<cmd>GitBlameToggle<CR>')
 -- File -> 
 wk.register({
 	["<leader>f"] = {
@@ -214,6 +216,17 @@ wk.register({
 })
 map({'n', 'v'}, 'zf', '<cmd>TZAtaraxis<CR>')
 map({'n', 'v'}, 'zm', '<cmd>TZMinimalist<CR>')
+
+-- Neorg -> 󰭃
+wk.register({
+	["<leader>n"] = {
+		name = "󰭃 - Neorg",
+		n = { "<cmd>Neorg<CR>", "Open Neorg menu" },
+		w = { ":Neorg workspace<Space>", "Load Workspace", silent = false},
+	}
+})
+map('n', 'nn', '<cmd>Neorg<CR>')
+map('n', 'nw', ':Neorg workspace')
 
 -- Legendary setup
 require('legendary').setup({

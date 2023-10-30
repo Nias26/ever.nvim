@@ -1,4 +1,12 @@
 -- Init.lua file (Main loaded lua file)
+-- Check the current neovim version
+--if vim.fn.has('nvim-0.9.4') == true then
+if vim.fn.has('nvim-0.10') ~= 1 then
+	 print("Use `nvim-0.10-*`!!! ")
+	 vim.cmd('2sleep')
+	 vim.cmd('q!')
+end
+
 -- Set leader key
 vim.g.mapleader = ' '
 
@@ -10,8 +18,8 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- Tabstop
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 3
+vim.opt.shiftwidth = 3
 
 -- Set cursorline
 vim.o.cursorline = true
@@ -34,43 +42,42 @@ vim.opt.rtp:prepend(lazypath)
 -- Lazy.nvim setup
 require("lazy").setup({
     -- Core Files
-    { import = "plugins.core" },
-    { import = "plugins.core.nvim-treesitter" },
-    { import = "plugins.core.lsp" },
-    { import = "plugins.core.cmp" },
-    { import = "plugins.core.telescope" },
-    { import = "plugins.core.dap" },
+  { import = "plugins.core" },
+  { import = "plugins.core.nvim-treesitter" },
+  { import = "plugins.core.lsp" },
+  { import = "plugins.core.cmp" },
+  { import = "plugins.core.telescope" },
+  { import = "plugins.core.dap" },
 	-- User Files
 	{ import = "plugins.user" },
 	{ import = "plugins.user.config" },
-
 	-- Lazy.nvim Opts
-    ui = {
-        icons = {
-            cmd = " ",
-            config = " ",
-            event = "",
-            ft = " ",
-            init = " ",
-            import = " ",
-            keys = " ",
-            lazy = "󰒲 ",
-            loaded = "●",
-            not_loaded = "○",
-            plugin = " ",
-            runtime = " ",
-            require = "󰢱 ",
-            source = " ",
-            start = "",
-            task = "✔ ",
-            list = {
-                "●",
-                "➜ ",
-                "★ ",
-                "‒",
-            }
-        }
-     }
+  ui = {
+	  icons = {
+  	  cmd = " ",
+      config = " ",
+      event = "",
+      ft = " ",
+      init = " ",
+      import = " ",
+      keys = " ",
+      lazy = "󰒲 ",
+      loaded = "●",
+      not_loaded = "○",
+      plugin = " ",
+      runtime = " ",
+      require = "󰢱 ",
+      source = " ",
+      start = "",
+      task = "✔ ",
+      list = {
+    	  "●",
+      	"➜ ",
+      	"★ ",
+        "‒",
+      }
+    }
+   }
 })
 require("keybinds")
 require("macros")

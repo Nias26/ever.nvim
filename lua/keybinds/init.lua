@@ -13,3 +13,5 @@ end
 
 map('n', '<ESC><ESC>', '<cmd>noh<CR>')
 map({'n', 'v'}, '!', '<C-w>w')
+map({'n', 'v'}, 'o', '<cmd>URLOpenUnderCursor<CR>')
+map({'n', 'c'}, '%', '<cmd>source %<CR>')
