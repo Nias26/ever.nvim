@@ -1,6 +1,6 @@
 return {
 	"kelly-lin/ranger.nvim",
-	lazy = true,
+	event = "VeryLazy",
 	config = function()
 		require("ranger-nvim").setup{
 			enable_cmds = true,

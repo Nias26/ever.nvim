@@ -1,8 +1,9 @@
 return {
-    "lukas-reineke/indent-blankline.nvim",
-    opts = {},
+	"lukas-reineke/indent-blankline.nvim",
+	event = "BufEnter",
+   opts = {},
 	name = "ibl",
-    config = function()
+   config = function()
 		local highlight = {
 			"RainbowGray"
 		}
@@ -12,8 +13,8 @@ return {
 		end)
 		require("ibl").setup{
 			exclude = {
-            	buftypes = { 'alpha', 'dashboard', 'lspinfo', 'lazy', 'checkhealth', 'help', 'man', 'Terminal', 'TelescopePrompt', 'TelescopeResults', 'mason' },
-            	filetypes = { 'alpha', 'dashboard', 'lspinfo', 'lazy', 'checkhealth', 'help', 'man', 'Terminal', 'TelescopePrompt', 'TelescopeResults', 'mason' },
+         	buftypes = { 'alpha', 'dashboard', 'lspinfo', 'lazy', 'checkhealth', 'help', 'man', 'Terminal', 'TelescopePrompt', 'TelescopeResults', 'mason' },
+            filetypes = { 'alpha', 'dashboard', 'lspinfo', 'lazy', 'checkhealth', 'help', 'man', 'Terminal', 'TelescopePrompt', 'TelescopeResults', 'mason' },
 			},
 
 			indent = {
@@ -33,6 +34,6 @@ return {
 				injected_languages = true,
 				highlight = highlight,
 			}
-	    }
+	   }
 	end
 }

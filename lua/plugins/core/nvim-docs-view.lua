@@ -3,9 +3,9 @@ return {
 	lazy = true,
 	cmd = { "DocsViewToggle" },
 	config = function()
-    	require("docs-view").setup{
+		require("docs-view").setup{
 			position = "right",
-		    width = 60,
-	    }
+			update_moe = "auto",
+	   }
 	end
 }

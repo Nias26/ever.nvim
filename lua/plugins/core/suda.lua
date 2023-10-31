@@ -1,4 +1,4 @@
 return {
-    "lambdalisue/suda.vim",
-	lazy = true
+	"lambdalisue/suda.vim",
+	event = "BufReadPre",
 }

@@ -1,6 +1,7 @@
 -- Set colorscheme
 -- vim.cmd("colorscheme oxocarbon")
 require("current-theme")
+require("macros.functions")
 
 -- Set Number line
 vim.opt.relativenumber = true

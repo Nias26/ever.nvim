@@ -1,21 +1,5 @@
 local wk = require("which-key")
 
-local function map(mode, lhs, rhs, opts)
-    local options = {noremap = true}
-    if opts then options = vim.tbl_extend('force', options, opts) end
-	vim.keymap.set(mode, lhs, rhs, options)
-end
-
--- Example
---wk.register({
---  ["<leader>f"] = {
---    name = "+file",
---    f = { "<cmd>Telescope find_files<cr>", "Find File" },
---    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
---    n = { "<cmd>enew<cr>", "New File" },
---  },
---})
-
 -- Icons Index
 -- Ever.nvim -> 
 -- Code -> 
@@ -83,6 +67,11 @@ map('n', 'crr', '<cmd>ExecutorRun<CR>')
 map('n', 'crc', '<cmd>ExecutorReset<CR>')
 map('n', 'crs', '<cmd>ExecutorToggleDetail<CR>')
 map('n', 'cg', '<cmd>GitBlameToggle<CR>')
+
+-----
+-- ui('input', {prompt = "test"}, function(input) vim.cmd('test', input)end)
+-----
+
 -- File -> 
 wk.register({
 	["<leader>f"] = {
@@ -90,8 +79,8 @@ wk.register({
 		s = { "<cmd>Scratch<CR>", "Create scratch file" },
 		w = { "<cmd>wq<CR>", "Write and quit" },
 		d = { "<cmd>call delete(@%)<CR>", "Delete current file" },
-		r = { ":Rename<Space>", "Rename current file", silent = false },
-		m = { ":Move<Space>", "Move current file", silent = false },
+		r = { function() ui_input({prompt = 'Rename'}, function(input) cmd('Rename', input)end)end, "Rename current file" },
+		m = { function() ui_input({prompt = 'Move'}, function(input) cmd('Move', input)end)end, "Move current file" },
 		R = { "<cmd>lua require('persistence').load({ last = true })<CR>", "Restore last session" },
 		S = {
 		    name = "󰏮 - Sudo",
@@ -104,8 +93,8 @@ wk.register({
 map('n', 'fs', '<cmd>Scratch<CR>')
 map('n', 'fw', '<cmd>wq<CR>')
 map('n', 'fd', '<cmd>call delete(@%)<CR>')
-map('n', 'fr', ':Rename<Space>')
-map('n', 'fm', ':Move<Space>')
+map('n', 'fr', function() ui_input({prompt = 'Rename'}, function(input) cmd('Rename', input)end)end)
+map('n', 'fm', function() ui_input({prompt = 'Move'}, function(input) cmd('Move', input)end)end)
 map('n', 'fR', '<cmd>lua require("persistence").load({ last = true })<CR>')
 map('n', 'fSw', '<cmd>SudaWrite<CR>')
 map('n', 'fSo', '<cmd>SudaRead<CR>')
@@ -138,20 +127,20 @@ map('n', 'sr', '<cmd>Ranger<CR>')
 wk.register({
 	["<leader>b"] = {
 		name = "󰓩 - Buffer",
-		c = { ":badd<Space>", "New buffer", silent = false },
+		c = { function() ui('input', {prompt = 'New buffer'}, function(input) cmd('badd', input)end)end, "New buffer" },
 		d = { "<cmd>bdel<CR>", "Delete current buffer" },
 		s = {
 			name = "Super",
-			d = { "<cmd>NvimTreeClose | bdel | NvimTreeOpen<CR>", "Delete buffer, keep NvimTree" },
+			d = { "<cmd>NvimTreeClose | bdel | NvimTreeOpen<CR><C-w>w", "Delete buffer, keep NvimTree" },
 		},
 		["["] = { "<cmd>bprevious<CR>", "Previous buffer" },
 		["]"] = { "<cmd>bnext<CR>", "Next buffer" },
 		j = { "<cmd>JABSOpen<CR>", "JABS" },
 	}
 })
-map('n', 'bc', ':badd<Space>')
+map('n', 'bc', function() ui('input', {prompt = 'New buffer'}, function(input) cmd('badd', input)end)end)
 map('n', 'bd', '<cmd>bdel<CR>')
-map('n', 'bsd', '<cmd>NvimTreeClose | bdel | NvimTreeOpen<CR>')
+map('n', 'bsd', '<cmd>NvimTreeClose | bdel | NvimTreeOpen<CR><C-w>w')
 map('n', '[', '<cmd>bprevious<CR>')
 map('n', ']', '<cmd>bnext<CR>')
 map('n', 'bj', '<cmd>JABSOpen<CR>')
@@ -177,6 +166,7 @@ map('n', 'om', '<cmd>MinimapToggle<CR>')
 map('n', '<F5>', '<cmd>MinimapToggle<CR>')
 map('n', 'ot', '<cmd>ToggleTerm<CR>')
 map({'n', 'v', 'i'}, '<F4>', '<cmd>ToggleTerm<CR>')
+map('n', 'os', '<cmd>SymbolsOutline<CR>')
 map('n', 'ol', '<cmd>Legendary<CR>')
 map('n', 'od', '<cmd>Dashboard<CR>')
 map('n', 'on', '<cmd>Nerdy<CR>')
@@ -212,21 +202,23 @@ wk.register({
 		name = "󰚀 - Zen",
 		f = { "<cmd>TZAtaraxis<CR>", "~ Focus ~" },
 		m = { "<cmd>TZMinimalist<CR>", " Minimal " },
+		t = { "<cmd>Twilight<CR>", "󰌵 Lights 󰌵" }
 	}
 })
 map({'n', 'v'}, 'zf', '<cmd>TZAtaraxis<CR>')
 map({'n', 'v'}, 'zm', '<cmd>TZMinimalist<CR>')
+map({'n', 'v'}, 'zl', '<cmd>Twilight<CR>')
 
 -- Neorg -> 󰭃
 wk.register({
 	["<leader>n"] = {
 		name = "󰭃 - Neorg",
 		n = { "<cmd>Neorg<CR>", "Open Neorg menu" },
-		w = { ":Neorg workspace<Space>", "Load Workspace", silent = false},
+		w = { "<cmd>Neorg workspace<CR>", "Load Workspace"},
 	}
 })
 map('n', 'nn', '<cmd>Neorg<CR>')
-map('n', 'nw', ':Neorg workspace')
+map('n', 'nw', '<cmd>Neorg workspace<CR>')
 
 -- Legendary setup
 require('legendary').setup({

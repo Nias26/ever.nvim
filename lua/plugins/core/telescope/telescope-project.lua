@@ -1,7 +1,7 @@
 return {
-    "nvim-telescope/telescope-project.nvim",
+	"nvim-telescope/telescope-project.nvim",
 	lazy = true,
-    config = function()
-        require("telescope").load_extension("project")
-    end
+   config = function()
+   	require("telescope").load_extension("project")
+   end
 }

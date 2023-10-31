@@ -1,5 +1,7 @@
 return {
 	"famiu/feline.nvim",
+	enabled = true, --lazy_check,
+	event = "VeryLazy",
 	config = function()
 		local present, feline = pcall(require, "feline")
 		if not present then return end
@@ -69,12 +71,12 @@ return {
 		component.vim_mode = {
 			provider = function() return modes[vim.api.nvim_get_mode().mode] end,
 			hl = function()
-			    return {
-				    fg = "bg",
-				    bg = require("feline.providers.vi_mode").get_mode_color(),
-				    style = "bold",
-				    name = "NeovimModeHLColor",
-			    }
+				return {
+					fg = "bg",
+				   bg = require("feline.providers.vi_mode").get_mode_color(),
+				   style = "bold",
+				   name = "NeovimModeHLColor",
+			   }
 			end,
 			left_sep = "block",
 			right_sep = "block",
@@ -84,8 +86,8 @@ return {
 			provider = "git_branch",
 			hl = {
 				fg = "fg",
-			    bg = "bg",
-			    style = "bold",
+			   bg = "bg",
+			   style = "bold",
 			},
 			left_sep = "block",
 			right_sep = "",
@@ -161,7 +163,7 @@ return {
 			    end
 
 			    local progress = vim.lsp.status()[1]
-				if vim.o.columns < 120 then
+				 if vim.o.columns < 120 then
 				    return ""
 			    end
 

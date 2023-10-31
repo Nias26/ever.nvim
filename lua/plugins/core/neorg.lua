@@ -1,5 +1,6 @@
 return {
 	"nvim-neorg/neorg",
+	event = "Filetype norg",
 	build = ":Neorg sync-parsers",
    dependencies = { "nvim-lua/plenary.nvim" },
    config = function()
@@ -20,6 +21,7 @@ return {
 		               notes = "~/notes",
 							neovim = "~/.config/nvim/doc/"
 		            },
+						default_workspace = "notes",
 		         },
 	         },
 				["core.export.markdown"] = {}, -- Export neorg files to markdown

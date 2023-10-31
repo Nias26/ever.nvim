@@ -1,4 +1,5 @@
 return {
-    "folke/twilight.nvim",
-    opts = {}
+	"folke/twilight.nvim",
+	event = "BufEnter",
+	opts = {}
 }

@@ -1,11 +1,13 @@
 -- Init.lua file (Main loaded lua file)
 -- Check the current neovim version
---if vim.fn.has('nvim-0.9.4') == true then
-if vim.fn.has('nvim-0.10') ~= 1 then
-	 print("Use `nvim-0.10-*`!!! ")
-	 vim.cmd('2sleep')
-	 vim.cmd('q!')
-end
+-- if vim.fn.has('nvim-0.10') ~= 1 then
+	 -- print("Use `nvim-0.10-*`!!! ")
+	 -- vim.cmd('2sleep')
+	 -- vim.cmd('q!')
+-- end
+
+-- vim.loader.enable() # Check neovim wiki for this
+vim.loader.enable()
 
 -- Set leader key
 vim.g.mapleader = ' '
@@ -39,45 +41,56 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Disable plugins not available for nvim-0.9.*
+-- BUG: This is not working by now
+-- lazy_check = function(status)
+	-- if vim.fn.has('nvim-0.10') ~= 1 then
+		-- status = false
+	-- elseif vim.fn.has('nvim-0.10') == 1 then
+		-- status = true
+	-- end
+-- end
+
 -- Lazy.nvim setup
 require("lazy").setup({
-    -- Core Files
-  { import = "plugins.core" },
-  { import = "plugins.core.nvim-treesitter" },
-  { import = "plugins.core.lsp" },
-  { import = "plugins.core.cmp" },
-  { import = "plugins.core.telescope" },
-  { import = "plugins.core.dap" },
+	-- Core Files
+	{ import = "plugins.core" },
+	{ import = "plugins.core.nvim-treesitter" },
+	{ import = "plugins.core.lsp" },
+	{ import = "plugins.core.cmp" },
+	{ import = "plugins.core.telescope" },
+	{ import = "plugins.core.dap" },
 	-- User Files
 	{ import = "plugins.user" },
 	{ import = "plugins.user.config" },
 	-- Lazy.nvim Opts
-  ui = {
-	  icons = {
-  	  cmd = " ",
-      config = " ",
-      event = "",
-      ft = " ",
-      init = " ",
-      import = " ",
-      keys = " ",
-      lazy = "󰒲 ",
-      loaded = "●",
-      not_loaded = "○",
-      plugin = " ",
-      runtime = " ",
-      require = "󰢱 ",
-      source = " ",
-      start = "",
-      task = "✔ ",
-      list = {
-    	  "●",
-      	"➜ ",
-      	"★ ",
-        "‒",
-      }
-    }
+	ui = {
+		icons = {
+			cmd = " ",
+	      config = " ",
+	      event = "",
+	      ft = " ",
+	      init = " ",
+	      import = " ",
+	      keys = " ",
+	      lazy = "󰒲 ",
+	      loaded = "●",
+	      not_loaded = "○",
+	      plugin = " ",
+	      runtime = " ",
+	      require = "󰢱 ",
+	      source = " ",
+	      start = "",
+	      task = "✔ ",
+	      list = {
+				"●",
+	      	"➜ ",
+	      	"★ ",
+	        "‒",
+	      }
+	   }
    }
 })
-require("keybinds")
 require("macros")
+require("keybinds")
+

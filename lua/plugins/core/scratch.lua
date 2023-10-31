@@ -1,4 +1,4 @@
 return {
     "LintaoAmons/scratch.nvim",
-    event = 'VimEnter'
+    event = "VimEnter"
 }

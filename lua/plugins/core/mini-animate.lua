@@ -1,7 +1,8 @@
 return {
-    "echasnovski/mini.animate",
-    version = "*",
-    config = function()
-       require("mini.animate").setup()
-    end
+	"echasnovski/mini.animate",
+	event = "VeryLazy",
+   version = "*",
+   config = function()
+   	require("mini.animate").setup()
+   end
 }

@@ -1,6 +1,7 @@
 return {
-    "ivanjermakov/troublesum.nvim",
-    config = function()
-        require("troublesum").setup()
-    end
+	"ivanjermakov/troublesum.nvim",
+	event = "LspAttach",
+   config = function()
+   	require("troublesum").setup()
+   end
 }

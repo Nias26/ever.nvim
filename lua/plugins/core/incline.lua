@@ -1,6 +1,6 @@
 return {
 	"b0o/incline.nvim",
-	lazy = true,
+	event = "WinEnter",
 	config = function()
 		require("incline").setup()
 	end

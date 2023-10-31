@@ -1,4 +1,5 @@
 return {
-    "saadparwaiz1/cmp_luasnip",
-    dependencies = { "hrsh7th/nvim-cmp" }
+	"saadparwaiz1/cmp_luasnip",
+	event = "VeryLazy",
+   dependencies = { "hrsh7th/nvim-cmp" }
 }

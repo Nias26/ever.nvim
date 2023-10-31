@@ -1,5 +1,5 @@
 return {
-    "octaltree/cmp-look",
-	lazy = true,
-    dependencies = { "hrsh7th/nvim-cmp" }
+	"octaltree/cmp-look",
+	event = "VeryLazy",
+   dependencies = { "hrsh7th/nvim-cmp" }
 }

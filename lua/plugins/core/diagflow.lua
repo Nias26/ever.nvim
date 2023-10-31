@@ -1,7 +1,8 @@
 return {
-    "dgagn/diagflow.nvim",
-    opts = {},
-    config = function()
-        require('diagflow').setup()
-    end
+	"dgagn/diagflow.nvim",
+	event = "LspAttach",
+   opts = {},
+   config = function()
+   	require('diagflow').setup()
+   end
 }

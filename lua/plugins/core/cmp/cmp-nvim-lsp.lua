@@ -1,5 +1,5 @@
 return {
-    "hrsh7th/cmp-nvim-lsp",
-	lazy = false,
-    dependencies = { "hrsh7th/nvim-cmp" }
+	"hrsh7th/cmp-nvim-lsp",
+	event = "VeryLazy",
+   dependencies = { "hrsh7th/nvim-cmp" }
 }

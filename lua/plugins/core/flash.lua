@@ -1,5 +1,5 @@
 return {
-    "folke/flash.nvim",
+	"folke/flash.nvim",
     enabled = false,
 	event = "VeryLazy",
     opts = {},

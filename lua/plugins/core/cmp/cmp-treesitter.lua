@@ -1,5 +1,5 @@
 return {
-    "ray-x/cmp-treesitter",
-	lazy = true,
-    dependencies = { "hrsh7th/nvim-cmp" }
+	"ray-x/cmp-treesitter",
+	event = "VeryLazy",
+	dependencies = { "hrsh7th/nvim-cmp" }
 }

@@ -5,12 +5,6 @@ require("keybinds.which-key")
 --require("keybinds.wf")
 
 -- Other keybinds
-local function map(mode, lhs, rhs, opts)
-    local options = {noremap = true}
-    if opts then options = vim.tbl_extend('force', options, opts) end
-    vim.keymap.set(mode, lhs, rhs, options)
-end
-
 map('n', '<ESC><ESC>', '<cmd>noh<CR>')
 map({'n', 'v'}, '!', '<C-w>w')
 map({'n', 'v'}, 'o', '<cmd>URLOpenUnderCursor<CR>')
