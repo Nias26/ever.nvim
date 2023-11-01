@@ -1,9 +1,19 @@
 * List of things
   - ( ) This is a thing to do
   - (x) This is an alreaddy done thing
-  - (-) I still nee to know what to do on this...
+  - (-) I'm doing it
   - (=) Gotta wait for the other one up in there to be completed
   - (_) Nahh I don't needd it anymore
   - (!) Gotta o this as quick asf
   - (+) Still doing it
-  - (?) idk
+  - (?) Need mote info about this
+
+* TODO
+  - (!) Add vim.opt.scrolloff
+  - (?) Mabye idea for a pugin??? (anyway for now I'll integrate as a normal script
+    - ( ) Add Bookmarks with telescope 
+      - ( ) Add it in the *"other"* folder
+      - (=) Add them in wich-key *<leader>* menu
+      - ( ) Set a keybind to assign a new bookmark
+      - (?) Set a command to assign a new bookmark
+    
