@@ -9,7 +9,7 @@
   - (?) Need mote info about this
 
 * TODO
-  - (!) Add vim.opt.scrolloff
+  - (x) Add vim.opt.scrolloff
   - (?) Mabye idea for a pugin??? (anyway for now I'll integrate as a normal script
     - ( ) Add Bookmarks with telescope 
       - ( ) Add it in the *"other"* folder
