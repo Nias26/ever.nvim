@@ -90,6 +90,7 @@ return {
 				{ name = 'treesitter' },
 				{ name = 'fuzzy_path' },
 				{ name = 'neorg' },
+				{ name = 'nvim_lua' },
 			}),
 			enabled = function()
 				-- disable completion in comments

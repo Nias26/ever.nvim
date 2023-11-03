@@ -7,6 +7,7 @@ return {
    config = function()
    	require("mason").setup()
       require("mason-lspconfig").setup{
+			ensure_installed = { 'lua_ls', 'clangd', 'bashls' },
 			automatic_installation = true
 		}
 
@@ -16,13 +17,13 @@ return {
          -- a dedicated handler.
          function(server_name) -- Default handler (Optional)
          	require("lspconfig")[server_name].setup{}
-				capabilities = require("cmp_nvim_lsp").default_capabilities()
+				local capabilities = require("cmp_nvim_lsp").default_capabilities()
          end,
       -- Next, you can provide a dedicated handler for specific servers.
       -- For example, a handler override for the `rust_analyzer`:
       -- ["rust_analyzer"] = function ()
       	-- require("rust-tools").setup {}
       -- end
-      }
+	   }
    end
 }

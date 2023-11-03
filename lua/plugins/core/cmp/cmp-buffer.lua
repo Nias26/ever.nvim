@@ -1,5 +1,5 @@
 return {
     "hrsh7th/cmp-buffer",
-	 event = "VeryLazy",
+	 event = "BufEnter",
     dependencies = { "hrsh7th/nvim-cmp" }
 }

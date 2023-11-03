@@ -158,35 +158,35 @@ return {
 
 		component.lsp = {
 			provider = function()
-			    if not rawget(vim, "lsp") then
-				    return ""
-			    end
+				if not rawget(vim, "lsp") then
+					return ""
+			   end
 
-			    local progress = vim.lsp.status()[1]
-				 if vim.o.columns < 120 then
-				    return ""
-			    end
+			   local progress = vim.lsp.status()[1]
+				if vim.o.columns < 120 then
+					return ""
+			   end
 
-			    local clients = vim.lsp.get_active_clients({ bufnr = 0 })
-			    if #clients ~= 0 then
-				    if progress then
-				        local spinners = {
-					        "◜ ",
-					        "◠ ",
-					        "◝ ",
-					        "◞ ",
-					        "◡ ",
-					        "◟ ",
-				        }
-				        local ms = vim.loop.hrtime() / 1000000
-				        local frame = math.floor(ms / 120) % #spinners
-				        local content = string.format("%%<%s", spinners[frame + 1])
-				        return content or ""
-				    else
-				        return " לּ LSP"
-				    end
-			    end
-			    return ""
+			   local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+			   if #clients ~= 0 then
+					if progress then
+				   	local spinners = {
+							"◜ ",
+					      "◠ ",
+					      "◝ ",
+					      "◞ ",
+					      "◡ ",
+					      "◟ ",
+				      }
+				      local ms = vim.loop.hrtime() / 1000000
+				      local frame = math.floor(ms / 120) % #spinners
+				      local content = string.format("%%<%s", spinners[frame + 1])
+				      return content or ""
+				   else
+				   	return " לּ LSP"
+				   end
+			   end
+			   return ""
 			end,
 			hl = function()
 			    local progress = vim.lsp.status()[1]

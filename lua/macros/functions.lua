@@ -23,3 +23,4 @@ function cmd(command, opts)
 	vim.cmd({ cmd = command, args = {opts}})
 end
 
+

@@ -31,6 +31,19 @@ wk.register({
 		l = { "<cmd>Lazy<CR>", "󰒲 Lazy" },
 		g = { "<cmd>lua vim.ui.open('https://github.com/Nias26/ever.nvim')<CR>", " Git repo" },
 		t = { "<cmd>Telescope themes<CR>", "Change theme" },
+		b = {
+			name = " - Bookmarks",
+			['1'] = { "<cmd>e ~/.zshrc<CR>", "~/.zshrc" },
+			['2'] = { "<cmd>e ~/.config/nvim/init.lua<CR>", "~/.config/nvim/init.lua" },
+			['3'] = {  },
+			['4'] = {  },
+			['5'] = {  },
+			['6'] = {  },
+			['7'] = {  },
+			['8'] = {  },
+			['9'] = {  },
+			['0'] = {  },
+		},
 	}
 })
 

@@ -1,5 +1,5 @@
 return {
 	"ray-x/cmp-treesitter",
-	event = "VeryLazy",
+	event = "BufEnter",
 	dependencies = { "hrsh7th/nvim-cmp" }
 }
