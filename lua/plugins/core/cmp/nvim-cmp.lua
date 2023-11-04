@@ -88,7 +88,7 @@ return {
 				{ name = 'nvim_lsp_signature_help' },
 				{ name = 'calc' },
 				{ name = 'treesitter' },
-				{ name = 'fuzzy_path' },
+				{ name = 'path' },
 				{ name = 'neorg' },
 				{ name = 'nvim_lua' },
 			}),
