@@ -41,14 +41,14 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Disable plugins not available for nvim-0.9.*
--- BUG: This is not working by now
--- lazy_check = function(status)
-	-- if vim.fn.has('nvim-0.10') ~= 1 then
-		-- status = false
-	-- elseif vim.fn.has('nvim-0.10') == 1 then
-		-- status = true
-	-- end
--- end
+-- NOTE: Mabye there's space for improvment
+lazy_check = function()
+	if vim.fn.has('nvim-0.10') ~= 1 then
+		return false
+	elseif vim.fn.has('nvim-0.10') == 1 then
+		return true
+	end
+end
 
 -- Lazy.nvim setup
 require("lazy").setup({

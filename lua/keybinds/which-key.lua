@@ -92,8 +92,8 @@ wk.register({
 		s = { "<cmd>Scratch<CR>", "Create scratch file" },
 		w = { "<cmd>wq<CR>", "Write and quit" },
 		d = { "<cmd>call delete(@%)<CR>", "Delete current file" },
-		r = { function() ui_input({prompt = 'Rename'}, function(input) cmd('Rename', input)end)end, "Rename current file" },
-		m = { function() ui_input({prompt = 'Move'}, function(input) cmd('Move', input)end)end, "Move current file" },
+		r = { function() ui_input({prompt = 'Rename'}, function(input) fcmd('Rename', input)end)end, "Rename current file" },
+		m = { function() ui_input({prompt = 'Move'}, function(input) fcmd('Move', input)end)end, "Move current file" },
 		R = { "<cmd>lua require('persistence').load({ last = true })<CR>", "Restore last session" },
 		S = {
 		    name = "󰏮 - Sudo",
@@ -106,8 +106,8 @@ wk.register({
 map('n', 'fs', '<cmd>Scratch<CR>')
 map('n', 'fw', '<cmd>wq<CR>')
 map('n', 'fd', '<cmd>call delete(@%)<CR>')
-map('n', 'fr', function() ui_input({prompt = 'Rename'}, function(input) cmd('Rename', input)end)end)
-map('n', 'fm', function() ui_input({prompt = 'Move'}, function(input) cmd('Move', input)end)end)
+map('n', 'fr', function() ui_input({prompt = 'Rename'}, function(input) fcmd('Rename', input)end)end)
+map('n', 'fm', function() ui_input({prompt = 'Move'}, function(input) fcmd('Move', input)end)end)
 map('n', 'fR', '<cmd>lua require("persistence").load({ last = true })<CR>')
 map('n', 'fSw', '<cmd>SudaWrite<CR>')
 map('n', 'fSo', '<cmd>SudaRead<CR>')
@@ -140,7 +140,7 @@ map('n', 'sr', '<cmd>Ranger<CR>')
 wk.register({
 	["<leader>b"] = {
 		name = "󰓩 - Buffer",
-		c = { function() ui('input', {prompt = 'New buffer'}, function(input) cmd('badd', input)end)end, "New buffer" },
+		c = { function() ui('input', {prompt = 'New buffer'}, function(input) fcmd('badd', input)end)end, "New buffer" },
 		d = { "<cmd>bdel<CR>", "Delete current buffer" },
 		s = {
 			name = "Super",
@@ -151,7 +151,7 @@ wk.register({
 		j = { "<cmd>JABSOpen<CR>", "JABS" },
 	}
 })
-map('n', 'bc', function() ui('input', {prompt = 'New buffer'}, function(input) cmd('badd', input)end)end)
+map('n', 'bc', function() ui('input', {prompt = 'New buffer'}, function(input) fcmd('badd', input)end)end)
 map('n', 'bd', '<cmd>bdel<CR>')
 map('n', 'bsd', '<cmd>NvimTreeClose | bdel | NvimTreeOpen<CR><C-w>w')
 map('n', '[', '<cmd>bprevious<CR>')

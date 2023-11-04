@@ -51,5 +51,8 @@ vim.diagnostic.config({
 	underline = true,
 	update_in_insert = false,
 	seveirty_sort = false,
+	float = {
+   	source = "always",
+   },
 })
 
