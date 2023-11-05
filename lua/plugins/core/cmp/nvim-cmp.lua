@@ -38,10 +38,16 @@ return {
 					kind.menu = "    (" .. (strings[2] or "") .. ")"
 					return kind
 				end,
+				require('lspkind').cmp_format({
+					mode = "symbol",
+	            maxwidth = 50,
+	            ellipsis_char = '...',
+	            symbol_map = { Codeium = "", }
+				}),
 			},
 			mapping = cmp.mapping({
-				['<C-b>'] = cmp.mapping.scroll_docs(-4),
-				['<C-f>'] = cmp.mapping.scroll_docs(4),
+				['<C-Down>'] = cmp.mapping.scroll_docs(-4),
+				['<C-Up>'] = cmp.mapping.scroll_docs(4),
 				['|'] = cmp.mapping.abort(),
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
@@ -91,6 +97,7 @@ return {
 				{ name = 'path' },
 				{ name = 'neorg' },
 				{ name = 'nvim_lua' },
+				{ name = "codeium" },
 			}),
 			enabled = function()
 				-- disable completion in comments
