@@ -29,7 +29,7 @@ wk.register({
 		name = " - Ever.nvim",
 		c = { "<cmd>cd $HOME/.config/nvim | NvimTreeOpen<CR>", "Edit config" },
 		l = { "<cmd>Lazy<CR>", "󰒲 Lazy" },
-		g = { "<cmd>lua vim.ui.open('https://github.com/Nias26/ever.nvim')<CR>", " Git repo" },
+		g = { function() ui_open('https://github.com/Nias26/ever.nvim') end, " Git repo" },
 		t = { "<cmd>Telescope themes<CR>", "Change theme" },
 		b = {
 			name = " - Bookmarks",
@@ -89,7 +89,7 @@ map('n', 'cg', '<cmd>GitBlameToggle<CR>')
 wk.register({
 	["<leader>f"] = {
 		name = " - File",
-		s = { "<cmd>Scratch<CR>", "Create scratch file" },
+		s = { "<cmd>source %<CR>", "Source current file" },
 		w = { "<cmd>wq<CR>", "Write and quit" },
 		d = { "<cmd>call delete(@%)<CR>", "Delete current file" },
 		r = { function() ui_input({prompt = 'Rename'}, function(input) fcmd('Rename', input)end)end, "Rename current file" },
@@ -103,7 +103,7 @@ wk.register({
 		l = { "<cmd>LegendaryScratchToggle<CR>", "Popup Scratch file"},
 	}
 })
-map('n', 'fs', '<cmd>Scratch<CR>')
+map('n', 'fs', '<cmd>source %<CR>')
 map('n', 'fw', '<cmd>wq<CR>')
 map('n', 'fd', '<cmd>call delete(@%)<CR>')
 map('n', 'fr', function() ui_input({prompt = 'Rename'}, function(input) fcmd('Rename', input)end)end)
@@ -140,7 +140,7 @@ map('n', 'sr', '<cmd>Ranger<CR>')
 wk.register({
 	["<leader>b"] = {
 		name = "󰓩 - Buffer",
-		c = { function() ui('input', {prompt = 'New buffer'}, function(input) fcmd('badd', input)end)end, "New buffer" },
+		n = { function() ui_input({prompt = 'New buffer'}, function(input) fcmd('badd', input)end)end, "New buffer" },
 		d = { "<cmd>bdel<CR>", "Delete current buffer" },
 		s = {
 			name = "Super",
@@ -151,7 +151,7 @@ wk.register({
 		j = { "<cmd>JABSOpen<CR>", "JABS" },
 	}
 })
-map('n', 'bc', function() ui('input', {prompt = 'New buffer'}, function(input) fcmd('badd', input)end)end)
+map('n', 'bn', function() ui_input({prompt = 'New buffer'}, function(input) fcmd('badd', input)end)end)
 map('n', 'bd', '<cmd>bdel<CR>')
 map('n', 'bsd', '<cmd>NvimTreeClose | bdel | NvimTreeOpen<CR><C-w>w')
 map('n', '[', '<cmd>bprevious<CR>')
@@ -168,10 +168,10 @@ wk.register({
 		m = { "<cmd>MinimapToggle<CR>", "Minimap" },
 		t = { "<cmd>ToggleTerm<CR>", "Toggle term" },
 		s = { "<cmd>SymbolsOutline<CR>", "Symbols Outline" },
-		l = { "<cmd>Legendary<CR>", "Legendary" },
 		d = { "<cmd>Dashboard<CR>", "Dashboard" },
 		n = { "<cmd>Nerdy<CR>", "Choose Nerd Font Icon" },
 		h = { "<cmd>Noice<CR>", "Notification history" },
+		l = { "<cmd>LazyGit<CR>", "LazyGit" },
 	}
 })
 map('n', 'oe', '<cmd>NvimTreeToggle<CR>')
@@ -180,10 +180,10 @@ map('n', '<F5>', '<cmd>MinimapToggle<CR>')
 map('n', 'ot', '<cmd>ToggleTerm<CR>')
 map({'n', 'v', 'i'}, '<F4>', '<cmd>ToggleTerm<CR>')
 map('n', 'os', '<cmd>SymbolsOutline<CR>')
-map('n', 'ol', '<cmd>Legendary<CR>')
 map('n', 'od', '<cmd>Dashboard<CR>')
 map('n', 'on', '<cmd>Nerdy<CR>')
 map('n', 'oh', '<cmd>Noice<CR>')
+map('n', 'ol', '<cmd>LazyGit<CR>')
 
 -- Debug ->  
 wk.register({
@@ -234,16 +234,16 @@ map('n', 'nn', '<cmd>Neorg<CR>')
 map('n', 'nw', '<cmd>Neorg workspace<CR>')
 
 -- Legendary setup
-require('legendary').setup({
-    extensions = {
-        lazy_nvim = {
-            auto_register = true
-        },
-        which_key = {
-            auto_register = true
-        }
-    }
-})
+-- require('legendary').setup({
+--     extensions = {
+--         lazy_nvim = {
+--             auto_register = true
+--         },
+--         which_key = {
+--             auto_register = true
+--         }
+--     }
+-- })
 
 -- Manual keybinds
 
