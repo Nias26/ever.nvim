@@ -13,6 +13,9 @@ return {
 
 		local luasnip = require("luasnip")
 		cmp.setup({
+			experimental = {
+				ghost_text = { hl_group = 'Comment' },
+			},
 			snippet = {
 				expand = function(args)
 					require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
@@ -117,27 +120,6 @@ return {
 			'confirm_done',
 			cmp_autopairs.on_confirm_done()
 			),
-			-- formatting = {
-				-- format = function(entry, vim_item)
-					-- local lspkind_ok, lspkind = pcall(require, "lspkind")
-					-- if not lspkind_ok then
-						--From kind_icons array
-						-- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-					   -- Source
-					   -- vim_item.menu = ({
-						   -- buffer = "[Buffer]",
-						   -- nvim_lsp = "[LSP]",
-						   -- luasnip = "[LuaSnip]",
-						   -- nvim_lua = "[Lua]",
-						   -- latex_symbols = "[LaTeX]",
-						-- })[entry.source.name]
-						-- return vim_item
-					-- else
-						-- From lspkind
-						-- return lspkind.cmp_format()(entry, vim_item)
-					-- end
-				-- end
-			-- },
 		})
 
 		-- Set configuration for specific filetype.
