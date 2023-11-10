@@ -44,6 +44,7 @@ wk.register({
 			['9'] = {  },
 			['0'] = {  },
 		},
+		v = { "<cmd>TransparentToggle<CR>", "Toggle transparency theme" },
 	}
 })
 

@@ -67,5 +67,8 @@ return {
 	},
 	{
 		"projekt0n/github-nvim-theme"
-	}
+	},
+	{
+		"xiyaowong/transparent.nvim"
+	},
 }
