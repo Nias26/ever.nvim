@@ -1,5 +1,19 @@
+-- LeaderTutor
+-- Command
+-- vim.api.nvim_create_user_command()
+
+-- Default value
+Leadertutor = 1
+if Leadertutor == 0 then
+	require("keybinds.which-key-NL")
+elseif Leadertutor == 1 then
+	require("keybinds.which-key")
+elseif Leadertutor == 2 then
+	require("keybinds.which-key-NK")
+end
+
 -- Comment if you want to use wich-key (Already configured)
-require("keybinds.which-key")
+-- require("keybinds.which-key")
 
 -- Other keybinds
 map('n', '<ESC><ESC>', '<cmd>noh<CR>')
