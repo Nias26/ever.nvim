@@ -1,4 +1,4 @@
 return {
 	"onsails/lspkind.nvim",
-	event = "VeryLazy",
+	event = "VeryLazy"
 }
