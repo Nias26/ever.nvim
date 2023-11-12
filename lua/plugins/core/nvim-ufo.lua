@@ -1,14 +1,17 @@
 return {
 	"kevinhwang91/nvim-ufo",
-	event = "BufRead",
+	event = "VeryLazy",
 	dependencies = { "kevinhwang91/promise-async" },
 	config = function()
 		vim.o.foldcolumn = '1'
+		-- vim.o.foldnestmax = 1
+		vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 		vim.o.foldlevel = 99
 		vim.o.foldlevelstart = 99
 		vim.opt.foldenable = false
 		vim.o.foldmethod = "indent"
 		vim.g.markdown_folding = 1
+
 		-- Tell the server the capability of foldingRange,
 		-- Neovim hasn't added foldingRange to default capabilities, users must add it manually
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
