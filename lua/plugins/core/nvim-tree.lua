@@ -21,7 +21,11 @@ return {
 						}
 					}
 				}
+			},
+			git = {
+				enable = true,
+				ignore = false,
 			}
 		})
-   end,
+   end
 }
