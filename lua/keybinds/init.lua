@@ -3,6 +3,7 @@
 -- vim.api.nvim_create_user_command()
 
 -- Default value
+--WARN: DO NOT CHANGE THIS VALUE!!!
 Leadertutor = 1
 if Leadertutor == 0 then
 	require("keybinds.which-key-NL")
