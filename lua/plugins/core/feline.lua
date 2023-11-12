@@ -1,5 +1,5 @@
 return {
-	"famiu/feline.nvim",
+	"freddiehaddad/feline.nvim",
 	cond = lazy_check,
 	event = "VeryLazy",
 	config = function()
