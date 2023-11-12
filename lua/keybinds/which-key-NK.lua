@@ -133,12 +133,13 @@ wk.register({
 		name = "󰏌 - Open",
 		e = { "<cmd>NvimTreeToggle<CR>", "NvimTree" },
 		m = { "<cmd>MinimapToggle<CR>", "Minimap" },
-		t = { "<cmd>ToggleTerm<CR>", "Toggle term" },
+		T = { "<cmd>ToggleTerm<CR>", "Toggle term" },
 		s = { "<cmd>SymbolsOutline<CR>", "Symbols Outline" },
 		d = { "<cmd>Dashboard<CR>", "Dashboard" },
 		n = { "<cmd>Nerdy<CR>", "Choose Nerd Font Icon" },
 		h = { "<cmd>Noice<CR>", "Notification history" },
 		l = { "<cmd>LazyGit<CR>", "LazyGit" },
+		t = { "<cmd>Telescope<CR>", "Telescope" },
 	}
 })
 

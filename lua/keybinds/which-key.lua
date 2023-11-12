@@ -167,24 +167,26 @@ wk.register({
 		name = "󰏌 - Open",
 		e = { "<cmd>NvimTreeToggle<CR>", "NvimTree" },
 		m = { "<cmd>MinimapToggle<CR>", "Minimap" },
-		t = { "<cmd>ToggleTerm<CR>", "Toggle term" },
+		T = { "<cmd>ToggleTerm<CR>", "Toggle term" },
 		s = { "<cmd>SymbolsOutline<CR>", "Symbols Outline" },
 		d = { "<cmd>Dashboard<CR>", "Dashboard" },
 		n = { "<cmd>Nerdy<CR>", "Choose Nerd Font Icon" },
 		h = { "<cmd>Noice<CR>", "Notification history" },
 		l = { "<cmd>LazyGit<CR>", "LazyGit" },
+		t = { "<cmd>Telescope<CR>", "Telescope" },
 	}
 })
 map('n', 'oe', '<cmd>NvimTreeToggle<CR>')
 map('n', 'om', '<cmd>MinimapToggle<CR>')
 map('n', '<F5>', '<cmd>MinimapToggle<CR>')
-map('n', 'ot', '<cmd>ToggleTerm<CR>')
+map('n', 'oT', '<cmd>ToggleTerm<CR>')
 map({'n', 'v', 'i'}, '<F4>', '<cmd>ToggleTerm<CR>')
 map('n', 'os', '<cmd>SymbolsOutline<CR>')
 map('n', 'od', '<cmd>Dashboard<CR>')
 map('n', 'on', '<cmd>Nerdy<CR>')
 map('n', 'oh', '<cmd>Noice<CR>')
 map('n', 'ol', '<cmd>LazyGit<CR>')
+map('n', 'ot', '<cmd>Telescope<CR>')
 
 -- Debug ->  
 wk.register({
