@@ -1,7 +1,7 @@
 return {
 	"Pocco81/true-zen.nvim",
 	enabled = false, -- Doesn't work with nvim-0.10.*
-	event = "BufEnter",
+	event = "BufRead",
    config = function()
    	require("true-zen").setup {
 			integrations = {

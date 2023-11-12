@@ -1,7 +1,7 @@
 return {
 	"utilyre/barbecue.nvim",
-	enabled = lazy_check,
-	event = "BufEnter",
+	cond = lazy_check,
+	event = "BufRead",
    name = "barbecue",
    version = "*",
    dependencies = {

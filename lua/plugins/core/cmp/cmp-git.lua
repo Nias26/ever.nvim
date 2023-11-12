@@ -1,6 +1,6 @@
 return {
 	"petertriho/cmp-git",
-	event = "BufEnter",
+	event = "BufRead",
    dependencies = {
    	"nvim-lua/plenary.nvim",
       "hrsh7th/nvim-cmp"

@@ -1,6 +1,6 @@
 return {
 	"JoosepAlviste/nvim-ts-context-commentstring",
-	event = "VeryLazy",
+	event = "BufRead",
    config = function()
    	require('nvim-treesitter.configs').setup {
       	-- Install the parsers for the languages you want to comment in

@@ -2,6 +2,7 @@ return {
 	{
 		"stevearc/overseer.nvim",
 		enabled = false,
+		event = "BufWritePost",
 		commit = "400e762648b70397d0d315e5acaf0ff3597f2d8b",
 		cmd = {"CompilerOpen", "CompilerToggleResults", "CompilerRedo"},
 		opts = {
@@ -16,6 +17,7 @@ return {
 	{
 		"Zeioth/compiler.nvim",
 		enabled = false,
+		event = "BufWritePost",
 		cmd = {"CompilerOpen", "CompilerToggleResults", "CompilerRedo"},
 		dependencies = {"stevearc/overseer.nvim"}
 	}

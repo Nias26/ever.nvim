@@ -1,6 +1,6 @@
 return {
 	"mvllow/modes.nvim",
-	event = "BufEnter",
+	event = "BufRead",
    config = function()
    	require("modes").setup({
       	colors = {

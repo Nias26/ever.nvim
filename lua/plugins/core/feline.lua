@@ -1,6 +1,6 @@
 return {
 	"famiu/feline.nvim",
-	enabled = lazy_check,
+	cond = lazy_check,
 	event = "VeryLazy",
 	config = function()
 		local present, feline = pcall(require, "feline")

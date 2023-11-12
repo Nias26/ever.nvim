@@ -1,6 +1,6 @@
 return {
 	"Bekaboo/dropbar.nvim",
-	enabled = lazy_check,
-	event = "BufEnter",
+	cond = lazy_check,
+	event = "BufRead",
 	dependencies = { "nvim-telescope/telescope-fzf-native.nvim" },
 }

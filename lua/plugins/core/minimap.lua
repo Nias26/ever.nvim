@@ -1,5 +1,5 @@
 return {
 	"wfxr/minimap.vim",
-	enable = lazy_check,
-	event = "BufEnter"
+	cond = lazy_check,
+	event = "BufRead"
 }

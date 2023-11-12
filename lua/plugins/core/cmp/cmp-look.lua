@@ -1,5 +1,5 @@
 return {
 	"octaltree/cmp-look",
-	event = "BufEnter",
+	event = "BufRead",
    dependencies = { "hrsh7th/nvim-cmp" }
 }

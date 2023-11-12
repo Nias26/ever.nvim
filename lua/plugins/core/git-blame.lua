@@ -1,6 +1,6 @@
 return {
 	"f-person/git-blame.nvim",
-	event = "BufEnter",
+	event = "BufRead",
 	config = function()
 		require("gitblame").setup{
 			enabled = false,

@@ -1,4 +1,4 @@
 return {
 	"tpope/vim-eunuch",
-	event = "BufEnter"
+	event = "BufRead"
 }
