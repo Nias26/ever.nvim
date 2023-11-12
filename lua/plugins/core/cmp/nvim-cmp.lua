@@ -1,21 +1,50 @@
 return {
 	"hrsh7th/nvim-cmp",
+	
 	lazy = true,
    config = function()
    	-- Set up nvim-cmp.
       local cmp = require'cmp'
-      local cmp_autopairs = require('nvim-autopairs.completion.cmp')
       local has_words_before = function()
       	unpack = unpack or table.unpack
          local line, col = unpack(vim.api.nvim_win_get_cursor(0))
          return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
       end
 
+		local kind_icons = {
+			Text = "󰉿",
+			Method = "󰆧",
+			Function = "󰊕",
+			Constructor = "",
+			Field = "󰜢",
+			Variable = "󰀫",
+			Class = "󰠱",
+			Interface = "",
+			Module = "",
+			Property = "󰜢",
+			Unit = "󰑭",
+			Value = "󰎠",
+			Enum = "",
+			Keyword = "󰌋",
+			Snippet = "",
+			Color = "󰏘",
+			File = "󰈙",
+			Reference = "󰈇",
+			Folder = "󰉋",
+			EnumMember = "",
+			Constant = "󰏿",
+			Struct = "󰙅",
+			Event = "",
+			Operator = "󰆕",
+			TypeParameter = "",
+		}
+
 		local luasnip = require("luasnip")
 		cmp.setup({
-			experimental = {
-				ghost_text = { hl_group = 'Comment' },
-			},
+			-- If you want you can enable ghost text
+			-- experimental = {
+				-- ghost_text = { hl_group = 'Comment' },
+			-- },
 			snippet = {
 				expand = function(args)
 					require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
@@ -46,6 +75,12 @@ return {
 	            maxwidth = 50,
 	            ellipsis_char = '...',
 	            symbol_map = { Codeium = "", }
+				}),
+				require('lspkind').cmp_format({
+					mode = "symbol",
+					maxwidth = 50,
+					ellipsis_char = '...',
+					symbol_map = { String = '󰅳', }
 				}),
 			},
 			mapping = cmp.mapping({
@@ -113,13 +148,11 @@ return {
 					and not context.in_syntax_group("Comment")
 				end
 			end,
-			enabled = function()
-				return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
-			end,
-			cmp.event:on(
-			'confirm_done',
-			cmp_autopairs.on_confirm_done()
-			),
+			enabled = function ()
+				buftype = vim.api.nvim_buf_get_option(0, "buftype")
+				if buftype == "prompt" then return false end
+				return true
+			end
 		})
 
 		-- Set configuration for specific filetype.
