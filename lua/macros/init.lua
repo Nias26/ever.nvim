@@ -58,7 +58,7 @@ vim.diagnostic.config({
 
 -- Autocmds
 -- Start a command In BufEnter, excluding dashboard
-local Start = vim.api.nvim_create_augroup('BufInit', { clear = true })
+local BufInit = vim.api.nvim_create_augroup('BufInit', { clear = true })
 vim.api.nvim_create_autocmd({"BufEnter"}, {group = BufInit , pattern = '*', callback = function()
   if not (vim.bo.filetype == 'dashboard') then
     -- Insert commands in here
