@@ -65,3 +65,6 @@ vim.api.nvim_create_autocmd({"BufEnter"}, {group = BufInit , pattern = '*', call
   end
 end
 })
+
+-- Commands preview
+vim.opt.inccommand = "split"
