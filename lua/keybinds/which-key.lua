@@ -45,6 +45,7 @@ wk.register({
 			['0'] = {  },
 		},
 		v = { "<cmd>TransparentToggle<CR>", "Toggle transparency theme" },
+		u = { "<cmd>!cd $HOME/.config/nvim && git pull<CR>", "Pull updates" },
 	}
 })
 
@@ -62,7 +63,7 @@ wk.register({
 			i = { "<cmd>LspInfo<CR>", "Info LSP" },
 		},
 		d = { "<cmd>lua require('dropbar.api').pick()<CR>", "Dropbar" },
-		p = { "<cmd>lua require('actions-preview').code_actions<CR>", "Code Actions" },
+		a = { "<cmd>lua require('actions-preview').code_actions<CR>", "Code Actions" },
 		t = { "<cmd>TroubleToggle<CR>", "Trouble" },
 		r = {
 			name = " - Run",
@@ -73,14 +74,14 @@ wk.register({
 		g = { "<cmd>GitBlameToggle<CR>", "Toggle git status" },
 	}
 })
-map({'n', 'v'}, 'cc', '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>')
-map('n', '<A-1>', '<cmd>lua require("dropbar.api").pick()<CR>')
-map('n', 'ca', '<cmd>lua require("actions-preview").code_actions()<CR>')
-map('n', 'ct', '<cmd>TroubleToggle<CR>')
-map('n', 'crr', '<cmd>ExecutorRun<CR>')
-map('n', 'crc', '<cmd>ExecutorReset<CR>')
-map('n', 'crs', '<cmd>ExecutorToggleDetail<CR>')
-map('n', 'cg', '<cmd>GitBlameToggle<CR>')
+map({'n', 'v'}, 'cc', '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', {desc = "Comment line"})
+map('n', '<A-1>', '<cmd>lua require("dropbar.api").pick()<CR>', {desc = "Dropbar"})
+map('n', 'ca', '<cmd>lua require("actions-preview").code_actions()<CR>', {desc = "Code Actions"})
+map('n', 'ct', '<cmd>TroubleToggle<CR>', {desc = "Trouble"})
+map('n', 'crr', '<cmd>ExecutorRun<CR>', {desc = "Run a command"})
+map('n', 'crc', '<cmd>ExecutorReset<CR>', {desc = "Reset saved command"})
+map('n', 'crs', '<cmd>ExecutorToggleDetail<CR>', {desc = "Show command details"})
+map('n', 'cg', '<cmd>GitBlameToggle<CR>', {desc = "Toggle git status"})
 
 -----
 -- ui('input', {prompt = "test"}, function(input) vim.cmd('test', input)end)
@@ -101,18 +102,18 @@ wk.register({
 		    w = { "<cmd>SudaWrite<CR>", "Write with [sudo] priviledges" },
 		    o = { "<cmd>SudaRead<CR>", "Open with [sudo] priviledges" },
 		},
-		l = { "<cmd>LegendaryScratchToggle<CR>", "Popup Scratch file"},
+		-- l = { "<cmd>LegendaryScratchToggle<CR>", "Popup Scratch file"},
 	}
 })
-map('n', 'fs', '<cmd>source %<CR>')
-map('n', 'fw', '<cmd>wq<CR>')
-map('n', 'fd', '<cmd>call delete(@%)<CR>')
-map('n', 'fr', function() ui_input({prompt = 'Rename'}, function(input) fcmd('Rename', input)end)end)
-map('n', 'fm', function() ui_input({prompt = 'Move'}, function(input) fcmd('Move', input)end)end)
-map('n', 'fR', '<cmd>lua require("persistence").load({ last = true })<CR>')
-map('n', 'fSw', '<cmd>SudaWrite<CR>')
-map('n', 'fSo', '<cmd>SudaRead<CR>')
-map('n', 'fl', '<cmd>LegendaryScratchToggle<CR>')
+map('n', 'fs', '<cmd>source %<CR>', {desc = "Source current file"})
+map('n', 'fw', '<cmd>wq<CR>', {desc = "Write and quit"})
+map('n', 'fd', '<cmd>call delete(@%)<CR>', {desc = "Delete current file"})
+map('n', 'fr', function() ui_input({prompt = 'Rename'}, function(input) fcmd('Rename', input)end)end, {desc = "Rename current file"})
+map('n', 'fm', function() ui_input({prompt = 'Move'}, function(input) fcmd('Move', input)end)end, {desc = "Move current file"})
+map('n', 'fR', '<cmd>lua require("persistence").load({ last = true })<CR>', {desc = "Restore last session"})
+map('n', 'fSw', '<cmd>SudaWrite<CR>', {desc = "Write with [sudo] priviledges"})
+map('n', 'fSo', '<cmd>SudaRead<CR>', {desc = "Read with [sudo] priviledges"})
+-- map('n', 'fl', '<cmd>LegendaryScratchToggle<CR>', {desc = "Popup Scratch file"})
 map('n', 'ff', 'za')
 map('n', 'ft', 'zi')
 
@@ -133,9 +134,9 @@ wk.register({
 		r = { "<cmd>Ranger<CR>", "Ranger" },
 	}
 })
-map({'n', 'v'}, 'st', '<cmd>Telescope<CR>')
-map('n', 'sl', '<cmd>LvimFileManager<CR>')
-map('n', 'sr', '<cmd>Ranger<CR>')
+map({'n', 'v'}, 'st', '<cmd>Telescope<CR>', {desc = "Open Telescope"})
+map('n', 'sl', '<cmd>LvimFileManager<CR>', {desc = "Open Lvim File manager"})
+map('n', 'sr', '<cmd>Ranger<CR>', {desc = "Open Ranger"})
 
 -- Buffer -> 󰓩
 wk.register({
@@ -144,20 +145,23 @@ wk.register({
 		n = { function() ui_input({prompt = 'New buffer'}, function(input) fcmd('badd', input)end)end, "New buffer" },
 		d = { "<cmd>bdel<CR>", "Delete current buffer" },
 		s = {
-			name = "Super",
-			d = { "<cmd>NvimTreeClose | bdel | NvimTreeOpen<CR><C-w>w", "Delete buffer, keep NvimTree" },
+			name = " Split",
+			h = { function() ui_input({prompt = 'Horizzontal split'}, function(input) if input == "" then input = "%" end fcmd('split', input) end) end, "Horizzontal Split" },
+			v = { function() ui_input({prompt = 'Vertical split'}, function(input) if input == "" then input = "%" end fcmd('vsplit', input) end) end, "Vertical Split"},
+			c = { "<cmd>q<CR>", "Close current split" },
 		},
 		["["] = { "<cmd>bprevious<CR>", "Previous buffer" },
 		["]"] = { "<cmd>bnext<CR>", "Next buffer" },
-		j = { "<cmd>JABSOpen<CR>", "JABS" },
+		-- j = { "<cmd>JABSOpen<CR>", "JABS" },
 	}
 })
-map('n', 'bn', function() ui_input({prompt = 'New buffer'}, function(input) fcmd('badd', input)end)end)
-map('n', 'bd', '<cmd>bdel<CR>')
-map('n', 'bsd', '<cmd>NvimTreeClose | bdel | NvimTreeOpen<CR><C-w>w')
-map('n', '[', '<cmd>bprevious<CR>')
-map('n', ']', '<cmd>bnext<CR>')
-map('n', 'bj', '<cmd>JABSOpen<CR>')
+map('n', 'bn', function() ui_input({prompt = 'New buffer'}, function(input) fcmd('badd', input)end)end, {desc = "New buffer"})
+map('n', 'bd', '<cmd>bdel<CR>', {desc = "Delete current buffer"})
+map('n', 'bsh', function() ui_input({prompt = 'Horizzontal split'}, function(input) if input == "" then input = "%" end fcmd('split', input) end) end, {desc = "Horizzontal Split"})
+map('n', 'bsv', function() ui_input({prompt = 'Vertical split'}, function(input) if input == "" then input = "%" end fcmd('vsplit', input) end) end, {desc = "Vertical Split"})
+map('n', '[', '<cmd>bprevious<CR>', {desc = "Previous buffer"})
+map('n', ']', '<cmd>bnext<CR>', {desc = "Next buffer"})
+-- map('n', 'bj', '<cmd>JABSOpen<CR>', {desc = "JABS"})
 map('n', '<Tab>', '<cmd>bnext<CR>')
 map('n', '<S-Tab>', '<cmd>bprevious<CR>')
 
@@ -176,17 +180,17 @@ wk.register({
 		t = { "<cmd>Telescope<CR>", "Telescope" },
 	}
 })
-map('n', 'oe', '<cmd>NvimTreeToggle<CR>')
-map('n', 'om', '<cmd>MinimapToggle<CR>')
+map('n', 'oe', '<cmd>NvimTreeToggle<CR>', {desc = "NvimTree"})
+map('n', 'om', '<cmd>MinimapToggle<CR>', {desc = "Minimap"})
 map('n', '<F5>', '<cmd>MinimapToggle<CR>')
-map('n', 'oT', '<cmd>ToggleTerm<CR>')
+map('n', 'oT', '<cmd>ToggleTerm<CR>', {desc = "Toggle Term"})
 map({'n', 'v', 'i'}, '<F4>', '<cmd>ToggleTerm<CR>')
-map('n', 'os', '<cmd>SymbolsOutline<CR>')
-map('n', 'od', '<cmd>Dashboard<CR>')
-map('n', 'on', '<cmd>Nerdy<CR>')
-map('n', 'oh', '<cmd>Noice<CR>')
-map('n', 'ol', '<cmd>LazyGit<CR>')
-map('n', 'ot', '<cmd>Telescope<CR>')
+map('n', 'os', '<cmd>SymbolsOutline<CR>', {desc = "SymbolsOutline"})
+map('n', 'od', '<cmd>Dashboard<CR>', {desc = "Dashboard"})
+map('n', 'on', '<cmd>Nerdy<CR>', {desc = "Choose Nerd Font Icon"})
+map('n', 'oh', '<cmd>Noice<CR>', {desc = "Notification history"})
+map('n', 'ol', '<cmd>LazyGit<CR>', {desc = "LazyGit"})
+map('n', 'ot', '<cmd>Telescope<CR>', {desc = "Telescope"})
 
 -- Debug ->  
 wk.register({
