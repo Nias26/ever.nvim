@@ -1,6 +1,5 @@
 return {
 	"hrsh7th/nvim-cmp",
-	
 	lazy = true,
    config = function()
    	-- Set up nvim-cmp.
@@ -72,16 +71,10 @@ return {
 				end,
 				require('lspkind').cmp_format({
 					mode = "symbol",
-	            maxwidth = 50,
-	            ellipsis_char = '...',
-	            symbol_map = { Codeium = "", }
-				}),
-				require('lspkind').cmp_format({
-					mode = "symbol",
 					maxwidth = 50,
 					ellipsis_char = '...',
-					symbol_map = { String = '󰅳', }
-				}),
+					symbol_map = { Codeium = "", String = '󰅳',}
+				})
 			},
 			mapping = cmp.mapping({
 				['<C-Down>'] = cmp.mapping.scroll_docs(-4),
