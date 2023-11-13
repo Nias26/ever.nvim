@@ -68,3 +68,6 @@ end
 
 -- Commands preview
 vim.opt.inccommand = "split"
+
+-- Ignore uppercase and lowercase in commands
+vim.opt.ignorecase = true
