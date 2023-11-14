@@ -23,6 +23,18 @@ function fcmd(command, opts)
 	vim.cmd({ cmd = command, args = {opts}})
 end
 
+-- Replace
+function replace()
+	vim.ui.input({ prompt = "Word" }, function(mword)
+		local Mword = "%s/" .. mword .. "/"
+		vim.ui.input({ prompt = "Replace" }, function(rword)
+			local Rword = Mword .. rword
+			vim.cmd(Rword)
+		end)
+	end)
+end
+vim.api.nvim_create_user_command('Replace', "lua replace()", { desc = "Replace a word with another" })
+
 -- Open LSP Diagnostic window over error, warn, info, ...
 -- Function to check if a floating dialog exists and if not then check for diagnostics under the cursor
 function OpenDiagnosticIfNoFloat()
