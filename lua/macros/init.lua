@@ -3,10 +3,33 @@
 require("current-theme")
 require("macros.functions")
 
-
 -- Set Number line
 vim.opt.relativenumber = true
 vim.opt.number = true
+
+-- Commands preview
+vim.opt.inccommand = "split"
+
+-- Ignore uppercase and lowercase in commands
+vim.opt.ignorecase = true
+
+-- Set global statusbar
+vim.opt.laststatus = 3
+
+-- Set scrolloff
+vim.opt.scrolloff = 999
+
+-- Set Virtual text
+vim.diagnostic.config({
+	virtual_text = true,
+	signs = true,
+	underline = true,
+	update_in_insert = false,
+	seveirty_sort = false,
+	float = {
+   	source = "always",
+   },
+})
 
 -- Quit nvim if nvim-tree is the last open buffer
 vim.api.nvim_create_autocmd("QuitPre", {
@@ -32,42 +55,9 @@ vim.api.nvim_create_autocmd("QuitPre", {
 	end
 })
 
--- Set global statusbar
-vim.opt.laststatus = 3
-
--- Set scrolloff
-vim.opt.scrolloff = 999
-
 -- Typos when writing commands
 vim.api.nvim_create_user_command('Q', 'q', {})
 vim.api.nvim_create_user_command('Wq', 'wq', {})
 vim.api.nvim_create_user_command('Qa', 'qa', {})
 vim.api.nvim_create_user_command('Wqa', 'wqa', {})
 
--- Set Virtual text
-vim.diagnostic.config({
-	virtual_text = true,
-	signs = true,
-	underline = true,
-	update_in_insert = false,
-	seveirty_sort = false,
-	float = {
-   	source = "always",
-   },
-})
-
--- Autocmds
--- Start a command In BufEnter, excluding dashboard
-local BufInit = vim.api.nvim_create_augroup('BufInit', { clear = true })
-vim.api.nvim_create_autocmd({"BufEnter"}, {group = BufInit , pattern = '*', callback = function()
-  if not (vim.bo.filetype == 'dashboard') then
-    -- Insert commands in here
-  end
-end
-})
-
--- Commands preview
-vim.opt.inccommand = "split"
-
--- Ignore uppercase and lowercase in commands
-vim.opt.ignorecase = true
