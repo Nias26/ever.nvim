@@ -29,7 +29,7 @@ wk.register({
 		name = " - Ever.nvim",
 		c = { "<cmd>cd $HOME/.config/nvim | NvimTreeOpen<CR>", "Edit config" },
 		l = { "<cmd>Lazy<CR>", "󰒲 Lazy" },
-		g = { function() ui_open('https://github.com/Nias26/ever.nvim') end, " Git repo" },
+		g = { function() vim.ui.open('https://github.com/Nias26/ever.nvim') end, " Git repo" },
 		t = { "<cmd>Telescope themes<CR>", "Change theme" },
 		b = {
 			name = " - Bookmarks",
@@ -94,8 +94,8 @@ wk.register({
 		s = { "<cmd>source %<CR>", "Source current file" },
 		w = { "<cmd>wq<CR>", "Write and quit" },
 		d = { "<cmd>call delete(@%)<CR>", "Delete current file" },
-		r = { function() ui_input({prompt = 'Rename'}, function(input) fcmd('Rename', input)end)end, "Rename current file" },
-		m = { function() ui_input({prompt = 'Move'}, function(input) fcmd('Move', input)end)end, "Move current file" },
+		r = { function() vim.ui.input({prompt = 'Rename'}, function(input) fcmd('Rename', input)end)end, "Rename current file" },
+		m = { function() vim.ui.input({prompt = 'Move'}, function(input) fcmd('Move', input)end)end, "Move current file" },
 		R = { "<cmd>lua require('persistence').load({ last = true })<CR>", "Restore last session" },
 		S = {
 		    name = "󰏮 - Sudo",
@@ -108,8 +108,8 @@ wk.register({
 map('n', 'fs', '<cmd>source %<CR>', {desc = "Source current file"})
 map('n', 'fw', '<cmd>wq<CR>', {desc = "Write and quit"})
 map('n', 'fd', '<cmd>call delete(@%)<CR>', {desc = "Delete current file"})
-map('n', 'fr', function() ui_input({prompt = 'Rename'}, function(input) fcmd('Rename', input)end)end, {desc = "Rename current file"})
-map('n', 'fm', function() ui_input({prompt = 'Move'}, function(input) fcmd('Move', input)end)end, {desc = "Move current file"})
+map('n', 'fr', function() vim.ui.input({prompt = 'Rename'}, function(input) fcmd('Rename', input)end)end, {desc = "Rename current file"})
+map('n', 'fm', function() vim.ui.input({prompt = 'Move'}, function(input) fcmd('Move', input)end)end, {desc = "Move current file"})
 map('n', 'fR', '<cmd>lua require("persistence").load({ last = true })<CR>', {desc = "Restore last session"})
 map('n', 'fSw', '<cmd>SudaWrite<CR>', {desc = "Write with [sudo] priviledges"})
 map('n', 'fSo', '<cmd>SudaRead<CR>', {desc = "Read with [sudo] priviledges"})
@@ -142,12 +142,12 @@ map('n', 'sr', '<cmd>Ranger<CR>', {desc = "Open Ranger"})
 wk.register({
 	["<leader>b"] = {
 		name = "󰓩 - Buffer",
-		n = { function() ui_input({prompt = 'New buffer'}, function(input) fcmd('badd', input)end)end, "New buffer" },
+		n = { function() vim.ui.input({prompt = 'New buffer'}, function(input) fcmd('badd', input)end)end, "New buffer" },
 		d = { "<cmd>bdel<CR>", "Delete current buffer" },
 		s = {
 			name = " Split",
-			h = { function() ui_input({prompt = 'Horizzontal split'}, function(input) if input == "" then input = "%" end fcmd('split', input) end) end, "Horizzontal Split" },
-			v = { function() ui_input({prompt = 'Vertical split'}, function(input) if input == "" then input = "%" end fcmd('vsplit', input) end) end, "Vertical Split"},
+			h = { function() vim.ui.input({prompt = 'Horizzontal split'}, function(input) if input == "" then input = "%" end fcmd('split', input) end) end, "Horizzontal Split" },
+			v = { function() vim.ui.input({prompt = 'Vertical split'}, function(input) if input == "" then input = "%" end fcmd('vsplit', input) end) end, "Vertical Split"},
 			c = { "<cmd>q<CR>", "Close current split" },
 		},
 		["["] = { "<cmd>bprevious<CR>", "Previous buffer" },
@@ -155,10 +155,10 @@ wk.register({
 		-- j = { "<cmd>JABSOpen<CR>", "JABS" },
 	}
 })
-map('n', 'bn', function() ui_input({prompt = 'New buffer'}, function(input) fcmd('badd', input)end)end, {desc = "New buffer"})
+map('n', 'bn', function() vim.ui.input({prompt = 'New buffer'}, function(input) fcmd('badd', input)end)end, {desc = "New buffer"})
 map('n', 'bd', '<cmd>bdel<CR>', {desc = "Delete current buffer"})
-map('n', 'bsh', function() ui_input({prompt = 'Horizzontal split'}, function(input) if input == "" then input = "%" end fcmd('split', input) end) end, {desc = "Horizzontal Split"})
-map('n', 'bsv', function() ui_input({prompt = 'Vertical split'}, function(input) if input == "" then input = "%" end fcmd('vsplit', input) end) end, {desc = "Vertical Split"})
+map('n', 'bsh', function() vim.ui.input({prompt = 'Horizzontal split'}, function(input) if input == "" then input = "%" end fcmd('split', input) end) end, {desc = "Horizzontal Split"})
+map('n', 'bsv', function() vim.ui.input({prompt = 'Vertical split'}, function(input) if input == "" then input = "%" end fcmd('vsplit', input) end) end, {desc = "Vertical Split"})
 map('n', '[', '<cmd>bprevious<CR>', {desc = "Previous buffer"})
 map('n', ']', '<cmd>bnext<CR>', {desc = "Next buffer"})
 -- map('n', 'bj', '<cmd>JABSOpen<CR>', {desc = "JABS"})
