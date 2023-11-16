@@ -17,9 +17,9 @@ end
 -- require("keybinds.which-key")
 
 -- Other keybinds
-map('n', '<ESC><ESC>', '<cmd>noh<CR>')
-map({'n', 'v'}, '!', '<C-w>w')
-map({'n', 'v'}, 'o', '<cmd>URLOpenUnderCursor<CR>')
-map('n', '%', '<cmd>source %<CR>')
-map('n', ',', 'N')
-map('n', '.', 'n')
+f.map('n', '<ESC><ESC>', '<cmd>noh<CR>')
+f.map({'n', 'v'}, '!', '<C-w>w')
+f.map({'n', 'v'}, 'o', '<cmd>URLOpenUnderCursor<CR>')
+f.map('n', '%', '<cmd>source %<CR>')
+f.map('n', ',', 'N')
+f.map('n', '.', 'n')
