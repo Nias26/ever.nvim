@@ -1,7 +1,7 @@
 -- set colorscheme
 -- vim.cmd("colorscheme oxocarbon")
 require("current-theme")
-require("macros.functions")
+f = require("macros.functions")
 
 -- Set Number line
 vim.opt.relativenumber = true
@@ -61,3 +61,12 @@ vim.api.nvim_create_user_command('Wq', 'wq', {})
 vim.api.nvim_create_user_command('Qa', 'qa', {})
 vim.api.nvim_create_user_command('Wqa', 'wqa', {})
 
+-- Open LSP Diagnostic window over error, warn, info, ...
+-- Function to check if a floating dialog exists and if not then check for diagnostics under the cursor
+-- Show diagnostics under the cursor when holding position
+vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
+vim.api.nvim_create_autocmd({ "CursorHold" }, {
+	pattern = "*",
+   command = "lua f.OpenDiagnosticIfNoFloat()",
+   group = "lsp_diagnostics_hold",
+})
