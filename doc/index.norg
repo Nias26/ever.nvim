@@ -11,9 +11,10 @@
 * TODO
   - (x) Add vim.opt.scrolloff
   - (?) Mabye idea for a pugin??? (anyway for now I'll integrate as a normal script
-    - ( ) Add Bookmarks with telescope 
+      - ( ) Add Bookmarks with telescope 
       - ( ) Add it in the *"other"* folder
       - (=) Add them in wich-key *<leader>* menu
       - ( ) Set a keybind to assign a new bookmark
       - (?) Set a command to assign a new bookmark
-    
+
+** Starting the docs finally...  
