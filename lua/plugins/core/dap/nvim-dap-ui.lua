@@ -1,5 +1,8 @@
+require("plugins.core.dap.Dap_opt")
+
 return {
 	"rcarriga/nvim-dap-ui",
+	cond = Dap_opt,
 	lazy = true,
    dependencies = {
    	"mfussenegger/nvim-dap",

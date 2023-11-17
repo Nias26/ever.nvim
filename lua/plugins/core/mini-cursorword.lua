@@ -1,6 +1,6 @@
 return {
 	"echasnovski/mini.cursorword",
-	event = "VeryLazy",
+	event = "BufRead",
    version = "*",
    config = function()
    	require("mini.cursorword").setup()

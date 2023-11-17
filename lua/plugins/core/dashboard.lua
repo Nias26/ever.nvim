@@ -1,6 +1,5 @@
 return {
 	"glepnir/dashboard-nvim",
-   event = 'VimEnter',
    dependencies = { 'nvim-tree/nvim-web-devicons' },
 	config = function()
    	require('dashboard').setup({
@@ -18,7 +17,7 @@ return {
             	{
 						desc = ' New File ',
 						group = '@property',
-						action = 'Scratch',
+						action = 'new',
 						key = 'n'
 					},
 	                -- Example

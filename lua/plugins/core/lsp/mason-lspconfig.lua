@@ -1,5 +1,6 @@
 return {
 	"williamboman/mason-lspconfig.nvim",
+	event = "BufRead",
    dependencies = {
    	"williamboman/mason.nvim",
       "neovim/nvim-lspconfig"
