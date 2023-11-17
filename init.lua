@@ -1,10 +1,4 @@
 -- Init.lua file (Main loaded lua file)
--- Check the current neovim version
--- if vim.fn.has('nvim-0.10') ~= 1 then
-	 -- print("Use `nvim-0.10-*`!!! ")
-	 -- vim.cmd('2sleep')
-	 -- vim.cmd('q!')
--- end
 
 -- vim.loader.enable() # Check neovim wiki for this
 vim.loader.enable()
