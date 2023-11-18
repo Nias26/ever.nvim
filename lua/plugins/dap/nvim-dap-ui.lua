@@ -1,4 +1,4 @@
-require("plugins.core.dap.Dap_opt")
+require("plugins.dap.Dap_opt")
 
 return {
 	"rcarriga/nvim-dap-ui",
