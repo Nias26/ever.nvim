@@ -1,4 +1,8 @@
-local wk = require("which-key")
+local map = vim.keymap.set
+local status_ok, wk = pcall(require, "which-key")
+if not status_ok then
+   return
+end
 
 -- Icons Index
 -- Ever.nvim -> 
@@ -54,16 +58,16 @@ wk.register({
 wk.register({
 	["<leader>c"] = {
 		name = " - Code",
-		c = { "gcc", "Comment line" },
+		c = { function() require("Comment.api").toggle.linewise() end, "Comment line" },
 		d = { "<cmd>lua require('dropbar.api').pick()<CR>", "Dropbar" },
 		t = { "<cmd>TroubleToggle<CR>", "Trouble" },
 		g = { "<cmd>GitBlameToggle<CR>", "Toggle git status" },
 	}
 })
-f.map({'n', 'v'}, 'cc', 'gcc', {desc = "Comment line"})
-f.map('n', '<A-1>', '<cmd>lua require("dropbar.api").pick()<CR>', {desc = "Dropbar"})
-f.map('n', 'ct', '<cmd>TroubleToggle<CR>', {desc = "Trouble"})
-f.map('n', 'cg', '<cmd>GitBlameToggle<CR>', {desc = "Toggle git status"})
+map('n', 'cc', function() require("Comment.api").toggle.linewise() end, {desc = "Comment line"})
+map('n', '<A-1>', '<cmd>lua require("dropbar.api").pick()<CR>', {desc = "Dropbar"})
+map('n', 'ct', '<cmd>TroubleToggle<CR>', {desc = "Trouble"})
+map('n', 'cg', '<cmd>GitBlameToggle<CR>', {desc = "Toggle git status"})
 
 -----
 -- ui('input', {prompt = "test"}, function(input) vim.cmd('test', input)end)
@@ -79,12 +83,12 @@ wk.register({
 		R = { "<cmd>lua require('persistence').load({ last = true })<CR>", "Restore last session" },
 	}
 })
-f.map('n', 'fd', '<cmd>call delete(@%)<CR>', {desc = "Delete current file"})
-f.map('n', 'fr', function() vim.ui.input({prompt = 'Rename'}, function(input) f.fcmd('Rename', input)end)end, {desc = "Rename current file"})
-f.map('n', 'fm', function() vim.ui.input({prompt = 'Move'}, function(input) f.fcmd('Move', input)end)end, {desc = "Move current file"})
-f.map('n', 'fR', '<cmd>lua require("persistence").load({ last = true })<CR>', {desc = "Restore last session"})
-f.map('n', 'ff', 'za')
-f.map('n', 'ft', 'zi')
+map('n', 'fd', '<cmd>call delete(@%)<CR>', {desc = "Delete current file"})
+map('n', 'fr', function() vim.ui.input({prompt = 'Rename'}, function(input) f.fcmd('Rename', input)end)end, {desc = "Rename current file"})
+map('n', 'fm', function() vim.ui.input({prompt = 'Move'}, function(input) f.fcmd('Move', input)end)end, {desc = "Move current file"})
+map('n', 'fR', '<cmd>lua require("persistence").load({ last = true })<CR>', {desc = "Restore last session"})
+map('n', 'ff', 'za')
+map('n', 'ft', 'zi')
 
 -- Search -> 
 wk.register({
@@ -101,7 +105,7 @@ wk.register({
 		},
 	}
 })
-f.map({'n', 'v'}, 'st', '<cmd>Telescope<CR>', {desc = "Open Telescope"})
+map({'n', 'v'}, 'st', '<cmd>Telescope<CR>', {desc = "Open Telescope"})
 
 -- Buffer -> 󰓩
 wk.register({
@@ -119,14 +123,14 @@ wk.register({
 		["]"] = { "<cmd>bnext<CR>", "Next buffer" },
 	}
 })
-f.map('n', 'bn', function() vim.ui.input({prompt = 'New buffer'}, function(input) f.fcmd('badd', input)end)end, {desc = "New buffer"})
-f.map('n', 'bd', '<cmd>bdel<CR>', {desc = "Delete current buffer"})
-f.map('n', 'bsh', function() vim.ui.input({prompt = 'Horizzontal split'}, function(input) if input == "" then input = "%" end f.fcmd('split', input) end) end, {desc = "Horizzontal Split"})
-f.map('n', 'bsv', function() vim.ui.input({prompt = 'Vertical split'}, function(input) if input == "" then input = "%" end f.fcmd('vsplit', input) end) end, {desc = "Vertical Split"})
-f.map('n', '[', '<cmd>bprevious<CR>', {desc = "Previous buffer"})
-f.map('n', ']', '<cmd>bnext<CR>', {desc = "Next buffer"})
-f.map('n', '<Tab>', '<cmd>bnext<CR>')
-f.map('n', '<S-Tab>', '<cmd>bprevious<CR>')
+map('n', 'bn', function() vim.ui.input({prompt = 'New buffer'}, function(input) f.fcmd('badd', input)end)end, {desc = "New buffer"})
+map('n', 'bd', '<cmd>bdel<CR>', {desc = "Delete current buffer"})
+map('n', 'bsh', function() vim.ui.input({prompt = 'Horizzontal split'}, function(input) if input == "" then input = "%" end f.fcmd('split', input) end) end, {desc = "Horizzontal Split"})
+map('n', 'bsv', function() vim.ui.input({prompt = 'Vertical split'}, function(input) if input == "" then input = "%" end f.fcmd('vsplit', input) end) end, {desc = "Vertical Split"})
+map('n', '[', '<cmd>bprevious<CR>', {desc = "Previous buffer"})
+map('n', ']', '<cmd>bnext<CR>', {desc = "Next buffer"})
+map('n', '<Tab>', '<cmd>bnext<CR>')
+map('n', '<S-Tab>', '<cmd>bprevious<CR>')
 
 -- Open -> 󰏌
 wk.register({
@@ -142,15 +146,15 @@ wk.register({
 		t = { "<cmd>Telescope<CR>", "Telescope" },
 	}
 })
-f.map('n', 'oe', '<cmd>NvimTreeToggle<CR>', {desc = "NvimTree"})
-f.map('n', 'oT', '<cmd>ToggleTerm<CR>', {desc = "Toggle Term"})
-f.map({'n', 'v', 'i'}, '<F4>', '<cmd>ToggleTerm<CR>')
-f.map('n', 'os', '<cmd>SymbolsOutline<CR>', {desc = "SymbolsOutline"})
-f.map('n', 'od', '<cmd>Dashboard<CR>', {desc = "Dashboard"})
-f.map('n', 'on', '<cmd>Nerdy<CR>', {desc = "Choose Nerd Font Icon"})
-f.map('n', 'oh', '<cmd>Noice<CR>', {desc = "Notification history"})
-f.map('n', 'ol', '<cmd>LazyGit<CR>', {desc = "LazyGit"})
-f.map('n', 'ot', '<cmd>Telescope<CR>', {desc = "Telescope"})
+map('n', 'oe', '<cmd>NvimTreeToggle<CR>', {desc = "NvimTree"})
+map('n', 'oT', '<cmd>ToggleTerm<CR>', {desc = "Toggle Term"})
+map({'n', 'v', 'i'}, '<F4>', '<cmd>ToggleTerm<CR>')
+map('n', 'os', '<cmd>SymbolsOutline<CR>', {desc = "SymbolsOutline"})
+map('n', 'od', '<cmd>Dashboard<CR>', {desc = "Dashboard"})
+map('n', 'on', '<cmd>Nerdy<CR>', {desc = "Choose Nerd Font Icon"})
+map('n', 'oh', '<cmd>Noice<CR>', {desc = "Notification history"})
+map('n', 'ol', '<cmd>LazyGit<CR>', {desc = "LazyGit"})
+map('n', 'ot', '<cmd>Telescope<CR>', {desc = "Telescope"})
 
 -- Debug ->  
 if Dap_opt == true then
@@ -161,8 +165,8 @@ if Dap_opt == true then
 			b = { "<cmd>lua require('dapui').toggle_breakpoint()<CR>", "Set breakpoint" },
 		}
 	})
-	f.map({'n', 'v'}, 'do', '<cmd>lua require("dapui").toggle()<CR>')
-	f.map({'n', 'v'}, 'db', '<cmd>lua require("dapui").toggle_breakpoint()<CR>')
+	map({'n', 'v'}, 'do', '<cmd>lua require("dapui").toggle()<CR>')
+	map({'n', 'v'}, 'db', '<cmd>lua require("dapui").toggle_breakpoint()<CR>')
 else
 end
 
@@ -174,8 +178,8 @@ wk.register({
 		n = { "<cmd>Telescope help_tags<CR>", "View Neovim docs" },
 	}
 })
-f.map({'n', 'v'}, 'hc', '<cmd>DocsViewToggle<CR>')
-f.map({'n', 'v'}, 'hn', '<cmd>Telescope help_tags<CR>')
+map({'n', 'v'}, 'hc', '<cmd>DocsViewToggle<CR>')
+map({'n', 'v'}, 'hn', '<cmd>Telescope help_tags<CR>')
 
 -- Neorg -> 󰭃
 wk.register({
@@ -185,8 +189,8 @@ wk.register({
 		w = { "<cmd>Neorg workspace<CR>", "Load Workspace"},
 	}
 })
-f.map('n', 'nn', '<cmd>Neorg<CR>')
-f.map('n', 'nw', '<cmd>Neorg workspace<CR>')
+map('n', 'nn', '<cmd>Neorg<CR>')
+map('n', 'nw', '<cmd>Neorg workspace<CR>')
 
 -- Manual keybinds
 
