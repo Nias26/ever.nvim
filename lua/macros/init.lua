@@ -1,10 +1,10 @@
 -- Set colorscheme
-local status_ok, _ = pcall(require("current-theme"))
-if not status_ok then
+require("current-theme")
+
+Func_status, f = pcall(require, "macros.functions")
+if not Func_status then
 	return
 end
-
-f = require("macros.functions")
 
 -- Set Virtual text
 vim.diagnostic.config({

@@ -3,7 +3,16 @@ return {
 	lazy = true,
    config = function()
    	-- Set up nvim-cmp.
-      local cmp = require'cmp'
+      local status_ok, cmp = pcall(require, 'cmp')
+		if not status_ok then
+			return
+		end
+
+		local status_ok, lspkind = pcall(require, "lspkind")
+		if not status_ok then
+			return
+		end
+
       local has_words_before = function()
       	unpack = unpack or table.unpack
          local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -38,15 +47,18 @@ return {
 			TypeParameter = "",
 		}
 
-		local luasnip = require("luasnip")
+		local status_ok, luasnip = pcall(require, "luasnip")
+		if not status_ok then
+			return
+		end
 		cmp.setup({
 			-- If you want you can enable ghost text
-			-- experimental = {
-				-- ghost_text = { hl_group = 'Comment' },
-			-- },
+			experimental = {
+				ghost_text = { hl_group = 'Comment' },
+			},
 			snippet = {
 				expand = function(args)
-					require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+					luasnip.lsp_expand(args.body) -- For `luasnip` users.
 				end,
 			},
 			window = {
@@ -63,13 +75,13 @@ return {
 			formatting = {
 				fields = { "kind", "abbr", "menu" },
 				format = function(entry, vim_item)
-					local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+					local kind = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
 					local strings = vim.split(kind.kind, "%s", { trimempty = true })
 					kind.kind = " " .. (strings[1] or "") .. " "
 					kind.menu = "    (" .. (strings[2] or "") .. ")"
 					return kind
 				end,
-				require('lspkind').cmp_format({
+				lspkind.cmp_format({
 					mode = "symbol",
 					maxwidth = 50,
 					ellipsis_char = '...',
@@ -178,10 +190,5 @@ return {
 				{ name = 'fuzzy_path', option = {fd_timeout_msec = 1500} }
 			})
 		})
-
-			-- Set up lspconfig.
-			--require'lspconfig'.clangd.setup{
-				-- capabilities = capabilities,
-			--}
 	end
 }

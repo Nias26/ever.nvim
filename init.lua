@@ -87,5 +87,13 @@ require("lazy").setup({
 	   }
    }
 })
-require("macros")
-require("keybinds")
+
+local status_ok_1, _ = pcall(require, "macros")
+if not status_ok_1 then
+	return
+end
+
+local status_ok_2, _ = pcall(require, "keybinds")
+if not status_ok_2 then
+	return
+end
