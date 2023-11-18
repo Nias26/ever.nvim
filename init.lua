@@ -1,24 +1,31 @@
 -- Init.lua file (Main loaded lua file)
+vim.loader.enable() 								-- vim.loader.enable() # Check neovim wiki for this
 
--- vim.loader.enable() # Check neovim wiki for this
-vim.loader.enable()
+vim.g.mapleader = ' ' 							-- Set leader key
+vim.g.loaded_netrw = 1 							-- Disable netrw
+vim.g.loaded_netrwPlugin = 1 					-- Disable netrw
 
--- Set leader key
-vim.g.mapleader = ' '
+local options = {
+	relativenumber = true, 						-- Set Relative Number line
+	number = true, 								-- Set Number line
+	inccommand = "split", 						-- Command preview (eg. `%s/.../...`)
+	ignorecase = true, 							-- Ignore uppercase and lowercase in commands
+	laststatus = 3, 								-- Set global statusbar
+	scrolloff = 999, 								-- Set scrolloff
+	updatetime = 300, 							-- Set updatetime for events
+	showmode = false, 							-- Hide --INSERT-- messages etc...
+	splitbelow = true, 							-- Always split below
+	splitright = true, 							-- Always split right
+	undofile = true, 								-- Enable persistent undo
+	cursorline = true, 							-- Enable cursorline
+	termguicolors = true, 						-- Enable termguicolors
+	tabstop = 3, 									-- Set tabstop
+	shiftwidth = 3, 								-- Set shiftwidth
+}
 
--- Set Termguicolors
-vim.o.termguicolors = true
-
--- Disable NvimTree at startup
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
--- Tabstop
-vim.opt.tabstop = 3
-vim.opt.shiftwidth = 3
-
--- Set cursorline
-vim.o.cursorline = true
+for k, v in pairs(options) do
+	vim.opt[k] = v
+end
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -47,15 +54,11 @@ end
 -- Lazy.nvim setup
 require("lazy").setup({
 	-- Core Files
-	{ import = "plugins.core" },
-	{ import = "plugins.core.nvim-treesitter" },
-	{ import = "plugins.core.lsp" },
-	{ import = "plugins.core.cmp" },
-	{ import = "plugins.core.telescope" },
-	{ import = "plugins.core.dap" },
-	-- User Files
-	{ import = "plugins.user" },
-	{ import = "plugins.user.config" },
+	{ import = "plugins" },
+	{ import = "plugins.lsp" },
+	{ import = "plugins.cmp" },
+	{ import = "plugins.telescope" },
+	{ import = "plugins.dap" },
 	-- Lazy.nvim Opts
 	ui = {
 		icons = {
