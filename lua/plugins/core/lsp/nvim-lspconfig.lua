@@ -1,6 +1,6 @@
 return {
 	"neovim/nvim-lspconfig",
-	event = "BufRead",
+	event = "VeryLazy",
    config = function()
 		local signs = { Error = " ", Warn = " ", Hint = "󰌵 ", Info = "󱈸 " }
       for type, icon in pairs(signs) do
