@@ -81,12 +81,21 @@ wk.register({
 		r = { function() vim.ui.input({prompt = 'Rename'}, function(input) f.fcmd('Rename', input)end)end, "Rename current file" },
 		m = { function() vim.ui.input({prompt = 'Move'}, function(input) f.fcmd('Move', input)end)end, "Move current file" },
 		R = { "<cmd>lua require('persistence').load({ last = true })<CR>", "Restore last session" },
+		c = {
+			name = " - Compile",
+			c = { "<cmd>CompilerOpen<CR>", "Compile file" },
+			r = { "<cmd>CompilerRedo<CR>", "Recompile file" },
+			t = { "<cmd>CompilerToggleResults<CR>", "Toggle results" },
+		},
 	}
 })
 map('n', 'fd', '<cmd>call delete(@%)<CR>', {desc = "Delete current file"})
 map('n', 'fr', function() vim.ui.input({prompt = 'Rename'}, function(input) f.fcmd('Rename', input)end)end, {desc = "Rename current file"})
 map('n', 'fm', function() vim.ui.input({prompt = 'Move'}, function(input) f.fcmd('Move', input)end)end, {desc = "Move current file"})
 map('n', 'fR', '<cmd>lua require("persistence").load({ last = true })<CR>', {desc = "Restore last session"})
+map('n', 'fcc', '<cmd>CompilerOpen<CR>', {desc = "Compile file"})
+map('n', 'fcr', '<cmd>CompilerRedo<CR>', {desc = "Recompile file"})
+map('n', 'fct', '<cmd>CompilerToggleResults<CR>', {desc = "Toggle results"})
 map('n', 'ff', 'za')
 map('n', 'ft', 'zi')
 
