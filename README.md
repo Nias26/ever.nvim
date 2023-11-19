@@ -25,4 +25,5 @@ git clone git@github.com:Nias26/ever.nvim.git --depth 1 $HOME/.config/nvim
 ```
 
 ## Docs
-🚧 Work in progress... 🚧
+🚧 For now only in neorg, providing to translate... 🚧
+Check them [here](https://github.com/Nias26/ever.nvim/tree/master/doc)
