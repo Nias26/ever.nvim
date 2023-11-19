@@ -125,22 +125,14 @@ return {
 				}),
 			}),
 			sources = cmp.config.sources({
-				{ name = 'nvim_lsp' },
-				{ name = 'luasnip' }, -- For luasnip users.
-				{ name = 'buffer' },
-				{ name = 'fonts', option = { space_filter = "-" } },
-				{ name =  'look',  keyword_length = 2, option = {
-					convert_case = true,
-					loud = true,
-					dict = '/usr/share/dict/words'
-				}},
 				{ name = 'nvim_lsp_signature_help' },
-				{ name = 'calc' },
-				{ name = 'treesitter' },
+				{ name = 'nvim_lua' },
+				{ name = 'nvim_lsp' },
+				{ name = "codeium" },
+				{ name = 'luasnip' }, 
+				{ name = 'buffer' },
 				{ name = 'path' },
 				{ name = 'neorg' },
-				{ name = 'nvim_lua' },
-				{ name = "codeium" },
 			}),
 			enabled = function()
 				-- disable completion in comments
