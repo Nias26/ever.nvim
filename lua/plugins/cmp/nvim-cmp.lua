@@ -129,7 +129,7 @@ return {
 				{ name = 'nvim_lua' },
 				{ name = 'nvim_lsp' },
 				{ name = "codeium" },
-				{ name = 'luasnip' }, 
+				{ name = 'luasnip' },
 				{ name = 'buffer' },
 				{ name = 'path' },
 				{ name = 'neorg' },
