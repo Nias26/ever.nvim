@@ -19,6 +19,7 @@ return {
 			function(server_name) -- Default handler (Optional)
 				require("lspconfig")[server_name].setup{}
 				local capabilities = require("cmp_nvim_lsp").default_capabilities()
+				on_attach = on_attach
 			end,
 
 			require('lspconfig').lua_ls.setup{
