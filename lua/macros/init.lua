@@ -56,3 +56,13 @@ vim.api.nvim_create_user_command('Q', 'q', {})
 vim.api.nvim_create_user_command('Wq', 'wq', {})
 vim.api.nvim_create_user_command('Qa', 'qa', {})
 vim.api.nvim_create_user_command('Wqa', 'wqa', {})
+
+-- Format on save
+vim.api.nvim_create_augroup("LspFormat", { clear = false })
+vim.api.nvim_create_autocmd("BufWritePre", {
+	group = "LspFormat",
+	buffer = bufnr,
+	callback = function()
+		vim.lsp.buf.format()
+	end
+})
