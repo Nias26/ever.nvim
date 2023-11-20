@@ -1,5 +1,12 @@
 return {
 	"numToStr/Comment.nvim",
 	event = "BufRead",
-   opts = {},
+   opts = {
+		toggler = {
+			line = 'cc'
+		},
+		opleader = {
+			line = 'cc'
+		}
+	},
 }
