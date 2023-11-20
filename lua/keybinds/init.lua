@@ -8,7 +8,7 @@ end
 local map = vim.keymap.set
 
 -- Delte without copying
-map({'n', 'v', 'x'}, 'dd', '_dd')
+map({'n', 'v', 'x'}, 'dd', '"_dd')
 -- Cancecl highlightning when searching
 map('n', '<ESC><ESC>', '<cmd>noh<CR>')
 -- Fast switch window
@@ -26,14 +26,11 @@ map('n', '<A-Left>', '<C-w>h')
 map('n', '<A-Down>', '<C-w>j')
 map('n', '<A-Up>', '<C-w>k')
 map('n', '<A-Right>', '<C-w>l')
--- Comment line
-map('n', 'cc', function() require("Comment.api").toggle.linewise() end, {desc = "Comment line"})
 -- Open Dropbar
 map('n', '<S-D>', '<cmd>lua require("dropbar.api").pick()<CR>', {desc = "Dropbar"})
--- Fold toggle (Current fold)
-map('n', 'ff', 'za')
--- Fold toggle (Functionality)
-map('n', 'ft', 'zi')
+-- Fold toggle
+map('n', 'ff', 'za') -- (Current fold)
+map('n', 'ft', 'zi') -- (Functionality)
 -- Open Telescope
 map({'n', 'v'}, 'st', '<cmd>Telescope<CR>', {desc = "Open Telescope"})
 -- Buffer managing
@@ -44,12 +41,13 @@ map('n', ']', '<cmd>bnext<CR>', {desc = "Next buffer"})
 map('n', '<Tab>', '<cmd>bnext<CR>')
 map('n', '<S-Tab>', '<cmd>bprevious<CR>')
 -- Splits
-map('n', 'sh', function() vim.ui.input({prompt = 'Horizzontal split'}, function(input) if input == "" then input = "%" end f.fcmd('split', input) end) end, {desc = "Horizzontal Split"})
-map('n', 'sv', function() vim.ui.input({prompt = 'Vertical split'}, function(input) if input == "" then input = "%" end f.fcmd('vsplit', input) end) end, {desc = "Vertical Split"})
+map('n', 'sh', function() vim.ui.input({prompt = 'Horizzontal split'}, function(input)	if input == "" then return	end f.fcmd('split', input)	end) end, {desc = "Horizzontal Split"})
+map('n', 'sv', function() vim.ui.input({prompt = 'Vertical split'}, function(input) if input == "" then return end f.fcmd('vsplit', input) end) end, {desc = "Vertical Split"})
 map('n', '<C-h>', '<C-w>>')
 map('n', '<C-j>', '<C-w>-')
 map('n', '<C-k>', '<C-w>+')
 map('n', '<C-l>', '<C-w><')
+map({'n', 'v'}, 'Q', '<cmd>q<CR>', {desc = "Quit current window"})
 -- Nvim-Tree toggle
 map('n', 'oe', '<cmd>NvimTreeToggle<CR>', {desc = "NvimTree"})
 -- Toggle terminal
@@ -62,3 +60,7 @@ map({'n', 'v'}, 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', {desc = "Go to re
 map('n', 'ca', '<cmd>Lspsaga code_action<CR>', {desc = "Code Actions"})
 map('n', 'cd', '<cmd>Lspsaga hover_doc<CR>', {desc = "LSP Signature"})
 map('n', 'cf', '<cmd>Lspsaga finder<CR>', {desc = "Find References"})
+-- Text modification
+map('v', '<C-Down>', '<cmd>m .+1<CR>', {desc = "Move line down"})
+map('v', '<C-Up>', '<cmd>m .-2<CR>', {desc = "Move line up"})
+map('v', 'p', '"_dP', {desc = "Delete and paste without copying"})
