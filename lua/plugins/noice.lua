@@ -1,31 +1,42 @@
 return {
 	"folke/noice.nvim",
-   dependencies = {
-   	"MunifTanjim/nui.nvim",
-      "nvim-treesitter/nvim-treesitter"
-   },
-   opts = { },
-   config = function()
-   	require("noice").setup({
+	dependencies = {
+		"MunifTanjim/nui.nvim",
+		"nvim-treesitter/nvim-treesitter",
+	},
+	opts = {},
+	config = function()
+		require("noice").setup({
 			debug = false,
-      	lsp = {
-         	progress = { enabled = false },
+			lsp = {
+				progress = {
+					enabled = true,
+					format = {
+						{ "{data.progress.message} " },
+						"({data.progress.percentage}%) ",
+						{ "{data.progress.title} ",  hl_group = "NoiceLspProgressTitle" },
+						{ "{data.progress.client} ", hl_group = "NoiceLspProgressClient" },
+					},
+					format_done = "lsp_progress_done",
+					throttle = 1000 / 30,
+					view = "mini",
+				},
 				-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-            override = {
-            	["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-               ["vim.lsp.util.stylize_markdown"] = true,
-               ["cmp.entry.get_documentation"] = true,
-            },
-         },
-         cmdline = {
-         	format = {
-            	cmdline = {
-               	pattern = "^:",
-                  icon = " ",
-                  lang = "vim",
-               },
-               search_down = {
-               	kind = "search",
+				override = {
+					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+					["vim.lsp.util.stylize_markdown"] = true,
+					["cmp.entry.get_documentation"] = true,
+				},
+			},
+			cmdline = {
+				format = {
+					cmdline = {
+						pattern = "^:",
+						icon = " ",
+						lang = "vim",
+					},
+					search_down = {
+						kind = "search",
 						pattern = "^/",
 						icon = " ",
 						lang = "regex",
@@ -50,21 +61,21 @@ return {
 						pattern = "^:%s*h%s+",
 						icon = "",
 					},
-               input = {},
-            },
-            opts = {
-            	win_options = {
-               	winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
-               },
-            },
-         },
-         views = {
-         	cmdline_popup = {
-         		position = {
-            		row = 0,
-               	col = "50%",
-            	},
-            	size = { width = "98%" },
+					input = {},
+				},
+				opts = {
+					win_options = {
+						winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
+					},
+				},
+			},
+			views = {
+				cmdline_popup = {
+					position = {
+						row = 0,
+						col = "50%",
+					},
+					size = { width = "98%" },
 				},
 			},
 			presets = {
@@ -76,20 +87,21 @@ return {
 			format = {},
 			routes = {
 				{
-					view = "notify",
+					view = "mini",
 					filter = { event = "msg_showmode" },
 				},
-			}
+			},
+			signature = { enabled = false }
 		})
 		-- require("lualine").setup({
-			-- sections = {
-				-- lualine_x = {{
-			   	-- require("noice").api.statusline.mode.get,
-				   -- cond = require("noice").api.statusline.mode.has,
-			      -- color = { fg = "#ff9e64" },
-				-- }},
-			-- },
+		-- sections = {
+		-- lualine_x = {{
+		-- require("noice").api.statusline.mode.get,
+		-- cond = require("noice").api.statusline.mode.has,
+		-- color = { fg = "#ff9e64" },
+		-- }},
+		-- },
 		-- })
 		require("telescope").load_extension("noice")
-   end
+	end
 }
