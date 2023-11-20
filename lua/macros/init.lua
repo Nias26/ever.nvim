@@ -63,6 +63,10 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	group = "LspFormat",
 	buffer = bufnr,
 	callback = function()
-		vim.lsp.buf.format()
+		if vim.api.nvim_buf_get_name(0) == vim.fn.stdpath('config') .. "/init.lua" then
+			return
+		else
+			vim.lsp.buf.format()
+		end
 	end
 })
