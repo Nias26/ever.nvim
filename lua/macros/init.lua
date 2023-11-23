@@ -58,15 +58,18 @@ vim.api.nvim_create_user_command('Qa', 'qa', {})
 vim.api.nvim_create_user_command('Wqa', 'wqa', {})
 
 -- Format on save
+local conf = vim.fn.stdpath('config')
 vim.api.nvim_create_augroup("LspFormat", { clear = false })
-vim.api.nvim_create_autocmd("BufWritePre", {
-	group = "LspFormat",
-	buffer = bufnr,
-	callback = function()
-		if vim.api.nvim_buf_get_name(0) == vim.fn.stdpath('config') .. "/init.lua" then
-			return
-		else
-			vim.lsp.buf.format()
+if client.supports_method("textDocument/formatting") then
+	vim.api.nvim_create_autocmd("BufWritePre", {
+		group = "LspFormat",
+		buffer = bufnr,
+		callback = function()
+			if vim.api.nvim_buf_get_name(0) == conf .. "/init.lua" or conf .. "/lua/keybinds/init.lua" then
+				return
+			else
+				vim.lsp.buf.format()
+			end
 		end
-	end
-})
+	})
+end
