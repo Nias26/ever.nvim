@@ -98,5 +98,3 @@ local status_ok, _ = pcall(require, "keybinds")
 if not status_ok then
 	return
 end
-
---test
