@@ -10,16 +10,7 @@ return {
 			debug = false,
 			lsp = {
 				progress = {
-					enabled = true,
-					format = {
-						{ "{data.progress.message} " },
-						"({data.progress.percentage}%) ",
-						{ "{data.progress.title} ",  hl_group = "NoiceLspProgressTitle" },
-						{ "{data.progress.client} ", hl_group = "NoiceLspProgressClient" },
-					},
-					format_done = "lsp_progress_done",
-					throttle = 1000 / 30,
-					view = "mini",
+					enabled = false,
 				},
 				-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 				override = {
