@@ -1,4 +1,4 @@
-return{
+return {
 	"nvimdev/lspsaga.nvim",
 	event = "LspAttach",
 	dependencies = {
@@ -13,7 +13,7 @@ return{
 
 		lspsaga.setup({
 			ui = {
-				code_action = "",
+				code_action = "󰌵",
 				border = 'solid',
 				expand = '',
 				collapse = '',

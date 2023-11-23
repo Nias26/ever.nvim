@@ -73,10 +73,10 @@ return {
 			hl = function()
 				return {
 					fg = "bg",
-				   bg = require("feline.providers.vi_mode").get_mode_color(),
-				   style = "bold",
-				   name = "NeovimModeHLColor",
-			   }
+					bg = require("feline.providers.vi_mode").get_mode_color(),
+					style = "bold",
+					name = "NeovimModeHLColor",
+				}
 			end,
 			left_sep = "block",
 			right_sep = "block",
@@ -86,8 +86,8 @@ return {
 			provider = "git_branch",
 			hl = {
 				fg = "fg",
-			   bg = "bg",
-			   style = "bold",
+				bg = "bg",
+				style = "bold",
 			},
 			left_sep = "block",
 			right_sep = "",
@@ -96,8 +96,8 @@ return {
 		component.git_add = {
 			provider = "git_diff_added",
 			hl = {
-			    fg = "green",
-			    bg = "bg",
+				fg = "green",
+				bg = "bg",
 			},
 			left_sep = "",
 			right_sep = "",
@@ -106,8 +106,8 @@ return {
 		component.git_delete = {
 			provider = "git_diff_removed",
 			hl = {
-			    fg = "red",
-			    bg = "bg",
+				fg = "red",
+				bg = "bg",
 			},
 			left_sep = "",
 			right_sep = "",
@@ -116,8 +116,8 @@ return {
 		component.git_change = {
 			provider = "git_diff_changed",
 			hl = {
-			    fg = "purple",
-			    bg = "bg",
+				fg = "purple",
+				bg = "bg",
 			},
 			left_sep = "",
 			right_sep = "",
@@ -126,29 +126,29 @@ return {
 		component.separator = {
 			provider = "",
 			hl = {
-			    fg = "bg",
-			    bg = "bg",
+				fg = "bg",
+				bg = "bg",
 			},
 		}
 
 		component.diagnostic_errors = {
 			provider = "diagnostic_errors",
 			hl = {
-			    fg = "red",
+				fg = "red",
 			},
 		}
 
 		component.diagnostic_warnings = {
 			provider = "diagnostic_warnings",
 			hl = {
-			    fg = "yellow",
+				fg = "yellow",
 			},
 		}
 
 		component.diagnostic_hints = {
 			provider = "diagnostic_hints",
 			hl = {
-			    fg = "aqua",
+				fg = "aqua",
 			},
 		}
 
@@ -160,41 +160,41 @@ return {
 			provider = function()
 				if not rawget(vim, "lsp") then
 					return ""
-			   end
+				end
 
-			   local progress = vim.lsp.status()[1]
+				local progress = vim.lsp.status()[1]
 				if vim.o.columns < 120 then
 					return ""
-			   end
+				end
 
-			   local clients = vim.lsp.get_active_clients({ bufnr = 0 })
-			   if #clients ~= 0 then
+				local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+				if #clients ~= 0 then
 					if progress then
-				   	local spinners = {
+						local spinners = {
 							"◜ ",
-					      "◠ ",
-					      "◝ ",
-					      "◞ ",
-					      "◡ ",
-					      "◟ ",
-				      }
-				      local ms = vim.loop.hrtime() / 1000000
-				      local frame = math.floor(ms / 120) % #spinners
-				      local content = string.format("%%<%s", spinners[frame + 1])
-				      return content or ""
-				   else
-				   	return " לּ LSP"
-				   end
-			   end
-			   return ""
+							"◠ ",
+							"◝ ",
+							"◞ ",
+							"◡ ",
+							"◟ ",
+						}
+						local ms = vim.loop.hrtime() / 1000000
+						local frame = math.floor(ms / 120) % #spinners
+						local content = string.format("%%<%s", spinners[frame + 1])
+						return content or ""
+					else
+						return " לּ LSP"
+					end
+				end
+				return ""
 			end,
 			hl = function()
-			    local progress = vim.lsp.status()[1]
-				    return {
-					    fg = progress and "yellow" or "green",
-					    bg = "gray",
-					    style = "bold",
-				    }
+				local progress = vim.lsp.status()[1]
+				return {
+					fg = progress and "yellow" or "green",
+					bg = "gray",
+					style = "bold",
+				}
 			end,
 			left_sep = "",
 			right_sep = "block",
@@ -203,13 +203,13 @@ return {
 		component.file_type = {
 			provider = {
 				name = "file_type",
-			    opts = {
-				    filetype_icon = true,
-			    },
+				opts = {
+					filetype_icon = true,
+				},
 			},
 			hl = {
-			    fg = "fg",
-			    bg = "gray",
+				fg = "fg",
+				bg = "gray",
 			},
 			left_sep = "block",
 			right_sep = "block",
@@ -217,41 +217,41 @@ return {
 
 		component.scroll_bar = {
 			provider = function()
-			    local chars = setmetatable({
-				    " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",
+				local chars = setmetatable({
+					" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",
 					" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",
-			    }, { __index = function() return " " end })
+				}, { __index = function() return " " end })
 				local line_ratio = vim.api.nvim_win_get_cursor(0)[1] / vim.api.nvim_buf_line_count(0)
-		    	local position = math.floor(line_ratio * 100)
+				local position = math.floor(line_ratio * 100)
 
-			    local icon = chars[math.floor(line_ratio * #chars)] .. position
-			    if position <= 5 then
-				    icon = " TOP"
-			    elseif position >= 95 then
-				    icon = " BOT"
-			    end
-			    return icon
+				local icon = chars[math.floor(line_ratio * #chars)] .. position
+				if position <= 5 then
+					icon = " TOP"
+				elseif position >= 95 then
+					icon = " BOT"
+				end
+				return icon
 			end,
 			hl = function()
-			    local position = math.floor(vim.api.nvim_win_get_cursor(0)[1] / vim.api.nvim_buf_line_count(0) * 100)
-			    local fg
-			    local style
+				local position = math.floor(vim.api.nvim_win_get_cursor(0)[1] / vim.api.nvim_buf_line_count(0) * 100)
+				local fg
+				local style
 
-			    if position <= 5 then
-				    fg = "aqua"
-				    style = "bold"
-			    elseif position >= 95 then
-				    fg = "red"
-				    style = "bold"
-			    else
-				    fg = "purple"
-				    style = nil
-			    end
-			    return {
-				    fg = fg,
-				    style = style,
-				    bg = "bg",
-			    }
+				if position <= 5 then
+					fg = "aqua"
+					style = "bold"
+				elseif position >= 95 then
+					fg = "red"
+					style = "bold"
+				else
+					fg = "purple"
+					style = nil
+				end
+				return {
+					fg = fg,
+					style = style,
+					bg = "bg",
+				}
 			end,
 			left_sep = "block",
 			right_sep = "block",
