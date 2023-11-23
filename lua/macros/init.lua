@@ -60,7 +60,6 @@ vim.api.nvim_create_user_command('Wqa', 'wqa', {})
 -- Format on save
 local conf = vim.fn.stdpath('config')
 vim.api.nvim_create_augroup("LspFormat", { clear = false })
-if client.supports_method("textDocument/formatting") then
 	vim.api.nvim_create_autocmd("BufWritePre", {
 		group = "LspFormat",
 		buffer = bufnr,
@@ -72,4 +71,3 @@ if client.supports_method("textDocument/formatting") then
 			end
 		end
 	})
-end
