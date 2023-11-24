@@ -22,10 +22,10 @@ map('n', ',', 'N')
 -- Next search
 map('n', '.', 'n')
 -- Fast arrow window switch
-map('n', '<A-Left>', '<C-w>h')
-map('n', '<A-Down>', '<C-w>j')
-map('n', '<A-Up>', '<C-w>k')
-map('n', '<A-Right>', '<C-w>l')
+map('n', '<C-Left>', '<C-w>h')
+map('n', '<C-Down>', '<C-w>j')
+map('n', '<C-Up>', '<C-w>k')
+map('n', '<C-Right>', '<C-w>l')
 -- Open Dropbar
 map('n', '<S-D>', '<cmd>lua require("dropbar.api").pick()<CR>', {desc = "Dropbar"})
 -- Fold toggle
