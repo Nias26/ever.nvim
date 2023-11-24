@@ -1,8 +1,8 @@
 -- Init.lua file (Main loaded lua file)
-vim.loader.enable() 					-- vim.loader.enable() # Check neovim wiki for this
+vim.loader.enable()          		-- vim.loader.enable() # Check neovim wiki for this
 
-vim.g.mapleader = ' ' 				-- Set leader key
-vim.g.loaded_netrw = 1 				-- Disable netrw
+vim.g.mapleader = ' '        		-- Set leader key
+vim.g.loaded_netrw = 1       		-- Disable netrw
 vim.g.loaded_netrwPlugin = 1 		-- Disable netrw
 
 local options = {
@@ -98,4 +98,3 @@ local status_ok, _ = pcall(require, "keybinds")
 if not status_ok then
 	return
 end
---test
