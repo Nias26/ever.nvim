@@ -22,6 +22,7 @@ local options = {
 	tabstop = 3,         			-- Set tabstop
 	shiftwidth = 3,      			-- Set shiftwidth
 	autochdir = true,    			-- Auto change directory
+	clipboard = "unnamedplus" 		-- Sync with system clipboard
 }
 
 for k, v in pairs(options) do
