@@ -64,3 +64,5 @@ map('n', 'cf', '<cmd>Lspsaga finder<CR>', {desc = "Find References"})
 map('v', '<C-Down>', '<cmd>m .+1<CR>', {desc = "Move line down"})
 map('v', '<C-Up>', '<cmd>m .-2<CR>', {desc = "Move line up"})
 map('v', 'p', '"_dP', {desc = "Delete and paste without copying"})
+-- Indenting
+map('n', '=', '=%')
