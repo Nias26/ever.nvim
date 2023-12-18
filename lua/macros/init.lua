@@ -64,11 +64,12 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	buffer = bufnr,
 	callback = function()
 		-- WARN: Do not replace the vim.api with a variable or it won't work (Thinking about vim.fn.expand() as a fix but not sure for now)
+		-- INFO: Need to make this a table and make it better (Thinking of using a for loop for this)
 		if vim.api.nvim_buf_get_name(0) == vim.fn.stdpath('config') .. "/init.lua" or vim.api.nvim_buf_get_name(0) == vim.fn.stdpath('config') .. "/lua/keybinds/init.lua" then
 			vim.notify("Skipping formatting", vim.log.levels.WARN)
 			return
 		else
-			vim.notify("Formatting code", vim.log.levels.INFO)
+			-- vim.notify("Formatting code", vim.log.levels.INFO) -- You can enable the notification by uncommenting this line
 			vim.lsp.buf.format()
 		end
 	end
