@@ -32,7 +32,7 @@ map('n', '<S-D>', '<cmd>lua require("dropbar.api").pick()<CR>', {desc = "Dropbar
 map('n', 'ff', 'za') -- (Current fold)
 map('n', 'ft', 'zi') -- (Functionality)
 -- Open Telescope
-map({'n', 'v'}, 'st', '<cmd>Telescope<CR>', {desc = "Open Telescope"})
+map({'n', 'v'}, 'T', '<cmd>Telescope<CR>', {desc = "Open Telescope"})
 -- Buffer managing
 map('n', 'bn', function() vim.ui.input({prompt = 'New buffer'}, function(input) f.fcmd('badd', input)end)end, {desc = "New buffer"})
 map('n', 'bd', '<cmd>bdel<CR>', {desc = "Delete current buffer"})
@@ -41,8 +41,8 @@ map('n', ']', '<cmd>bnext<CR>', {desc = "Next buffer"})
 map('n', '<Tab>', '<cmd>bnext<CR>')
 map('n', '<S-Tab>', '<cmd>bprevious<CR>')
 -- Splits
-map('n', 'sh', function() vim.ui.input({prompt = 'Horizzontal split'}, function(input)	if input == "" then return	end f.fcmd('split', input)	end) end, {desc = "Horizzontal Split"})
-map('n', 'sv', function() vim.ui.input({prompt = 'Vertical split'}, function(input) if input == "" then return end f.fcmd('vsplit', input) end) end, {desc = "Vertical Split"})
+map('n', 'Sh', function() vim.ui.input({prompt = 'Horizzontal split'}, function(input)	if input == "" then return	end f.fcmd('split', input)	end) end, {desc = "Horizzontal Split"})
+map('n', 'Sv', function() vim.ui.input({prompt = 'Vertical split'}, function(input) if input == "" then return end f.fcmd('vsplit', input) end) end, {desc = "Vertical Split"})
 map('n', '<C-h>', '<C-w>>')
 map('n', '<C-j>', '<C-w>-')
 map('n', '<C-k>', '<C-w>+')
