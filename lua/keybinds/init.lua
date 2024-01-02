@@ -63,6 +63,7 @@ map('n', 'cf', '<cmd>Lspsaga finder<CR>', {desc = "Find References"})
 -- Text modification
 map('v', '<C-Down>', '<cmd>m .+1<CR>', {desc = "Move line down"})
 map('v', '<C-Up>', '<cmd>m .-2<CR>', {desc = "Move line up"})
-map('v', 'p', '"_dP', {desc = "Delete and paste without copying"})
+map('v', 'P', '"_dP', {desc = "Delete and paste without copying"})
+map('n', 'r', '<C-r>', {desc= "Redo"})
 -- Indenting
 map('n', '=', '=%')
