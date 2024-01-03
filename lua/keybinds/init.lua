@@ -66,5 +66,3 @@ map('v', '<C-Down>', '<cmd>m .+1<CR>', {desc = "Move line down"})
 map('v', '<C-Up>', '<cmd>m .-2<CR>', {desc = "Move line up"})
 map('v', 'P', '"_dP', {desc = "Delete and paste without copying"})
 map('n', 'r', '<C-r>', {desc= "Redo"})
--- Indenting
-map('n', '=', '=%')
