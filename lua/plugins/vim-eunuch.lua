@@ -1,4 +1,4 @@
 return {
 	"tpope/vim-eunuch",
-	event = "BufRead"
+	cmd = { "Remove", "Delete", "Move", "Chmod", "Mkdir", "Cfind", "Clocate", "Lfind", "Llocate", "Wall", "SudoWrite", "SudoEdit" }
 }
