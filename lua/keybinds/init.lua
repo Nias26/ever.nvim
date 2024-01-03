@@ -7,30 +7,31 @@ end
 -- keybinds
 local map = vim.keymap.set
 
+-- Movment
+map({'n', 'v'}, 'H', '<S-Left>', {desc = "Move 1 word to the left"})
+map({'n', 'v'}, 'L', '<S-Right>', {desc = "Move 1 word to the right"})
 -- Delte without copying
-map({'n', 'v', 'x'}, 'dd', '"_dd')
+-- map({'n', 'v', 'x'}, 'dd', '"_dd')
 -- Cancecl highlightning when searching
 map('n', '<ESC><ESC>', '<cmd>noh<CR>')
 -- Fast switch window
 map({'n', 'v'}, '!', '<C-w>w')
 -- Open URL under cursor
 map('n', '<C-o>', '<cmd>URLOpenUnderCursor<CR>')
--- Source current file
-map('n', '%', '<cmd>source %<CR>')
 -- Previous search
 map('n', ',', 'N')
 -- Next search
 map('n', '.', 'n')
--- Fast arrow window switch
-map('n', '<C-Left>', '<C-w>h')
-map('n', '<C-Down>', '<C-w>j')
-map('n', '<C-Up>', '<C-w>k')
-map('n', '<C-Right>', '<C-w>l')
+-- Fast window switch
+map('n', '<C-h>', '<C-w>h')
+map('n', '<C-j>', '<C-w>j')
+map('n', '<C-k>', '<C-w>k')
+map('n', '<C-l>', '<C-w>l')
 -- Open Dropbar
 map('n', '<S-D>', '<cmd>lua require("dropbar.api").pick()<CR>', {desc = "Dropbar"})
 -- Fold toggle
 map('n', 'ff', 'za') -- (Current fold)
-map('n', 'ft', 'zi') -- (Functionality)
+map('n', 'ft', 'zi') -- (Toggle fold)
 -- Open Telescope
 map({'n', 'v'}, 'T', '<cmd>Telescope<CR>', {desc = "Open Telescope"})
 -- Buffer managing
@@ -43,10 +44,10 @@ map('n', '<S-Tab>', '<cmd>bprevious<CR>')
 -- Splits
 map('n', 'Sh', function() vim.ui.input({prompt = 'Horizzontal split'}, function(input)	if input == "" then return	end f.fcmd('split', input)	end) end, {desc = "Horizzontal Split"})
 map('n', 'Sv', function() vim.ui.input({prompt = 'Vertical split'}, function(input) if input == "" then return end f.fcmd('vsplit', input) end) end, {desc = "Vertical Split"})
-map('n', '<C-h>', '<C-w>>')
-map('n', '<C-j>', '<C-w>-')
-map('n', '<C-k>', '<C-w>+')
-map('n', '<C-l>', '<C-w><')
+map('n', '<A-h>', '<C-w>>')
+map('n', '<A-j>', '<C-w>-')
+map('n', '<A-k>', '<C-w>+')
+map('n', '<A-l>', '<C-w><')
 map({'n', 'v'}, 'Q', '<cmd>q<CR>', {desc = "Quit current window"})
 -- Nvim-Tree toggle
 map('n', 'oe', '<cmd>NvimTreeToggle<CR>', {desc = "NvimTree"})
