@@ -30,13 +30,13 @@ map('n', '<C-l>', '<C-w>l')
 -- Open Dropbar
 map('n', '<S-D>', '<cmd>lua require("dropbar.api").pick()<CR>', {desc = "Dropbar"})
 -- Fold toggle
-map('n', 'ff', 'za') -- (Current fold)
-map('n', 'ft', 'zi') -- (Toggle fold)
+-- map('n', 'ff', 'za') -- (Current fold)
+-- map('n', 'ft', 'zi') -- (Toggle fold)
 -- Open Telescope
 map({'n', 'v'}, 'T', '<cmd>Telescope<CR>', {desc = "Open Telescope"})
 -- Buffer managing
-map('n', 'bn', function() vim.ui.input({prompt = 'New buffer'}, function(input) f.fcmd('badd', input)end)end, {desc = "New buffer"})
-map('n', 'bd', '<cmd>bdel<CR>', {desc = "Delete current buffer"})
+map('n', '<C-b>n', function() vim.ui.input({prompt = 'New buffer'}, function(input) f.fcmd('badd', input)end)end, {desc = "New buffer"})
+map('n', '<C-b>d', '<cmd>bdel<CR>', {desc = "Delete current buffer"})
 map('n', '[', '<cmd>bprevious<CR>', {desc = "Previous buffer"})
 map('n', ']', '<cmd>bnext<CR>', {desc = "Next buffer"})
 map('n', '<Tab>', '<cmd>bnext<CR>')
@@ -50,11 +50,9 @@ map('n', '<A-k>', '<C-w>+')
 map('n', '<A-l>', '<C-w><')
 map({'n', 'v'}, 'Q', '<cmd>q<CR>', {desc = "Quit current window"})
 -- Nvim-Tree toggle
-map('n', 'oe', '<cmd>NvimTreeToggle<CR>', {desc = "NvimTree"})
+map('n', '<C-n>', '<cmd>NvimTreeToggle<CR>', {desc = "NvimTree"})
 -- Toggle terminal
 map({'n', 'v', 'i'}, '<F4>', '<cmd>ToggleTerm<CR>')
--- Lazygit
-map('n', 'ol', '<cmd>LazyGit<CR>', {desc = "LazyGit"})
 -- LSP
 map({'n', 'v'}, 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', {desc = "Go to definition"})
 map({'n', 'v'}, 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', {desc = "Go to references"})
@@ -64,5 +62,5 @@ map('n', 'cf', '<cmd>Lspsaga finder<CR>', {desc = "Find References"})
 -- Text modification
 map('v', '<C-Down>', '<cmd>m .+1<CR>', {desc = "Move line down"})
 map('v', '<C-Up>', '<cmd>m .-2<CR>', {desc = "Move line up"})
-map('v', 'P', '"_dP', {desc = "Delete and paste without copying"})
+map('v', 'P', '"_dP', {desc = "Delete and paste"})
 map('n', 'r', '<C-r>', {desc= "Redo"})
