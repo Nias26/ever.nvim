@@ -13,7 +13,7 @@ map({'n', 'v'}, 'L', '<S-Right>', {desc = "Move 1 word to the right"})
 -- Delte without copying
 -- map({'n', 'v', 'x'}, 'dd', '"_dd')
 -- Cancecl highlightning when searching
-map('n', '<ESC><ESC>', '<cmd>noh<CR>')
+map('n', '<ESC><ESC>', '<cmd>nohlsearch<CR>')
 -- Fast switch window
 map({'n', 'v'}, '!', '<C-w>w')
 -- Open URL under cursor
