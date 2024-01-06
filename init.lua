@@ -92,10 +92,12 @@ require("lazy").setup({
 
 local status_ok, _ = pcall(require, "macros")
 if not status_ok then
+	vim.notify("Error loading /lua/macros/init.lua", vim.log.levels.ERROR)
 	return
 end
 
 local status_ok, _ = pcall(require, "keybinds")
 if not status_ok then
+	vim.notify("Error loading /lua/keybinds/init.lua", vim.log.levels.ERROR)
 	return
 end
