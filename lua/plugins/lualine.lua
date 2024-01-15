@@ -113,20 +113,20 @@ return {
 				-- these are to remove the defaults
 				lualine_a = {},
 				lualine_b = {},
+				lualine_x = {},
 				lualine_y = {},
-				lualine_z = {},
 				-- These will be filled later
 				lualine_c = {},
-				lualine_x = {},
+				lualine_z = {},
 			},
 			inactive_sections = {
 				-- these are to remove the defaults
 				lualine_a = {},
 				lualine_b = {},
-				lualine_y = {},
-				lualine_z = {},
 				lualine_c = {},
 				lualine_x = {},
+				lualine_y = {},
+				lualine_z = {},
 			},
 		}
 
@@ -137,9 +137,11 @@ return {
 
 		-- Inserts a component in lualine_x at right section
 		local function ins_right(component)
-			table.insert(config.sections.lualine_x, component)
+			table.insert(config.sections.lualine_z, component)
 		end
 
+
+		-- Start of lualine components
 		ins_left {
 			function()
 				return '▊'
@@ -189,14 +191,42 @@ return {
 		}
 
 		ins_left {
+			'branch',
+			icon = '',
+			color = { fg = colors.violet, gui = 'bold' },
+			cond = conditions.check_git_workspace
+		}
+
+		ins_left {
+			'diff',
+			symbols = { added = '󰐕 ', modified = '󰏪 ', removed = '󰍴 ' },
+			diff_color = {
+				added = { fg = colors.green },
+				modified = { fg = colors.orange },
+				removed = { fg = colors.red },
+			},
+			cond = conditions.check_git_workspace
+		}
+
+		-- Insert mid section. You can make any number of sections in neovim :)
+		-- for lualine it's any number greater then 2
+		ins_left {
+			function()
+				return '%='
+			end,
+		}
+
+		ins_left {
 			'filename',
 			cond = conditions.buffer_not_empty,
 			color = { fg = colors.magenta, gui = 'bold' },
 		}
 
-		ins_left { 'location' }
-
-		ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
+		ins_left {
+			require('lsp-progress').progress,
+			icon = ' LSP:',
+			color = { fg = '#7cb518', gui = 'bold' },
+		}
 
 		ins_left {
 			'diagnostics',
@@ -209,53 +239,64 @@ return {
 			},
 		}
 
-		-- Insert mid section. You can make any number of sections in neovim :)
-		-- for lualine it's any number greater then 2
-		ins_left {
-			function()
-				return '3'
-			end,
-		}
-
-		ins_left {
-			require('lsp-progress').progress,
-			icon = ' LSP:',
-			color = { fg = '#7cb518', gui = 'bold' },
-		}
-
 		-- Add components to right sections
+
 		ins_right {
 			'o:encoding', -- option component same as &encoding in viml
 			fmt = string.upper, -- I'm not sure why it's upper case either ;)
-			cond = conditions.hide_in_width,
 			color = { fg = colors.green, gui = 'bold' },
 		}
 
 		ins_right {
 			'fileformat',
 			fmt = string.upper,
-			icons_enabled = true, -- I think icons are cool but Eviline doesn't have them. sigh
+			icons_enabled = true,
 			color = { fg = colors.green, gui = 'bold' },
 		}
 
-		ins_right {
-			'branch',
-			icon = '',
-			color = { fg = colors.violet, gui = 'bold' },
-		}
+		ins_right {	'location',	color = { fg = colors.fg, gui = 'bold' } }
 
 		ins_right {
-			'diff',
-			-- Is it me or the symbol for modified us really weird
-			symbols = { added = '󰐕', modified = '󰏪', removed = '󰍴' },
-			diff_color = {
-				added = { fg = colors.green },
-				modified = { fg = colors.orange },
-				removed = { fg = colors.red },
-			},
-			-- cond = conditions.hide_in_width,
+			function()
+				local chars = setmetatable({
+					" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",
+					" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",
+				}, { __index = function() return " " end })
+				local line_ratio = vim.api.nvim_win_get_cursor(0)[1] / vim.api.nvim_buf_line_count(0)
+				local position = math.floor(line_ratio * 100)
+
+				local icon = chars[math.floor(line_ratio * #chars)] .. position
+				if position <= 5 then
+					icon = " TOP"
+				elseif position >= 95 then
+					icon = " BOT"
+				end
+				return icon
+			end,
+			color = function()
+				local position = math.floor(vim.api.nvim_win_get_cursor(0)[1] / vim.api.nvim_buf_line_count(0) * 100)
+				local fg
+				local style
+
+				if position <= 5 then
+					fg = colors.blue
+					style = "bold"
+				elseif position >= 95 then
+					fg = colors.red
+					style = "bold"
+				else
+					fg = colors.violet
+					style = nil
+				end
+				return {
+					fg = fg,
+					style = style,
+					bg = "bg",
+				}
+			end,
+			-- color = { fg = colors.magenta, gui = 'bold' }
 		}
-		
+
 		ins_right {
 			function()
 				return '▊'
