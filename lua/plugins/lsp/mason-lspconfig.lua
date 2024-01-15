@@ -17,10 +17,11 @@ return {
 			-- a dedicated handler.
 			function(server_name) -- Default handler (Optional)
 				require("lspconfig")[server_name].setup {
-					capabilities = capabilities,
-					on_attach = on_attach
+					capabilities = require("cmp_nvim_lsp").default_capabilities(),
+					on_attach = function(client, bufnr)
+						require("nvim-navic").attach(client, bufnr)
+					end
 				}
-				local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			end,
 
 			require('lspconfig').lua_ls.setup {
