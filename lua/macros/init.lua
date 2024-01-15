@@ -1,9 +1,11 @@
 -- Set colorscheme
 require("current-theme")
 
-Func_status, f = pcall(require, "macros.functions")
-if not Func_status then
-	return
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
+
+function fcmd(command, opts)
+	vim.cmd({ cmd = command, args = {opts}})
 end
 
 -- Set Virtual text
@@ -19,16 +21,36 @@ vim.diagnostic.config({
 })
 
 -- Open LSP Diagnostic window over error, warn, info, ...
+-- Function to check if a floating dialog exists and if not then check for diagnostics under the cursor
+function OpenDiagnosticIfNoFloat()
+	for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
+		if vim.api.nvim_win_get_config(winid).zindex then
+			return
+		end
+	end
+	-- THIS IS FOR BUILTIN LSP
+	vim.diagnostic.open_float(0, {
+		scope = "cursor",
+		focusable = false,
+		close_events = {
+			"CursorMoved",
+			"CursorMovedI",
+			"BufHidden",
+			"InsertCharPre",
+			"WinLeave",
+		},
+	})
+end
 -- Show diagnostics under the cursor when holding position
-vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
-vim.api.nvim_create_autocmd({ "CursorHold" }, {
+augroup("lsp_diagnostics_hold", { clear = true })
+autocmd({ "CursorHold" }, {
 	pattern = "*",
-	command = "lua f.OpenDiagnosticIfNoFloat()",
+	command = "lua OpenDiagnosticIfNoFloat()",
 	group = "lsp_diagnostics_hold",
 })
 
 -- Quit nvim if nvim-tree is the last open buffer
-vim.api.nvim_create_autocmd("QuitPre", {
+autocmd("QuitPre", {
 	callback = function()
 		local tree_wins = {}
 		local floating_wins = {}
@@ -57,28 +79,23 @@ vim.api.nvim_create_user_command('Wq', 'wq', {})
 vim.api.nvim_create_user_command('Qa', 'qa', {})
 vim.api.nvim_create_user_command('Wqa', 'wqa', {})
 
--- Format on save
--- vim.api.nvim_create_augroup("LspFormat", { clear = false })
--- vim.api.nvim_create_autocmd("BufWritePre", {
--- 	group = "LspFormat",
--- 	buffer = bufnr,
--- 	callback = function()
--- 		-- WARN: Do not replace the vim.api with a variable or it won't work (Thinking about vim.fn.expand() as a fix but not sure for now)
--- 		-- INFO: Need to make this a table and make it better (Thinking of using a for loop for this)
--- 		if vim.api.nvim_buf_get_name(0) == vim.fn.stdpath('config') .. "/init.lua" or vim.api.nvim_buf_get_name(0) == vim.fn.stdpath('config') .. "/lua/keybinds/init.lua" then
--- 			vim.notify("Skipping formatting", vim.log.levels.WARN)
--- 			return
--- 		else
--- 			-- vim.notify("Formatting code", vim.log.levels.INFO) -- You can enable the notification by uncommenting this line
--- 			vim.lsp.buf.format()
--- 		end
--- 	end
--- })
-
 -- Lsp progress Lualine 
-vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
-vim.api.nvim_create_autocmd("User", {
+augroup("lualine_augroup", { clear = true })
+autocmd("User", {
   group = "lualine_augroup",
   pattern = "LspProgressStatusUpdated",
   callback = require("lualine").refresh,
+})
+
+-- Persistent Folds
+local save_fold = augroup("Persistent Folds", { clear = true })
+autocmd("BufWinLeave", {
+	pattern = "*.*",
+	callback = function() vim.cmd.mkview() end,
+	group = save_fold,
+})
+autocmd("BufWinEnter", {
+	pattern = "*.*",
+	callback = function() vim.cmd.loadview({ mods = { emsg_silent = true } }) end,
+	group = save_fold,
 })

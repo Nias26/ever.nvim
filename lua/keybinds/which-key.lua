@@ -59,30 +59,19 @@ wk.register({
 	["<leader>c"] = {
 		name = " - Code",
 		c = { function() require("Comment.api").toggle.linewise() end, "Comment line" },
-		d = { "<cmd>lua require('dropbar.api').pick()<CR>", "Dropbar" },
 		t = { "<cmd>TroubleToggle<CR>", "Trouble" },
 		g = { "<cmd>GitBlameToggle<CR>", "Toggle git status" },
 	}
 })
-
------
--- ui('input', {prompt = "test"}, function(input) vim.cmd('test', input)end)
------
 
 -- File -> 
 wk.register({
 	["<leader>f"] = {
 		name = " - File",
 		d = { "<cmd>call delete(@%)<CR>", "Delete current file" },
-		r = { function() vim.ui.input({prompt = 'Rename'}, function(input) f.fcmd('Rename', input)end)end, "Rename current file" },
-		m = { function() vim.ui.input({prompt = 'Move'}, function(input) f.fcmd('Move', input)end)end, "Move current file" },
+		r = { function() vim.ui.input({prompt = 'Rename'}, function(input) fcmd('Rename', input)end)end, "Rename current file" },
+		m = { function() vim.ui.input({prompt = 'Move'}, function(input) fcmd('Move', input)end)end, "Move current file" },
 		R = { "<cmd>lua require('persistence').load({ last = true })<CR>", "Restore last session" },
-		c = {
-			name = " - Compile",
-			c = { "<cmd>CompilerOpen<CR>", "Compile file" },
-			r = { "<cmd>CompilerRedo<CR>", "Recompile file" },
-			t = { "<cmd>CompilerToggleResults<CR>", "Toggle results" },
-		},
 	}
 })
 
@@ -106,12 +95,12 @@ wk.register({
 wk.register({
 	["<leader>b"] = {
 		name = "󰓩 - Buffer",
-		n = { function() vim.ui.input({prompt = 'New buffer'}, function(input) f.fcmd('badd', input)end)end, "New buffer" },
+		n = { function() vim.ui.input({prompt = 'New buffer'}, function(input) fcmd('badd', input)end)end, "New buffer" },
 		d = { "<cmd>bdel<CR>", "Delete current buffer" },
 		s = {
 			name = " Split",
-			h = { function() vim.ui.input({prompt = 'Horizzontal split'}, function(input) if input == "" then input = "%" end f.fcmd('split', input) end) end, "Horizzontal Split" },
-			v = { function() vim.ui.input({prompt = 'Vertical split'}, function(input) if input == "" then input = "%" end f.fcmd('vsplit', input) end) end, "Vertical Split"},
+			h = { function() vim.ui.input({prompt = 'Horizzontal split'}, function(input) if input == "" then input = "%" end fcmd('split', input) end) end, "Horizzontal Split" },
+			v = { function() vim.ui.input({prompt = 'Vertical split'}, function(input) if input == "" then input = "%" end fcmd('vsplit', input) end) end, "Vertical Split"},
 			c = { "<cmd>q<CR>", "Close current split" },
 		},
 		["["] = { "<cmd>bprevious<CR>", "Previous buffer" },
@@ -133,17 +122,6 @@ wk.register({
 		t = { "<cmd>Telescope<CR>", "Telescope" },
 	}
 })
-
--- Debug ->  
-if Dap_opt == true then
-	wk.register({
-		["<leader>d"] = {
-			name = " - Debug",
-			o = { "<cmd>lua require('dapui').toggle()<CR>", "Toggle Dap ui" },
-			b = { "<cmd>lua require('dapui').toggle_breakpoint()<CR>", "Set breakpoint" },
-		}
-	})
-end
 
 -- Help -> 󰋖
 wk.register({
