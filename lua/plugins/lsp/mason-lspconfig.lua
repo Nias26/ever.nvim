@@ -22,20 +22,7 @@ return {
 						require("nvim-navic").attach(client, bufnr)
 					end
 				}
-			end,
-
-			require('lspconfig').lua_ls.setup {
-				settings = {
-					Lua = {
-						diagnostics = {
-							globals = { "vim" }
-						},
-						workspace = {
-							checkThirdParty = false,
-						},
-					}
-				}
-			}
+			end
 		}
 	end
 }
