@@ -34,6 +34,8 @@ map('n', '<S-D>', '<cmd>lua require("dropbar.api").pick()<CR>', {desc = "Dropbar
 -- map('n', 'ft', 'zi') -- (Toggle fold)
 -- Open Telescope
 map({'n', 'v'}, '<C-T>', '<cmd>Telescope<CR>', {desc = "Open Telescope"})
+-- Open Nvim Tree
+map('n', '<C-e>', '<cmd>NvimTreeToggle<CR>', {desc = "Open Nvim Tree"})
 -- Buffer managing
 map('n', 'bd', '<cmd>bdel<CR>', {desc = "Delete current buffer"})
 map('n', '[', '<cmd>bprevious<CR>', {desc = "Previous buffer"})
@@ -51,8 +53,6 @@ map('n', '<A-j>', '<C-w>-')
 map('n', '<A-k>', '<C-w>+')
 map('n', '<A-l>', '<C-w><')
 map({'n', 'v'}, 'Q', '<cmd>q<CR>', {desc = "Quit current window"})
--- Nvim-Tree toggle
-map('n', '<C-n>', '<cmd>NvimTreeToggle<CR>', {desc = "NvimTree"})
 -- Toggle terminal
 map({'n', 'v', 'i'}, '<F4>', '<cmd>ToggleTerm<CR>')
 -- LSP
