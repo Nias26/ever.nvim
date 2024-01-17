@@ -99,3 +99,6 @@ autocmd("BufWinEnter", {
 	callback = function() vim.cmd.loadview({ mods = { emsg_silent = true } }) end,
 	group = save_fold,
 })
+
+-- Dashboard Highlight group
+vim.api.nvim_set_hl(0, 'DashboardFooter', {fg='#08A045'})
