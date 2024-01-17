@@ -144,19 +144,19 @@ return {
 			suround={p=20},
 			fly= {other_char={' '},nofilter=false,p=10,undomapconf={},undomap=nil,undocmap=nil,only_jump_end_pair=false},
 		},
-		internal_pairs={-- *ultimate-autopair-pairs-default-pairs*
-			{'[',']',fly=true,dosuround=true,newline=true,space=true},
-			{'(',')',fly=true,dosuround=true,newline=true,space=true},
-			{'{','}',fly=true,dosuround=true,newline=true,space=true},
-			{'"','"',suround=true,multiline=false},
-			{"'","'",suround=true,cond=function(fn) return not fn.in_lisp() or fn.in_string() end,alpha=true,nft={'tex'},multiline=false},
-			{'`','`',cond=function(fn) return not fn.in_lisp() or fn.in_string() end,nft={'tex'},multiline=false},
-			{'``',"''",ft={'tex'}},
-			{'```','```',newline=true,ft={'markdown'}},
-			{'<!--','-->',ft={'markdown','html'},space=true},
-			{'"""','"""',newline=true,ft={'python'}},
-			{"'''","'''",newline=true,ft={'python'}},
-		}
+		--[[ internal_pairs={-- *ultimate-autopair-pairs-default-pairs*
+		-- 	{'[',']',fly=true,dosuround=true,newline=true,space=true},
+		-- 	{'(',')',fly=true,dosuround=true,newline=true,space=true},
+		-- 	{'{','}',fly=true,dosuround=true,newline=true,space=true},
+		-- 	{'"','"',suround=true,multiline=false},
+		-- 	{"'","'",suround=true,cond=function(fn) return not fn.in_lisp() or fn.in_string() end,alpha=true,nft={'tex'},multiline=false},
+		-- 	{'`','`',cond=function(fn) return not fn.in_lisp() or fn.in_string() end,nft={'tex'},multiline=false},
+		-- 	{'``',"''",ft={'tex'}},
+		-- 	{'```','```',newline=true,ft={'markdown'}},
+		-- 	{'<!--','-->',ft={'markdown','html'},space=true},
+		-- 	{'"""','"""',newline=true,ft={'python'}},
+		-- 	{"'''","'''",newline=true,ft={'python'}},
+		} --]]
 	})
 end
 }
