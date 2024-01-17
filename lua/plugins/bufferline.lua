@@ -5,20 +5,18 @@ return {
    config = function()
    	require("bufferline").setup{
       	options = {
-         	hover = {
-            	enabled = true,
-               delay = 200,
-               reveal = {'close'}
-            },
-            separator_style = 'thin',
-            diagnostics = "nvim_lsp",
-            diagnostic_indicator = function(count, level, diagnostic_dict, context)
-            	if context.buffer:current() then
-               	return ''
-               end
-               return ''
-            end
-         }
+				separator_style = 'thin',
+				diagnostics = "nvim_lsp",
+				diagnostics_indicator = function(count, level, diagnostics_dict, context)
+					local s = " "
+					for e, n in pairs(diagnostics_dict) do
+						local sym = e == "error" and " "
+						or (e == "warning" and " " or " " )
+						s = s .. n .. sym
+					end
+					return s
+				end
+			}
       }
    end
 }

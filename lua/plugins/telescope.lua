@@ -26,11 +26,13 @@ return {
 						}
 					}
 				},
+				scope = {}
 			}
 		})
 		require("telescope").load_extension("themes")
 		require("telescope").load_extension("project")
 		require("telescope").load_extension("file_browser")
 		require("telescope").load_extension("undo")
+		require("telescope").load_extension("scope")
 	end
 }
