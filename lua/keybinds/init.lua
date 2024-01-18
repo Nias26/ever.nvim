@@ -48,8 +48,6 @@ map('n', '<A-j>', '<C-w>-')
 map('n', '<A-k>', '<C-w>+')
 map('n', '<A-l>', '<C-w><')
 map({'n', 'v'}, 'Q', '<cmd>q<CR>', {desc = "Quit current window"})
--- Toggle terminal
-map({'n', 'v', 'i'}, '<F4>', '<cmd>ToggleTerm<CR>')
 -- LSP
 map({'n', 'v'}, 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', {desc = "Go to definition"})
 map({'n', 'v'}, 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', {desc = "Go to references"})
