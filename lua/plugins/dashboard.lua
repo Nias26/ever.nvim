@@ -15,19 +15,25 @@ return {
 				},
 				shortcut = {
 					{
-						desc = ' New File ',
+						desc = ' New File',
 						group = '@property',
 						action = 'new',
 						key = 'n'
 					},
 					{
-						desc = ' Search ',
+						desc = ' Search',
 						group = '@string',
 						action = 'Telescope find_files',
 						key = 't',
 					},
 					{
-						desc = ' lazy ',
+						desc = '󰠮 Projects',
+						group = 'Exception',
+						action = 'Telescope projects',
+						key = 'p',
+					},
+					{
+						desc = ' lazy',
 						group = 'Number',
 						action = 'Lazy',
 						key = 'l',
@@ -39,13 +45,7 @@ return {
 						key = 'r',
 					},
 				},
-				project = {
-					enable = true,
-					limit = 10,
-					icon = '󰠮 ',
-					label = "Projects",
-					action = 'Telescope projects cwd=',
-				},
+				project = { enable = false	},
 				footer = { ' ', ' ever.nvim '},
 			}
 		})

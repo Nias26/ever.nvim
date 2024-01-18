@@ -1,8 +1,23 @@
 return {
 	"ahmedkhalf/project.nvim",
-	lazy = true,
-   config = function()
-   	require("project_nvim").setup{}
-      require('telescope').load_extension('projects')
-   end
+	event = "VeryLazy",
+	config = function()
+		require("project_nvim").setup {
+			manual_mode = false,
+			detection_methods = { "lsp", "pattern" },
+			patterns = { ".git", "Makefile", },
+			show_hidden = false,
+			silent_chdir = true,
+			scope_chdir = 'global',
+			datapath = vim.fn.stdpath("data")
+		}
+		require("nvim-tree").setup({
+			sync_root_with_cwd = true,
+			respect_buf_cwd = true,
+			update_focused_file = {
+				enable = true,
+				update_root = true
+			},
+		})
+	end
 }
