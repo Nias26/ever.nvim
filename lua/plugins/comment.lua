@@ -6,7 +6,8 @@ return {
 			line = 'cc'
 		},
 		opleader = {
-			line = 'cc'
+			line = 'cc',
+			block = 'Cc'
 		}
 	},
 }

@@ -58,9 +58,10 @@ wk.register({
 wk.register({
 	["<leader>c"] = {
 		name = " - Code",
-		c = { function() require("Comment.api").toggle.linewise() end, "Comment line" },
+		c = { "<cmd>Neogen<CR>", "Generate comment" },
 		t = { "<cmd>TroubleToggle<CR>", "Trouble" },
 		g = { "<cmd>GitBlameToggle<CR>", "Toggle git status" },
+		
 	}
 })
 
