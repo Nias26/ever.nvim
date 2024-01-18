@@ -27,11 +27,6 @@ map('n', '<C-h>', '<C-w>h')
 map('n', '<C-j>', '<C-w>j')
 map('n', '<C-k>', '<C-w>k')
 map('n', '<C-l>', '<C-w>l')
--- Open Dropbar
-map('n', '<S-D>', '<cmd>lua require("dropbar.api").pick()<CR>', {desc = "Dropbar"})
--- Fold toggle
--- map('n', 'ff', 'za') -- (Current fold)
--- map('n', 'ft', 'zi') -- (Toggle fold)
 -- Open Telescope
 map({'n', 'v'}, '<C-T>', '<cmd>Telescope<CR>', {desc = "Open Telescope"})
 -- Open Nvim Tree
