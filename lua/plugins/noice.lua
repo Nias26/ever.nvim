@@ -50,7 +50,7 @@ return {
 					},
 					help = {
 						pattern = "^:%s*h%s+",
-						icon = "",
+						icon = "",
 					},
 					input = {},
 				},
