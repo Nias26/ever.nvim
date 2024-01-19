@@ -96,7 +96,7 @@ wk.register({
 wk.register({
 	["<leader>b"] = {
 		name = "󰓩 - Buffer",
-		n = { function() vim.ui.input({prompt = 'New buffer'}, function(input) fcmd('badd', input)end)end, "New buffer" },
+		n = { "<cmd>enew<CR>", "New buffer" },
 		d = { "<cmd>bdel<CR>", "Delete current buffer" },
 		s = {
 			name = " Split",
