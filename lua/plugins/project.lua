@@ -4,11 +4,11 @@ return {
 	config = function()
 		require("project_nvim").setup {
 			manual_mode = false,
-			detection_methods = { "lsp", "pattern" },
+			detection_methods = { "pattern" },
 			patterns = { ".git", "Makefile", },
 			show_hidden = false,
 			silent_chdir = true,
-			scope_chdir = 'global',
+			scope_chdir = 'win',
 			datapath = vim.fn.stdpath("data")
 		}
 		require("nvim-tree").setup({
