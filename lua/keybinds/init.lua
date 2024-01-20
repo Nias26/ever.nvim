@@ -46,22 +46,8 @@ map("n", "T", "<cmd>tabnew<CR>", { desc = "New tab" })
 map("n", "Td", "<cmd>tabclose<CR>", { desc = "Close current tab" })
 map("n", "<S-Tab>", "<cmd>tabnext<CR>", { desc = "Next tab" })
 -- Splits
-map("n", "Sh", function()
-	vim.ui.input({ prompt = "Horizzontal split" }, function(input)
-		if input == "" then
-			return
-		end
-		fcmd("split", input)
-	end)
-end, { desc = "Horizzontal Split" })
-map("n", "Sv", function()
-	vim.ui.input({ prompt = "Vertical split" }, function(input)
-		if input == "" then
-			return
-		end
-		fcmd("vsplit", input)
-	end)
-end, { desc = "Vertical Split" })
+map("n", "Sh", ":split ", { desc = "Horizzontal Split" })
+map("n", "Sv", ":vsplit ", { desc = "Vertical Split" })
 map("n", "<A-h>", "<C-w>>")
 map("n", "<A-j>", "<C-w>-")
 map("n", "<A-k>", "<C-w>+")
