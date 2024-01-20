@@ -1,6 +1,6 @@
 return {
 	"folke/trouble.nvim",
-	event = "LspAttach",
+	cmd = {"Trouble", "TroubleToggle" },
    dependencies = { "nvim-tree/nvim-web-devicons" },
    opts = {},
    config = function()
