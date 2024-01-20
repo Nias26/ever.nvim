@@ -14,10 +14,10 @@ return {
 				lua = {
 					require("formatter.filetypes.lua").stylua,
 					function()
-						-- Supports conditional formatting
-						if vim.fn.expand("%:p") == "init.lua" then
+						-- NOTE:Supports conditional formatting (which doesn't work for me )
+						--[[ if require("formatter.util").get_current_buffer_file_name() == "init.lua" then
 							return nil
-						end
+						end ]]
 						return {
 							exe = "stylua",
 							stdin = true,
