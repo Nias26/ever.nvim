@@ -4,6 +4,7 @@ vim.loader.enable() -- vim.loader.enable() # Check neovim wiki for this
 vim.g.mapleader = " " -- Set leader key
 vim.g.loaded_netrw = 1 -- Disable netrw
 vim.g.loaded_netrwPlugin = 1 -- Disable netrw
+vim.g.showcmdloc = "statusline" -- Show commang message location
 
 local options = {
 	relativenumber = true, -- Set Relative Number line
