@@ -24,5 +24,5 @@ return {
 			width = 65,
 			height = 40,
 		})
-	end
+	end,
 }

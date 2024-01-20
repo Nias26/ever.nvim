@@ -1,13 +1,13 @@
 return {
 	"numToStr/Comment.nvim",
-	event = "BufRead",
-   opts = {
+	keys = { "cc", "Cc" },
+	opts = {
 		toggler = {
-			line = 'cc'
+			line = "cc",
 		},
 		opleader = {
-			line = 'cc',
-			block = 'Cc'
-		}
+			line = "cc",
+			block = "Cc",
+		},
 	},
 }

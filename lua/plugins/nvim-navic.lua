@@ -1,5 +1,5 @@
 return {
 	"SmiteshP/nvim-navic",
-	event = "BufRead",
-	dependencies = { "neovim/nvim-lspconfig" }
+	event = "LspAttach",
+	dependencies = { "neovim/nvim-lspconfig" },
 }

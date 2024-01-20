@@ -1,9 +1,18 @@
 return {
 	"f-person/git-blame.nvim",
-	event = "BufRead",
+	cmd = {
+		"GitBlameEnable",
+		"GitBlameToggle",
+		"GitBlameCopySHA",
+		"GitBlameDisable",
+		"GitBlameCopyFileURL",
+		"GitBlameOpenFileURL",
+		"GitBlameCopyCommitURL",
+		"GitBlameOpenCommitURL",
+	},
 	config = function()
-		require("gitblame").setup{
+		require("gitblame").setup({
 			enabled = false,
-		}
-	end
+		})
+	end,
 }
