@@ -1,29 +1,29 @@
 -- Init.lua file (Main loaded lua file)
-vim.loader.enable()          		-- vim.loader.enable() # Check neovim wiki for this
+vim.loader.enable() -- vim.loader.enable() # Check neovim wiki for this
 
-vim.g.mapleader = ' '        		-- Set leader key
-vim.g.loaded_netrw = 1       		-- Disable netrw
-vim.g.loaded_netrwPlugin = 1 		-- Disable netrw
+vim.g.mapleader = " " -- Set leader key
+vim.g.loaded_netrw = 1 -- Disable netrw
+vim.g.loaded_netrwPlugin = 1 -- Disable netrw
 
 local options = {
-	relativenumber = true, 			-- Set Relative Number line
-	number = true,       			-- Set Number line
-	inccommand = "split", 			-- Command preview (eg. `%s/.../...`)
-	ignorecase = true,   			-- Ignore uppercase and lowercase in commands
-	laststatus = 3,      			-- Set global statusbar
-	scrolloff = 999,     			-- Set scrolloff
-	updatetime = 300,    			-- Set updatetime for events
-	showmode = false,    			-- Hide --INSERT-- messages etc...
-	splitbelow = true,   			-- Always split below
-	splitright = true,   			-- Always split right
-	undofile = true,     			-- Enable persistent undo
-	cursorline = true,   			-- Enable cursorline
-	termguicolors = true, 			-- Enable termguicolors
-	tabstop = 3,         			-- Set tabstop
-	shiftwidth = 3,      			-- Set shiftwidth
-	autochdir = true,    			-- Auto change directory
-	clipboard = "unnamedplus",		-- Sync with system clipboard
-	wrap = false, 						-- Disable line wrap
+	relativenumber = true, -- Set Relative Number line
+	number = true, -- Set Number line
+	inccommand = "split", -- Command preview (eg. `%s/.../...`)
+	ignorecase = true, -- Ignore uppercase and lowercase in commands
+	laststatus = 3, -- Set global statusbar
+	scrolloff = 999, -- Set scrolloff
+	updatetime = 300, -- Set updatetime for events
+	showmode = false, -- Hide --INSERT-- messages etc...
+	splitbelow = true, -- Always split below
+	splitright = true, -- Always split right
+	undofile = true, -- Enable persistent undo
+	cursorline = true, -- Enable cursorline
+	termguicolors = true, -- Enable termguicolors
+	tabstop = 3, -- Set tabstop
+	shiftwidth = 3, -- Set shiftwidth
+	autochdir = true, -- Auto change directory
+	clipboard = "unnamedplus", -- Sync with system clipboard
+	wrap = false, -- Disable line wrap
 }
 
 for k, v in pairs(options) do
@@ -47,9 +47,9 @@ vim.opt.rtp:prepend(lazypath)
 -- Disable plugins not available for nvim-0.9.*
 -- NOTE: Mabye there's space for improvment
 lazy_check = function()
-	if vim.fn.has('nvim-0.10') ~= 1 then
+	if vim.fn.has("nvim-0.10") ~= 1 then
 		return false
-	elseif vim.fn.has('nvim-0.10') == 1 then
+	elseif vim.fn.has("nvim-0.10") == 1 then
 		return true
 	end
 end
@@ -60,6 +60,8 @@ require("lazy").setup({
 	{ import = "plugins" },
 	{ import = "plugins.lsp" },
 	{ import = "plugins.cmp" },
+	-- Languages setup
+	-- { import = "plugins.languages.cpp" },
 	-- Lazy.nvim Opts
 	ui = {
 		icons = {
@@ -84,9 +86,9 @@ require("lazy").setup({
 				"➜ ",
 				"★ ",
 				"‒",
-			}
-		}
-	}
+			},
+		},
+	},
 })
 
 local status_ok, _ = pcall(require, "macros")
