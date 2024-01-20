@@ -8,7 +8,7 @@ return {
 	config = function()
 		require("mason").setup()
 		require("mason-lspconfig").setup {
-			ensure_installed = { lsp = {"lua_ls"}, linter = { "luacheck" }, formatter = { "stylua" } }
+			ensure_installed = { lsp = { "lua_ls", "clangd" }, linter = { "luacheck", "cpplint" }, formatter = { "stylua", "clang-format" } }
 		}
 		capabilities = require("cmp_nvim_lsp").default_capabilities()
 		on_attach = function(client, bufnr)
@@ -31,6 +31,10 @@ return {
 				}
 			}
 		}
+		require("lspconfig").clangd.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
 		--[[ require("mason-lspconfig").setup_handlers {
 			-- The first entry (without a key) will be the default handler
 			-- and will be called for each installed server that doesn't have
