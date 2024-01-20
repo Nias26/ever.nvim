@@ -1,7 +1,7 @@
 local map = vim.keymap.set
 local status_ok, wk = pcall(require, "which-key")
 if not status_ok then
-   return
+	return
 end
 
 -- Icons Index
@@ -11,21 +11,21 @@ end
 -- Search -> 
 -- Buffer -> 󰓩
 -- Open -> 󰏌
--- Debug ->  
+-- Debug -> 
 -- Help -> 󰋖
 -- Zen -> 󰚀
--- Neorg -> 󰭃 
+-- Neorg -> 󰭃
 
+-- Index
 wk.register({
 	["<leader>"] = {
 		["["] = { "<cmd>bprevious<CR>", "Previous buffer" },
 		["]"] = { "<cmd>bnext<CR>", "Next buffer" },
-		M = 'which_key_ignore',
+		M = "which_key_ignore",
 		q = { "<cmd>wqa<CR>", "Fast quit" },
 		m = { "<cmd>Telescope keymaps<CR>", "Show keymaps" },
-	}
+	},
 })
-
 
 -- Ever.nvim -> 
 wk.register({
@@ -33,26 +33,30 @@ wk.register({
 		name = " - Ever.nvim",
 		c = { "<cmd>cd $HOME/.config/nvim | NvimTreeOpen<CR>", "Edit config" },
 		l = { "<cmd>Lazy<CR>", "󰒲 Lazy" },
-		g = { function() vim.ui.open('https://github.com/Nias26/ever.nvim') end, " Git repo" },
+		g = {
+			function()
+				vim.ui.open("https://github.com/Nias26/ever.nvim")
+			end,
+			" Git repo",
+		},
 		t = { "<cmd>Telescope themes<CR>", "Change theme" },
 		b = {
 			name = " - Bookmarks",
-			['1'] = { "<cmd>e ~/.zshrc<CR>", "~/.zshrc" },
-			['2'] = { "<cmd>e ~/.config/nvim/init.lua<CR>", "~/.config/nvim/init.lua" },
-			['3'] = {  },
-			['4'] = {  },
-			['5'] = {  },
-			['6'] = {  },
-			['7'] = {  },
-			['8'] = {  },
-			['9'] = {  },
-			['0'] = {  },
+			["1"] = { "<cmd>e ~/.zshrc<CR>", "~/.zshrc" },
+			["2"] = { "<cmd>e ~/.config/nvim/init.lua<CR>", "~/.config/nvim/init.lua" },
+			["3"] = {},
+			["4"] = {},
+			["5"] = {},
+			["6"] = {},
+			["7"] = {},
+			["8"] = {},
+			["9"] = {},
+			["0"] = {},
 		},
 		v = { "<cmd>TransparentToggle<CR>", "Toggle transparency theme" },
 		u = { "<cmd>!cd $HOME/.config/nvim && git pull<CR>", "Pull updates" },
-	}
+	},
 })
-
 
 -- Code -> 
 wk.register({
@@ -61,8 +65,21 @@ wk.register({
 		c = { "<cmd>Neogen<CR>", "Generate comment" },
 		t = { "<cmd>TroubleToggle<CR>", "Trouble" },
 		g = { "<cmd>GitBlameToggle<CR>", "Toggle git status" },
-		
-	}
+		l = {
+			name = " - LSP",
+			d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition" },
+			r = { "<cmd>lua vim.lsp.buf.references()<CR>", "Go to references" },
+			a = { "<cmd>Lspsaga code_action<CR>", "Code Actions" },
+			h = { "<cmd>Lspasaga hover_doc<CR>", "LSP Signature" },
+			f = { "<cmd>Lspasaga finder<CR>", "Find References" },
+			s = {
+				function()
+					return ":IncRename" .. vim.fn.expand("<cword>")
+				end,
+				"LSP Rename",
+			},
+		},
+	},
 })
 
 -- File -> 
@@ -70,10 +87,24 @@ wk.register({
 	["<leader>f"] = {
 		name = " - File",
 		d = { "<cmd>call delete(@%)<CR>", "Delete current file" },
-		r = { function() vim.ui.input({prompt = 'Rename'}, function(input) fcmd('Rename', input)end)end, "Rename current file" },
-		m = { function() vim.ui.input({prompt = 'Move'}, function(input) fcmd('Move', input)end)end, "Move current file" },
+		r = {
+			function()
+				vim.ui.input({ prompt = "Rename" }, function(input)
+					fcmd("Rename", input)
+				end)
+			end,
+			"Rename current file",
+		},
+		m = {
+			function()
+				vim.ui.input({ prompt = "Move" }, function(input)
+					fcmd("Move", input)
+				end)
+			end,
+			"Move current file",
+		},
 		R = { "<cmd>lua require('persistence').load({ last = true })<CR>", "Restore last session" },
-	}
+	},
 })
 
 -- Search -> 
@@ -89,7 +120,7 @@ wk.register({
 			d = { "<cmd>Telescope diagnostics<CR>", "Diagnostics" },
 			h = { "<cmd>Telescope command_history<CR>", "Command history" },
 		},
-	}
+	},
 })
 
 -- Buffer -> 󰓩
@@ -100,13 +131,33 @@ wk.register({
 		d = { "<cmd>bdel<CR>", "Delete current buffer" },
 		s = {
 			name = " Split",
-			h = { function() vim.ui.input({prompt = 'Horizzontal split'}, function(input) if input == "" then input = "%" end fcmd('split', input) end) end, "Horizzontal Split" },
-			v = { function() vim.ui.input({prompt = 'Vertical split'}, function(input) if input == "" then input = "%" end fcmd('vsplit', input) end) end, "Vertical Split"},
+			h = {
+				function()
+					vim.ui.input({ prompt = "Horizzontal split" }, function(input)
+						if input == "" then
+							input = "%"
+						end
+						fcmd("split", input)
+					end)
+				end,
+				"Horizzontal Split",
+			},
+			v = {
+				function()
+					vim.ui.input({ prompt = "Vertical split" }, function(input)
+						if input == "" then
+							input = "%"
+						end
+						fcmd("vsplit", input)
+					end)
+				end,
+				"Vertical Split",
+			},
 			c = { "<cmd>q<CR>", "Close current split" },
 		},
 		["["] = { "<cmd>bprevious<CR>", "Previous buffer" },
 		["]"] = { "<cmd>bnext<CR>", "Next buffer" },
-	}
+	},
 })
 
 -- Open -> 󰏌
@@ -121,7 +172,7 @@ wk.register({
 		h = { "<cmd>Noice<CR>", "Notification history" },
 		l = { "<cmd>LazyGit<CR>", "LazyGit" },
 		t = { "<cmd>Telescope<CR>", "Telescope" },
-	}
+	},
 })
 
 -- Help -> 󰋖
@@ -130,7 +181,7 @@ wk.register({
 		name = "󰋖 - Help",
 		c = { "<cmd>DocsViewToggle<CR>", "View code docs" },
 		n = { "<cmd>Telescope help_tags<CR>", "View Neovim docs" },
-	}
+	},
 })
 
 -- Neorg -> 󰭃
@@ -138,6 +189,6 @@ wk.register({
 	["<leader>n"] = {
 		name = "󰭃 - Neorg",
 		n = { "<cmd>Neorg<CR>", "Open Neorg menu" },
-		w = { "<cmd>Neorg workspace<CR>", "Load Workspace"},
-	}
+		w = { "<cmd>Neorg workspace<CR>", "Load Workspace" },
+	},
 })

@@ -17,7 +17,7 @@ map("n", "<ESC><ESC>", "<cmd>nohlsearch<CR>")
 -- Fast switch window
 map({ "n", "v" }, "!", "<C-w>w")
 -- Open URL under cursor
-map("n", "<C-o>", "<cmd>URLOpenUnderCursor<CR>")
+map("n", "<C-o>", "<cmd>lua vim.ui.open(vim.fn.expand('<cword>'))<CR>")
 -- Previous search
 map("n", ",", "N")
 -- Next search
@@ -59,6 +59,9 @@ map({ "n", "v" }, "gr", "<cmd>lua vim.lsp.buf.references()<CR>", { desc = "Go to
 map("n", "ca", "<cmd>Lspsaga code_action<CR>", { desc = "Code Actions" })
 map("n", "cd", "<cmd>Lspsaga hover_doc<CR>", { desc = "LSP Signature" })
 map("n", "cf", "<cmd>Lspsaga finder<CR>", { desc = "Find References" })
+map("n", "cr", function()
+	return ":IncRename " .. vim.fn.expand("<cword>")
+end, { expr = true, desc = "LSP Rename" })
 -- Text modification
 map("v", "<C-Down>", "<cmd>m .+1<CR>", { desc = "Move line down" })
 map("v", "<C-Up>", "<cmd>m .-2<CR>", { desc = "Move line up" })
