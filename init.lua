@@ -61,8 +61,6 @@ require("lazy").setup({
 	{ import = "plugins" },
 	{ import = "plugins.lsp" },
 	{ import = "plugins.cmp" },
-	-- Languages setup
-	-- { import = "plugins.languages.cpp" },
 	-- Lazy.nvim Opts
 	ui = {
 		icons = {
