@@ -3,7 +3,7 @@ return {
 	lazy = true,
 	config = function()
 		-- Set up nvim-cmp.
-		local status_ok, cmp = pcall(require, 'cmp')
+		local status_ok, cmp = pcall(require, "cmp")
 		if not status_ok then
 			return
 		end
@@ -69,7 +69,7 @@ return {
 				},
 				documentation = {
 					border = nil,
-					scrollbar = '|',
+					scrollbar = "|",
 				},
 			},
 			formatting = {
@@ -84,14 +84,14 @@ return {
 				lspkind.cmp_format({
 					mode = "symbol",
 					maxwidth = 50,
-					ellipsis_char = '...',
-					symbol_map = { Codeium = "", String = '󰅳', }
-				})
+					ellipsis_char = "...",
+					symbol_map = { Codeium = "", String = "󰅳" },
+				}),
 			},
 			mapping = cmp.mapping({
-				['<C-Down>'] = cmp.mapping.scroll_docs(4),
-				['<C-Up>'] = cmp.mapping.scroll_docs(-4),
-				['|'] = cmp.mapping.abort(),
+				["<C-Down>"] = cmp.mapping.scroll_docs(4),
+				["<C-Up>"] = cmp.mapping.scroll_docs(-4),
+				["|"] = cmp.mapping.abort(),
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item()
@@ -125,62 +125,62 @@ return {
 				}),
 			}),
 			sources = cmp.config.sources({
-				{ name = 'nvim_lsp_signature_help' },
-				{ name = 'nvim_lua' },
-				{ name = 'nvim_lsp' },
+				{ name = "nvim_lsp_signature_help" },
+				{ name = "nvim_lsp" },
 				{ name = "codeium" },
-				{ name = 'luasnip' },
-				{ name = 'buffer' },
-				{ name = 'path' },
-				{ name = 'neorg' },
+				{ name = "luasnip" },
+				{ name = "buffer" },
+				{ name = "path" },
+				{ name = "neorg" },
 			}),
 			enabled = function()
 				-- disable completion in comments
-				local context = require 'cmp.config.context'
+				local context = require("cmp.config.context")
 				-- keep command mode completion enabled when cursor is in a comment
-				if vim.api.nvim_get_mode().mode == 'c' then
+				if vim.api.nvim_get_mode().mode == "c" then
 					return true
 				else
-					return not context.in_treesitter_capture("comment")
-						 and not context.in_syntax_group("Comment")
+					return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
 				end
 			end,
 			enabled = function()
 				buftype = vim.api.nvim_buf_get_option(0, "buftype")
-				if buftype == "prompt" then return false end
+				if buftype == "prompt" then
+					return false
+				end
 				return true
-			end
+			end,
 		})
 
 		-- Set configuration for specific filetype.
-		cmp.setup.filetype('gitcommit', {
+		cmp.setup.filetype("gitcommit", {
 			sources = cmp.config.sources({
-				{ name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
+				{ name = "git" }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
 			}, {
-				{ name = 'buffer' },
-			})
+				{ name = "buffer" },
+			}),
 		})
 
 		-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-		cmp.setup.cmdline({ '/', '?' }, {
+		cmp.setup.cmdline({ "/", "?" }, {
 			mapping = cmp.mapping.preset.cmdline(),
 			view = {
-				entries = { name = 'wildmenu', separator = '|' }
+				entries = { name = "wildmenu", separator = "|" },
 			},
 			sources = {
-				{ name = 'buffer' }
-			}
+				{ name = "buffer" },
+			},
 		})
 
 		-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-		cmp.setup.cmdline(':', {
+		cmp.setup.cmdline(":", {
 			mapping = cmp.mapping.preset.cmdline(),
 			sources = cmp.config.sources({
-				{ name = 'path' }
+				{ name = "path" },
 			}, {
-				{ name = 'cmdline' },
-				{ name = 'fuzzy_path', option = { fd_timeout_msec = 1500 } }
-			})
+				{ name = "cmdline" },
+				{ name = "fuzzy_path", option = { fd_timeout_msec = 1500 } },
+			}),
 		})
-	end
+	end,
 }
