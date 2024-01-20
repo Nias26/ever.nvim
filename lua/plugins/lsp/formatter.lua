@@ -1,6 +1,6 @@
 return {
 	"mhartington/formatter.nvim",
-	event = "BufEnter *.lua",
+	event = "BufEnter",
 	config = function()
 		require("formatter").setup({
 			-- Enable or disable logging
@@ -14,12 +14,17 @@ return {
 				lua = {
 					require("formatter.filetypes.lua").stylua,
 					function()
-						-- NOTE:Supports conditional formatting (which doesn't work for me )
-						--[[ if require("formatter.util").get_current_buffer_file_name() == "init.lua" then
-							return nil
-						end ]]
 						return {
 							exe = "stylua",
+						}
+					end,
+				},
+				cpp = {
+					require("formatter.filetypes.cpp").clangformat,
+					function()
+						return {
+							exe = "clang-format",
+							stdin = true,
 						}
 					end,
 				},
