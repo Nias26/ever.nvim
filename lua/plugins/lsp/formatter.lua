@@ -20,7 +20,6 @@ return {
 						end ]]
 						return {
 							exe = "stylua",
-							stdin = true,
 						}
 					end,
 				},
