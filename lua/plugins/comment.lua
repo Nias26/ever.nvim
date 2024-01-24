@@ -1,6 +1,6 @@
 return {
 	"numToStr/Comment.nvim",
-	keys = { "cc", "Cc" },
+	event = "BufRead",
 	opts = {
 		toggler = {
 			line = "cc",
