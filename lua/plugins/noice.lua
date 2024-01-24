@@ -4,16 +4,10 @@ return {
 		"MunifTanjim/nui.nvim",
 		"nvim-treesitter/nvim-treesitter",
 	},
-	opts = {},
 	config = function()
 		require("noice").setup({
 			views = {
 				cmdline_popup = {
-					backend = "popup",
-					relative = "editor",
-					focusable = false,
-					enter = false,
-					zindex = 200,
 					position = {
 						row = 0,
 						col = 0,
@@ -27,23 +21,15 @@ return {
 						style = "none",
 						padding = { 1, 2 },
 					},
-					win_options = {
-						winhighlight = {
-							Normal = "NoiceCmdlinePopup",
-							FloatTitle = "NoiceCmdlinePopupTitle",
-							FloatBorder = "NoiceCmdlinePopupBorder",
-							IncSearch = "",
-							CurSearch = "",
-							Search = "",
-						},
-						winbar = "",
-						foldenable = false,
-						cursorline = false,
-					},
 				},
 			},
 			cmdline = {
 				enabled = true,
+				opts = {
+					win_options = {
+						winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
+					},
+				},
 				format = {
 					cmdline = { pattern = "^:", icon = " ", lang = "vim" },
 					search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex" },
@@ -68,43 +54,6 @@ return {
 				enabled = true,
 				backend = "nui",
 				kind_icons = {},
-			},
-			command = {
-				history = {
-					view = "split",
-					opts = { enter = true, format = "details" },
-					filter = {
-						any = {
-							{ event = "notify" },
-							{ error = true },
-							{ warning = true },
-							{ event = "msg_show", kind = { "" } },
-							{ event = "lsp", kind = "message" },
-						},
-					},
-				},
-				last = {
-					view = "popup",
-					opts = { enter = true, format = "details" },
-					filter = {
-						any = {
-							{ event = "notify" },
-							{ error = true },
-							{ warning = true },
-							{ event = "msg_show", kind = { "" } },
-							{ event = "lsp", kind = "message" },
-						},
-					},
-					filter_opts = { count = 1 },
-				},
-				-- :Noice errors
-				errors = {
-					-- options for the message history that you get with `:Noice`
-					view = "popup",
-					opts = { enter = true, format = "details" },
-					filter = { error = true },
-					filter_opts = { reverse = true },
-				},
 			},
 			notify = {
 				enabled = true,
