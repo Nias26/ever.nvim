@@ -103,8 +103,8 @@ return {
 			},
 			close = { -- *ultimate-autopair-map-close-config*
 				enable = true,
-				map = ")", --string or table
-				cmap = ")", --string or table
+				map = "<A-)>", --string or table
+				cmap = "<A-)>", --string or table
 				conf = {},
 				--contains extension config
 				multi = false,
