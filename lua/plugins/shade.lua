@@ -3,7 +3,7 @@ return {
 	event = "WinEnter",
 	config = function()
 		require("shade").setup({
-			overlay_opacity = 50,
+			overlay_opacity = 80,
 			opacity_step = 1,
 			keys = {
 				brightness_up = nil,
