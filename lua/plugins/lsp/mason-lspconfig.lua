@@ -38,6 +38,7 @@ return {
 		require("lspconfig").clangd.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
+			root_dir = vim.fn.getcwd()
 		})
 		--[[ require("mason-lspconfig").setup_handlers {
 			-- The first entry (without a key) will be the default handler
