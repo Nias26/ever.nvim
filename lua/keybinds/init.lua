@@ -35,7 +35,7 @@ map("n", ";tf", function()
 	require("telescope").extensions.file_browser.file_browser()
 end, { desc = "File Browser" })
 -- Open Nvim Tree
-map("n", "<C-e>", "<cmd>NvimTreeToggle<CR>", { desc = "Open Nvim Tree" })
+map("n", "<F3>", "<cmd>NvimTreeToggle<CR>", { desc = "Open Nvim Tree" })
 -- Buffer managing
 map("n", "bd", "<cmd>bdel<CR>", { desc = "Delete current buffer" })
 map("n", "[", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
