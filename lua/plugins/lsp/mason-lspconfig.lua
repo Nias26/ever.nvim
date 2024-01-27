@@ -3,34 +3,38 @@ return {
 	event = "VeryLazy",
 	dependencies = {
 		"williamboman/mason.nvim",
-		"neovim/nvim-lspconfig"
+		"neovim/nvim-lspconfig",
 	},
 	config = function()
 		require("mason").setup()
-		require("mason-lspconfig").setup {
-			ensure_installed = { lsp = { "lua_ls", "clangd" }, linter = { "luacheck", "cpplint" }, formatter = { "stylua", "clang-format" } }
-		}
+		require("mason-lspconfig").setup({
+			ensure_installed = {
+				lsp = { "lua_ls", "clangd" },
+				linter = { "luacheck", "cpplint" },
+				formatter = { "stylua", "clang-format" },
+			},
+		})
 		capabilities = require("cmp_nvim_lsp").default_capabilities()
 		on_attach = function(client, bufnr)
 			require("nvim-navic").attach(client, bufnr)
 		end
 
-		require("lspconfig").lua_ls.setup{
+		require("lspconfig").lua_ls.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
-			before_init= require("neodev.lsp").before_init,
+			before_init = require("neodev.lsp").before_init,
 			settings = {
 				Lua = {
 					completion = {
-						callSnippet = "Replace"
+						callSnippet = "Replace",
 					},
 					diagnostics = {
 						-- Get the language server to recognize the `vim` global
-						globals = {'vim'},
+						globals = { "vim" },
 					},
-				}
-			}
-		}
+				},
+			},
+		})
 		require("lspconfig").clangd.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
@@ -46,5 +50,5 @@ return {
 				}
 			end
 		} ]]
-	end
+	end,
 }

@@ -24,7 +24,6 @@ return {
 					function()
 						return {
 							exe = "clang-format",
-							stdin = true,
 						}
 					end,
 				},
