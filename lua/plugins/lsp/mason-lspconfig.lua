@@ -23,6 +23,9 @@ return {
 			capabilities = capabilities,
 			on_attach = on_attach,
 			before_init = require("neodev.lsp").before_init,
+			root_dir = function()
+				return vim.fn.getcwd()
+			end,
 			settings = {
 				Lua = {
 					completion = {
@@ -38,7 +41,9 @@ return {
 		require("lspconfig").clangd.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
-			root_dir = vim.fn.getcwd()
+			root_dir = function()
+				return vim.fn.getcwd()
+			end,
 		})
 		--[[ require("mason-lspconfig").setup_handlers {
 			-- The first entry (without a key) will be the default handler
