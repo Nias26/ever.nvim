@@ -12,7 +12,7 @@ map({ "n", "v" }, "H", "<S-Left>", { desc = "Move 1 word to the left" })
 map({ "n", "v" }, "L", "<S-Right>", { desc = "Move 1 word to the right" })
 -- Delte without copying
 -- map({'n', 'v', 'x'}, 'dd', '"_dd')
--- Cancecl highlightning when searching
+-- Cancel highlightning when searching
 map("n", "<ESC><ESC>", "<cmd>nohlsearch<CR>")
 -- Fast switch window
 map({ "n", "v" }, "!", "<C-w>w")
@@ -57,7 +57,7 @@ map({ "n", "v" }, "Q", "<cmd>q<CR>", { desc = "Quit current window" })
 map({ "n", "v" }, "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { desc = "Go to definition" })
 map({ "n", "v" }, "gr", "<cmd>lua vim.lsp.buf.references()<CR>", { desc = "Go to references" })
 map("n", "ca", "<cmd>Lspsaga code_action<CR>", { desc = "Code Actions" })
-map("n", "cd", "<cmd>Lspsaga hover_doc<CR>", { desc = "LSP Signature" })
+map("n", "ch", "<cmd>Lspsaga hover_doc<CR>", { desc = "LSP Signature" })
 map("n", "cf", "<cmd>Lspsaga finder<CR>", { desc = "Find References" })
 map("n", "cr", function()
 	return ":IncRename " .. vim.fn.expand("<cword>")
