@@ -22,7 +22,6 @@ return {
 		require("lspconfig").lua_ls.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
-			before_init = require("neodev.lsp").before_init,
 			root_dir = function()
 				return vim.fn.getcwd()
 			end,
