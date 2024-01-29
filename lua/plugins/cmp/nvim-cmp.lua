@@ -63,7 +63,7 @@ return {
 			},
 			window = {
 				completion = {
-					-- winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+					winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
 					col_offset = -3,
 					side_padding = 0,
 				},
@@ -125,24 +125,13 @@ return {
 				}),
 			}),
 			sources = cmp.config.sources({
-				{ name = "nvim_lsp_signature_help" },
 				{ name = "nvim_lsp" },
-				{ name = "codeium" },
+				{ name = "nvim_lsp_signature_help" },
 				{ name = "luasnip" },
-				{ name = "buffer" },
+				{ name = "codeium" },
 				{ name = "path" },
 				{ name = "neorg" },
 			}),
-			enabled = function()
-				-- disable completion in comments
-				local context = require("cmp.config.context")
-				-- keep command mode completion enabled when cursor is in a comment
-				if vim.api.nvim_get_mode().mode == "c" then
-					return true
-				else
-					return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
-				end
-			end,
 			enabled = function()
 				buftype = vim.api.nvim_buf_get_option(0, "buftype")
 				if buftype == "prompt" then
@@ -152,23 +141,11 @@ return {
 			end,
 		})
 
-		-- Set configuration for specific filetype.
-		cmp.setup.filetype("gitcommit", {
-			sources = cmp.config.sources({
-				{ name = "git" }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
-			}, {
-				{ name = "buffer" },
-			}),
-		})
-
 		-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 		cmp.setup.cmdline({ "/", "?" }, {
 			mapping = cmp.mapping.preset.cmdline(),
 			view = {
 				entries = { name = "wildmenu", separator = "|" },
-			},
-			sources = {
-				{ name = "buffer" },
 			},
 		})
 
