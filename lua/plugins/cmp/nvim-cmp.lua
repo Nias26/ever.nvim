@@ -53,9 +53,9 @@ return {
 		end
 		cmp.setup({
 			-- If you want you can enable ghost text
-			-- experimental = {
-			-- 	ghost_text = { hl_group = 'Comment' },
-			-- },
+			--[[ experimental = {
+				ghost_text = { hl_group = 'Comment' },
+			}, ]]
 			snippet = {
 				expand = function(args)
 					luasnip.lsp_expand(args.body) -- For `luasnip` users.
