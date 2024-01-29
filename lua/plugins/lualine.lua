@@ -323,7 +323,6 @@ return {
 					bg = "bg",
 				}
 			end,
-			-- color = { fg = colors.magenta, gui = 'bold' }
 		})
 
 		ins_right({
