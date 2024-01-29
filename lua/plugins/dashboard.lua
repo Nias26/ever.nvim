@@ -1,9 +1,9 @@
 return {
 	"glepnir/dashboard-nvim",
-	dependencies = { 'nvim-tree/nvim-web-devicons' },
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
-		require('dashboard').setup({
-			theme = 'hyper',
+		require("dashboard").setup({
+			theme = "hyper",
 			hide = {
 				statusline = true,
 				tabline = true,
@@ -15,39 +15,39 @@ return {
 				},
 				shortcut = {
 					{
-						desc = ' New File',
-						group = '@property',
-						action = 'new',
-						key = 'n'
+						desc = " New File",
+						group = "@property",
+						action = "new",
+						key = "n",
 					},
 					{
-						desc = ' Search',
-						group = '@string',
-						action = 'Telescope find_files',
-						key = 't',
+						desc = " Search",
+						group = "@string",
+						action = "Telescope find_files",
+						key = "t",
 					},
 					{
-						desc = '󰠮 Projects',
-						group = 'Exception',
-						action = 'Telescope projects',
-						key = 'p',
+						desc = "󰠮 Projects",
+						group = "Exception",
+						action = "CdProject",
+						key = "p",
 					},
 					{
-						desc = ' lazy',
-						group = 'Number',
-						action = 'Lazy',
-						key = 'l',
+						desc = " lazy",
+						group = "Number",
+						action = "Lazy",
+						key = "l",
 					},
 					{
-						desc = '󰑓 Reload Last Session',
-						group = '@variable',
+						desc = "󰑓 Reload Last Session",
+						group = "@variable",
 						action = 'lua require("persistence").load({ last = true })',
-						key = 'r',
+						key = "r",
 					},
 				},
-				project = { enable = false	},
-				footer = { ' ', ' ever.nvim '},
-			}
+				project = { enable = false },
+				footer = { " ", " ever.nvim " },
+			},
 		})
-	end
+	end,
 }
