@@ -1,4 +1,2 @@
 # Exclude this files from git
-/lua/current-theme.lua
 lazy-lock.json
-# /lua/.luarc.json
