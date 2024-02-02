@@ -217,6 +217,14 @@ return {
 		})
 
 		ins_left({
+			function()
+				vim.api.nvim_set_hl(0, "ArrowFileIndex", { fg = "#FF8800" })
+				return require("arrow.statusline").text_for_statusline_with_icons()
+			end,
+			color = { fg = colors.orange, gui = "bold" },
+		})
+
+		ins_left({
 			"filename",
 			cond = conditions.buffer_not_empty,
 			color = { fg = colors.magenta, gui = "bold" },
