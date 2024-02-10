@@ -18,8 +18,6 @@ map("i", "jk", "<Esc>", { desc = "Exit insert mode" })
 map("n", "<ESC><ESC>", "<cmd>nohlsearch<CR>")
 -- Fast switch window
 map({ "n", "v" }, "!", "<C-w>w")
--- Open URL under cursor
-map("n", "<C-o>", "<cmd>lua vim.ui.open(vim.fn.expand('<cword>'))<CR>")
 -- Previous search
 map("n", ",", "N")
 -- Next search
@@ -42,11 +40,11 @@ map("n", "<F3>", "<cmd>NvimTreeToggle<CR>", { desc = "Open Nvim Tree" })
 map("n", "bd", "<cmd>bdel<CR>", { desc = "Delete current buffer" })
 map("n", "[", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
 map("n", "]", "<cmd>bnext<CR>", { desc = "Next buffer" })
-map("n", "<Tab>", "<cmd>bnext<CR>")
 -- Tab managing
 map("n", "T", "<cmd>tabnew<CR>", { desc = "New tab" })
 map("n", "Td", "<cmd>tabclose<CR>", { desc = "Close current tab" })
-map("n", "<S-Tab>", "<cmd>tabnext<CR>", { desc = "Next tab" })
+map("n", "<Tab>", "<cmd>tabnext<CR>", { desc = "Next tab" })
+map("n", "<S-Tab>", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
 -- Splits
 map("n", "Sh", ":split ", { desc = "Horizzontal Split" })
 map("n", "Sv", ":vsplit ", { desc = "Vertical Split" })
@@ -65,8 +63,8 @@ map("n", "cr", function()
 	return ":IncRename " .. vim.fn.expand("<cword>")
 end, { expr = true, desc = "LSP Rename" })
 -- Text modification
-map("v", "<C-Down>", "<cmd>m .+1<CR>", { desc = "Move line down" })
-map("v", "<C-Up>", "<cmd>m .-2<CR>", { desc = "Move line up" })
+map("v", "<S-Down>", "<cmd>m .+1<CR>", { desc = "Move line down" })
+map("v", "<S-Up>", "<cmd>m .-2<CR>", { desc = "Move line up" })
 map("v", "P", '"_dP', { desc = "Delete and paste" })
 -- Open telescope-undo
 map("n", "U", "<cmd>Telescope undo<CR>", { desc = "Open undo history" })
