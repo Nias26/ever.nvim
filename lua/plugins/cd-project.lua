@@ -1,5 +1,6 @@
 return {
 	"LintaoAmons/cd-project.nvim",
+	event = "VeryLazy",
 	config = function()
 		require("cd-project").setup({
 			-- this json file is acting like a database to update and read the projects in real time.
