@@ -1,6 +1,6 @@
 return {
 	"nvim-lualine/lualine.nvim",
-	event = "VeryLazy",
+	event = "BufRead",
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 		{
@@ -217,14 +217,6 @@ return {
 		})
 
 		ins_left({
-			function()
-				vim.api.nvim_set_hl(0, "ArrowFileIndex", { fg = "#FF8800" })
-				return require("arrow.statusline").text_for_statusline_with_icons()
-			end,
-			color = { fg = colors.orange, gui = "bold" },
-		})
-
-		ins_left({
 			"filename",
 			cond = conditions.buffer_not_empty,
 			color = { fg = colors.magenta, gui = "bold" },
@@ -257,15 +249,15 @@ return {
 		})
 
 		ins_right({
-			"o:encoding", -- option component same as &encoding in viml
-			fmt = string.upper, -- I'm not sure why it's upper case either ;)
+			"filetype",
+			-- fmt = string.upper,
+			icons_enabled = true,
 			color = { fg = colors.green, gui = "bold" },
 		})
 
 		ins_right({
-			"fileformat",
-			fmt = string.upper,
-			icons_enabled = true,
+			"o:encoding", -- option component same as &encoding in viml
+			fmt = string.upper, -- I'm not sure why it's upper case either ;)
 			color = { fg = colors.green, gui = "bold" },
 		})
 
