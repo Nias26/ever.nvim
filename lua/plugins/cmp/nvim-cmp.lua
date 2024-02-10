@@ -5,12 +5,12 @@ return {
 		-- Set up nvim-cmp.
 		local status_ok, cmp = pcall(require, "cmp")
 		if not status_ok then
-			return
+			return print("Cmp failed to load")
 		end
 
 		local status_ok, lspkind = pcall(require, "lspkind")
 		if not status_ok then
-			return
+			return print("Lspkind failed to load")
 		end
 
 		local has_words_before = function()
@@ -49,7 +49,7 @@ return {
 
 		local status_ok, luasnip = pcall(require, "luasnip")
 		if not status_ok then
-			return
+			return print("Luasnip failed to load")
 		end
 		cmp.setup({
 			-- If you want you can enable ghost text
@@ -78,7 +78,7 @@ return {
 					local kind = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
 					local strings = vim.split(kind.kind, "%s", { trimempty = true })
 					kind.kind = " " .. (strings[1] or "") .. " "
-					kind.menu = "    (" .. (strings[2] or "") .. ")"
+					kind.menu = "    [" .. (strings[2] or "") .. "]"
 					return kind
 				end,
 				lspkind.cmp_format({
