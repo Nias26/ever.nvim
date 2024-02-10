@@ -22,9 +22,6 @@ return {
 		require("lspconfig").lua_ls.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
-			root_dir = function()
-				return vim.fn.getcwd()
-			end,
 			settings = {
 				Lua = {
 					completion = {
@@ -40,9 +37,7 @@ return {
 		require("lspconfig").clangd.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
-			root_dir = function()
-				return vim.fn.getcwd()
-			end,
+			root_dir = require("lspconfig").util.root_pattern("*.cpp"),
 		})
 		--[[ require("mason-lspconfig").setup_handlers {
 			-- The first entry (without a key) will be the default handler
