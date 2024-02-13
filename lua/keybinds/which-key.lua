@@ -166,7 +166,7 @@ wk.register({
 		name = "󰏌 - Open",
 		e = { "<cmd>NvimTreeToggle<CR>", "NvimTree" },
 		T = { "<cmd>ToggleTerm<CR>", "Toggle term" },
-		s = { "<cmd>SymbolsOutline<CR>", "Symbols Outline" },
+		s = { "<cmd>Outline<CR>", "Symbols Outline" },
 		d = { "<cmd>Dashboard<CR>", "Dashboard" },
 		n = { "<cmd>Nerdy<CR>", "Choose Nerd Font Icon" },
 		h = { "<cmd>Noice<CR>", "Notification history" },
