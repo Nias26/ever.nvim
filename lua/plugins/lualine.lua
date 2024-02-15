@@ -72,6 +72,8 @@ return {
 			magenta  = '#c678dd',
 			blue     = '#51afef',
 			red      = '#ec5f67',
+			white 	= '#ffffff',
+			black 	= '#000000',
 		}
 
 		local conditions = {
@@ -133,53 +135,44 @@ return {
 			table.insert(config.sections.lualine_z, component)
 		end
 
-		-- Start of lualine components
-		ins_left({
-			function()
-				return "▊"
-			end,
-			color = { fg = colors.green }, -- Sets highlighting of component
-			padding = { left = 0, right = 1 }, -- We don't need space before this
-		})
-
-		ins_left({
-			function()
-				return " "
-			end,
-			color = { fg = colors.green },
-			padding = { right = 1 },
-		})
-
 		ins_left({
 			-- mode component
 			function()
-				return vim.fn.mode()
+				local mode = vim.api.nvim_get_mode().mode
+				local mode_name
+
+				if mode == "n" or mode == "no" then
+					mode_name = "RW"
+				elseif mode == "i" or mode == "ic" then
+					mode_name = "**"
+				elseif mode == "v" or mode == "V" or mode == "\022" then
+					mode_name = "**"
+				elseif mode == "R" then
+					mode_name = "RA"
+				elseif mode == "c" then
+					mode_name = "VIEX"
+				elseif mode == "t" then
+					mode_name = ""
+				end
+				return " " .. mode_name
 			end,
 			color = function()
 				-- auto change color according to neovims mode
-				local mode_color = {
-					n = colors.whit,
-					i = colors.yellow,
-					v = colors.blue,
-					[""] = colors.blue,
-					V = colors.blue,
-					c = colors.red,
-					no = colors.red,
-					s = colors.orange,
-					S = colors.orange,
-					[""] = colors.orange,
-					ic = colors.yellow,
-					R = colors.violet,
-					Rv = colors.violet,
-					cv = colors.red,
-					ce = colors.red,
-					r = colors.cyan,
-					rm = colors.cyan,
-					["r?"] = colors.cyan,
-					["!"] = colors.red,
-					t = colors.red,
-				}
-				return { fg = mode_color[vim.fn.mode()] }
+				local mode = vim.api.nvim_get_mode().mode
+
+				if mode == "n" or mode == "no" then
+					return { bg = "#82cfff", fg = colors.black }
+				elseif mode == "i" or mode == "ic" then
+					return { bg = "#ff7eb6", fg = colors.black }
+				elseif mode == "v" or mode == "V" or mode == "\022" then
+					return { bg = "#be95ff", fg = colors.black }
+				elseif mode == "R" then
+					return { bg = "#3ddbd9", fg = colors.black }
+				elseif mode == "c" then
+					return { bg = "#42be65", fg = colors.black }
+				elseif mode == "t" then
+					return { bg = "#33b1ff", fg = colors.black }
+				end
 			end,
 			padding = { right = 1 },
 		})
