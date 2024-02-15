@@ -72,8 +72,6 @@ return {
 			magenta  = '#c678dd',
 			blue     = '#51afef',
 			red      = '#ec5f67',
-			white 	= '#ffffff',
-			black 	= '#000000',
 		}
 
 		local conditions = {
@@ -161,26 +159,20 @@ return {
 				local mode = vim.api.nvim_get_mode().mode
 
 				if mode == "n" or mode == "no" then
-					return { bg = "#82cfff", fg = colors.black }
+					return { bg = "#82cfff", fg = colors.bg }
 				elseif mode == "i" or mode == "ic" then
-					return { bg = "#ff7eb6", fg = colors.black }
+					return { bg = "#ff7eb6", fg = colors.bg }
 				elseif mode == "v" or mode == "V" or mode == "\022" then
-					return { bg = "#be95ff", fg = colors.black }
+					return { bg = "#be95ff", fg = colors.bg }
 				elseif mode == "R" then
-					return { bg = "#3ddbd9", fg = colors.black }
+					return { bg = "#3ddbd9", fg = colors.bg }
 				elseif mode == "c" then
-					return { bg = "#42be65", fg = colors.black }
+					return { bg = "#42be65", fg = colors.bg }
 				elseif mode == "t" then
-					return { bg = "#33b1ff", fg = colors.black }
+					return { bg = "#33b1ff", fg = colors.bg }
 				end
 			end,
 			padding = { right = 1 },
-		})
-
-		ins_left({
-			-- filesize component
-			"filesize",
-			cond = conditions.buffer_not_empty,
 		})
 
 		ins_left({
@@ -207,6 +199,14 @@ return {
 			function()
 				return "%="
 			end,
+		})
+
+		ins_left({
+			-- filesize component
+			"filesize",
+			color = { bg = colors.violet, fg = colors.bg },
+			icon = "󰈔",
+			cond = conditions.buffer_not_empty,
 		})
 
 		ins_left({
