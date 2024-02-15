@@ -70,8 +70,8 @@ wk.register({
 			d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition" },
 			r = { "<cmd>lua vim.lsp.buf.references()<CR>", "Go to references" },
 			a = { "<cmd>Lspsaga code_action<CR>", "Code Actions" },
-			h = { "<cmd>Lspasaga hover_doc<CR>", "LSP Signature" },
-			f = { "<cmd>Lspasaga finder<CR>", "Find References" },
+			h = { "<cmd>Lspsaga hover_doc<CR>", "LSP Signature" },
+			f = { "<cmd>Lspsaga finder<CR>", "Find References" },
 			s = {
 				function()
 					return ":IncRename" .. vim.fn.expand("<cword>")
