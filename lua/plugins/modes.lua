@@ -1,6 +1,6 @@
 return {
 	"mvllow/modes.nvim",
-	keys = { "v", "y", "<C-v>", "V", "d", "i", "a", "s", "o", "r" },
+	keys = { "v", "y", "<C-v>", "V", "d", "i", "a", "s", "o", "r", "R" },
 	config = function()
 		require("modes").setup({
 			colors = {
