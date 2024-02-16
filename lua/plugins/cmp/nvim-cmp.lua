@@ -19,34 +19,6 @@ return {
 			return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 		end
 
-		local kind_icons = {
-			Text = "󰉿",
-			Method = "󰆧",
-			Function = "󰊕",
-			Constructor = "",
-			Field = "󰜢",
-			Variable = "󰀫",
-			Class = "󰠱",
-			Interface = "",
-			Module = "",
-			Property = "󰜢",
-			Unit = "󰑭",
-			Value = "󰎠",
-			Enum = "",
-			Keyword = "󰌋",
-			Snippet = "",
-			Color = "󰏘",
-			File = "󰈙",
-			Reference = "󰈇",
-			Folder = "󰉋",
-			EnumMember = "",
-			Constant = "󰏿",
-			Struct = "󰙅",
-			Event = "",
-			Operator = "󰆕",
-			TypeParameter = "",
-		}
-
 		local status_ok, luasnip = pcall(require, "luasnip")
 		if not status_ok then
 			return print("Luasnip failed to load")
@@ -69,9 +41,11 @@ return {
 				},
 				documentation = {
 					border = nil,
+					---@diagnostic disable-next-line: assign-type-mismatch
 					scrollbar = "|",
 				},
 			},
+			---@diagnostic disable-next-line: missing-fields
 			formatting = {
 				fields = { "kind", "abbr", "menu" },
 				format = function(entry, vim_item)
@@ -159,5 +133,60 @@ return {
 				{ name = "fuzzy_path", option = { fd_timeout_msec = 1500 } },
 			}),
 		})
+
+		local colors = {
+			base00 = "#161616",
+			base01 = "#262626",
+			base02 = "#393939",
+			base03 = "#525252",
+			base04 = "#dde1e6",
+			base05 = "#f2f4f8",
+			base06 = "#ffffff",
+			base07 = "#08bdba",
+			base08 = "#3ddbd9",
+			base09 = "#78a9ff",
+			base0A = "#ee5396",
+			base0B = "#33b1ff",
+			base0C = "#ff7eb6",
+			base0D = "#42be65",
+			base0E = "#be95ff",
+			base0F = "#82cfff",
+		}
+
+		-- Define highlighting groups
+		local hl = vim.api.nvim_set_hl
+
+		hl(0, "PmenuSel", { bg = "#1f1f28", fg = "NONE" })
+		hl(0, "Pmenu", { fg = "#2a2a37", bg = "#1f1f28" })
+		hl(0, "CmpItemAbbr", { fg = "#adadad", bg = "NONE" })
+		hl(0, "CmpItemAbbrMatch", { fg = colors.base05, bg = "NONE", bold = true })
+		hl(0, "CmpItemAbbrMatchFuzzy", { fg = colors.base04, bg = "NONE", bold = true })
+		hl(0, "CmpItemMenu", { fg = colors.base04, bg = "NONE", italic = true })
+		hl(0, "CmpItemKindInterface", { fg = colors.base01, bg = colors.base08 })
+		hl(0, "CmpItemKindColor", { fg = colors.base01, bg = colors.base08 })
+		hl(0, "CmpItemKindTypeParameter", { fg = colors.base01, bg = colors.base08 })
+		hl(0, "CmpItemKindText", { fg = colors.base01, bg = colors.base09 })
+		hl(0, "CmpItemKindEnum", { fg = colors.base01, bg = colors.base09 })
+		hl(0, "CmpItemKindKeyword", { fg = colors.base01, bg = colors.base09 })
+		hl(0, "CmpItemKindConstant", { fg = colors.base01, bg = colors.base0A })
+		hl(0, "CmpItemKindConstructor", { fg = colors.base01, bg = colors.base0A })
+		hl(0, "CmpItemKindReference", { fg = colors.base01, bg = colors.base0A })
+		hl(0, "CmpItemKindFunction", { fg = colors.base01, bg = colors.base0B })
+		hl(0, "CmpItemKindStruct", { fg = colors.base01, bg = colors.base0B })
+		hl(0, "CmpItemKindClass", { fg = colors.base01, bg = colors.base0B })
+		hl(0, "CmpItemKindModule", { fg = colors.base01, bg = colors.base0B })
+		hl(0, "CmpItemKindOperator", { fg = colors.base01, bg = colors.base0B })
+		hl(0, "CmpItemKindField", { fg = colors.base01, bg = colors.base0C })
+		hl(0, "CmpItemKindProperty", { fg = colors.base01, bg = colors.base0C })
+		hl(0, "CmpItemKindEvent", { fg = colors.base01, bg = colors.base0C })
+		hl(0, "CmpItemKindUnit", { fg = colors.base01, bg = colors.base0D })
+		hl(0, "CmpItemKindSnippet", { fg = colors.base01, bg = colors.base0D })
+		hl(0, "CmpItemKindFolder", { fg = colors.base01, bg = colors.base0D })
+		hl(0, "CmpItemKindVariable", { fg = colors.base01, bg = colors.base0E })
+		hl(0, "CmpItemKindFile", { fg = colors.base01, bg = colors.base0E })
+		hl(0, "CmpItemKindMethod", { fg = colors.base01, bg = colors.base0F })
+		hl(0, "CmpItemKindValue", { fg = colors.base01, bg = colors.base0F })
+		hl(0, "CmpItemKindEnumMember", { fg = colors.base01, bg = colors.base0F })
+		hl(0, "CmpItemKindCodeium", { bg = colors.base0D })
 	end,
 }
