@@ -170,7 +170,6 @@ wk.register({
 		d = { "<cmd>Dashboard<CR>", "Dashboard" },
 		n = { "<cmd>Nerdy<CR>", "Choose Nerd Font Icon" },
 		h = { "<cmd>Noice<CR>", "Notification history" },
-		l = { "<cmd>LazyGit<CR>", "LazyGit" },
 		t = { "<cmd>Telescope<CR>", "Telescope" },
 	},
 })
