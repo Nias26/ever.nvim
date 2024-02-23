@@ -15,7 +15,8 @@ return {
 				{
 					callback = function(dir)
 						vim.notify("switched to dir: " .. dir)
-						vim.cmd("NvimTreeOpen")
+						-- vim.cmd("NvimTreeOpen")
+						vim.cmd("Telescope find_files cwd=" .. dir)
 					end,
 				},
 			},
