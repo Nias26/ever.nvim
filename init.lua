@@ -1,6 +1,12 @@
 -- Init.lua file (Main loaded lua file)
-vim.loader.enable() -- vim.loader.enable() # Check neovim wiki for this
+-- Check curren neovim version
+if vim.fn.has("nvim-0.10") ~= 1 then
+	print("Use neovim v0.10 or higher")
+	vim.cmd("sleep 3")
+	vim.cmd("qa")
+end
 
+vim.loader.enable() -- vim.loader.enable() # Check neovim wiki for this
 vim.g.mapleader = " " -- Set leader key
 vim.g.loaded_netrw = 1 -- Disable netrw
 vim.g.loaded_netrwPlugin = 1 -- Disable netrw
@@ -44,16 +50,6 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 vim.opt.rtp:prepend(lazypath)
-
--- Disable plugins not available for nvim-0.9.*
--- NOTE: Mabye there's space for improvment
-lazy_check = function()
-	if vim.fn.has("nvim-0.10") ~= 1 then
-		return false
-	elseif vim.fn.has("nvim-0.10") == 1 then
-		return true
-	end
-end
 
 -- Lazy.nvim setup
 require("lazy").setup({
