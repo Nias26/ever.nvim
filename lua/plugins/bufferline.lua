@@ -4,7 +4,9 @@ return {
 	tag = "v4.3.0",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
+		---@diagnostic disable-next-line: missing-fields
 		require("bufferline").setup({
+			---@diagnostic disable-next-line: missing-fields
 			options = {
 				separator_style = "thin",
 				diagnostics = "nvim_lsp",
