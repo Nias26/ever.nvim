@@ -41,8 +41,6 @@ map("n", "bd", "<cmd>bdel<CR>", { desc = "Delete current buffer" })
 map("n", "[", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
 map("n", "]", "<cmd>bnext<CR>", { desc = "Next buffer" })
 -- Tab managing
-map("n", "t", "<cmd>tabnew<CR>", { desc = "New tab" })
-map("n", "<C-t>", "<cmd>tabclose<CR>", { desc = "Close current tab" })
 map("n", "<Tab>", "<cmd>tabnext<CR>", { desc = "Next tab" })
 map("n", "<S-Tab>", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
 -- Splits
