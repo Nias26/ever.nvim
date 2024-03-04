@@ -19,7 +19,8 @@ return {
 			require("nvim-navic").attach(client, bufnr)
 		end
 
-		require("lspconfig").lua_ls.setup({
+		local lspconfig = require("lspconfig")
+		lspconfig.lua_ls.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 			settings = {
@@ -34,11 +35,19 @@ return {
 				},
 			},
 		})
-		require("lspconfig").clangd.setup({
+
+		lspconfig.clangd.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
-			root_dir = require("lspconfig").util.root_pattern("*.cpp"),
+			root_dir = lspconfig.util.root_pattern("*.cpp"),
 		})
+
+		lspconfig.eslint.setup({
+			capabilities = capabilities,
+			-- on_attach = on_attach,
+			root_dir = lspconfig.util.root_pattern("*.js"),
+		})
+
 		--[[ require("mason-lspconfig").setup_handlers {
 			-- The first entry (without a key) will be the default handler
 			-- and will be called for each installed server that doesn't have
