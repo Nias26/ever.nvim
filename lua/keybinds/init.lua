@@ -68,3 +68,5 @@ map("v", "<S-Up>", "<cmd>m .-2<CR>", { desc = "Move line up" })
 map("v", "P", '"_dP', { desc = "Delete and paste" })
 -- Open telescope-undo
 map("n", "U", "<cmd>Telescope undo<CR>", { desc = "Open undo history" })
+-- Indent whole page
+map("n", "==", "gg=G", { desc = "Indent whole page" })
