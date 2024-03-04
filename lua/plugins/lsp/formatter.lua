@@ -19,14 +19,14 @@ return {
 						}
 					end,
 				},
-				cpp = {
+				--[[ cpp = {
 					require("formatter.filetypes.cpp").clangformat,
 					function()
 						return {
 							exe = "clang-format",
 						}
 					end,
-				},
+				}, ]]
 			},
 		})
 		vim.api.nvim_create_augroup("Formatter", { clear = true })
