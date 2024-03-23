@@ -171,6 +171,7 @@ wk.register({
 		n = { "<cmd>Nerdy<CR>", "Choose Nerd Font Icon" },
 		h = { "<cmd>Noice<CR>", "Notification history" },
 		t = { "<cmd>Telescope<CR>", "Telescope" },
+		z = { "<cmd>ZenMode<CR>", "ZenMode" },
 	},
 })
 
