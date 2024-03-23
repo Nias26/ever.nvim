@@ -1,30 +1,54 @@
 return {
 	"lukas-reineke/indent-blankline.nvim",
 	event = "BufRead",
-   opts = {},
+	opts = {},
 	name = "ibl",
-   config = function()
+	config = function()
 		local highlight = {
-			"RainbowGray"
+			"RainbowGray",
 		}
 		local hooks = require("ibl.hooks")
 		hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
 			vim.api.nvim_set_hl(0, "RainbowGray", { fg = "#65676F" })
 		end)
-		require("ibl").setup{
+		require("ibl").setup({
 			exclude = {
-         	buftypes = { 'alpha', 'dashboard', 'lspinfo', 'lazy', 'checkhealth', 'help', 'man', 'Terminal', 'TelescopePrompt', 'TelescopeResults', 'mason' },
-            filetypes = { 'alpha', 'dashboard', 'lspinfo', 'lazy', 'checkhealth', 'help', 'man', 'Terminal', 'TelescopePrompt', 'TelescopeResults', 'mason' },
+				buftypes = {
+					"alpha",
+					"dashboard",
+					"lspinfo",
+					"lazy",
+					"checkhealth",
+					"help",
+					"man",
+					"Terminal",
+					"TelescopePrompt",
+					"TelescopeResults",
+					"mason",
+				},
+				filetypes = {
+					"alpha",
+					"dashboard",
+					"lspinfo",
+					"lazy",
+					"checkhealth",
+					"help",
+					"man",
+					"Terminal",
+					"TelescopePrompt",
+					"TelescopeResults",
+					"mason",
+				},
 			},
 
 			indent = {
-				highlight = {"Whitespace"},
+				highlight = { "Whitespace" },
 				char = "|",
 				smart_indent_cap = true,
 			},
 
 			whitespace = {
-				highlight = {"Whitespace"},
+				highlight = { "Whitespace" },
 				remove_blankline_trail = true,
 			},
 			scope = {
@@ -33,7 +57,7 @@ return {
 				show_end = false,
 				injected_languages = true,
 				highlight = highlight,
-			}
-	   }
-	end
+			},
+		})
+	end,
 }
