@@ -9,7 +9,8 @@ return {
 		vim.o.foldlevel = 99
 		vim.o.foldlevelstart = 99
 		vim.opt.foldenable = false
-		vim.o.foldmethod = "indent"
+		vim.o.foldmethod = "expr"
+		vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 		vim.g.markdown_folding = 1
 
 		-- Tell the server the capability of foldingRange,
