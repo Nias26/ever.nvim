@@ -235,9 +235,22 @@ return {
 		-- Add components to right sections
 
 		ins_right({
+			require("noice").api.status.search.get,
+			cond = require("noice").api.status.search.has,
+			icon = " ",
+			color = { fg = colors.blue },
+		})
+
+		ins_right({
+			require("noice").api.status.mode.get,
+			cond = require("noice").api.status.mode.has,
+			color = { fg = "#ff9e64" },
+		})
+
+		ins_right({
 			require("noice").api.status.command.get,
 			cond = require("noice").api.status.command.has,
-			icon = " ",
+			icon = "",
 			color = { fg = "#ff9e64" },
 		})
 
