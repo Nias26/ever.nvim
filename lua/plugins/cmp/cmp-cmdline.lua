@@ -1,5 +1,5 @@
 return {
-   "hrsh7th/cmp-cmdline",
+	"hrsh7th/cmp-cmdline",
 	event = "VeryLazy",
-   dependencies = { "hrsh7th/nvim-cmp" }
+	dependencies = { "hrsh7th/nvim-cmp" },
 }

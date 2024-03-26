@@ -1,6 +1,6 @@
 return {
 	"mhartington/formatter.nvim",
-	event = "BufEnter",
+	event = "BufWritePre",
 	config = function()
 		require("formatter").setup({
 			-- Enable or disable logging
