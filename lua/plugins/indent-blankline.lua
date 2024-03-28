@@ -10,6 +10,7 @@ return {
 		hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
 			vim.api.nvim_set_hl(0, "RainbowGray", { fg = "#65676F" })
 		end)
+
 		require("ibl").setup({
 			exclude = {
 				buftypes = {

@@ -1,11 +1,11 @@
 return {
 	{
-   	"nyoom-engineering/oxocarbon.nvim",
-      config = function()
-      	vim.opt.background = "dark" -- set this to dark or light
-      end,
-   },
-   {
+		"nyoom-engineering/oxocarbon.nvim",
+		config = function()
+			vim.opt.background = "dark" -- set this to dark or light
+		end,
+	},
+	{
 		"rebelot/kanagawa.nvim",
 		config = function()
 			require("kanagawa").setup({
@@ -23,22 +23,9 @@ return {
 				end,
 			})
 			vim.ui.border_style = "none"
-		end
-   },
-   {
-   	"sainnhe/sonokai",
-   },
-	{
-		"xero/miasma.nvim",
-		branch = "dev",
-		dependencies = {
-			"rktjmp/lush.nvim",
-		   "rktjmp/shipwright.nvim",
-		},
-		lazy = false,
-		priority = 1000
+		end,
 	},
 	{
-		"xiyaowong/transparent.nvim"
+		"xiyaowong/transparent.nvim",
 	},
 }

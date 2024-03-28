@@ -6,6 +6,7 @@ return {
 		"debugloop/telescope-undo.nvim",
 		"andrew-george/telescope-themes",
 		"nvim-telescope/telescope-file-browser.nvim",
+		"ibhagwan/fzf-lua",
 	},
 	config = function()
 		require("telescope").setup({

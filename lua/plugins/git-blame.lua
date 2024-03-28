@@ -10,9 +10,5 @@ return {
 		"GitBlameCopyCommitURL",
 		"GitBlameOpenCommitURL",
 	},
-	config = function()
-		require("gitblame").setup({
-			enabled = false,
-		})
-	end,
+	opts = { enabled = false },
 }
