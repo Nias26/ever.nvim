@@ -50,7 +50,7 @@ map("n", "<A-h>", "<C-w>>")
 map("n", "<A-j>", "<C-w>-")
 map("n", "<A-k>", "<C-w>+")
 map("n", "<A-l>", "<C-w><")
-map({ "n", "v" }, "Q", "<cmd>q<CR>", { desc = "Quit current window" })
+map({ "n", "v" }, "Q", "<cmd>bd!<CR>", { desc = "Quit current buffer" })
 -- LSP
 map({ "n", "v" }, "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { desc = "Go to definition" })
 map({ "n", "v" }, "gr", "<cmd>lua vim.lsp.buf.references()<CR>", { desc = "Go to references" })
