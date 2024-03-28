@@ -4,10 +4,6 @@ require("current-theme")
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
-function fcmd(command, opts)
-	vim.cmd({ cmd = command, args = { opts } })
-end
-
 -- Set Virtual text
 vim.diagnostic.config({
 	virtual_text = true,

@@ -87,22 +87,8 @@ wk.register({
 	["<leader>f"] = {
 		name = " - File",
 		d = { "<cmd>call delete(@%)<CR>", "Delete current file" },
-		r = {
-			function()
-				vim.ui.input({ prompt = "Rename" }, function(input)
-					fcmd("Rename", input)
-				end)
-			end,
-			"Rename current file",
-		},
-		m = {
-			function()
-				vim.ui.input({ prompt = "Move" }, function(input)
-					fcmd("Move", input)
-				end)
-			end,
-			"Move current file",
-		},
+		r = { ":Rename ", "Rename current file" },
+		m = { ":Move ", "Move current file" },
 		R = { "<cmd>lua require('persistence').load({ last = true })<CR>", "Restore last session" },
 	},
 })
@@ -131,28 +117,8 @@ wk.register({
 		d = { "<cmd>bdel<CR>", "Delete current buffer" },
 		s = {
 			name = " Split",
-			h = {
-				function()
-					vim.ui.input({ prompt = "Horizzontal split" }, function(input)
-						if input == "" then
-							input = "%"
-						end
-						fcmd("split", input)
-					end)
-				end,
-				"Horizzontal Split",
-			},
-			v = {
-				function()
-					vim.ui.input({ prompt = "Vertical split" }, function(input)
-						if input == "" then
-							input = "%"
-						end
-						fcmd("vsplit", input)
-					end)
-				end,
-				"Vertical Split",
-			},
+			h = { ":split ", "Horizzontal Split" },
+			v = { ":vsplit ", "Vertical Split" },
 			c = { "<cmd>q<CR>", "Close current split" },
 		},
 		["["] = { "<cmd>bprevious<CR>", "Previous buffer" },
