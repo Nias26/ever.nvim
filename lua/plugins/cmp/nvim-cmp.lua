@@ -35,9 +35,11 @@ return {
 			},
 			window = {
 				completion = {
-					winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+					border = "none",
+					winhighlight = "Normal:Pmenu,FloatBorder:None,Search:None",
 					col_offset = -3,
-					side_padding = 0,
+					side_padding = 1,
+					scrollbar = false,
 				},
 				documentation = {
 					border = nil,
@@ -47,19 +49,15 @@ return {
 			},
 			---@diagnostic disable-next-line: missing-fields
 			formatting = {
-				fields = { "kind", "abbr", "menu" },
+				fields = { "abbr", "kind", "menu" },
 				format = function(entry, vim_item)
-					local kind = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
-					local strings = vim.split(kind.kind, "%s", { trimempty = true })
-					kind.kind = " " .. (strings[1] or "") .. " "
-					kind.menu = "    [" .. (strings[2] or "") .. "]"
-					return kind
+					return lspkind.cmp_format()(entry, vim_item)
 				end,
 				lspkind.cmp_format({
-					mode = "symbol",
+					mode = "text_symbol",
 					maxwidth = 50,
 					ellipsis_char = "...",
-					symbol_map = { Codeium = "", String = "󰅳" },
+					symbol_map = { Codeium = "", String = "§" },
 				}),
 			},
 			mapping = cmp.mapping({
@@ -157,36 +155,36 @@ return {
 		local hl = vim.api.nvim_set_hl
 
 		hl(0, "PmenuSel", { bg = "#1f1f28", fg = "NONE" })
-		hl(0, "Pmenu", { fg = "#2a2a37", bg = "#1f1f28" })
+		hl(0, "Pmenu", { fg = "#2a2a37", bg = "#292937" })
 		hl(0, "CmpItemAbbr", { fg = "#adadad", bg = "NONE" })
 		hl(0, "CmpItemAbbrMatch", { fg = colors.base05, bg = "NONE", bold = true })
 		hl(0, "CmpItemAbbrMatchFuzzy", { fg = colors.base04, bg = "NONE", bold = true })
-		hl(0, "CmpItemMenu", { fg = colors.base04, bg = "NONE", italic = true })
-		hl(0, "CmpItemKindInterface", { fg = colors.base01, bg = colors.base08 })
-		hl(0, "CmpItemKindColor", { fg = colors.base01, bg = colors.base08 })
-		hl(0, "CmpItemKindTypeParameter", { fg = colors.base01, bg = colors.base08 })
-		hl(0, "CmpItemKindText", { fg = colors.base01, bg = colors.base09 })
-		hl(0, "CmpItemKindEnum", { fg = colors.base01, bg = colors.base09 })
-		hl(0, "CmpItemKindKeyword", { fg = colors.base01, bg = colors.base09 })
-		hl(0, "CmpItemKindConstant", { fg = colors.base01, bg = colors.base0A })
-		hl(0, "CmpItemKindConstructor", { fg = colors.base01, bg = colors.base0A })
-		hl(0, "CmpItemKindReference", { fg = colors.base01, bg = colors.base0A })
-		hl(0, "CmpItemKindFunction", { fg = colors.base01, bg = colors.base0B })
-		hl(0, "CmpItemKindStruct", { fg = colors.base01, bg = colors.base0B })
-		hl(0, "CmpItemKindClass", { fg = colors.base01, bg = colors.base0B })
-		hl(0, "CmpItemKindModule", { fg = colors.base01, bg = colors.base0B })
-		hl(0, "CmpItemKindOperator", { fg = colors.base01, bg = colors.base0B })
-		hl(0, "CmpItemKindField", { fg = colors.base01, bg = colors.base0C })
-		hl(0, "CmpItemKindProperty", { fg = colors.base01, bg = colors.base0C })
-		hl(0, "CmpItemKindEvent", { fg = colors.base01, bg = colors.base0C })
-		hl(0, "CmpItemKindUnit", { fg = colors.base01, bg = colors.base0D })
-		hl(0, "CmpItemKindSnippet", { fg = colors.base01, bg = colors.base0D })
-		hl(0, "CmpItemKindFolder", { fg = colors.base01, bg = colors.base0D })
-		hl(0, "CmpItemKindVariable", { fg = colors.base01, bg = colors.base0E })
-		hl(0, "CmpItemKindFile", { fg = colors.base01, bg = colors.base0E })
-		hl(0, "CmpItemKindMethod", { fg = colors.base01, bg = colors.base0F })
-		hl(0, "CmpItemKindValue", { fg = colors.base01, bg = colors.base0F })
-		hl(0, "CmpItemKindEnumMember", { fg = colors.base01, bg = colors.base0F })
-		hl(0, "CmpItemKindCodeium", { bg = colors.base0D })
+		hl(0, "CmpItemMenu", { bg = colors.base04, fg = "NONE", italic = true })
+		hl(0, "CmpItemKindInterface", { bg = "NONE", fg = colors.base08 })
+		hl(0, "CmpItemKindColor", { fg = colors.base08 })
+		hl(0, "CmpItemKindTypeParameter", { fg = colors.base08 })
+		hl(0, "CmpItemKindText", { fg = colors.base09 })
+		hl(0, "CmpItemKindEnum", { fg = colors.base09 })
+		hl(0, "CmpItemKindKeyword", { fg = colors.base09 })
+		hl(0, "CmpItemKindConstant", { fg = colors.base0A })
+		hl(0, "CmpItemKindConstructor", { fg = colors.base0A })
+		hl(0, "CmpItemKindReference", { fg = colors.base0A })
+		hl(0, "CmpItemKindFunction", { fg = colors.base0B })
+		hl(0, "CmpItemKindStruct", { fg = colors.base0B })
+		hl(0, "CmpItemKindClass", { fg = colors.base0B })
+		hl(0, "CmpItemKindModule", { fg = colors.base0B })
+		hl(0, "CmpItemKindOperator", { fg = colors.base0B })
+		hl(0, "CmpItemKindField", { fg = colors.base0C })
+		hl(0, "CmpItemKindProperty", { fg = colors.base0C })
+		hl(0, "CmpItemKindEvent", { fg = colors.base0C })
+		hl(0, "CmpItemKindUnit", { fg = colors.base0D })
+		hl(0, "CmpItemKindSnippet", { fg = colors.base0D })
+		hl(0, "CmpItemKindFolder", { fg = colors.base0D })
+		hl(0, "CmpItemKindVariable", { fg = colors.base0E })
+		hl(0, "CmpItemKindFile", { fg = colors.base0E })
+		hl(0, "CmpItemKindMethod", { fg = colors.base0F })
+		hl(0, "CmpItemKindValue", { fg = colors.base0F })
+		hl(0, "CmpItemKindEnumMember", { fg = colors.base0F })
+		hl(0, "CmpItemKindCodeium", { fg = colors.base0D })
 	end,
 }
