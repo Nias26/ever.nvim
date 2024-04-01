@@ -57,7 +57,7 @@ return {
 					mode = "text_symbol",
 					maxwidth = 50,
 					ellipsis_char = "...",
-					symbol_map = { Codeium = "", String = "§" },
+					symbol_map = { String = "§" },
 				}),
 			},
 			mapping = cmp.mapping({
@@ -100,7 +100,6 @@ return {
 				{ name = "nvim_lsp" },
 				{ name = "nvim_lsp_signature_help" },
 				{ name = "luasnip" },
-				{ name = "codeium" },
 				{ name = "path" },
 				{ name = "neorg" },
 			}),
