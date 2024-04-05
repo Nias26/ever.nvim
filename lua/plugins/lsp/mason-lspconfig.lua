@@ -1,4 +1,5 @@
 return {
+  -- TODO:Review mason-lspconfig usage 
 	"williamboman/mason-lspconfig.nvim",
 	event = "BufReadPre",
 	dependencies = {
