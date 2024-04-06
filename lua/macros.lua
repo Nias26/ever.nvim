@@ -1,5 +1,5 @@
 -- Set colorscheme
-require("current-theme")
+vim.cmd.colorscheme("kanagawa")
 
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd

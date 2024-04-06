@@ -1,9 +1,3 @@
--- Which-key Keybinds
-local status_ok, _ = pcall(require, "keybinds.which-key")
-if not status_ok then
-	return
-end
-
 -- keybinds
 local map = vim.keymap.set
 
