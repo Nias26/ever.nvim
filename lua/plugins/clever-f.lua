@@ -24,5 +24,10 @@ return {
 		})
 	end, ]]
 	"rhysd/clever-f.vim",
-	keys = { "f", "F", "t", "T" },
+	keys = {
+		{ "f", mode = { "n", "v", "o" } },
+		{ "F", mode = { "n", "v", "o" } },
+		{ "t", mode = { "n", "v", "o" } },
+		{ "T", mode = { "n", "v", "o" } },
+	},
 }
