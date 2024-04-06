@@ -18,7 +18,7 @@ vim.diagnostic.config({
 
 -- Open LSP Diagnostic window over error, warn, info, ...
 -- Function to check if a floating dialog exists and if not then check for diagnostics under the cursor
-function OpenDiagnosticIfNoFloat()
+local function OpenDiagnosticIfNoFloat()
 	for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
 		if vim.api.nvim_win_get_config(winid).zindex then
 			return
@@ -41,7 +41,7 @@ end
 augroup("lsp_diagnostics_hold", { clear = true })
 autocmd({ "CursorHold" }, {
 	pattern = "*",
-	command = "lua OpenDiagnosticIfNoFloat()",
+	callback = OpenDiagnosticIfNoFloat,
 	group = "lsp_diagnostics_hold",
 })
 
@@ -69,12 +69,6 @@ vim.api.nvim_create_autocmd("QuitPre", {
 	end,
 })
 
--- Typos when writing commands
-vim.api.nvim_create_user_command("Q", "q", {})
-vim.api.nvim_create_user_command("Wq", "wq", {})
-vim.api.nvim_create_user_command("Qa", "qa", {})
-vim.api.nvim_create_user_command("Wqa", "wqa", {})
-
 -- Lsp progress Lualine
 augroup("lualine_augroup", { clear = true })
 autocmd("User", {
@@ -84,20 +78,20 @@ autocmd("User", {
 })
 
 -- Persistent Folds
-local save_fold = augroup("Persistent Folds", { clear = true })
+augroup("Persistent Folds", { clear = true })
 autocmd("BufWinLeave", {
 	pattern = "*.*",
 	callback = function()
 		vim.cmd.mkview()
 	end,
-	group = save_fold,
+	group = "Persistent Folds",
 })
 autocmd("BufWinEnter", {
 	pattern = "*.*",
 	callback = function()
 		vim.cmd.loadview({ mods = { emsg_silent = true } })
 	end,
-	group = save_fold,
+	group = "Persistent Folds",
 })
 
 -- Dashboard Highlight group
