@@ -4,14 +4,12 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"debugloop/telescope-undo.nvim",
-		"andrew-george/telescope-themes",
 		"nvim-telescope/telescope-file-browser.nvim",
 		"ibhagwan/fzf-lua",
 	},
 	config = function()
 		require("telescope").setup({
 			extensions = {
-				themes = {},
 				file_browser = {},
 				undo = {
 					use_delta = true,
@@ -25,7 +23,6 @@ return {
 				scope = {},
 			},
 		})
-		require("telescope").load_extension("themes")
 		require("telescope").load_extension("file_browser")
 		require("telescope").load_extension("undo")
 		require("telescope").load_extension("scope")
