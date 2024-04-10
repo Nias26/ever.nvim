@@ -48,7 +48,7 @@ map("n", "cf", function()
 	vim.lsp.buf.format({ async = true })
 end, { desc = "Code Format" })
 map("n", "ca", "<cmd>Lspsaga code_action<CR>", { desc = "Code Actions" })
-map("n", "cd", "<cmd>Lspsaga hover_doc<CR>", { desc = "LSP Signature" })
+map("n", "cd", "<cmd>Lspsaga hover_doc<CR>", { desc = "LSP Code Doc" })
 map("n", "cr", ":IncRename ", { desc = "LSP Rename" })
 -- Text modification
 map("v", "<S-Down>", "<cmd>m .+1<CR>", { desc = "Move line down" })
