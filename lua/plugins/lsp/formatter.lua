@@ -27,6 +27,14 @@ return {
 						}
 					end,
 				}, ]]
+				go = {
+					require("formatter.filetypes.go").goimports,
+					function()
+						return {
+							exe = "goimports",
+						}
+					end,
+				},
 			},
 		})
 		vim.api.nvim_create_augroup("Formatter", { clear = true })
