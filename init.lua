@@ -2,15 +2,15 @@
 -- Check curren neovim version
 if vim.fn.has("nvim-0.10") ~= 1 then
 	print("Use neovim v0.10 or higher")
-	vim.cmd("sleep 3")
-	vim.cmd("qa")
+	vim.cmd.sleep(3)
+	vim.cmd.qa()
 end
 
 vim.loader.enable() -- vim.loader.enable() # Check neovim wiki for this
 vim.g.mapleader = " " -- Set leader key
 vim.g.loaded_netrw = 1 -- Disable netrw
 vim.g.loaded_netrwPlugin = 1 -- Disable netrw
-vim.g.showcmdloc = "statusline" -- Show commang message location
+vim.g.showcmdloc = "statusline" -- Show command message location
 
 local options = {
 	relativenumber = true, -- Set Relative Number line
@@ -89,15 +89,3 @@ require("lazy").setup({
 
 require("macros")
 require("keybinds")
-
---[[ local status_ok, _ = pcall(require, "lua/macros")
-if not status_ok then
-	vim.notify("Error loading /lua/macros.lua", vim.log.levels.ERROR)
-	return
-end ]]
-
---[[ local status_ok, _ = pcall(require, "lua/keybinds")
-if not status_ok then
-	vim.notify("Error loading /lua/keybinds.lua", vim.log.levels.ERROR)
-	return
-end ]]
