@@ -54,5 +54,7 @@ map("n", "cr", ":IncRename ", { desc = "LSP Rename" })
 map("v", "<S-Down>", "<cmd>m .+1<CR>", { desc = "Move line down" })
 map("v", "<S-Up>", "<cmd>m .-2<CR>", { desc = "Move line up" })
 map("v", "P", '"_dP', { desc = "Delete and paste" })
+-- Undotree
+vim.keymap.set("n", "U", "<cmd>UndotreeToggle<CR>", { desc = "Open undo history" })
 -- Indent whole page
 map("n", "==", "gg=G", { desc = "Indent whole page" })
