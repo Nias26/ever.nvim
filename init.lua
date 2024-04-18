@@ -31,6 +31,8 @@ local options = {
 	autochdir = true, -- Auto change directory
 	clipboard = "unnamedplus", -- Sync with system clipboard
 	wrap = false, -- Disable line wrap
+	grepprg = "rg --vimgrep", -- Use ripgrep instead of grep
+	grepformat = "%f:%l:%c:%m", -- Grep formatting
 }
 
 for k, v in pairs(options) do
