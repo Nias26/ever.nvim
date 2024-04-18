@@ -60,6 +60,6 @@ map("n", "U", "<cmd>UndotreeToggle<CR>", { desc = "Open undo history" })
 map(
 	"n",
 	"==",
-	":lua p = vim.api.nvim_win_get_cursor(0)<CR>gg=G:lua vim.api.nvim_win_set_cursor(0,p)<CR>kk",
+	":lua p = vim.api.nvim_win_get_cursor(0)<CR>gg=G:lua vim.api.nvim_win_set_cursor(0,p)<CR>k",
 	{ desc = "Indent whole page" }
 )
