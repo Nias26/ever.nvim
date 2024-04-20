@@ -21,6 +21,7 @@ return {
 						TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
 					}
 				end,
+				keywordStyle = { italic = false },
 			})
 			vim.ui.border_style = "none"
 		end,
