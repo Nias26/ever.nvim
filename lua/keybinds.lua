@@ -57,9 +57,10 @@ map("v", "P", '"_dP', { desc = "Delete and paste" })
 -- Undotree
 map("n", "U", "<cmd>UndotreeToggle<CR>", { desc = "Open undo history" })
 -- Indent whole page
-map(
-	"n",
-	"==",
-	":lua p = vim.api.nvim_win_get_cursor(0)<CR>gg=G:lua vim.api.nvim_win_set_cursor(0,p)<CR>k",
-	{ desc = "Indent whole page" }
-)
+map("n", "==", function()
+	local c = vim.fn.getpos(".")
+	local v = vim.fn.winsaveview()
+	vim.cmd.normal("ggVG==")
+	vim.fn.setpos(".", c)
+	vim.fn.winrestview(v)
+end, { desc = "Indent whole page" })
