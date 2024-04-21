@@ -61,7 +61,8 @@ return {
 		-- Color table for highlights
 		-- stylua: ignore
 		local colors = {
-			bg       = '#202328',
+			-- bg       = '#202328',
+			bg 		= '#1f1f28', -- For Kanagawa Only
 			fg       = '#bbc2cf',
 			yellow   = '#ECBE7B',
 			cyan     = '#008080',
@@ -339,12 +340,13 @@ return {
 			end,
 		})
 
+		-- WARN: If this component is not here, all lualine will fail to load???
 		ins_right({
 			function()
 				return "▊"
 			end,
-			color = { fg = colors.blue },
-			padding = { left = 1 },
+			color = { fg = colors.bg },
+			padding = { left = -1 },
 		})
 
 		-- Now don't forget to initialize lualine
