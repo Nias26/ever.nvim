@@ -2,11 +2,11 @@
 -- Check curren neovim version
 if vim.fn.has("nvim-0.10") ~= 1 then
 	print("Use neovim v0.10 or higher")
-	vim.cmd.sleep(3)
+	vim.cmd.sleep(2)
 	vim.cmd.qa()
 end
 
-vim.loader.enable() -- vim.loader.enable() # Check neovim wiki for this
+vim.loader.enable() -- Faster boot time
 vim.g.mapleader = " " -- Set leader key
 vim.g.loaded_netrw = 1 -- Disable netrw
 vim.g.loaded_netrwPlugin = 1 -- Disable netrw
@@ -33,6 +33,7 @@ local options = {
 	wrap = false, -- Disable line wrap
 	grepprg = "rg --vimgrep", -- Use ripgrep instead of grep
 	grepformat = "%f:%l:%c:%m", -- Grep formatting
+	formatexpr = "v:lua.require'conform'.formatexpr()",
 }
 
 for k, v in pairs(options) do
