@@ -1,4 +1,5 @@
 -- Init.lua file (Main loaded lua file)
+-- another comment
 -- Check curren neovim version
 if vim.fn.has("nvim-0.10") ~= 1 then
 	print("Use neovim v0.10 or higher")
