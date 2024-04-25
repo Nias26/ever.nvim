@@ -39,8 +39,10 @@ return {
 		-- Index
 		wk.register({
 			["<leader>"] = {
-				["["] = { "<cmd>bprevious<CR>", "Previous buffer" },
-				["]"] = { "<cmd>bnext<CR>", "Next buffer" },
+				t = { "<cmd>tabnew<CR>", "New Tab" },
+				d = { "<cmd>tabclose<CR>", "Delete current tab" },
+				["["] = { "<cmd>tabprevious<CR>", "Previous tab" },
+				["]"] = { "<cmd>tabnext<CR>", "Next tab" },
 				M = "which_key_ignore",
 				q = { "<cmd>wqa<CR>", "Fast quit" },
 				m = { "<cmd>Telescope keymaps<CR>", "Show keymaps" },
