@@ -66,8 +66,8 @@ return {
 				b = {
 					name = " - Bookmarks",
 					["1"] = { "<cmd>e ~/.zshrc<CR>", "~/.zshrc" },
-					["2"] = { "<cmd>e ~/.config/nvim/init.lua<CR>", "~/.config/nvim/init.lua" },
-					["3"] = {},
+					["2"] = { "<cmd>e ~/.zshenv<CR>", "~/.zshenv" },
+					["3"] = { "<cmd>e ~/.config/nvim/init.lua<CR>", "~/.config/nvim/init.lua" },
 					["4"] = {},
 					["5"] = {},
 					["6"] = {},
@@ -77,7 +77,6 @@ return {
 					["0"] = {},
 				},
 				v = { "<cmd>TransparentToggle<CR>", "Toggle transparency theme" },
-				u = { "<cmd>!cd $HOME/.config/nvim && git pull<CR>", "Pull updates" },
 			},
 		})
 
