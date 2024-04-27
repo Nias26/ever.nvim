@@ -12,10 +12,6 @@ map("i", "jk", "<Esc>", { desc = "Exit insert mode" })
 map("n", "<ESC><ESC>", "<cmd>nohlsearch<CR>")
 -- Fast switch window
 map({ "n", "v" }, "!", "<C-w>w")
--- Previous search
-map("n", ",", "N")
--- Next search
-map("n", ".", "n")
 -- Fast window switch
 map("n", "<C-h>", "<C-w>h")
 map("n", "<C-j>", "<C-w>j")
