@@ -24,6 +24,7 @@ return {
 			return print("Luasnip failed to load")
 		end
 		cmp.setup({
+			preselect = cmp.PreselectMode.None,
 			-- If you want you can enable ghost text
 			--[[ experimental = {
 				ghost_text = { hl_group = 'Comment' },
@@ -89,7 +90,7 @@ return {
 				["<CR>"] = cmp.mapping({
 					i = function(fallback)
 						if cmp.visible() and cmp.get_active_entry() then
-							cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+							cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = false })
 						else
 							fallback()
 						end
@@ -104,7 +105,7 @@ return {
 				{ name = "neorg" },
 			}),
 			enabled = function()
-				buftype = vim.api.nvim_buf_get_option(0, "buftype")
+				local buftype = vim.api.nvim_buf_get_option(0, "buftype")
 				if buftype == "prompt" then
 					return false
 				end
