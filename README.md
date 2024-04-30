@@ -1,13 +1,13 @@
 # ever.nvim
 Yes, I am so obsessed with Neovim that I made a repo apart...
 
-### Features
+### :package: Features
 It uses the famous [kanagawa](https://www.github.com/rebelot/kanagawa.nvim) colorscheme and many famous plugins such:
   - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
   - [dashboard](https://github.com/nvimdev/dashboard-nvim)
   - [noice](https://github.com/folke/noice.nvim)
   - [telescope](https://github.com/nvim-telescope/telescope.nvim)
-  - [clever-f](https://github.com/rhysd/clever-f.vim) -- Thinking of replacing with [mini.jump](https://github.com/echasnovski/mini.jump)
+  - [mini.jump](https://github.com/echasnovski/mini.jump)
   - [lspsaga](https://github.com/nvimdev/lspsaga.nvim)
   - [neodev](https://github.com/folke/neodev.nvim)
   - [nvim-navic](https://github.com/SmiteshP/nvim-navic)
@@ -15,7 +15,13 @@ It uses the famous [kanagawa](https://www.github.com/rebelot/kanagawa.nvim) colo
   - and many others... (63 total)
 All powered by [lazy.nvim](https://www.github.com/folke/lazy.nvim)
 
-## Screenshots
+:stopwatch: Startup time:
+  - On first launch: around 2000ms
+  - Cached: 109.21ms 
+
+Note that theese values can be affected by your machine performance!
+
+## :camera: Screenshots
 Might be outdated, but it's still the same experience! 😃
 <details>
   <summary>Click to expand</summary>
@@ -29,19 +35,16 @@ Might be outdated, but it's still the same experience! 😃
   
 </details>
 
-## Requirements
-Neovim >= 0.10.0
-
-ripgrep (rg)
-
-git
-
-npm 
+## :gear: Requirements
+- Neovim >= 0.10.0
+- ripgrep (rg)
+- git
+- npm 
 
 > [!WARNING]
 > Over time the plugins, keybinds, ... changes for my needs. You can fork the repo at one commit to then customize it at your needs. Or just make your own!
 
-## Installation
+## :floppy_disk: Installation
 Clone this repo to your config folder
 #### https
 ```
@@ -52,6 +55,6 @@ git clone https://github.com/Nias26/ever.nvim.git --depth 1 $HOME/.config/nvim
 git clone git@github.com:Nias26/ever.nvim.git --depth 1 $HOME/.config/nvim
 ```
 
-## Docs
-🚧 For now only in neorg, providing to translate... 🚧
+## :bookmark: Docs
+🚧 WIP (probably never as I'm too lazy and I don't think this repo needs one) 🚧
 
