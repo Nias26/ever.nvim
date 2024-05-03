@@ -17,4 +17,12 @@ return {
 		ft = "markdown",
 		opts = {},
 	},
+	{
+		"MeanderingProgrammer/markdown.nvim",
+		cmd = "RenderMarkdownToggle",
+		ft = "markdown",
+		name = "render-markdown",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		opts = { headings = { "󰎤 ", "󰼐 ", "󰎫 ", "󰲦 ", "󰲩 ", "󰬿" } },
+	},
 }
