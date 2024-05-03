@@ -46,7 +46,6 @@ return {
 				M = "which_key_ignore",
 				q = { "<cmd>wqa<CR>", "Fast quit" },
 				m = { "<cmd>Telescope keymaps<CR>", "Show keymaps" },
-				["<leader>"] = { "<cmd>WhichKey<CR>", "Index" },
 			},
 		})
 
