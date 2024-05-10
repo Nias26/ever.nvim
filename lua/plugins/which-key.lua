@@ -138,8 +138,8 @@ return {
 				d = { "<cmd>bdel<CR>", "Delete current buffer" },
 				s = {
 					name = " Split",
-					h = { ":split", "Horizzontal Split" },
-					v = { ":vsplit", "Vertical Split" },
+					h = { ":split ", "Horizzontal Split" },
+					v = { ":vsplit ", "Vertical Split" },
 					c = { "<cmd>q<CR>", "Close current split" },
 				},
 				["["] = { "<cmd>bprevious<CR>", "Previous buffer" },
