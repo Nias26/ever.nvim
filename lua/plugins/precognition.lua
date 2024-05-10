@@ -3,5 +3,6 @@ return {
 	event = "BufRead",
 	opts = {
 		startVisible = false,
+		showlankVirtLine = false,
 	},
 }
