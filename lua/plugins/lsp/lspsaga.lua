@@ -12,6 +12,14 @@ return {
 		end
 
 		lspsaga.setup({
+			diagnostic = {
+				show_code_action = true,
+				jump_num_shortcut = true,
+				diagnostic_only_current = false,
+				keys = {
+					quit = { "q", "<ESC>" },
+				},
+			},
 			ui = {
 				code_action = "󰌵",
 				border = "solid",
