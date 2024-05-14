@@ -1,5 +1,9 @@
 return {
 	"akinsho/bufferline.nvim",
+	dependencies = {
+		"tiagovla/scope.nvim",
+		opts = true,
+	},
 	-- WARN:Do not set lazy-loaing on bufferline, or it won't show!
 	config = function()
 		local bufferline = require("bufferline")
