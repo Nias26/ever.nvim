@@ -82,6 +82,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "Trouble", "NvimTree", "lazy", "dashboard", "TelescopePrompt", "" },
 	callback = function()
 		require("ufo").detach()
+		vim.opt_local.foldenable = false
 	end,
 })
 
