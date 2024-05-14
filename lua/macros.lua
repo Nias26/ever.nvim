@@ -77,22 +77,5 @@ autocmd("User", {
 	callback = require("lualine").refresh,
 })
 
--- Persistent Folds
-augroup("Persistent Folds", { clear = true })
-autocmd("BufWinLeave", {
-	pattern = "*.*",
-	callback = function()
-		vim.cmd.mkview()
-	end,
-	group = "Persistent Folds",
-})
-autocmd("BufWinEnter", {
-	pattern = "*.*",
-	callback = function()
-		vim.cmd.loadview({ mods = { emsg_silent = true } })
-	end,
-	group = "Persistent Folds",
-})
-
 -- Dashboard Highlight group
 vim.api.nvim_set_hl(0, "DashboardFooter", { fg = "#08A045" })
