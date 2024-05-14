@@ -77,5 +77,13 @@ autocmd("User", {
 	callback = require("lualine").refresh,
 })
 
+-- Disable folding in certain filetypes
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "Trouble", "NvimTree", "lazy", "dashboard", "TelescopePrompt", "" },
+	callback = function()
+		require("ufo").detach()
+	end,
+})
+
 -- Dashboard Highlight group
 vim.api.nvim_set_hl(0, "DashboardFooter", { fg = "#08A045" })
