@@ -26,8 +26,8 @@ map("n", "<F2>", "<cmd>Telescope find_files<CR>", { desc = "Find Files" })
 map("n", "<F3>", "<cmd>NvimTreeToggle<CR>", { desc = "Open Nvim Tree" })
 -- Buffer managing
 map("n", "bd", "<cmd>bdel<CR>", { desc = "Delete current buffer" })
-map("n", "<Tab>", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
-map("n", "<S-Tab>", "<cmd>bnext<CR>", { desc = "Next buffer" })
+map("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Previous buffer" })
+map("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Next buffer" })
 -- Splits
 map("n", "Sh", ":split ", { desc = "Horizzontal Split" })
 map("n", "Sv", ":vsplit ", { desc = "Vertical Split" })
