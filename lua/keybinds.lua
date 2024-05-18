@@ -48,9 +48,7 @@ map("n", "cd", "<cmd>Lspsaga hover_doc<CR>", { desc = "LSP Code Doc" })
 map("n", "cr", ":IncRename ", { desc = "LSP Rename" })
 map("n", "c[", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { desc = "Go to Previous Diagnostic" })
 map("n", "c]", "<cmd>Lspsaga diagnostic_jump_next<CR>", { desc = "Go to Next Diagnostic" })
--- Text modification
-map("v", "<S-Down>", "<cmd>m .+1<CR>", { desc = "Move line down" })
-map("v", "<S-Up>", "<cmd>m .-2<CR>", { desc = "Move line up" })
+-- Special paste
 map("v", "P", '"_dP', { desc = "Delete and paste" })
 -- Undotree
 map("n", "U", "<cmd>UndotreeToggle<CR>", { desc = "Open undo history" })
