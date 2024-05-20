@@ -30,17 +30,5 @@ return {
 				},
 			},
 		})
-
-		lspconfig.clangd.setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			root_dir = lspconfig.util.root_pattern("*.c", "*.cpp", "*.h", "*.hpp"),
-		})
-
-		lspconfig.gopls.setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			settings = {},
-		})
 	end,
 }
