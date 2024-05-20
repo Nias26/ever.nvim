@@ -1,6 +1,6 @@
 return {
 	"folke/neodev.nvim",
-	event = "BufReadPre",
+	event = "BufEnter",
 	opts = {
 		library = {
 			enabled = true, -- when not enabled, neodev will not change any settings to the LSP server

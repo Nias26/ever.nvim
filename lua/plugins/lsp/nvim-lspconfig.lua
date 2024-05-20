@@ -1,6 +1,6 @@
 return {
 	"neovim/nvim-lspconfig",
-	event = "BufReadPre",
+	event = "BufEnter",
 	config = function()
 		local signs = { Error = " ", Warn = " ", Hint = "󰌵 ", Info = "󱈸 " }
 		for type, icon in pairs(signs) do
@@ -35,11 +35,6 @@ return {
 			capabilities = capabilities,
 			on_attach = on_attach,
 			root_dir = lspconfig.util.root_pattern("*.c", "*.cpp", "*.h", "*.hpp"),
-		})
-
-		lspconfig.tsserver.setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
 		})
 
 		lspconfig.gopls.setup({
