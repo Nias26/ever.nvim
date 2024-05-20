@@ -83,7 +83,6 @@ return {
 		wk.register({
 			["<leader>c"] = {
 				name = " - Code",
-				c = { "<cmd>Neogen<CR>", "Generate comment" },
 				t = { "<cmd>TroubleToggle<CR>", "Trouble" },
 				g = { "<cmd>GitBlameToggle<CR>", "Toggle git status" },
 				l = {
@@ -93,12 +92,6 @@ return {
 					a = { "<cmd>Lspsaga code_action<CR>", "Code Actions" },
 					h = { "<cmd>Lspsaga hover_doc<CR>", "LSP Signature" },
 					f = { "<cmd>Lspsaga finder<CR>", "Find References" },
-					s = {
-						function()
-							return ":IncRename" .. vim.fn.expand("<cword>")
-						end,
-						"LSP Rename",
-					},
 				},
 			},
 		})
