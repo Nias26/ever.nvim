@@ -1,6 +1,14 @@
 return {
 	"hrsh7th/nvim-cmp",
-	lazy = true,
+	event = "InsertEnter",
+	dependencies = {
+		"onsails/lspkind.nvim",
+		"hrsh7th/cmp-path",
+		"hrsh7th/cmp-nvim-lsp",
+		"hrsh7th/cmp-nvim-lsp-signature-help",
+		"saadparwaiz1/cmp_luasnip",
+		"hrsh7th/cmp-cmdline",
+	},
 	config = function()
 		-- Set up nvim-cmp.
 		local status_ok, cmp = pcall(require, "cmp")
