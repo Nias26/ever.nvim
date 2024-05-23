@@ -2,6 +2,8 @@ return {
 	"neovim/nvim-lspconfig",
 	event = "BufEnter",
 	config = function()
+		local lspconfig = require("lspconfig")
+
 		local signs = { Error = " ", Warn = " ", Hint = "󰌵 ", Info = "󱈸 " }
 		for type, icon in pairs(signs) do
 			local hl = "DiagnosticSign" .. type
@@ -10,11 +12,11 @@ return {
 
 		-- Servers Configuration
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
 		local on_attach = function(client, bufnr)
 			require("nvim-navic").attach(client, bufnr)
 		end
 
-		local lspconfig = require("lspconfig")
 		lspconfig.lua_ls.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
