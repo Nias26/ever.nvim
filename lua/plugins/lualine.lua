@@ -3,57 +3,6 @@ return {
 	event = "BufRead",
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
-		{
-			"linrongbin16/lsp-progress.nvim",
-			config = function()
-				require("lsp-progress").setup({
-					client_format = function(client_name, spinner, series_messages)
-						if #series_messages == 0 then
-							return nil
-						end
-						return {
-							name = client_name,
-							body = spinner .. " " .. table.concat(series_messages, ", "),
-						}
-					end,
-					format = function(client_messages)
-						--- @param name string
-						--- @param msg string?
-						--- @return string
-						local function stringify(name, msg)
-							return msg and string.format("%s %s", name, msg) or name
-						end
-
-						local sign = ""
-						local lsp_clients = vim.lsp.get_active_clients()
-						local messages_map = {}
-						for _, climsg in ipairs(client_messages) do
-							messages_map[climsg.name] = climsg.body
-						end
-
-						if #lsp_clients > 0 then
-							table.sort(lsp_clients, function(a, b)
-								return a.name < b.name
-							end)
-							local builder = {}
-							for _, cli in ipairs(lsp_clients) do
-								if type(cli) == "table" and type(cli.name) == "string" and string.len(cli.name) > 0 then
-									if messages_map[cli.name] then
-										table.insert(builder, stringify(cli.name, messages_map[cli.name]))
-									else
-										table.insert(builder, stringify(cli.name))
-									end
-								end
-							end
-							if #builder > 0 then
-								return sign .. "" .. table.concat(builder, ", ")
-							end
-						end
-						return ""
-					end,
-				})
-			end,
-		},
 	},
 	config = function()
 		local lualine = require("lualine")
@@ -198,32 +147,28 @@ return {
 		-- for lualine it's any number greater then 2
 		ins_left({
 			function()
-				return "%="
+				if not conditions.check_git_workspace() then
+					return "                    %="
+				else
+					return "%="
+				end
 			end,
 		})
 
 		ins_left({
-			-- filesize component
-			"filesize",
-			color = { bg = colors.violet, fg = colors.bg },
-			icon = "󰈔",
-			cond = conditions.buffer_not_empty,
-		})
-
-		ins_left({
-			"filename",
-			cond = conditions.buffer_not_empty,
-			color = { fg = colors.magenta, gui = "bold" },
-		})
-
-		ins_left({
-			require("lsp-progress").progress,
-			icon = " LSP:",
+			function()
+				return require("nvim-treesitter").statusline({
+					indicator_size = 70,
+					type_patterns = { "function", "method" },
+					separator = "  ",
+				})
+			end,
+			icon = "󰊕:",
 			color = { fg = "#7cb518", gui = "bold" },
 		})
 
 		ins_left({
-			"diagnostics",
+			"diagnostics%=",
 			sources = { "nvim_diagnostic" },
 			symbols = { error = " ", warn = " ", info = " " },
 			diagnostics_color = {

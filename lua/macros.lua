@@ -69,14 +69,6 @@ vim.api.nvim_create_autocmd("QuitPre", {
 	end,
 })
 
--- Lsp progress Lualine
-augroup("lualine_augroup", { clear = true })
-autocmd("User", {
-	group = "lualine_augroup",
-	pattern = "LspProgressStatusUpdated",
-	callback = require("lualine").refresh,
-})
-
 -- Disable folding in certain filetypes
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "Trouble", "NvimTree", "lazy", "dashboard", "TelescopePrompt", "" },
