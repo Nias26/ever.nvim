@@ -37,7 +37,7 @@ return {
 					}
 				end,
 				keywordStyle = { italic = false },
-				commentStyle = { italic = false },
+				commentStyle = { italic = true },
 			})
 			vim.ui.border_style = "none"
 		end,
