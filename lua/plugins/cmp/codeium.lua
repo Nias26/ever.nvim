@@ -1,7 +1,7 @@
 return {
 	"Exafunction/codeium.vim",
 	enabled = false,
-	event = "BufRead",
+	event = "InsertEnter",
 	config = function()
 		-- Change '<C-g>' here to any keycode you like.
 		vim.keymap.set("i", "<c-c>", function()
