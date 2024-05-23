@@ -127,7 +127,7 @@ return {
 
 		ins_left({
 			"branch",
-			icon = "",
+			icon = "",
 			color = { fg = colors.violet, gui = "bold" },
 			cond = conditions.check_git_workspace,
 		})
