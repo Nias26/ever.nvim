@@ -60,7 +60,9 @@ map("n", "==", function()
 	vim.fn.setpos(".", c)
 	vim.fn.winrestview(v)
 end, { desc = "Indent whole page" })
--- Open precognition
-map("n", "<space><space>", function()
-	require("precognition").peek()
-end, { desc = "Precognition" })
+-- Grug-far
+map("n", ";r", function()
+	require("grug-far").grug_far({
+		prefills = { search = vim.fn.expand("<cword>") },
+	})
+end, { desc = "Grug-Far" })
