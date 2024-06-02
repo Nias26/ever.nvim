@@ -8,6 +8,7 @@ end
 
 vim.loader.enable() -- Faster boot time
 vim.g.mapleader = " " -- Set leader key
+vim.g.maplocalleader = "," -- Set localleader
 vim.g.loaded_netrw = 1 -- Disable netrw
 vim.g.loaded_netrwPlugin = 1 -- Disable netrw
 vim.g.showcmdloc = "statusline" -- Show command message location
