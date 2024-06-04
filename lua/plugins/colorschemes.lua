@@ -44,5 +44,32 @@ return {
 	},
 	{
 		"xiyaowong/transparent.nvim",
+		config = function()
+			-- Bufferline.nvim
+			vim.g.transparent_groups = vim.list_extend(
+				vim.g.transparent_groups or {},
+				vim.tbl_map(function(v)
+					return v.hl_group
+				end, vim.tbl_values(require("bufferline.config").highlights))
+			)
+
+			-- Statuscol
+			vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, { "FoldColumn" })
+
+			-- Trouble
+			vim.g.transparent_groups =
+				vim.list_extend(vim.g.transparent_groups or {}, { "TroubleNormal", "TroubleNormalNC" })
+
+			-- Lualine.nvim
+			require("transparent").clear_prefix("lualine")
+
+			-- Exclude groups
+			require("transparent").setup({
+				exclude_groups = {
+					"lualine_c_9", -- Lualine component
+					"Cmp", -- Cmp
+				},
+			})
+		end,
 	},
 }

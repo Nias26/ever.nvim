@@ -10,8 +10,8 @@ return {
 		-- Color table for highlights
 		-- stylua: ignore
 		local colors = {
-			-- bg       = '#202328',
-			bg 		= '#1f1f28', -- For Kanagawa Only
+			bg       = '#202328',
+			-- bg 		= '#1f1f28', -- For Kanagawa Only
 			fg       = '#bbc2cf',
 			yellow   = '#ECBE7B',
 			cyan     = '#008080',
@@ -22,6 +22,7 @@ return {
 			magenta  = '#c678dd',
 			blue     = '#51afef',
 			red      = '#ec5f67',
+			gray 		= '#495057',
 		}
 
 		local conditions = {
@@ -104,12 +105,23 @@ return {
 					{
 						"branch",
 						icon = "",
-						color = { fg = colors.orange, gui = "bold" },
+						color = { fg = colors.violet, gui = "bold" },
 						cond = conditions.check_git_workspace,
 					},
 					{
 						"diff",
+						symbols = { added = "󰐕 ", modified = "󰏪 ", removed = "󰍴 " },
+						diff_color = {
+							added = { fg = colors.green },
+							modified = { fg = colors.orange },
+							removed = { fg = colors.red },
+						},
 						cond = conditions.check_git_workspace,
+					},
+					{
+						"filename",
+						cond = conditions.buffer_not_empty,
+						color = { fg = colors.gray, gui = "bold" },
 					},
 					{
 						"diagnostics",
@@ -132,13 +144,13 @@ return {
 					{
 						require("noice").api.status.mode.get,
 						cond = require("noice").api.status.mode.has,
-						color = { fg = colors.green },
+						color = { fg = colors.orange },
 					},
 					{
 						require("noice").api.status.command.get,
 						cond = require("noice").api.status.command.has,
 						icon = "",
-						color = { fg = colors.green },
+						color = { fg = colors.orange },
 					},
 					{
 						"filetype",
@@ -150,6 +162,7 @@ return {
 						"o:encoding", -- option component same as &encoding in viml
 						fmt = string.upper, -- I'm not sure why it's upper case either ;
 						color = { fg = colors.green, gui = "bold" },
+						icon = { "󰘨", color = { fg = colors.red } },
 					},
 					{
 						"location",
