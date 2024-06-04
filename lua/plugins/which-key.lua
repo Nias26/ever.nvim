@@ -83,7 +83,7 @@ return {
 		wk.register({
 			["<leader>c"] = {
 				name = " - Code",
-				t = { "<cmd>TroubleToggle<CR>", "Trouble" },
+				t = { "<cmd>Trouble diagnostics toggle<CR>", "Trouble" },
 				g = { "<cmd>GitBlameToggle<CR>", "Toggle git status" },
 				l = {
 					name = " - LSP",
