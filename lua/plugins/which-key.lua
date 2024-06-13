@@ -84,7 +84,6 @@ return {
 			["<leader>c"] = {
 				name = " - Code",
 				t = { "<cmd>Trouble diagnostics toggle<CR>", "Trouble" },
-				g = { "<cmd>GitBlameToggle<CR>", "Toggle git status" },
 				l = {
 					name = " - LSP",
 					d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition" },
@@ -150,15 +149,6 @@ return {
 				n = { "<cmd>Nerdy<CR>", "Choose Nerd Font Icon" },
 				h = { "<cmd>Noice<CR>", "Notification history" },
 				t = { "<cmd>Telescope<CR>", "Telescope" },
-			},
-		})
-
-		-- Help -> 󰋖
-		wk.register({
-			["<leader>h"] = {
-				name = "󰋖 - Help",
-				c = { "<cmd>DocsViewToggle<CR>", "View code docs" },
-				n = { "<cmd>Telescope help_tags<CR>", "View Neovim docs" },
 			},
 		})
 
