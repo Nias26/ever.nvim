@@ -1,9 +1,9 @@
 return {
 	"akinsho/toggleterm.nvim",
 	keys = "<F4>",
-   version = "*",
-   opts = {
-   	size = 20,
+	version = "*",
+	opts = {
+		size = 20,
 		open_mapping = "<F4>",
 		hide_numbers = true,
 		shade_filetypes = {},
@@ -22,5 +22,5 @@ return {
 				background = "Normal",
 			},
 		},
-	}
+	},
 }
