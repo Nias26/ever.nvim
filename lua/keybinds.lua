@@ -1,5 +1,24 @@
 -- keybinds
 local map = vim.keymap.set
+
+local split = function(direction)
+	require("telescope.builtin").find_files({
+		attach_mappings = function(_, t_map)
+			t_map("n", "<CR>", function(prompt_bufnr)
+				local selected = require("telescope.actions.state").get_selected_entry()
+				local cmd = direction .. " " .. selected[1]
+				require("telescope.actions").close(prompt_bufnr)
+				vim.api.nvim_command(cmd)
+			end)
+			t_map("i", "<CR>", function(prompt_bufnr)
+				local selected = require("telescope.actions.state").get_selected_entry()
+				local cmd = direction .. " " .. selected[1]
+				require("telescope.actions").close(prompt_bufnr)
+				vim.api.nvim_command(cmd)
+			end)
+			return true
+		end,
+	})
 end
 
 -- Movment
@@ -23,6 +42,12 @@ map("n", "bd", "<cmd>bdel<CR>", { desc = "Delete current buffer" })
 map("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Previous buffer" })
 map("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Next buffer" })
 -- Splits
+map("n", "Ss", function()
+	split("split")
+end, { desc = "Horizzontal Split" })
+map("n", "Sv", function()
+	split("vsplit")
+end, { desc = "Vertical Split" })
 map({ "n", "v" }, "Q", "<cmd>bd!<CR>", { desc = "Quit current buffer" })
 -- LSP
 map({ "n", "v" }, "gd", vim.lsp.buf.definition, { desc = "Go to Definition" })
