@@ -1,8 +1,5 @@
 -- keybinds
 local map = vim.keymap.set
-local status_ok, submode = pcall(require, "submode")
-if not status_ok then
-	return print("Error Loading Submode.nvim")
 end
 
 -- Movment
@@ -56,22 +53,3 @@ map("n", ";r", function()
 		prefills = { search = vim.fn.expand("<cword>") },
 	})
 end, { desc = "Grug-Far" })
-
--- Submode
-submode.create("Windows", {
-	mode = "n",
-	enter = "<C-w>",
-	leave = { "q", "<ESC>" },
-}, {
-	lhs = "<Left>",
-	rhs = "<C-w>h",
-}, {
-	lhs = "<Down>",
-	rhs = "<C-w>j",
-}, {
-	lhs = "<Up>",
-	rhs = "<C-w>k",
-}, {
-	lhs = "<Right>",
-	rhs = "<C-w>l",
-})
