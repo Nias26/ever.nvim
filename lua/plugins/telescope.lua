@@ -9,7 +9,11 @@ return {
 	config = function()
 		require("telescope").setup({
 			extensions = {
-				file_browser = {},
+				file_browser = {
+					hidden = { file_browser = true, folder_browse = true },
+					follow_symlinks = true,
+					gruped = true,
+				},
 				scope = {},
 			},
 		})
