@@ -70,8 +70,8 @@ return {
 				}),
 			},
 			mapping = cmp.mapping({
-				["<C-d>"] = cmp.mapping.scroll_docs(4),
-				["<C-f>"] = cmp.mapping.scroll_docs(-4),
+				["<C-d>"] = cmp.mapping.scroll_docs(-4),
+				["<C-f>"] = cmp.mapping.scroll_docs(4),
 				["|"] = cmp.mapping.abort(),
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
