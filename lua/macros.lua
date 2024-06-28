@@ -56,3 +56,8 @@ autocmd("FileType", {
 
 -- Dashboard Highlight group
 vim.api.nvim_set_hl(0, "DashboardFooter", { fg = "#08A045" })
+
+-- Custom commands
+-- Dashboard
+vim.api.nvim_create_user_command("Q", "bdelete | Dashboard", {})
+vim.api.nvim_create_user_command("D", "Dashboard", {})
