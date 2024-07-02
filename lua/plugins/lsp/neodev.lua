@@ -1,11 +1,11 @@
 return {
-	{
-		"folke/lazydev.nvim",
-		ft = "lua",
-		opts = {
-			library = {
-				"luvit-meta/library",
-			},
+	"folke/lazydev.nvim",
+	lazy = true,
+	ft = "lua",
+	dependencies = "Bilal2453/luvit-meta",
+	opts = {
+		library = {
+			"luvit-meta/library",
 		},
 	},
 	{
