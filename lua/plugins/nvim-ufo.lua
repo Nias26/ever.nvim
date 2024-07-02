@@ -9,7 +9,7 @@ return {
 		vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 		vim.o.foldlevel = 99
 		vim.o.foldlevelstart = 99
-		vim.opt.foldenable = false
+		vim.opt.foldenable = true
 		vim.o.foldmethod = "expr"
 		vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 		vim.g.markdown_folding = 1
