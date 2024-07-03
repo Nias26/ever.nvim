@@ -9,6 +9,9 @@ return {
 		"rebelot/kanagawa.nvim",
 		config = function()
 			require("kanagawa").setup({
+				commentStyle = { italic = true },
+				keywordStyle = { italic = false },
+				dimInactive = true,
 				overrides = function(colors)
 					local theme = colors.theme
 					local palette = colors.palette
@@ -36,8 +39,6 @@ return {
 						DiagnosticSignInfo = { bg = palette.sumiInk3 },
 					}
 				end,
-				keywordStyle = { italic = false },
-				commentStyle = { italic = true },
 			})
 			vim.ui.border_style = "none"
 		end,
