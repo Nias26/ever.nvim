@@ -91,6 +91,6 @@ return {
 			},
 		})
 		require("telescope").load_extension("noice")
-		vim.api.nvim_set_hl(0, "NoiceCmdlineIcon", { bg = "NONE", fg = "#658594" })
+		vim.api.nvim_set_hl(0, "NoiceCmdlineIcon", { bg = "#16161d", fg = "#658594" })
 	end,
 }
