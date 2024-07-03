@@ -64,6 +64,9 @@ return {
 			-- Lualine.nvim
 			require("transparent").clear_prefix("lualine")
 
+			-- Bufferline
+			vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, { "BufferLineDevIconLua" })
+
 			-- Exclude groups
 			require("transparent").setup({
 				exclude_groups = {
