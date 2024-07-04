@@ -12,7 +12,7 @@ return {
 				file_browser = {
 					hidden = { file_browser = true, folder_browse = true },
 					follow_symlinks = true,
-					gruped = true,
+					gruped = false,
 				},
 				scope = {},
 			},
