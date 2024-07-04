@@ -23,7 +23,7 @@ return {
 					{
 						desc = " Search",
 						group = "@string",
-						action = "Telescope find_files",
+						action = "Telescope file_browser",
 						key = "t",
 					},
 					{
