@@ -67,6 +67,9 @@ return {
 			-- Bufferline
 			vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, { "BufferLineDevIcon" })
 
+			-- Window Separator ( Split bar )
+			vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, { "WinSeparator" })
+
 			-- Exclude groups
 			require("transparent").setup({
 				exclude_groups = {
