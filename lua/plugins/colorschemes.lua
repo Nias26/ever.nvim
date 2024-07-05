@@ -75,6 +75,8 @@ return {
 				exclude_groups = {
 					"lualine_c_9", -- Lualine component
 					"Cmp", -- Cmp
+					"Pmenu", -- Cmp
+					"PmenuSel", -- Cmp
 				},
 			})
 		end,
