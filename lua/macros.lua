@@ -40,7 +40,7 @@ end
 -- Show diagnostics under the cursor when holding position
 augroup("lsp_diagnostics_hold", { clear = true })
 autocmd({ "CursorHold" }, {
-	pattern = "*",
+	pattern = "*.*",
 	callback = OpenDiagnosticIfNoFloat,
 	group = "lsp_diagnostics_hold",
 })
@@ -52,6 +52,23 @@ autocmd("FileType", {
 		require("ufo").detach()
 		vim.opt_local.foldenable = false
 	end,
+})
+
+-- Persistent folds
+augroup("Persistent Folds", { clear = true })
+autocmd("BufWinLeave", {
+	pattern = "*.*",
+	callback = function()
+		vim.cmd.mkview()
+	end,
+	group = "Persistent Folds",
+})
+autocmd("BufWinEnter", {
+	pattern = "*.*",
+	callback = function()
+		vim.cmd.loadview({ mods = { emsg_silent = true } })
+	end,
+	group = "Persistent Folds",
 })
 
 -- Dashboard Highlight group
