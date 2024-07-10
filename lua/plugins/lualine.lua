@@ -123,6 +123,12 @@ return {
 						cond = conditions.buffer_not_empty,
 						color = { fg = colors.gray, gui = "bold" },
 					},
+					--[[ {
+						function()
+              return
+						end,
+						color = { fg = colors.gray, giu = "bold" },
+					}, ]]
 					{
 						"diagnostics",
 						sources = { "nvim_diagnostic" },
