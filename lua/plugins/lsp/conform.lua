@@ -6,7 +6,7 @@ return {
 		conform.setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
-				-- cpp = {"clang-format"},
+				cpp = { "clang-format" },
 				go = { "goimports" },
 			},
 			format_on_save = {
