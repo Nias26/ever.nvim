@@ -70,9 +70,13 @@ return {
 			-- Window Separator ( Split bar )
 			vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, { "WinSeparator" })
 
+			-- Fold bg
+			vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, { "Folded", "UfoFoldedBg" })
+
 			-- Exclude groups
 			require("transparent").setup({
 				exclude_groups = {
+					"lualine_c_2", -- Lualine component
 					"lualine_c_9", -- Lualine component
 					"Cmp", -- Cmp
 					"Pmenu", -- Cmp
