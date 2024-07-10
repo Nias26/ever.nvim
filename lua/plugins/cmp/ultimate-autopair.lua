@@ -22,12 +22,12 @@ return {
 				cmap = "<bs>", --string or table
 				overjumps = true,
 				--(|foo) > bs > |foo
-				space = balance, --false, true or 'balance'
+				space = "balance", --false, true or 'balance'
 				--( |foo ) > bs > (|foo)
 				--balance:
 				--  Will prioritize balanced spaces
 				--  ( |foo  ) > bs > ( |foo )
-				indent_ignore = false,
+				indent_ignore = true,
 				--(\n\t|\n) > bs > (|)
 				single_delete = false,
 				-- <!--|--> > bs > <!-|
@@ -102,9 +102,9 @@ return {
 				--use multiple configs (|ultimate-autopair-map-multi-config|)
 			},
 			close = { -- *ultimate-autopair-map-close-config*
-				enable = true,
-				map = "<A-)>", --string or table
-				cmap = "<A-)>", --string or table
+				enable = false,
+				map = "", --string or table
+				cmap = "", --string or table
 				conf = {},
 				--contains extension config
 				multi = false,
@@ -115,8 +115,8 @@ return {
 			},
 			tabout = { -- *ultimate-autopair-map-tabout-config*
 				enable = false,
-				map = "<C-Tab>", --string or table
-				cmap = "<C-Tab>", --string or table
+				map = "", --string or table
+				cmap = "", --string or table
 				conf = {},
 				--contains extension config
 				multi = false,
