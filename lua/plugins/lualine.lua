@@ -87,17 +87,17 @@ return {
 							local mode = vim.api.nvim_get_mode().mode
 
 							if mode == "n" or mode == "no" then
-								return { bg = "#82cfff", fg = colors.bg }
+								return { bg = "#82cfff", fg = colors.bg, gui = "bold" }
 							elseif mode == "i" or mode == "ic" then
-								return { bg = "#ff7eb6", fg = colors.bg }
+								return { bg = "#ff7eb6", fg = colors.bg, gui = "bold" }
 							elseif mode == "v" or mode == "V" or mode == "\022" then
-								return { bg = "#be95ff", fg = colors.bg }
+								return { bg = "#be95ff", fg = colors.bg, gui = "bold" }
 							elseif mode == "R" then
-								return { bg = "#3ddbd9", fg = colors.bg }
+								return { bg = "#3ddbd9", fg = colors.bg, gui = "bold" }
 							elseif mode == "c" then
-								return { bg = "#42be65", fg = colors.bg }
+								return { bg = "#42be65", fg = colors.bg, gui = "bold" }
 							elseif mode == "t" then
-								return { bg = "#33b1ff", fg = colors.bg }
+								return { bg = "#33b1ff", fg = colors.bg, gui = "bold" }
 							end
 						end,
 						padding = { rignt = 1 },
