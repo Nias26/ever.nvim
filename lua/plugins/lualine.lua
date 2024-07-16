@@ -123,12 +123,27 @@ return {
 						cond = conditions.buffer_not_empty,
 						color = { fg = colors.gray, gui = "bold" },
 					},
-					--[[ {
+					{
 						function()
-              return
+              if #vim.lsp.get_clients() > 1 then
+                local lsp_name = vim.lsp.get_clients()[1].name
+                for i = 2, #vim.lsp.get_clients() do
+                  lsp_name = lsp_name .. " - " .. vim.lsp.get_clients()[i].name
+                end
+                return lsp_name
+              end
+              return vim.lsp.get_clients()[1].name
 						end,
-						color = { fg = colors.gray, giu = "bold" },
-					}, ]]
+            icon = " ",
+						color = function()
+              for i = 1, #vim.lsp.get_clients() do
+                if vim.lsp.buf_get_clients(0)[i] == vim.lsp.get_clients()[i] then
+                  return { fg = colors.green, gui = "bold" }
+                end
+              end
+              return { fg = colors.gray, gui = "bold" }
+            end
+					},
 					{
 						"diagnostics",
 						sources = { "nvim_diagnostic" },
