@@ -63,6 +63,7 @@ return {
 
 			-- Lualine.nvim
 			require("transparent").clear_prefix("lualine")
+      vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, { "lualine_c_normal" })
 
 			-- Bufferline
 			vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, { "BufferLineDevIcon" })
