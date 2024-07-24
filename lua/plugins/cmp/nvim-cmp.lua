@@ -52,7 +52,6 @@ return {
 				},
 				documentation = {
 					border = nil,
-					---@diagnostic disable-next-line: assign-type-mismatch
 					scrollbar = "|",
 				},
 			},
