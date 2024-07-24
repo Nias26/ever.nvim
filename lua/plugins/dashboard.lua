@@ -4,6 +4,7 @@ return {
 	config = function()
 		require("dashboard").setup({
 			theme = "hyper",
+      shortcut_type = "number",
 			hide = {
 				statusline = true,
 				tabline = true,
