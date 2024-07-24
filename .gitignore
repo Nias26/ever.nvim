@@ -1,2 +1,3 @@
 # Exclude this files from git
 lazy-lock.json
+cd-project.nvim.json
