@@ -63,7 +63,7 @@ return {
 
 			-- Lualine.nvim
 			require("transparent").clear_prefix("lualine")
-      vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, { "lualine_c_normal" })
+			vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, { "lualine_c_normal" })
 
 			-- Bufferline
 			vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, { "BufferLineDevIcon" })
@@ -79,9 +79,39 @@ return {
 				exclude_groups = {
 					"lualine_c_2", -- Lualine component
 					"lualine_c_9", -- Lualine component
-					"Cmp", -- Cmp
-					"Pmenu", -- Cmp
-					"PmenuSel", -- Cmp
+					-- Cmp
+					"PmenuSel",
+					"Pmenu",
+					"CmpItemAbbr",
+					"CmpItemAbbrMatch",
+					"CmpItemAbbrMatchFuzzy",
+					"CmpItemMenu",
+					"CmpItemKindInterface",
+					"CmpItemKindColor",
+					"CmpItemKindTypeParameter",
+					"CmpItemKindText",
+					"CmpItemKindEnum",
+					"CmpItemKindKeyword",
+					"CmpItemKindConstant",
+					"CmpItemKindConstructor",
+					"CmpItemKindReference",
+					"CmpItemKindFunction",
+					"CmpItemKindStruct",
+					"CmpItemKindClass",
+					"CmpItemKindModule",
+					"CmpItemKindOperator",
+					"CmpItemKindField",
+					"CmpItemKindProperty",
+					"CmpItemKindEvent",
+					"CmpItemKindUnit",
+					"CmpItemKindSnippet",
+					"CmpItemKindFolder",
+					"CmpItemKindVariable",
+					"CmpItemKindFile",
+					"CmpItemKindMethod",
+					"CmpItemKindValue",
+					"CmpItemKindEnumMember",
+					"CmpItemKindCodeium",
 				},
 			})
 		end,
