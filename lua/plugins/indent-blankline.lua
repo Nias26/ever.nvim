@@ -36,13 +36,13 @@ return {
 			},
 			indent = {
 				highlight = { "Whitespace" },
-				char = " ",
+				char = "|",
 				smart_indent_cap = true,
 			},
 			scope = {
 				enabled = true,
 				char = "|",
-        show_exact_scope = true,
+				show_exact_scope = true,
 				injected_languages = true,
 				highlight = "IndentBlankLineScopeHL",
 			},
