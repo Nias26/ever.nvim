@@ -71,6 +71,23 @@ autocmd("BufWinEnter", {
 	group = "Persistent Folds",
 })
 
+-- Replace command filler
+autocmd("CmdlineChanged", {
+	pattern = "*",
+	callback = function()
+		local cmd_type = vim.fn.getcmdtype()
+		local cmd_line = vim.fn.getcmdline()
+
+		if cmd_type == ":" and cmd_line == "%s " then
+			vim.api.nvim_feedkeys(
+				vim.api.nvim_replace_termcodes("<C-u>%s///g<Left><Left><Left>", true, true, true),
+				"n",
+				false
+			)
+		end
+	end,
+})
+
 -- Dashboard Highlight group
 vim.api.nvim_set_hl(0, "DashboardFooter", { fg = "#08A045" })
 

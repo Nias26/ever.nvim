@@ -38,6 +38,7 @@ return {
 					filter = { pattern = "^:%s*!", icon = "$", lang = "bash" },
 					lua = { pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" }, icon = "", lang = "lua" },
 					help = { pattern = "^:%s*he?l?p?%s+", icon = "" },
+					replace = { pattern = "^:%%s", icon = "󰡱 ", lang = "regex" },
 					input = {},
 				},
 			},
