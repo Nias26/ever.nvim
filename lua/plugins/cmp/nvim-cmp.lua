@@ -32,7 +32,6 @@ return {
 			return print("Luasnip failed to load")
 		end
 		cmp.setup({
-			preselect = cmp.PreselectMode.None,
 			-- If you want you can enable ghost text
 			--[[ experimental = {
 				ghost_text = { hl_group = 'Comment' },
