@@ -3,8 +3,6 @@ return {
 	event = "BufRead",
 	name = "ibl",
 	config = function()
-		vim.api.nvim_set_hl(0, "IndentBlankLineScopeHL", { fg = "#65676F" })
-
 		require("ibl").setup({
 			exclude = {
 				buftypes = {
@@ -44,7 +42,6 @@ return {
 				char = "|",
 				show_exact_scope = true,
 				injected_languages = true,
-				highlight = "IndentBlankLineScopeHL",
 			},
 		})
 	end,
