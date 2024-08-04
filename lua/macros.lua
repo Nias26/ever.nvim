@@ -1,5 +1,5 @@
 -- Set colorscheme
-vim.cmd.colorscheme("kanagawa")
+vim.cmd.colorscheme("oxocarbon")
 
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
