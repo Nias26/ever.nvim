@@ -37,6 +37,9 @@ return {
 						DiagnosticSignHint = { bg = palette.sumiInk3 },
 						DiagnosticSignOk = { bg = palette.sumiInk3 },
 						DiagnosticSignInfo = { bg = palette.sumiInk3 },
+						---@highlight Pmenu
+						Pmenu = { fg = "#2a2a37", bg = "#292937" },
+						PmenuSel = { bg = "#3f3f48", fg = "NONE" },
 					}
 				end,
 			})
