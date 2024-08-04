@@ -24,8 +24,6 @@ end
 -- Movment
 map({ "n", "v" }, "H", "<S-Left>", { desc = "Move 1 word to the left" })
 map({ "n", "v" }, "L", "<S-Right>", { desc = "Move 1 word to the right" })
--- Fast exit to normal mode
-map("i", "jk", "<Esc>", { desc = "Exit insert mode" })
 -- Cancel highlightning when searching
 map("n", "<ESC><ESC>", "<cmd>nohlsearch<CR>")
 -- Fast switch window
