@@ -1,5 +1,6 @@
 return {
 	"pogyomo/submode.nvim",
+	enabled = false,
 	keys = { "<C-w>" },
 	config = function()
 		local submode = require("submode")
