@@ -77,6 +77,10 @@ return {
 			-- Fold bg
 			vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, { "Folded", "UfoFoldedBg" })
 
+			-- NvimTree
+			vim.g.transparent_groups =
+				vim.list_extend(vim.g.transparent_groups or {}, { "NvimTreeNormal", "NvimTreeWinSeparator" })
+
 			-- Exclude groups
 			require("transparent").setup({
 				exclude_groups = {
