@@ -27,6 +27,10 @@ return {
 				capabilities = capabilities,
 			})
 		end
+
+		-- Fold Highlightning group
+		vim.api.nvim_set_hl(0, "FoldColumn", { fg = "#525252" })
+
 		require("ufo").setup()
 	end,
 }
