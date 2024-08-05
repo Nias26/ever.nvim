@@ -39,6 +39,7 @@ return {
 					lua = { pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" }, icon = "", lang = "lua" },
 					help = { pattern = "^:%s*he?l?p?%s+", icon = "" },
 					replace = { pattern = "^:%%s", icon = "󰡱 ", lang = "regex" },
+					highlight = { pattern = { "^:hi ", "^:highlight " }, icon = "󰌵", lang = "vim" },
 					input = {},
 				},
 			},
