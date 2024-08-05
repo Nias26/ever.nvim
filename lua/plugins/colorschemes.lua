@@ -80,8 +80,9 @@ return {
 			-- Exclude groups
 			require("transparent").setup({
 				exclude_groups = {
-					"lualine_c_2", -- Lualine component
-					"lualine_c_9", -- Lualine component
+					-- Lualine components
+					"lualine_c_2",
+					"lualine_c_9",
 					-- Cmp
 					"PmenuSel",
 					"Pmenu",
