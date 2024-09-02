@@ -19,7 +19,7 @@ return {
 					backward = "F",
 					forward_till = "t",
 					backward_till = "T",
-					repeat_jump = "",
+					repeat_jump = ".",
 				},
 
 				-- delay values (in ms) for different functionalities. set any of them to
@@ -32,6 +32,14 @@ return {
 					idle_stop = 1500,
 				},
 			})
+		end,
+	},
+	{
+		"echasnovski/mini.surround",
+		version = "*",
+		keys = { "sa", "sd", "sf", "sF", "sh", "sr", "sn" },
+		config = function()
+			require("mini.surround").setup()
 		end,
 	},
 }
