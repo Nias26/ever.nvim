@@ -58,7 +58,7 @@ return {
 			)
 
 			-- Statuscol
-			vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, { "FoldColumn" })
+			vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, { "FoldColumn", "CursorColumn" })
 
 			-- Trouble
 			vim.g.transparent_groups =
