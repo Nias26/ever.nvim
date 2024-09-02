@@ -23,6 +23,11 @@ return {
 						padding = { 1, 2 },
 					},
 				},
+				mini = {
+					win_options = {
+						winblend = 0,
+					},
+				},
 			},
 			cmdline = {
 				enabled = true,
