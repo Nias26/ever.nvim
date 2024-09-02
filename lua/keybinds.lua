@@ -29,7 +29,7 @@ map("n", "<ESC><ESC>", "<cmd>nohlsearch<CR>")
 -- Fast switch window
 map("n", "!", "<C-w>w")
 -- Open Telescope
-map("n", ";", "<cmd>Telescope<CR>", { desc = "Open Telescope" })
+map("n", ";;", "<cmd>Telescope<CR>", { desc = "Telescope" })
 map("n", ";g", "<cmd>Telescope live_grep<CR>", { desc = "Live Grep" })
 map("n", ";G", "<cmd>Telescope git_files<CR>", { desc = "Git Files" })
 map("n", "<F2>", "<cmd>Telescope find_files<CR>", { desc = "Find Files" })
@@ -74,7 +74,9 @@ map("n", "==", function()
 end, { desc = "Indent whole page" })
 -- Grug-far
 map("n", ";r", function()
-	require("grug-far").grug_far({
-		prefills = { search = vim.fn.expand("<cword>") },
+	require("grug-far").open({
+		prefills = {
+			search = vim.fn.expand("<cword>"),
+		},
 	})
 end, { desc = "Grug-Far" })
