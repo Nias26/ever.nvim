@@ -1,12 +1,10 @@
 return {
 	"pogyomo/submode.nvim",
-	enabled = false,
-	keys = { "<C-w>" },
+	keys = { "<C-w>", "<C-t>" },
 	config = function()
 		local submode = require("submode")
 
-		--@diagnostic disable: param-type-mismatch, redundant-parameter
-		submode.create("Window", {
+		submode.create(" Window", {
 			mode = "n",
 			enter = "<C-w>",
 			leave = { "q", "<ESC>" },
@@ -21,6 +19,18 @@ return {
 				register(">", "<C-w>>")
 				register("=", "<C-w>=")
 				register("|", "<C-w>|")
+			end,
+		})
+
+		submode.create("󰓩 Tabs", {
+			mode = "n",
+			enter = "<C-t>",
+			leave = { "q", "<ESC>" },
+			default = function(register)
+				register("t", "<cmd>tabnew<CR>")
+				register("d", "<cmd>tabclose<CR>")
+				register("[", "<cmd>tabprevious<CR>")
+				register("]", "<cmd>tabnext<CR>")
 			end,
 		})
 	end,
