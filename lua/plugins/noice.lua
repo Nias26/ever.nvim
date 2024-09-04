@@ -48,16 +48,26 @@ return {
 					input = {},
 				},
 			},
+			messages = {
+				-- NOTE: If you enable messages, then the cmdline is enabled automatically.
+				-- This is a current Neovim limitation.
+				enabled = true, -- enables the Noice messages UI
+				view = "notify", -- default view for messages
+				view_error = "notify", -- view for errors
+				view_warn = "notify", -- view for warnings
+				view_history = "messages", -- view for :messages
+				view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
+			},
 			notify = {
 				enabled = true,
-				view = "mini",
+				view = "notify", -- mini
 			},
 			lsp = {
 				progress = {
 					format = "lsp_progress",
 					format_done = "lsp_progress_done",
 					throttle = 1000 / 30, -- frequency to update lsp progress message
-					view = "mini",
+					-- view = "notify", -- mini
 					enabled = true,
 				},
 				overrie = {
@@ -67,7 +77,7 @@ return {
 				message = {
 					-- Messages shown by lsp servers
 					enabled = true,
-					view = "mini",
+					view = "notify", -- mini
 					opts = {},
 				},
 				signature = {
@@ -98,6 +108,6 @@ return {
 			},
 		})
 		require("telescope").load_extension("noice")
-		vim.api.nvim_set_hl(0, "NoiceCmdlineIcon", { bg = "#16161d", fg = "#658594" })
+		vim.api.nvim_set_hl(0, "NoiceCmdlineIcon", { bg = "#121212", fg = "#658594" })
 	end,
 }

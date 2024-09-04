@@ -31,6 +31,7 @@ return {
 				register("d", "<cmd>tabclose<CR>")
 				register("[", "<cmd>tabprevious<CR>")
 				register("]", "<cmd>tabnext<CR>")
+					vim.notify(" Window Mode", vim.log.levels.WARN, { timeout = false })
 			end,
 		})
 	end,
