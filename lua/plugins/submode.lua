@@ -1,10 +1,11 @@
 return {
 	"pogyomo/submode.nvim",
-	keys = { "<C-w>", "<C-t>" },
+	-- keys = { "<C-w>", "<C-t>" },
 	config = function()
 		local submode = require("submode")
 
-		submode.create(" Window", {
+		submode.create("Window", {
+			show_mode = true,
 			mode = "n",
 			enter = "<C-w>",
 			leave = { "q", "<ESC>" },
@@ -22,16 +23,23 @@ return {
 			end,
 		})
 
-		submode.create("󰓩 Tabs", {
-			mode = "n",
-			enter = "<C-t>",
-			leave = { "q", "<ESC>" },
-			default = function(register)
-				register("t", "<cmd>tabnew<CR>")
-				register("d", "<cmd>tabclose<CR>")
-				register("[", "<cmd>tabprevious<CR>")
-				register("]", "<cmd>tabnext<CR>")
+		vim.api.nvim_create_augroup("SubmodeNotify", { clear = true })
+		vim.api.nvim_create_autocmd("User", {
+			group = "SubmodeNotify",
+			pattern = "SubmodeEnterPost",
+			callback = function()
+				if submode.mode() == "Window" then
 					vim.notify(" Window Mode", vim.log.levels.WARN, { timeout = false })
+				end
+			end,
+		})
+
+		vim.api.nvim_create_autocmd("User", {
+			group = "SubmodeNotify",
+			pattern = "SubmodeLeavePost",
+			callback = function()
+				---@diagnostic disable-next-line: missing-parameter
+				require("notify").dismiss()
 			end,
 		})
 	end,
