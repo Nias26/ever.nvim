@@ -137,7 +137,7 @@ return {
             icon = " ",
 						color = function()
               for i = 1, #vim.lsp.get_clients() do
-                if vim.lsp.buf_get_clients(0)[i] == vim.lsp.get_clients()[i] then
+                if vim.lsp.get_clients({bufnr = 0})[1] == vim.lsp.get_clients()[i] then
                   return { fg = colors.green, gui = "bold" }
                 end
               end
