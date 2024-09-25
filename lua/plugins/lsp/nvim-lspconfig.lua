@@ -13,6 +13,8 @@ return {
 
 		-- Servers Configuration
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
+		// WARN: Test needed
+		lspconfig.setup({ inlay_hints = { enabled = true } })
 
 		local on_attach = function(client, bufnr)
 			require("nvim-navic").attach(client, bufnr)
