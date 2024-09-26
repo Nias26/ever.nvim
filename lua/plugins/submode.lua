@@ -14,6 +14,7 @@ return {
 				register("<Down>", "<C-w>j")
 				register("<Up>", "<C-w>k")
 				register("<Right>", "<C-w>l")
+				register("!", "<C-w>w")
 				register("+", "<C-w>+")
 				register("-", "<C-w>-")
 				register("<", "<C-w><")
