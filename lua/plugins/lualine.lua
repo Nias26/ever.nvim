@@ -125,24 +125,24 @@ return {
 					},
 					{
 						function()
-              if #vim.lsp.get_clients() > 1 then
-                local lsp_name = vim.lsp.get_clients()[1].name
-                for i = 2, #vim.lsp.get_clients() do
-                  lsp_name = lsp_name .. " - " .. vim.lsp.get_clients()[i].name
-                end
-                return lsp_name
-              end
-              return vim.lsp.get_clients()[1].name
+							if #vim.lsp.get_clients() > 1 then
+								local lsp_name = vim.lsp.get_clients()[1].name
+								for i = 2, #vim.lsp.get_clients() do
+									lsp_name = lsp_name .. " - " .. vim.lsp.get_clients()[i].name
+								end
+								return lsp_name
+							end
+							return vim.lsp.get_clients()[1].name
 						end,
-            icon = " ",
+						icon = " ",
 						color = function()
-              for i = 1, #vim.lsp.get_clients() do
-                if vim.lsp.get_clients({bufnr = 0})[1] == vim.lsp.get_clients()[i] then
-                  return { fg = colors.green, gui = "bold" }
-                end
-              end
-              return { fg = colors.gray, gui = "bold" }
-            end
+							for i = 1, #vim.lsp.get_clients() do
+								if vim.lsp.get_clients({ bufnr = 0 })[1] == vim.lsp.get_clients()[i] then
+									return { fg = colors.green, gui = "bold" }
+								end
+							end
+							return { fg = colors.gray, gui = "bold" }
+						end,
 					},
 					{
 						"diagnostics",
@@ -157,19 +157,19 @@ return {
 				},
 				lualine_x = {
 					{
-						require("noice").api.status.search.get,
-						cond = require("noice").api.status.search.has,
+						require("noice").api.status.search.get, ---@diagnostic disable-line: undefined-field
+						cond = require("noice").api.status.search.has, ---@diagnostic disable-line: undefined-field
 						icon = " ",
 						color = { fg = colors.blue },
 					},
 					{
-						require("noice").api.status.mode.get,
-						cond = require("noice").api.status.mode.has,
+						require("noice").api.status.mode.get, ---@diagnostic disable-line: undefined-field
+						cond = require("noice").api.status.mode.has, ---@diagnostic disable-line: undefined-field
 						color = { fg = colors.orange },
 					},
 					{
-						require("noice").api.status.command.get,
-						cond = require("noice").api.status.command.has,
+						require("noice").api.status.command.get, ---@diagnostic disable-line: undefined-field
+						cond = require("noice").api.status.command.has, ---@diagnostic disable-line: undefined-field
 						icon = "",
 						color = { fg = colors.orange },
 					},
