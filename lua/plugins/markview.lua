@@ -9,7 +9,7 @@ return {
 	config = function()
 		require("markview").setup({
 			modes = { "n", "i", "no", "c" },
-			hybrid_modes = { "i" },
+			hybrid_modes = { "n", "i" },
 
 			callbacks = {
 				on_enable = function(_, win)
