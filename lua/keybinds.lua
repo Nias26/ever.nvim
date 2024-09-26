@@ -10,11 +10,13 @@ map("n", "<ESC><ESC>", "<cmd>nohlsearch<CR>")
 map("n", "!", "<C-w>w")
 -- Open Telescope
 map("n", ";;", "<cmd>Telescope<CR>", { desc = "Telescope" })
-map("n", ";g", "<cmd>Telescope live_grep<CR>", { desc = "Live Grep" })
-map("n", ";G", "<cmd>Telescope git_files<CR>", { desc = "Git Files" })
+map("n", ";G", "<cmd>Telescope live_grep<CR>", { desc = "Live Grep" })
+map("n", ";g", "<cmd>Telescope git_files<CR>", { desc = "Git Files" })
 map("n", "<F2>", "<cmd>Telescope find_files<CR>", { desc = "Find Files" })
 map("n", ";s", "<cmd>Telescope file_browser<CR>", { desc = "File Browser" })
 map("n", ";b", "<cmd>Telescope buffers<CR>", { desc = "Buffers" })
+map("n", ";h", "<cmd>Telescope help_tags<CR>", { desc = "Help Tags" })
+map("n", ";m", "<cmd>Telescope man_pages<CR>", { desc = "Man Pages" })
 -- Open Nvim Tree
 map("n", "<F3>", "<cmd>NvimTreeToggle<CR>", { desc = "Open Nvim Tree" })
 -- Buffer managing
