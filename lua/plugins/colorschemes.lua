@@ -66,7 +66,11 @@ return {
 
 			-- Lualine.nvim
 			require("transparent").clear_prefix("lualine")
-			vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, { "lualine_c_normal" })
+			vim.g.transparent_groups =
+				vim.list_extend(vim.g.transparent_groups or {}, { "lualine_c_normal", "lualine_c_9_normal" })
+			if #vim.lsp.get_clients() > 0 then
+				require("transparent").clear_prefix("lualine")
+			end
 
 			-- Bufferline
 			vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, { "BufferLineDevIcon" })
