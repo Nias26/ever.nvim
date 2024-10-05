@@ -9,11 +9,6 @@ return {
 	config = function()
 		local wk = require("which-key")
 		wk.setup({
-			plugins = {
-				presets = {
-					operators = false,
-				},
-			},
 			icons = {
 				group = " ",
 			},
@@ -150,15 +145,6 @@ return {
 				n = { "<cmd>Nerdy<CR>", "Choose Nerd Font Icon" },
 				h = { "<cmd>Noice<CR>", "Notification history" },
 				t = { "<cmd>Telescope<CR>", "Telescope" },
-			},
-		})
-
-		-- Neorg -> 󰭃
-		wk.register({
-			["<leader>n"] = {
-				name = "󰭃 - Neorg",
-				n = { "<cmd>Neorg<CR>", "Open Neorg menu" },
-				w = { "<cmd>Neorg workspace<CR>", "Load Workspace" },
 			},
 		})
 	end,
