@@ -37,7 +37,7 @@ local options = {
 	grepprg = "rg --vimgrep", -- Use ripgrep instead of grep
 	grepformat = "%f:%l:%c:%m", -- Grep formatting
 	formatexpr = "v:lua.require'conform'.formatexpr()",
-	mousemodel = "extend", -- Right click extend selection
+	-- mousemodel = "extend", -- Right click extend selection
 }
 
 for k, v in pairs(options) do
