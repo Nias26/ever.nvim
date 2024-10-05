@@ -63,3 +63,9 @@ map("n", "<F5>", function()
 	local v = vim.wo.rnu
 	vim.wo.rnu = not v
 end, { desc = "Toggle Relative Numbers", noremap = true })
+-- Right-click menu
+map("n", "<RightMouse>", function()
+	vim.cmd.exec([["normal! \\<RightMouse>"]])
+	local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
+	require("menu").open(options, { mouse = true })
+end)
