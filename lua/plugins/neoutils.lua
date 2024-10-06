@@ -1,5 +1,5 @@
 return {
-	"Nias26/NeoUtils",
+	"Nias26/neoutils",
 	lazy = true,
 	config = function()
 		require("neoutils").setup()
