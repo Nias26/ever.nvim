@@ -33,5 +33,7 @@ return {
 				-- update_root = true,
 			},
 		})
+
+		vim.keymap.set("n", "<M-CR>", require("nvim-tree.api").tree.change_root_to_node)
 	end,
 }
