@@ -16,8 +16,32 @@ vim.diagnostic.config({
 	},
 })
 
+-- Close nvim-tree if last buffer
+vim.api.nvim_create_autocmd("QuitPre", {
+	callback = function()
+		local tree_wins = {}
+		local floating_wins = {}
+		local wins = vim.api.nvim_list_wins()
+		for _, w in ipairs(wins) do
+			local bufname = vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(w))
+			if bufname:match("NvimTree_") ~= nil then
+				table.insert(tree_wins, w)
+			end
+			if vim.api.nvim_win_get_config(w).relative ~= "" then
+				table.insert(floating_wins, w)
+			end
+		end
+		if 1 == #wins - #floating_wins - #tree_wins then
+			-- Should quit, so we close all invalid windows.
+			for _, w in ipairs(tree_wins) do
+				vim.api.nvim_win_close(w, true)
+			end
+		end
+	end,
+})
+
 -- Open LSP Diagnostic window over error, warn, info, ...
--- Function to check if a floating dialog exists and if not then check for diagnostics under the cursor
+-- Check if a floating dialog exists and if not then check for diagnostics under the cursor
 local function OpenDiagnosticIfNoFloat()
 	for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
 		if vim.api.nvim_win_get_config(winid).zindex then
@@ -25,6 +49,7 @@ local function OpenDiagnosticIfNoFloat()
 		end
 	end
 	-- THIS IS FOR BUILTIN LSP
+	---@diagnostic disable-next-line: param-type-mismatch
 	vim.diagnostic.open_float(0, {
 		scope = "cursor",
 		focusable = false,
