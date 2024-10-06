@@ -9,7 +9,7 @@ return {
 			stages = "static",
 			top_down = false,
 			on_open = function(win)
-				vim.api.nvim_win_set_config(win, { border = "none" })
+				vim.api.nvim_win_set_config(win, { border = "none", focusable = false })
 			end,
 		})
 	end,
