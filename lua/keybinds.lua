@@ -36,6 +36,7 @@ map("n", "cf", function()
 end, { desc = "Code Format" })
 map("n", "ca", "<cmd>Lspsaga code_action<CR>", { desc = "Code Actions" })
 map("n", "cd", "<cmd>Lspsaga hover_doc<CR>", { desc = "LSP Code Doc" })
+map("n", "cr", vim.lsp.buf.rename, { desc = "LSP Rename" })
 map("n", "c[", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { desc = "Go to Previous Diagnostic" })
 map("n", "c]", "<cmd>Lspsaga diagnostic_jump_next<CR>", { desc = "Go to Next Diagnostic" })
 -- Special paste
