@@ -4,6 +4,8 @@ vim.cmd.colorscheme("oxocarbon")
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
+local M = {}
+
 -- Set Virtual text
 vim.diagnostic.config({
 	virtual_text = true,
@@ -62,6 +64,21 @@ local function OpenDiagnosticIfNoFloat()
 		},
 	})
 end
+
+-- Change monoglow colorscheme
+S_colorscheme = ""
+function M.monoglow()
+	local t_colorscheme = vim.api.nvim_exec2("colorscheme", { output = true })
+	if t_colorscheme.output ~= "monoglow" then
+		vim.notify("Setting Monoglow", vim.log.levels.INFO)
+		S_colorscheme = t_colorscheme.output
+		vim.api.nvim_exec2("colorscheme monoglow", { output = false })
+	else
+		vim.notify("Setting old colorscheme", vim.log.levels.INFO)
+		vim.api.nvim_exec2("colorscheme " .. S_colorscheme, { output = false })
+	end
+end
+
 -- Show diagnostics under the cursor when holding position
 augroup("lsp_diagnostics_hold", { clear = true })
 autocmd({ "CursorHold" }, {
@@ -120,3 +137,5 @@ vim.api.nvim_set_hl(0, "DashboardFooter", { fg = "#08A045" })
 -- Dashboard
 vim.api.nvim_create_user_command("Q", "bdelete! | Dashboard", {})
 vim.api.nvim_create_user_command("D", "Dashboard", {})
+
+return M
