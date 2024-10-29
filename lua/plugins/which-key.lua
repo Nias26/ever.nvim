@@ -72,12 +72,6 @@ return {
 					["0"] = {},
 				},
 				v = { "<cmd>TransparentToggle<CR>", "Toggle transparency theme" },
-				m = {
-					function()
-						require("macros").monoglow()
-					end,
-					"Toggle Monoglow",
-				},
 			},
 		})
 
