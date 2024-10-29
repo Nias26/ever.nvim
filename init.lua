@@ -14,6 +14,12 @@ vim.g.loaded_netrw = 1 -- Disable netrw
 vim.g.loaded_netrwPlugin = 1 -- Disable netrw
 vim.g.showcmdloc = "statusline" -- Show command message location
 
+vim.opt.sessionoptions = { -- Required by scope.nvim
+	"buffers",
+	"tabpages",
+	"globals",
+}
+
 local options = {
 	relativenumber = true, -- Set Relative Number line
 	number = true, -- Set Number line
