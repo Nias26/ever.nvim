@@ -27,16 +27,13 @@ return {
 		-- Search -> 
 		-- Buffer -> 󰓩
 		-- Open -> 󰏌
-		-- Debug -> 
-		-- Help -> 󰋖
-		-- Zen -> 󰚀
-		-- Neorg -> 󰭃
+		-- Diffview -> 
 
 		-- Index
 		wk.register({
 			["<leader>"] = {
 				t = { "<cmd>tabnew<CR>", "New Tab" },
-				d = { "<cmd>tabclose<CR>", "Delete current tab" },
+				D = { "<cmd>tabclose<CR>", "Delete current tab" },
 				["["] = { "<cmd>tabprevious<CR>", "Previous tab" },
 				["]"] = { "<cmd>tabnext<CR>", "Next tab" },
 				M = "which_key_ignore",
@@ -145,6 +142,15 @@ return {
 				n = { "<cmd>Nerdy<CR>", "Choose Nerd Font Icon" },
 				h = { "<cmd>Noice<CR>", "Notification history" },
 				t = { "<cmd>Telescope<CR>", "Telescope" },
+			},
+		})
+		wk.register({
+			["<leader>d"] = {
+				name = " - Diffview",
+				o = { "<cmd>DiffviewOpen<CR>", "Open" },
+				c = { "<cmd>DiffviewClose<CR>", "Close" },
+				r = { "<cmd>DiffviewRefresh>CR>", "Refresh" },
+				h = { "<cmd>DiffviewFileHistory<CR>", "File History" },
 			},
 		})
 	end,
