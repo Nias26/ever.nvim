@@ -19,6 +19,8 @@ vim.opt.sessionoptions = { -- Required by scope.nvim
 	"globals",
 }
 
+vim.opt.fillchars = [[diff:╱]]
+
 local options = {
 	relativenumber = true, -- Set Relative Number line
 	number = true, -- Set Number line
