@@ -4,14 +4,14 @@ return {
 	keys = { "za" },
 	dependencies = { "kevinhwang91/promise-async" },
 	config = function()
-		vim.o.foldcolumn = "1"
+		vim.opt.foldcolumn = "1"
 		-- vim.o.foldnestmax = 1
-		vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
-		vim.o.foldlevel = 99
-		vim.o.foldlevelstart = 99
+		vim.opt.fillchars:append([[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]])
+		vim.opt.foldlevel = 99
+		vim.opt.foldlevelstart = 99
 		vim.opt.foldenable = true
-		vim.o.foldmethod = "expr"
-		vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+		vim.opt.foldmethod = "expr"
+		vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 		vim.g.markdown_folding = 1
 
 		-- Tell the server the capability of foldingRange,
