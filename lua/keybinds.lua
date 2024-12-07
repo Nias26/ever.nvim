@@ -61,6 +61,5 @@ map("n", ";r", function()
 end, { desc = "Grug-Far" })
 -- Toggle relativenumbers
 map("n", "<F5>", function()
-	local v = vim.wo.rnu
-	vim.wo.rnu = not v
+	vim.wo.rnu = not vim.wo.rnu
 end, { desc = "Toggle Relative Numbers", noremap = true })
