@@ -170,7 +170,7 @@ return {
 					{
 						require("noice").api.status.command.get, ---@diagnostic disable-line: undefined-field
 						cond = require("noice").api.status.command.has, ---@diagnostic disable-line: undefined-field
-						icon = "",
+						icon = "",
 						color = { fg = colors.orange },
 					},
 					{
