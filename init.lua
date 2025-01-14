@@ -19,8 +19,6 @@ vim.opt.sessionoptions = { -- Required by scope.nvim
 	"globals",
 }
 
-vim.opt.fillchars = [[diff:╱]]
-
 local options = {
 	relativenumber = true, -- Set Relative Number line
 	number = true, -- Set Number line
@@ -45,6 +43,7 @@ local options = {
 	grepformat = "%f:%l:%c:%m", -- Grep formatting
 	formatexpr = "v:lua.require'conform'.formatexpr()",
 	mousemodel = "extend", -- Right click extend selection
+	fillchars = [[diff:╱]],
 }
 
 for k, v in pairs(options) do
