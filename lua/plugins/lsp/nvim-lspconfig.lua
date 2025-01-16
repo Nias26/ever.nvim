@@ -1,7 +1,7 @@
 return {
 	"neovim/nvim-lspconfig",
 	lazy = true,
-	event = "BufRead",
+	event = "BufReadPost",
 	opts = {
 		inlay_hints = { enabled = true },
 	},

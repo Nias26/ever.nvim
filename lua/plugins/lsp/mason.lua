@@ -1,7 +1,6 @@
 return {
 	"williamboman/mason.nvim",
 	lazy = true,
-	event = "BufRead",
 	config = function()
 		require("mason").setup({
 			ui = {

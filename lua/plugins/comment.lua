@@ -1,5 +1,6 @@
 return {
 	"numToStr/Comment.nvim",
+	event = "BufEnter",
 	keys = {
 		{ "cc", mode = { "n", "v" } },
 		{ "Cc", mode = { "n", "v" } },

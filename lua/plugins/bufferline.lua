@@ -4,11 +4,11 @@ return {
 		{
 			"tiagovla/scope.nvim",
 			config = function()
-				require("scope").setup({})
+				require("scope").setup()
 			end,
 		},
 	},
-	-- WARN:Do not set lazy-loaing on bufferline, or it won't show!
+	-- WARN:Do not set lazy-loaing, or it won't load properly
 	config = function()
 		local bufferline = require("bufferline")
 		bufferline.setup({
