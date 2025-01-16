@@ -3,6 +3,7 @@ vim.cmd.colorscheme("oxocarbon")
 
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
+local user_cmd = vim.api.nvim_create_user_command
 
 -- Set Virtual text
 vim.diagnostic.config({
@@ -118,6 +119,5 @@ autocmd("CmdlineChanged", {
 vim.api.nvim_set_hl(0, "DashboardFooter", { fg = "#08A045" })
 
 -- Custom commands
--- Dashboard
-vim.api.nvim_create_user_command("Q", "bdelete! | Dashboard", {})
-vim.api.nvim_create_user_command("D", "Dashboard", {})
+user_cmd("Q", "bdelete! | Dashboard", {})
+user_cmd("D", "Dashboard", {})
