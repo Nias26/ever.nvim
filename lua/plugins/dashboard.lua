@@ -4,7 +4,7 @@ return {
 	config = function()
 		require("dashboard").setup({
 			theme = "hyper",
-      shortcut_type = "number",
+			shortcut_type = "number",
 			hide = {
 				statusline = true,
 				tabline = true,
@@ -28,9 +28,9 @@ return {
 						key = "t",
 					},
 					{
-						desc = "󰠮 Projects",
+						desc = " Recent Files",
 						group = "Exception",
-						action = "CdProject",
+						action = "Telescope oldfiles",
 						key = "p",
 					},
 					{

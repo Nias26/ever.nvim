@@ -88,17 +88,6 @@ return {
 			},
 		})
 
-		-- File -> 
-		wk.register({
-			["<leader>f"] = {
-				name = " - File",
-				d = { "<cmd>call delete(@%)<CR>", "Delete current file" },
-				r = { ":Rename ", "Rename current file" },
-				m = { ":Move ", "Move current file" },
-				R = { "<cmd>lua require('persistence').load({ last = true })<CR>", "Restore last session" },
-			},
-		})
-
 		-- Search -> 
 		wk.register({
 			["<leader>s"] = {
