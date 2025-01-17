@@ -10,8 +10,7 @@ return {
 		-- Color table for highlights
 		-- stylua: ignore
 		local colors = {
-			bg       = '#202328',
-			-- bg 		= '#1f1f28', -- For Kanagawa Only
+			bg       = '#161616',
 			fg       = '#bbc2cf',
 			yellow   = '#ECBE7B',
 			cyan     = '#008080',
@@ -103,56 +102,18 @@ return {
 						padding = { rignt = 1 },
 					},
 					{
-						"branch",
-						icon = "",
-						color = { fg = colors.violet, gui = "bold" },
-						cond = conditions.check_git_workspace,
-					},
-					{
-						"diff",
-						symbols = { added = "󰐕 ", modified = "󰏪 ", removed = "󰍴 " },
-						diff_color = {
-							added = { fg = colors.green },
-							modified = { fg = colors.orange },
-							removed = { fg = colors.red },
-						},
-						cond = conditions.check_git_workspace,
-					},
-					{
 						"filename",
 						cond = conditions.buffer_not_empty,
-						color = { fg = colors.gray, gui = "bold" },
+						color = { fg = colors.gray },
 					},
 					{
+						-- TODO: Git branch integration
 						function()
-							if #vim.lsp.get_clients() > 1 then
-								local lsp_name = vim.lsp.get_clients()[1].name
-								for i = 2, #vim.lsp.get_clients() do
-									lsp_name = lsp_name .. " - " .. vim.lsp.get_clients()[i].name
-								end
-								return lsp_name
-							end
-							return vim.lsp.get_clients()[1].name
+							-- return vim.fn.system({ "git", "branch", "|", "grep", "-o", "-m1", "\b(master|main)\b" })
+							return ""
 						end,
-						icon = " ",
-						color = function()
-							for i = 1, #vim.lsp.get_clients() do
-								if vim.lsp.get_clients({ bufnr = 0 })[1] == vim.lsp.get_clients()[i] then
-									return { fg = colors.green, gui = "bold" }
-								end
-							end
-							return { fg = colors.gray, gui = "bold" }
-						end,
-					},
-					{
-						"diagnostics",
-						sources = { "nvim_diagnostic" },
-						symbols = { error = " ", warn = " ", info = " " },
-						diagnostics_color = {
-							color_error = { fg = colors.red },
-							color_warn = { fg = colors.yellow },
-							color_info = { fg = colors.cyan },
-						},
+						color = { fg = colors.fg, gui = "bold" },
+						cond = conditions.check_git_workspace,
 					},
 				},
 				lualine_x = {
@@ -176,18 +137,12 @@ return {
 					{
 						"filetype",
 						-- fmt = string.upper,
-						icons_enabled = true,
-						color = { fg = colors.green, gui = "bold" },
-					},
-					{
-						"o:encoding", -- option component same as &encoding in viml
-						fmt = string.upper, -- I'm not sure why it's upper case either ;
-						color = { fg = colors.green, gui = "bold" },
-						icon = { "󰘨", color = { fg = colors.red } },
+						icons_enabled = false,
+						color = { fg = colors.fg },
 					},
 					{
 						"location",
-						color = { fg = colors.fg, gui = "bold" },
+						color = { fg = colors.fg },
 					},
 					{
 						function()

@@ -74,9 +74,6 @@ return {
 			require("transparent").clear_prefix("lualine")
 			vim.g.transparent_groups =
 				vim.list_extend(vim.g.transparent_groups or {}, { "lualine_c_normal", "lualine_c_9_normal" })
-			if #vim.lsp.get_clients() > 0 then
-				require("transparent").clear_prefix("lualine")
-			end
 
 			-- Bufferline
 			vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, { "BufferLineDevIcon" })
@@ -95,8 +92,8 @@ return {
 			require("transparent").setup({
 				exclude_groups = {
 					-- Lualine components
-					"lualine_c_2",
-					"lualine_c_9",
+					-- TODO: Fix highlight group
+					"lualine_c",
 					-- Cmp
 					"PmenuSel",
 					"Pmenu",
