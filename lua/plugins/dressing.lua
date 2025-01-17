@@ -1,6 +1,6 @@
 return {
 	"stevearc/dressing.nvim",
-	event = "VeryLazy",
+	lazy = true,
 	config = function()
 		require("dressing").setup({
 			input = {
