@@ -20,8 +20,8 @@ vim.opt.sessionoptions = { -- Required by scope.nvim
 }
 
 local options = {
-	relativenumber = true, -- Set Relative Number line
-	number = true, -- Set Number line
+	relativenumber = false, -- Set Relative Number line
+	number = false, -- Set Number line
 	inccommand = "split", -- Command preview (eg. `%s/.../...`)
 	ignorecase = true, -- Ignore uppercase and lowercase in commands
 	laststatus = 3, -- Set global statusbar

@@ -89,14 +89,9 @@ autocmd("FileType", {
 	end,
 })
 
--- Dashboard Highlight group
+-- Custom Highlight group
 vim.api.nvim_set_hl(0, "DashboardFooter", { fg = "#08A045" })
 
 -- Custom commands
 user_cmd("Q", "bdelete! | Dashboard", {})
 user_cmd("D", "Dashboard", {})
-
-function test()
-  local cmd = "git branch | grep -Po \"(?<=\\*).*$\""
-  print(vim.fn.system(cmd))
-end
