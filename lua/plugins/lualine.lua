@@ -109,8 +109,8 @@ return {
 					{
 						-- TODO: Git branch integration
 						function()
-							-- return vim.fn.system({ "git", "branch", "|", "grep", "-o", "-m1", "\b(master|main)\b" })
-							return ""
+							-- return vim.fn.system({"git", "branch", "|", "grep", "-Po", "\"(?<=\\*).*$\""})
+              return ""
 						end,
 						color = { fg = colors.fg, gui = "bold" },
 						cond = conditions.check_git_workspace,
