@@ -77,6 +77,12 @@ return {
 			["<leader>c"] = {
 				name = " - Code",
 				t = { "<cmd>Trouble diagnostics toggle<CR>", "Trouble" },
+				d = {
+					function()
+						require("dapui").toggle()
+					end,
+					"Debug Adapter Protocol",
+				},
 				l = {
 					name = " - LSP",
 					d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition" },
