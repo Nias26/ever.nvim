@@ -12,16 +12,13 @@ return {
 		local colors = {
 			bg       = '#161616',
 			fg       = '#bbc2cf',
-			yellow   = '#ECBE7B',
-			cyan     = '#008080',
-			darkblue = '#081633',
-			green    = '#98be65',
+      grey     = '#262626',
+			green    = '#42be65',
 			orange   = '#FF8800',
-			violet   = '#a9a1e1',
-			magenta  = '#c678dd',
-			blue     = '#51afef',
-			red      = '#ec5f67',
-			gray 		= '#495057',
+			violet   = '#be95ff',
+      red      = '#ee5396',
+      cyan     = '#3ddbd9',
+      blue     = '#33b1ff',
 		}
 
 		local conditions = {
@@ -38,20 +35,12 @@ return {
 			end,
 		}
 
-		-- Config
-		local config = {
+		lualine.setup({
 			options = {
 				-- Disable sections and component separators
 				component_separators = " ",
 				section_separators = "",
-				-- theme = "auto",
-				theme = {
-					-- We are going to use lualine_c an lualine_x as left and
-					-- right section. Both are highlighted by c theme .  So we
-					-- are just setting default looks o statusline
-					normal = { c = { fg = colors.fg, bg = colors.bg } },
-					inactive = { c = { fg = colors.fg, bg = colors.bg } },
-				},
+				theme = "auto",
 			},
 			sections = {
 				lualine_a = {},
@@ -61,7 +50,7 @@ return {
 
 				lualine_c = {
 					{
-						-- mode component
+						-- Mode
 						function()
 							local mode = vim.api.nvim_get_mode().mode
 							local mode_name
@@ -103,17 +92,35 @@ return {
 					},
 					{
 						"filename",
+						file_status = false,
+						symbols = {
+							modified = "",
+							readonly = "!",
+						},
+						color = function()
+							if vim.bo.readonly then
+								return { fg = colors.red }
+							else
+								return { fg = colors.fg }
+							end
+						end,
 						cond = conditions.buffer_not_empty,
-						color = { fg = colors.gray },
+						padding = -1,
 					},
 					{
-						-- TODO: Git branch integration
-						function()
-							-- return vim.fn.system({"git", "branch", "|", "grep", "-Po", "\"(?<=\\*).*$\""})
-              return ""
-						end,
+						"branch",
+						-- "(󰘧  #" .. "branch" .. ")",
+						icon = "",
 						color = { fg = colors.fg, gui = "bold" },
 						cond = conditions.check_git_workspace,
+						padding = -1,
+					},
+					{
+						function()
+							return vim.api.nvim_get_current_buf()
+						end,
+						color = { fg = colors.grey },
+						padding = -1,
 					},
 				},
 				lualine_x = {
@@ -126,93 +133,24 @@ return {
 					{
 						require("noice").api.status.mode.get, ---@diagnostic disable-line: undefined-field
 						cond = require("noice").api.status.mode.has, ---@diagnostic disable-line: undefined-field
-						color = { fg = colors.orange },
+						color = { fg = colors.red },
 					},
 					{
 						require("noice").api.status.command.get, ---@diagnostic disable-line: undefined-field
 						cond = require("noice").api.status.command.has, ---@diagnostic disable-line: undefined-field
 						icon = "",
-						color = { fg = colors.orange },
+						color = { fg = colors.violet },
 					},
 					{
 						"filetype",
-						-- fmt = string.upper,
 						icons_enabled = false,
-						color = { fg = colors.fg },
+						color = { fg = colors.cyan },
+						padding = -1,
 					},
 					{
 						"location",
 						color = { fg = colors.fg },
-					},
-					{
-						function()
-							local chars = setmetatable({
-								" ",
-								" ",
-								" ",
-								" ",
-								" ",
-								" ",
-								" ",
-								" ",
-								" ",
-								" ",
-								" ",
-								" ",
-								" ",
-								" ",
-								" ",
-								" ",
-								" ",
-								" ",
-								" ",
-								" ",
-								" ",
-								" ",
-								" ",
-								" ",
-								" ",
-								" ",
-								" ",
-								" ",
-							}, {
-								__index = function()
-									return " "
-								end,
-							})
-							local line_ratio = vim.api.nvim_win_get_cursor(0)[1] / vim.api.nvim_buf_line_count(0)
-							local position = math.floor(line_ratio * 100)
-
-							local icon = chars[math.floor(line_ratio * #chars)] .. position
-							if position <= 5 then
-								icon = " TOP"
-							elseif position >= 95 then
-								icon = " BOT"
-							end
-							return icon
-						end,
-						color = function()
-							local position =
-								math.floor(vim.api.nvim_win_get_cursor(0)[1] / vim.api.nvim_buf_line_count(0) * 100)
-							local fg
-							local style
-
-							if position <= 5 then
-								fg = colors.blue
-								style = "bold"
-							elseif position >= 95 then
-								fg = colors.red
-								style = "bold"
-							else
-								fg = colors.violet
-								style = nil
-							end
-							return {
-								fg = fg,
-								style = style,
-								bg = "bg",
-							}
-						end,
+						padding = -1,
 					},
 				},
 			},
@@ -224,9 +162,6 @@ return {
 				lualine_y = {},
 				lualine_z = {},
 			},
-		}
-
-		-- Now don't forget to initialize lualine
-		lualine.setup(config)
+		})
 	end,
 }
