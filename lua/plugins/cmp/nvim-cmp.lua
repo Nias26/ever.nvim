@@ -2,7 +2,13 @@ return {
 	"hrsh7th/nvim-cmp",
 	event = { "InsertEnter", "CmdlineEnter" },
 	dependencies = {
-		"onsails/lspkind.nvim",
+		{
+			"onsails/lspkind.nvim",
+			opts = {
+				-- (requires vscode-codicons font)
+				preset = "codicons",
+			},
+		},
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-nvim-lsp-signature-help",
@@ -33,9 +39,9 @@ return {
 		end
 		cmp.setup({
 			-- If you want you can enable ghost text
-			--[[ experimental = {
-				ghost_text = { hl_group = 'Comment' },
-			}, ]]
+			experimental = {
+				ghost_text = { hl_group = "Comment" },
+			},
 			snippet = {
 				expand = function(args)
 					luasnip.lsp_expand(args.body) -- For `luasnip` users.
@@ -43,27 +49,26 @@ return {
 			},
 			window = {
 				completion = {
-					border = "none",
-					side_padding = 1,
-					scrollbar = false,
+					col_offset = -3,
+					side_padding = 0,
 				},
 				documentation = {
-					border = nil,
-					scrollbar = "|",
+					border = "solid",
 				},
 			},
 			---@diagnostic disable-next-line: missing-fields
 			formatting = {
-				fields = { "abbr", "kind", "menu" },
+				fields = { "kind", "abbr", "menu" },
 				format = function(entry, vim_item)
-					return lspkind.cmp_format()(entry, vim_item)
+					local kind = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 50, ellipsis_char = "..." })(
+						entry,
+						vim_item
+					)
+					local strings = vim.split(kind.kind, "%s", { trimempty = true })
+					kind.kind = " " .. (strings[1] or "") .. " "
+					kind.menu = " " .. (strings[2] or "") .. " "
+					return kind
 				end,
-				lspkind.cmp_format({
-					mode = "text_symbol",
-					maxwidth = 50,
-					ellipsis_char = "...",
-					symbol_map = { String = "§" },
-				}),
 			},
 			mapping = cmp.mapping({
 				["<C-d>"] = cmp.mapping.scroll_docs(-4),
@@ -138,7 +143,7 @@ return {
 			}),
 		})
 
-		local colors = {
+		--[[ local colors = {
 			base00 = "#161616",
 			base01 = "#262626",
 			base02 = "#393939",
@@ -155,42 +160,12 @@ return {
 			base0D = "#42be65",
 			base0E = "#be95ff",
 			base0F = "#82cfff",
-		}
+		} ]]
 
 		-- Define highlighting groups
 		local hl = vim.api.nvim_set_hl
 
-		--[[ hl(0, "PmenuSel", { bg = "#3f3f48", fg = "NONE" })
-		hl(0, "Pmenu", { fg = "#2a2a37", bg = "#292937" }) ]]
-		hl(0, "CmpItemAbbr", { fg = "#adadad", bg = "NONE" })
-		hl(0, "CmpItemAbbrMatch", { fg = colors.base05, bg = "NONE", bold = true })
-		hl(0, "CmpItemAbbrMatchFuzzy", { fg = colors.base04, bg = "NONE", bold = true })
-		hl(0, "CmpItemMenu", { bg = colors.base04, fg = "NONE", italic = true })
-		hl(0, "CmpItemKindInterface", { bg = "NONE", fg = colors.base08 })
-		hl(0, "CmpItemKindColor", { fg = colors.base08, bg = "NONE" })
-		hl(0, "CmpItemKindTypeParameter", { fg = colors.base08, bg = "NONE" })
-		hl(0, "CmpItemKindText", { fg = colors.base09, bg = "NONE" })
-		hl(0, "CmpItemKindEnum", { fg = colors.base09, bg = "NONE" })
-		hl(0, "CmpItemKindKeyword", { fg = colors.base09, bg = "NONE" })
-		hl(0, "CmpItemKindConstant", { fg = colors.base0A, bg = "NONE" })
-		hl(0, "CmpItemKindConstructor", { fg = colors.base0A, bg = "NONE" })
-		hl(0, "CmpItemKindReference", { fg = colors.base0A, bg = "NONE" })
-		hl(0, "CmpItemKindFunction", { fg = colors.base0B, bg = "NONE" })
-		hl(0, "CmpItemKindStruct", { fg = colors.base0B, bg = "NONE" })
-		hl(0, "CmpItemKindClass", { fg = colors.base0B, bg = "NONE" })
-		hl(0, "CmpItemKindModule", { fg = colors.base0B, bg = "NONE" })
-		hl(0, "CmpItemKindOperator", { fg = colors.base0B, bg = "NONE" })
-		hl(0, "CmpItemKindField", { fg = colors.base0C, bg = "NONE" })
-		hl(0, "CmpItemKindProperty", { fg = colors.base0C, bg = "NONE" })
-		hl(0, "CmpItemKindEvent", { fg = colors.base0C, bg = "NONE" })
-		hl(0, "CmpItemKindUnit", { fg = colors.base0D, bg = "NONE" })
-		hl(0, "CmpItemKindSnippet", { fg = colors.base0D, bg = "NONE" })
-		hl(0, "CmpItemKindFolder", { fg = colors.base0D, bg = "NONE" })
-		hl(0, "CmpItemKindVariable", { fg = colors.base0E, bg = "NONE" })
-		hl(0, "CmpItemKindFile", { fg = colors.base0E, bg = "NONE" })
-		hl(0, "CmpItemKindMethod", { fg = colors.base0F, bg = "NONE" })
-		hl(0, "CmpItemKindValue", { fg = colors.base0F, bg = "NONE" })
-		hl(0, "CmpItemKindEnumMember", { fg = colors.base0F, bg = "NONE" })
-		hl(0, "CmpItemKindCodeium", { fg = colors.base0D, bg = "NONE" })
+		hl(0, "CmpItemAbbrDeprecated", { strikethrough = true })
+		hl(0, "CmpItemMenu", { italic = false })
 	end,
 }
