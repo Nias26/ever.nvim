@@ -165,7 +165,7 @@ return {
 		-- Define highlighting groups
 		local hl = vim.api.nvim_set_hl
 
-		hl(0, "CmpItemAbbrDeprecated", { strikethrough = true })
+		hl(0, "CmpItemAbbrDeprecatedDefault", { strikethrough = true })
 		hl(0, "CmpItemMenu", { italic = false })
 	end,
 }
