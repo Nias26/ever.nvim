@@ -30,7 +30,7 @@ map("n", ";h", "<cmd>Telescope help_tags<CR>", { desc = "Help Tags" })
 map("n", ";m", "<cmd>Telescope man_pages<CR>", { desc = "Man Pages" })
 
 -- Open Nvim Tree
-map("n", "<F3>", "<cmd>NvimTreeToggle<CR>", { desc = "Open Nvim Tree" })
+map("n", "<F3>", "<cmd>Neotree source=filesystem toggle<CR>", { desc = "Open Nvim Tree" })
 
 -- Buffer managing
 map("n", "bd", "<cmd>bdel<CR>", { desc = "Delete current buffer" })

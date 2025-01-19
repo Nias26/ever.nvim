@@ -131,8 +131,8 @@ return {
 		wk.register({
 			["<leader>o"] = {
 				name = "󰏌 - Open",
-				e = { "<cmd>NvimTreeToggle<CR>", "NvimTree" },
-				T = { "<cmd>ToggleTerm<CR>", "Toggle term" },
+				s = { "<cmd>Neotree document_symbols toggle<CR>", "Document Symbols" },
+				e = { "<cmd>Neotree source=filesystem toggle<CR>", "NeoTree" },
 				d = { "<cmd>Dashboard<CR>", "Dashboard" },
 				n = { "<cmd>Nerdy<CR>", "Choose Nerd Font Icon" },
 				h = { "<cmd>Noice<CR>", "Notification history" },
