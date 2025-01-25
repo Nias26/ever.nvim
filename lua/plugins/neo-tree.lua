@@ -1,7 +1,9 @@
 return {
 	"nvim-neo-tree/neo-tree.nvim",
+	keys = { "<F3>" },
+	cmd = "Neotree",
 	branch = "v3.x",
-	dependencies = {
+	dependences = {
 		"nvim-tree/nvim-web-devicons",
 		"nvim-lua/plenary.nvim",
 		"MunifTanjim/nui.nvim",
