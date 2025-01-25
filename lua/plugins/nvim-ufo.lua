@@ -1,6 +1,5 @@
 return {
 	"kevinhwang91/nvim-ufo",
-	event = "BufReadPost",
 	keys = { "za" },
 	dependencies = { "kevinhwang91/promise-async" },
 	config = function()
@@ -12,23 +11,13 @@ return {
 		vim.opt.foldenable = true
 		vim.g.markdown_folding = 1
 
-		-- Tell the server the capability of foldingRange,
-		local capabilities = vim.lsp.protocol.make_client_capabilities()
-		capabilities.textDocument.foldingRange = {
-			dynamicRegistration = false,
-			lineFoldingOnly = true,
-		}
-
-		local language_servers = require("lspconfig").util.available_servers()
-		for _, ls in ipairs(language_servers) do
-			require("lspconfig")[ls].setup({
-				capabilities = capabilities,
-			})
-		end
-
 		-- Fold Highlightning group
 		vim.api.nvim_set_hl(0, "FoldColumn", { fg = "#525252" })
 
-		require("ufo").setup()
+		require("ufo").setup({
+			provider_selector = function(bufnr, filetype, buftype)
+				return { "treesitter", "indent" }
+			end,
+		})
 	end,
 }
