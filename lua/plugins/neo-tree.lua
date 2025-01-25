@@ -21,7 +21,7 @@ return {
 			enable_cursor_hijack = true,
 			default_component_configs = {
 				indent = {
-					indent_size = 1,
+					indent_size = 2,
 					padding = 1,
 				},
 				git_status = {
