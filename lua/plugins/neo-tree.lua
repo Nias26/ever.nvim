@@ -1,6 +1,5 @@
 return {
 	"nvim-neo-tree/neo-tree.nvim",
-	keys = { "<F3>" },
 	cmd = "Neotree",
 	branch = "v3.x",
 	dependences = {
