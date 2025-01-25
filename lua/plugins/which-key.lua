@@ -1,7 +1,8 @@
 return {
 	"folke/which-key.nvim",
-	tag = "v2.1.0",
+	keys = { "<leader>" },
 	event = "VeryLazy",
+	cmd = "WhichKey",
 	init = function()
 		vim.o.timeout = true
 		vim.o.timeoutlen = 500
@@ -9,144 +10,103 @@ return {
 	config = function()
 		local wk = require("which-key")
 		wk.setup({
+			preset = "helix",
 			icons = {
-				group = " ",
-			},
-			layout = {
-				align = "center",
-				spacing = 5,
-				height = { min = 5, max = 25 },
-				width = { min = 20, max = 50 },
+				group = "",
+				separator = " ",
+				mappings = false,
 			},
 		})
-
-		-- Icons Index
-		-- Ever.nvim -> 
-		-- Code -> 
-		-- File -> 
-		-- Search -> 
-		-- Buffer -> 󰓩
-		-- Open -> 󰏌
-		-- Diffview -> 
 
 		-- Index
-		wk.register({
-			["<leader>"] = {
-				t = { "<cmd>tabnew<CR>", "New Tab" },
-				D = { "<cmd>tabclose<CR>", "Delete current tab" },
-				["["] = { "<cmd>tabprevious<CR>", "Previous tab" },
-				["]"] = { "<cmd>tabnext<CR>", "Next tab" },
-				M = "which_key_ignore",
-				q = { "<cmd>wqa<CR>", "Fast quit" },
-				m = { "<cmd>Telescope keymaps<CR>", "Show keymaps" },
-			},
+		wk.add({
+			{ "<leader>", group = " Index" },
+			{ "<leader>t", "<cmd>tabnew<CR>", desc = "New Tab" },
+			{ "<leader>D", "<cmd>tabclose<CR>", desc = "Delete current tab" },
+			{ "<leader>[", "<cmd>tabprevious<CR>", desc = "Previous tab" },
+			{ "<leader>]", "<cmd>tabnext<CR>", desc = "Next tab" },
+			{ "<leader>M", hidden = true },
+			{ "<Esc><Esc>", hidden = true },
+			{ "<leader>m", "<cmd>Telescope keymaps<CR>", desc = "Show keymaps", icon = "" },
 		})
 
-		-- Ever.nvim -> 
-		wk.register({
-			["<leader>e"] = {
-				name = " - Ever.nvim",
-				c = { "<cmd>cd $HOME/.config/nvim | NvimTreeOpen<CR>", "Edit config" },
-				l = { "<cmd>Lazy<CR>", "󰒲 Lazy" },
-				g = {
-					function()
-						vim.ui.open("https://github.com/Nias26/ever.nvim")
-					end,
-					" Git repo",
-				},
-				t = { "<cmd>Telescope themes<CR>", "Change theme" },
-				b = {
-					name = " - Bookmarks",
-					["1"] = { "<cmd>e ~/.zshrc<CR>", "~/.zshrc" },
-					["2"] = { "<cmd>e ~/.zshenv<CR>", "~/.zshenv" },
-					["3"] = { "<cmd>e ~/.config/nvim/init.lua<CR>", "~/.config/nvim/init.lua" },
-					["4"] = {},
-					["5"] = {},
-					["6"] = {},
-					["7"] = {},
-					["8"] = {},
-					["9"] = {},
-					["0"] = {},
-				},
-				v = { "<cmd>TransparentToggle<CR>", "Toggle transparency theme" },
+		-- Ever.nvim -> 
+		wk.add({
+			{ "<leader>e", group = " Ever.nvim" },
+			{ "<leader>ec", "<cmd>cd $HOME/.config/nvim | NvimTreeOpen<CR>", desc = "Edit config" },
+			{ "<leader>el", "<cmd>Lazy<CR>", desc = "󰒲 Lazy" },
+			{
+				"<leader>eg",
+				function()
+					vim.ui.open("https://github.com/Nias26/ever.nvim")
+				end,
+				desc = " Git repo",
 			},
+			{ "<leader>et", "<cmd>Telescope themes<CR>", desc = "Change theme" },
+			{ "<leader>ev", "<cmd>TransparentToggle<CR>", desc = "Toggle transparency theme" },
 		})
 
 		-- Code -> 
-		wk.register({
-			["<leader>c"] = {
-				name = " - Code",
-				t = { "<cmd>Trouble diagnostics toggle<CR>", "Trouble" },
-				d = {
-					function()
-						require("dapui").toggle()
-					end,
-					"Debug Adapter Protocol",
-				},
-				l = {
-					name = " - LSP",
-					d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition" },
-					r = { "<cmd>lua vim.lsp.buf.references()<CR>", "Go to references" },
-					a = { "<cmd>Lspsaga code_action<CR>", "Code Actions" },
-					h = { "<cmd>Lspsaga hover_doc<CR>", "LSP Signature" },
-					f = { "<cmd>Lspsaga finder<CR>", "Find References" },
-				},
+		wk.add({
+			{ "<leader>c", group = " Code" },
+			{ "<leader>ct", "<cmd>Trouble diagnostics toggle<CR>", desc = "Trouble" },
+			{
+				"<leader>cd",
+				function()
+					require("dapui").toggle()
+				end,
+				desc = "Debug Adapter Protocol",
 			},
+			{ "<leader>cl", group = " [LSP]" },
+			{ "<leader>cld", "<cmd>lua vim.lsp.buf.definition()<CR>", desc = "Go to definition" },
+			{ "<leader>clr", "<cmd>lua vim.lsp.buf.references()<CR>", desc = "Go to references" },
+			{ "<leader>cla", "<cmd>Lspsaga code_action<CR>", desc = "Code Actions" },
+			{ "<leader>clh", "<cmd>Lspsaga hover_doc<CR>", desc = "LSP Signature" },
+			{ "<leader>clf", "<cmd>Lspsaga finder<CR>", desc = "Find References" },
 		})
 
 		-- Search -> 
-		wk.register({
-			["<leader>s"] = {
-				name = " - Search",
-				t = {
-					name = " [Telescope]",
-					t = { "<cmd>Telescope file_browser<CR>", "Find files" },
-					g = { "<cmd>Telescope live_grep<CR>", "Find text" },
-					b = { "<cmd>Telescope buffers<CR>", "Find Buffers" },
-					u = { "<cmd>Telescope undo<CR>", "Undo history" },
-					d = { "<cmd>Telescope diagnostics<CR>", "Diagnostics" },
-					h = { "<cmd>Telescope command_history<CR>", "Command history" },
-				},
-			},
+		wk.add({
+			{ "<leader>s", group = " Search" },
+			{ "<leader>st", group = " [Telescope]" },
+			{ "<leader>stt", "<cmd>Telescope file_browser<CR>", desc = "Find files" },
+			{ "<leader>stg", "<cmd>Telescope live_grep<CR>", desc = "Find text" },
+			{ "<leader?stb", "<cmd>Telescope buffers<CR>", desc = "Find Buffers" },
+			{ "<leader>std", "<cmd>Telescope diagnostics<CR>", desc = "Diagnostics" },
+			{ "<leader>sth", "<cmd>Telescope command_history<CR>", desc = "Command history" },
 		})
 
 		-- Buffer -> 󰓩
-		wk.register({
-			["<leader>b"] = {
-				name = "󰓩 - Buffer",
-				n = { "<cmd>enew<CR>", "New buffer" },
-				d = { "<cmd>bdel<CR>", "Delete current buffer" },
-				s = {
-					name = " Split",
-					h = { ":split ", "Horizzontal Split" },
-					v = { ":vsplit ", "Vertical Split" },
-					c = { "<cmd>q<CR>", "Close current split" },
-				},
-				["["] = { "<cmd>bprevious<CR>", "Previous buffer" },
-				["]"] = { "<cmd>bnext<CR>", "Next buffer" },
-			},
+		wk.add({
+			{ "<leader>b", group = "󰓩 Buffer" },
+			{ "<leader>bn", "<cmd>enew<CR>", desc = "New buffer" },
+			{ "<leader>bd", "<cmd>bdel<CR>", desc = "Delete current buffer" },
+			{ "<leader>b[", "<cmd>bprevious<CR>", desc = "Previous buffer" },
+			{ "<leader>b]", "<cmd>bnext<CR>", desc = "Next buffer" },
+			{ "<leader>bs", group = " Split" },
+			{ "<leader>bsh", ":split ", desc = "Horizzontal Split" },
+			{ "<leader>bst", ":vsplit ", desc = "Vertical Split" },
+			{ "<leader>bsc", "<cmd>q<CR>", desc = "Close current split" },
 		})
 
 		-- Open -> 󰏌
-		wk.register({
-			["<leader>o"] = {
-				name = "󰏌 - Open",
-				s = { "<cmd>Neotree document_symbols toggle<CR>", "Document Symbols" },
-				e = { "<cmd>Neotree source=filesystem toggle<CR>", "NeoTree" },
-				d = { "<cmd>Dashboard<CR>", "Dashboard" },
-				n = { "<cmd>Nerdy<CR>", "Choose Nerd Font Icon" },
-				h = { "<cmd>Noice<CR>", "Notification history" },
-				t = { "<cmd>Telescope<CR>", "Telescope" },
-			},
+		wk.add({
+			{ "<leader>o", group = "󰏌 Open" },
+			{ "<leader>os", "<cmd>Neotree document_symbols toggle<CR>", desc = "Document Symbols" },
+			{ "<leader>oe", "<cmd>Neotree source=filesystem toggle<CR>", desc = "NeoTree" },
+			{ "<leader>od", "<cmd>Dashboard<CR>", desc = "Dashboard" },
+			{ "<leader>on", "<cmd>Nerdy<CR>", desc = "Choose Nerd Font Icon" },
+			{ "<leader>oh", "<cmd>Noice<CR>", desc = "Notification history" },
+			{ "<leader>ot", "<cmd>Telescope<CR>", desc = "Telescope" },
 		})
-		wk.register({
-			["<leader>d"] = {
-				name = " - Diffview",
-				o = { "<cmd>DiffviewOpen<CR>", "Open" },
-				c = { "<cmd>DiffviewClose<CR>", "Close" },
-				r = { "<cmd>DiffviewRefresh>CR>", "Refresh" },
-				h = { "<cmd>DiffviewFileHistory<CR>", "File History" },
-			},
+
+		-- Diffview -> 
+		wk.add({
+			{ "<leader>d", group = " Diffview" },
+			{ "<leader>do", "<cmd>DiffviewOpen<CR>", desc = "Open" },
+			{ "<leader>dc", "<cmd>DiffviewClose<CR>", desc = "Close" },
+			{ "<leader>dr", "<cmd>DiffviewRefresh>CR>", desc = "Refresh" },
+			{ "<leader>dh", "<cmd>DiffviewFileHistory<CR>", desc = "File History" },
 		})
 	end,
 }
