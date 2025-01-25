@@ -2,7 +2,7 @@ return {
 	"folke/which-key.nvim",
 	keys = { "<leader>" },
 	event = "VeryLazy",
-	cmd = "WhichKey",
+	enabled = false,
 	init = function()
 		vim.o.timeout = true
 		vim.o.timeoutlen = 500
@@ -42,7 +42,6 @@ return {
 				end,
 				desc = " Git repo",
 			},
-			{ "<leader>et", "<cmd>Telescope themes<CR>", desc = "Change theme" },
 			{ "<leader>ev", "<cmd>TransparentToggle<CR>", desc = "Toggle transparency theme" },
 		})
 
