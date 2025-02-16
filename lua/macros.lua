@@ -59,23 +59,6 @@ autocmd("FileType", {
 	end,
 })
 
--- Persistent folds
-augroup("Persistent Folds", { clear = true })
-autocmd("BufWinLeave", {
-	pattern = "*.*",
-	callback = function()
-		vim.cmd.mkview()
-	end,
-	group = "Persistent Folds",
-})
-autocmd("BufWinEnter", {
-	pattern = "*.*",
-	callback = function()
-		vim.cmd.loadview({ mods = { emsg_silent = true } })
-	end,
-	group = "Persistent Folds",
-})
-
 -- Help pages keybinds
 autocmd("FileType", {
 	pattern = "help",
