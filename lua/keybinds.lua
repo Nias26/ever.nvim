@@ -40,7 +40,7 @@ map("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Next buffer" })
 -- Splits
 map("n", "Ss", ":split ", { desc = "Horizzontal Split" })
 map("n", "Sv", ":vsplit ", { desc = "Vertical Split" })
-map({ "n", "v" }, "Q", "<cmd>bd%!<CR>", { desc = "Quit current buffer" })
+map({ "n", "v" }, "Q", "<cmd>bd!<CR>", { desc = "Quit current buffer" })
 
 -- LSP
 map({ "n", "v" }, "gd", vim.lsp.buf.definition, { desc = "Go to Definition" })
