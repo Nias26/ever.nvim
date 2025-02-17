@@ -6,6 +6,7 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 	},
 	config = function()
+		---@diagnostic disable-next-line: missing-fields
 		require("noice").setup({
 			views = {
 				cmdline_popup = {
@@ -43,7 +44,11 @@ return {
 					filter = { pattern = "^:%s*!", icon = "$", lang = "bash" },
 					lua = { pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" }, icon = "", lang = "lua" },
 					help = { pattern = "^:%s*he?l?p?%s+", icon = "" },
-					replace = { pattern = "^:%%s", icon = "󰡱 ", lang = "regex" },
+					replace = {
+						pattern = { "^:%%s/", "'<,'>s/" }, --[[icon = "󰡱 ",]]
+						icon = "󰑑",
+						lang = "regex",
+					},
 					highlight = { pattern = { "^:hi ", "^:highlight " }, icon = "󰌵", lang = "vim" },
 					input = {},
 				},
