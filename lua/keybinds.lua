@@ -12,8 +12,8 @@ map("n", "<C-Left>", "<C-w>h", { desc = "Go to the left window" })
 map("n", "<C-Down>", "<C-w>j", { desc = "Go to the down window" })
 map("n", "<C-Up>", "<C-w>k", { desc = "Go to the up window" })
 map("n", "<C-Right>", "<C-w>l", { desc = "Go to the right window" })
-map("n", "<C-w><", "<C-w><<C-w><<C-w><<C-w><", { desc = "Decrease width" })
-map("n", "<C-w>>", "<C-w>><C-w>><C-w>><C-w>>", { desc = "Increase width" })
+map("n", "<C-w><", "10<C-w><", { desc = "Decrease width" })
+map("n", "<C-w>>", "10<C-w>>", { desc = "Increase width" })
 map("n", "!", "<C-w>w")
 
 -- Remove highlightning
