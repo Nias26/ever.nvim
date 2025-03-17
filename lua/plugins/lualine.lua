@@ -53,39 +53,45 @@ return {
 						-- Mode
 						function()
 							local mode = vim.api.nvim_get_mode().mode
-							local mode_name
 
-							if mode == "n" or mode == "no" then
-								mode_name = "RW"
+              local function _print(mode_id)
+                return " " .. mode_id .. " "
+              end
+
+							if mode == "n" or mode == "no" or mode == "nt" then
+                return _print("RW")
 							elseif mode == "i" or mode == "ic" then
-								mode_name = "**"
+								return _print("**")
 							elseif mode == "v" or mode == "V" or mode == "\022" then
-								mode_name = "**"
+								return _print("**")
 							elseif mode == "R" then
-								mode_name = "RA"
+								return _print("RA")
 							elseif mode == "c" then
-								mode_name = "VIEX"
+								return _print("VIEX")
 							elseif mode == "t" then
-								mode_name = ""
+								return _print("")
 							end
-							return " " .. mode_name .. " "
 						end,
 						color = function()
 							-- auto change color according to neovims mode
 							local mode = vim.api.nvim_get_mode().mode
+              
+              local function _ctable(color)
+                return { bg = color, fg = colors.bg, gui = "bold" }
+              end
 
-							if mode == "n" or mode == "no" then
-								return { bg = "#82cfff", fg = colors.bg, gui = "bold" }
+							if mode == "n" or mode == "no" or mode == "nt" then
+								return _ctable("#82cfff")
 							elseif mode == "i" or mode == "ic" then
-								return { bg = "#ff7eb6", fg = colors.bg, gui = "bold" }
+								return _ctable("#ff7eb6")
 							elseif mode == "v" or mode == "V" or mode == "\022" then
-								return { bg = "#be95ff", fg = colors.bg, gui = "bold" }
+								return _ctable("#be95ff")
 							elseif mode == "R" then
-								return { bg = "#3ddbd9", fg = colors.bg, gui = "bold" }
+								return _ctable("#3ddbd9")
 							elseif mode == "c" then
-								return { bg = "#42be65", fg = colors.bg, gui = "bold" }
+								return _ctable("#42be65")
 							elseif mode == "t" then
-								return { bg = "#33b1ff", fg = colors.bg, gui = "bold" }
+								return _ctable("#33b1ff")
 							end
 						end,
 						padding = { rignt = 1 },
