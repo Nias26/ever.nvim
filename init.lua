@@ -70,7 +70,6 @@ require("lazy").setup({
 	{ import = "plugins" },
 	{ import = "plugins.lsp" },
 	{ import = "plugins.cmp" },
-	-- { import = "plugins.test_plugins" },
 	-- Lazy.nvim Opts
 	ui = {
 		icons = {
@@ -101,5 +100,6 @@ require("lazy").setup({
 	concurrency = 5,
 })
 
-require("macros")
-require("keybinds")
+require("config.keybinds")
+require("config.macros")
+require("config.autocmd")
