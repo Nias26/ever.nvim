@@ -3,6 +3,7 @@ return {
 		"nyoom-engineering/oxocarbon.nvim",
 		config = function()
 			vim.opt.background = "dark" -- set this to dark or light
+			vim.api.nvim_set_hl(0, "Comment", { italic = false })
 		end,
 	},
 	{
@@ -15,6 +16,7 @@ return {
 				overrides = function(colors)
 					local theme = colors.theme
 					local palette = colors.palette
+
 					return {
 						--- @highlight Telescope-hl
 						TelescopeTitle = { fg = theme.ui.special, bold = true },
@@ -40,6 +42,8 @@ return {
 						---@highlight Pmenu
 						Pmenu = { fg = "#2a2a37", bg = "#292937" },
 						PmenuSel = { bg = "#3f3f48", fg = "NONE" },
+
+						["@variable.builtin"] = { italic = false },
 					}
 				end,
 			})
