@@ -1,9 +1,8 @@
 return {
 	"akinsho/bufferline.nvim",
+	event = "TabNew",
 	dependencies = {
-		{
-			"nvim-tree/nvim-web-devicons",
-		},
+		{ "nvim-tree/nvim-web-devicons" },
 		{
 			"tiagovla/scope.nvim",
 			config = function()
@@ -12,7 +11,7 @@ return {
 		},
 	},
 	config = function()
-		local config = {
+		require("bufferline").setup({
 			options = {
 				mode = "tabs", -- set to "tabs" to only show tabpages instead
 				style_preset = require("bufferline").style_preset.no_italic,
@@ -56,18 +55,6 @@ return {
 				enforce_regular_tabs = true,
 				always_show_bufferline = false,
 			},
-		}
-
-		-- Lazy loading
-		vim.api.nvim_create_autocmd({ "BufAdd", "TabEnter" }, {
-			pattern = "*",
-			group = vim.api.nvim_create_augroup("BufferLineLazyLoading", {}),
-			callback = function()
-				local count = #vim.fn.gettabinfo()
-				if count >= 2 then
-					require("bufferline").setup(config)
-				end
-			end,
 		})
 	end,
 }
