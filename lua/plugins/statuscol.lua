@@ -1,7 +1,6 @@
 return {
 	"luukvbaal/statuscol.nvim",
 	event = "VeryLazy",
-	enabled = false,
 	config = function()
 		local builtin = require("statuscol.builtin")
 		require("statuscol").setup({
@@ -32,8 +31,8 @@ return {
 				["diagnostic/signs"] = builtin.diagnostic_click,
 				gitsigns = builtin.gitsigns_click,
 			},
-			ft_ignore = { "NvimTree", "dashboard" },
-			bt_ignore = { "NvimTree", "dashboard" },
+			ft_ignore = { "neo-tree" },
+			bt_ignore = { "neo-tree" },
 		})
 	end,
 }
