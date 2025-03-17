@@ -48,5 +48,6 @@ return {
 			on_attach = on_attach,
 			settings = {},
 		})
+
 	end,
 }
