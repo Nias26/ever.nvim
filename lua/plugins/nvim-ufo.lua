@@ -5,11 +5,12 @@ return {
 	config = function()
 		vim.opt.foldcolumn = "1"
 		-- vim.o.foldnestmax = 1
-		vim.opt.fillchars:append([[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]])
 		vim.opt.foldlevel = 99
 		vim.opt.foldlevelstart = 99
 		vim.opt.foldenable = true
 		vim.g.markdown_folding = 1
+		vim.opt.foldmethod = "expr"
+		vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 		-- Fold Highlightning group
 		vim.api.nvim_set_hl(0, "FoldColumn", { fg = "#525252" })

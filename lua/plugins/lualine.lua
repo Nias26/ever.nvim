@@ -7,19 +7,19 @@ return {
 	config = function()
 		local lualine = require("lualine")
 
-		-- Color table for highlights
-		-- stylua: ignore
-		local colors = {
-			bg       = '#161616',
-			fg       = '#bbc2cf',
-      grey     = '#262626',
-			green    = '#42be65',
-			orange   = '#FF8800',
-			violet   = '#be95ff',
-      red      = '#ee5396',
-      cyan     = '#3ddbd9',
-      blue     = '#33b1ff',
-		}
+        -- Color table for highlights
+        -- stylua: ignore
+        local colors = {
+            bg       = '#161616',
+            fg       = '#bbc2cf',
+            grey     = '#262626',
+            green    = '#42be65',
+            orange   = '#FF8800',
+            violet   = '#be95ff',
+            red      = '#ee5396',
+            cyan     = '#3ddbd9',
+            blue     = '#33b1ff',
+        }
 
 		local conditions = {
 			buffer_not_empty = function()
@@ -54,12 +54,12 @@ return {
 						function()
 							local mode = vim.api.nvim_get_mode().mode
 
-              local function _print(mode_id)
-                return " " .. mode_id .. " "
-              end
+							local function _print(mode_id)
+								return " " .. mode_id .. " "
+							end
 
 							if mode == "n" or mode == "no" or mode == "nt" then
-                return _print("RW")
+								return _print("RW")
 							elseif mode == "i" or mode == "ic" then
 								return _print("**")
 							elseif mode == "v" or mode == "V" or mode == "\022" then
@@ -75,10 +75,10 @@ return {
 						color = function()
 							-- auto change color according to neovims mode
 							local mode = vim.api.nvim_get_mode().mode
-              
-              local function _ctable(color)
-                return { bg = color, fg = colors.bg, gui = "bold" }
-              end
+
+							local function _ctable(color)
+								return { bg = color, fg = colors.bg, gui = "bold" }
+							end
 
 							if mode == "n" or mode == "no" or mode == "nt" then
 								return _ctable("#82cfff")
@@ -114,8 +114,12 @@ return {
 						padding = -1,
 					},
 					{
-						"branch",
-						-- "(󰘧  #" .. "branch" .. ")",
+						function()
+							local branch = vim.api.nvim_buf_get_var(0, "gitsigns_status_dict") or { head = "" }
+							local is_head_empty = branch.head ~= ""
+							return is_head_empty and string.format("(λ • #%s) ", branch.head) or ""
+						end,
+
 						icon = "",
 						color = { fg = colors.fg, gui = "bold" },
 						cond = conditions.check_git_workspace,
@@ -135,22 +139,46 @@ return {
 						cond = require("noice").api.status.search.has, ---@diagnostic disable-line: undefined-field
 						icon = " ",
 						color = { fg = colors.blue },
+						padding = -1,
 					},
 					{
 						require("noice").api.status.mode.get, ---@diagnostic disable-line: undefined-field
 						cond = require("noice").api.status.mode.has, ---@diagnostic disable-line: undefined-field
 						color = { fg = colors.red },
+						padding = -1,
 					},
 					{
 						require("noice").api.status.command.get, ---@diagnostic disable-line: undefined-field
 						cond = require("noice").api.status.command.has, ---@diagnostic disable-line: undefined-field
 						icon = "",
-						color = { fg = colors.violet },
+						color = { fg = colors.green },
+						padding = -1,
+					},
+					{
+						function()
+							local function get_severity(severity)
+								return #vim.diagnostic.get(0, { severity = severity })
+							end
+
+							local result = {
+								errors = get_severity(vim.diagnostic.severity.ERROR),
+								warnings = get_severity(vim.diagnostic.severity.WARN),
+								info = get_severity(vim.diagnostic.severity.INFO),
+								hint = get_severity(vim.diagnostic.severity.HINT),
+							}
+
+							return string.format(
+								" %%#StatusLineDiagnosticWarn#%s %%#StatusLineDiagnosticError#%s ",
+								result.warnings or 0,
+								result.errors or 0
+							)
+						end,
+						padding = -1,
 					},
 					{
 						"filetype",
 						icons_enabled = false,
-						color = { fg = colors.cyan },
+						color = { fg = colors.fg },
 						padding = -1,
 					},
 					{

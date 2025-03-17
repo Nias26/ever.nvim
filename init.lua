@@ -1,54 +1,8 @@
 -- Init.lua file (Main loaded lua file)
--- Check current neovim version
-if not vim.fn.has("nvim-0.10") then
-	print("Use neovim v0.10 or higher")
-	vim.fn.getchar()
-	vim.cmd.qa()
-end
 
 vim.loader.enable() -- Faster boot time
 vim.g.mapleader = " " -- Set leader key
 vim.g.maplocalleader = "," -- Set localleader
-vim.g.loaded_netrw = 1 -- Disable netrw
-vim.g.loaded_netrwPlugin = 1 -- Disable netrw
-vim.g.showcmdloc = "statusline" -- Show command message location
-
-vim.opt.sessionoptions = { -- Required by scope.nvim
-	"buffers",
-	"tabpages",
-	"globals",
-}
-
-local options = {
-	relativenumber = false, -- Set Relative Number line
-	number = false, -- Set Number line
-	inccommand = "split", -- Command preview (eg. `%s/.../...`)
-	ignorecase = true, -- Ignore uppercase and lowercase in commands
-	laststatus = 3, -- Set global statusbar
-	scrolloff = 999, -- Set scrolloff
-	updatetime = 300, -- Set updatetime for events
-	showmode = false, -- Hide --INSERT-- messages etc...
-	splitbelow = true, -- Always split below
-	splitright = true, -- Always split right
-	undofile = true, -- Enable persistent undo
-	cursorline = true, -- Enable cursorline
-	termguicolors = true, -- Enable termguicolors
-	tabstop = 2, -- Set tabstop
-	shiftwidth = 2, -- Set shiftwidth
-	expandtab = true, -- Expand tabs into spaces
-	autochdir = true, -- Auto change directory
-	clipboard = "unnamedplus", -- Sync with system clipboard
-	wrap = false, -- Disable line wrap
-	grepprg = "rg --vimgrep", -- Use ripgrep instead of grep
-	grepformat = "%f:%l:%c:%m", -- Grep formatting
-	formatexpr = "v:lua.require'conform'.formatexpr()",
-	mousemodel = "extend", -- Right click extend selection
-	fillchars = [[diff:╱]],
-}
-
-for k, v in pairs(options) do
-	vim.opt[k] = v
-end
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -100,6 +54,4 @@ require("lazy").setup({
 	concurrency = 5,
 })
 
-require("config.keybinds")
-require("config.macros")
-require("config.autocmd")
+require("config")

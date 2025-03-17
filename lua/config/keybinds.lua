@@ -28,6 +28,7 @@ map("n", ";s", "<cmd>Telescope file_browser<CR>", { desc = "File Browser" })
 map("n", ";b", "<cmd>Telescope buffers<CR>", { desc = "Buffers" })
 map("n", ";h", "<cmd>Telescope help_tags<CR>", { desc = "Help Tags" })
 map("n", ";m", "<cmd>Telescope man_pages<CR>", { desc = "Man Pages" })
+map("n", ";f", "<cmd>Telescope find_files<CR>", { desc = "Find Files" })
 
 -- Open Nvim Tree
 map("n", "<F3>", "<cmd>Neotree source=filesystem toggle<CR>", { desc = "Open Nvim Tree" })

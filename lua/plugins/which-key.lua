@@ -4,7 +4,6 @@ return {
 	event = "VeryLazy",
 	init = function()
 		vim.o.timeout = true
-		vim.o.timeoutlen = 500
 	end,
 	config = function()
 		local wk = require("which-key")
@@ -55,6 +54,7 @@ return {
 				end,
 				desc = "Debug Adapter Protocol",
 			},
+			{ "<leader>cb", "<cmd>Gitsigns toggle_current_line_blame<CR>", desc = "Toggle Git Blame" },
 			{ "<leader>cl", group = " [LSP]" },
 			{ "<leader>cld", "<cmd>lua vim.lsp.buf.definition()<CR>", desc = "Go to definition" },
 			{ "<leader>clr", "<cmd>lua vim.lsp.buf.references()<CR>", desc = "Go to references" },

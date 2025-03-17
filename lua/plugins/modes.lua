@@ -12,9 +12,14 @@ return {
 
 			set_number = false,
 		})
+		vim.api.nvim_set_hl(0, "CursorLineSign", { bg = "NONE" })
 		vim.api.nvim_set_hl(0, "ModesCopyCursorLineFold", { bg = "NONE" })
 		vim.api.nvim_set_hl(0, "ModesDeleteCursorLineFold", { bg = "NONE" })
 		vim.api.nvim_set_hl(0, "ModesInsertCursorLineFold", { bg = "NONE" })
 		vim.api.nvim_set_hl(0, "ModesVisualCursorLineFold", { bg = "NONE" })
+		vim.api.nvim_set_hl(0, "ModesCopyCursorLineSign", { bg = "NONE" })
+		vim.api.nvim_set_hl(0, "ModesDeleteCursorLineSign", { bg = "NONE" })
+		vim.api.nvim_set_hl(0, "ModesInsertCursorLineSign", { bg = "NONE" })
+		vim.api.nvim_set_hl(0, "ModesVisualCursorLineSign", { bg = "NONE" })
 	end,
 }
