@@ -106,6 +106,8 @@ return {
 						color = function()
 							if vim.bo.readonly then
 								return { fg = colors.red }
+							elseif vim.bo.modified then
+								return { fg = colors.cyan }
 							else
 								return { fg = colors.fg }
 							end
