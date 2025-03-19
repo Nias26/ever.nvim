@@ -162,20 +162,23 @@ return {
 								return #vim.diagnostic.get(0, { severity = severity })
 							end
 
-							local result = {
-								errors = get_severity(vim.diagnostic.severity.ERROR),
-								warnings = get_severity(vim.diagnostic.severity.WARN),
-								info = get_severity(vim.diagnostic.severity.INFO),
-								hint = get_severity(vim.diagnostic.severity.HINT),
-							}
+							local result = get_severity(vim.diagnostic.severity.WARN)
+							return result or 0
+						end,
+						color = { fg = colors.violet },
+						padding = -1,
+					},
+					{
+						function()
+							local function get_severity(severity)
+								return #vim.diagnostic.get(0, { severity = severity })
+							end
 
-							return string.format(
-								" %%#StatusLineDiagnosticWarn#%s %%#StatusLineDiagnosticError#%s ",
-								result.warnings or 0,
-								result.errors or 0
-							)
+							local result = get_severity(vim.diagnostic.severity.ERROR)
+							return result or 0
 						end,
 						padding = -1,
+						color = { fg = colors.red },
 					},
 					{
 						"filetype",
