@@ -2,6 +2,7 @@ return {
 	"neovim/nvim-lspconfig",
 	lazy = true,
 	event = "BufReadPost",
+	dependencies = { "saghen/blink.cmp" },
 	opts = {
 		inlay_hints = { enabled = true },
 	},
@@ -15,7 +16,7 @@ return {
 		end
 
 		-- Servers Configuration
-		local capabilities = require("cmp_nvim_lsp").default_capabilities()
+		local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 		local on_attach = function(client, bufnr)
 			require("nvim-navic").attach(client, bufnr)
@@ -48,6 +49,5 @@ return {
 			on_attach = on_attach,
 			settings = {},
 		})
-
 	end,
 }
