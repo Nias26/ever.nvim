@@ -60,7 +60,7 @@ return {
 
 							if mode == "n" or mode == "no" or mode == "nt" then
 								return _print("RW")
-							elseif mode == "i" or mode == "ic" then
+							elseif mode == "i" or mode == "ic" or mode == "s" then
 								return _print("**")
 							elseif mode == "v" or mode == "V" or mode == "\022" then
 								return _print("**")
@@ -82,7 +82,7 @@ return {
 
 							if mode == "n" or mode == "no" or mode == "nt" then
 								return _ctable("#82cfff")
-							elseif mode == "i" or mode == "ic" then
+							elseif mode == "i" or mode == "ic" or mode == "s" then
 								return _ctable("#ff7eb6")
 							elseif mode == "v" or mode == "V" or mode == "\022" then
 								return _ctable("#be95ff")
