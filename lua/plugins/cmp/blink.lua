@@ -18,13 +18,9 @@ return {
 		require("blink-cmp").setup({
 			keymap = {
 				preset = "enter",
-				["<S-Tab>"] = { "select_prev", "fallback" },
-				["<Tab>"] = { "select_next", "fallback" },
-				["<C-space>"] = {
-					function(cmp)
-						cmp.show({ providers = { "snippets" } })
-					end,
-				},
+				["<CR>"] = { "accept" },
+				["<S-Tab>"] = { "snippet_backward", "select_prev", "fallback" },
+				["<Tab>"] = { "snippet_forward", "select_next", "fallback" },
 				["|"] = {
 					function(cmp)
 						cmp.cancel()
@@ -33,7 +29,6 @@ return {
 			},
 			appearance = {
 				nerd_font_variant = "normal",
-				-- use_nvim_cmp_as_default = true,
 			},
 			completion = {
 				menu = {
