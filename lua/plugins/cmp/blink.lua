@@ -18,6 +18,8 @@ return {
 		require("blink-cmp").setup({
 			keymap = {
 				preset = "enter",
+				["<Up>"] = { "hide", "fallback" },
+				["<Down>"] = { "hide", "fallback" },
 				["<CR>"] = { "accept", "fallback" },
 				["<S-Tab>"] = { "snippet_backward", "select_prev", "fallback" },
 				["<Tab>"] = { "snippet_forward", "select_next", "fallback" },
@@ -25,6 +27,7 @@ return {
 					function(cmp)
 						cmp.cancel()
 					end,
+					"fallback",
 				},
 			},
 			appearance = {
