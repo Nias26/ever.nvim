@@ -96,29 +96,6 @@ return {
 			{ "<leader>on", "<cmd>Nerdy<CR>", desc = "Choose Nerd Font Icon" },
 			{ "<leader>oh", "<cmd>Noice<CR>", desc = "Notification history" },
 			{ "<leader>ot", "<cmd>Telescope<CR>", desc = "Telescope" },
-			{ "<leader>oo", group = " Options" },
-			{
-				"<leader>ooN",
-				function()
-					vim.wo.nu = not vim.wo.nu
-					vim.wo.rnu = not vim.wo.rnu
-				end,
-				desc = "Toggle relative/number",
-			},
-			{
-				"<leader>oon",
-				function()
-					vim.wo.nu = not vim.wo.nu
-				end,
-				desc = "Toggle number",
-			},
-			{
-				"<leader>oor",
-				function()
-					vim.wo.rnu = not vim.wo.rnu
-				end,
-				desc = "Toggle relative number",
-			},
 		})
 
 		-- Diffview -> 
