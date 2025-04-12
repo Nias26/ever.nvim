@@ -1,6 +1,5 @@
 return {
 	"nvim-neo-tree/neo-tree.nvim",
-	cmd = "Neotree",
 	branch = "v3.x",
 	dependences = {
 		"nvim-tree/nvim-web-devicons",
