@@ -97,6 +97,9 @@ return {
 					"BlinkCmpDoc",
 				},
 			})
+
+			-- Disable italic comments
+			vim.api.nvim_set_hl(0, "Comment", { italic = false })
 		end,
 	},
 }
