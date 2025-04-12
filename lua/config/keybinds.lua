@@ -31,7 +31,8 @@ map("n", ";m", "<cmd>Telescope man_pages<CR>", { desc = "Man Pages" })
 map("n", ";f", "<cmd>Telescope find_files<CR>", { desc = "Find Files" })
 
 -- Open Nvim Tree
-map("n", "<F3>", "<cmd>Neotree source=filesystem toggle<CR>", { desc = "Open Nvim Tree" })
+map("n", "<F3>", "<cmd>Neotree source=filesystem toggle<CR>", { desc = "Open Nvim Tree (Sizebar)" })
+map("n", "<F4>", "<cmd>Neotree position=current toggle<CR>", { desc = "Open Nvim Tree (Full)" })
 
 -- Buffer managing
 map("n", "bd", "<cmd>bd<CR>", { desc = "Delete current buffer" })
