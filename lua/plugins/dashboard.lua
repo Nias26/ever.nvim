@@ -1,5 +1,6 @@
 return {
 	"glepnir/dashboard-nvim",
+	commit = "000448d837f6e7a47f8f342f29526c4d7e49e9ce",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
 		require("dashboard").setup({
@@ -42,7 +43,7 @@ return {
 						desc_hl = "Number",
 						key = "s",
 						key_hl = "@string",
-						key_format = " %s", -- remove default surrounding `[]`
+						key_format = " %s",
 						action = "Telescope find_files",
 					},
 					{
@@ -52,7 +53,7 @@ return {
 						desc_hl = "Number",
 						key = "x",
 						key_hl = "@string",
-						key_format = " %s", -- remove default surrounding `[]`
+						key_format = " %s",
 						action = "Telescope oldfiles",
 					},
 					{
@@ -62,7 +63,7 @@ return {
 						desc_hl = "Number",
 						key = "g",
 						key_hl = "@string",
-						key_format = " %s", -- remove default surrounding `[]`
+						key_format = " %s",
 						action = "Telescope live_grep",
 					},
 					{
@@ -72,7 +73,7 @@ return {
 						desc_hl = "Number",
 						key = "f",
 						key_hl = "@string",
-						key_format = " %s", -- remove default surrounding `[]`
+						key_format = " %s",
 						action = "Telescope file_browser",
 					},
 					{
@@ -82,8 +83,18 @@ return {
 						desc_hl = "Number",
 						key = "g",
 						key_hl = "@string",
-						key_format = " %s", -- remove default surrounding `[]`
+						key_format = " %s",
 						action = "Telescope git_files",
+					},
+					{
+						icon = "󰒲  ",
+						icon_hl = "Number",
+						desc = "Lazy           ",
+						desc_hl = "Number",
+						key = "l",
+						key_hl = "@string",
+						key_format = " %s",
+						action = "Lazy",
 					},
 				},
 				footer = { " ", " ever.nvim " },
