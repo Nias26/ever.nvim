@@ -15,6 +15,7 @@ map("n", "<C-Right>", "<C-w>l", { desc = "Go to the right window" })
 map("n", "<C-w><", "10<C-w><", { desc = "Decrease width" })
 map("n", "<C-w>>", "10<C-w>>", { desc = "Increase width" })
 map("n", "!", "<C-w>w")
+map("t", "<C-n>", "<C-\\><C-n>", { desc = "Exit terminal mode", noremap = true, silent = true })
 
 -- Remove highlightning
 map("n", "<ESC><ESC>", "<cmd>nohlsearch<CR>")
