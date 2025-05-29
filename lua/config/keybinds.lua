@@ -85,5 +85,5 @@ map("n", "<F5>", function()
 	vim.wo.rnu = not vim.wo.rnu
 end, { desc = "Toggle Numbers", noremap = true })
 map("n", "<F6>", function()
-	vim.wo.rnu = not vim.wo.rnu
+	vim.wo.nu = not vim.wo.nu
 end, { desc = "Toggle Relative Numbers", noremap = true })
