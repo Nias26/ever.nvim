@@ -19,10 +19,6 @@ return {
 		-- Index
 		wk.add({
 			{ "<leader>", group = " Index" },
-			{ "<leader>t", "<cmd>tabnew<CR>", desc = "New Tab" },
-			{ "<leader>D", "<cmd>tabclose<CR>", desc = "Delete current tab" },
-			{ "<leader>[", "<cmd>tabprevious<CR>", desc = "Previous tab" },
-			{ "<leader>]", "<cmd>tabnext<CR>", desc = "Next tab" },
 			{ "<leader>M", hidden = true },
 			{ "<Esc><Esc>", hidden = true },
 			{ "<leader>m", "<cmd>Telescope keymaps<CR>", desc = "Show keymaps", icon = "" },
@@ -85,6 +81,15 @@ return {
 			{ "<leader>bsh", ":split ", desc = "Horizzontal Split" },
 			{ "<leader>bst", ":vsplit ", desc = "Vertical Split" },
 			{ "<leader>bsc", "<cmd>q<CR>", desc = "Close current split" },
+		})
+
+		-- Tabs -> 󰓪
+		wk.add({
+			{ "<leader><Tab>", group = "󰓪 Tabs" },
+			{ "<leader><Tab>t", "<cmd>tabnew<CR>", desc = "New Tab" },
+			{ "<leader><Tab>D", "<cmd>tabclose<CR>", desc = "Delete current tab" },
+			{ "<leader><Tab>[", "<cmd>tabprevious<CR>", desc = "Previous tab" },
+			{ "<leader><Tab>]", "<cmd>tabnext<CR>", desc = "Next tab" },
 		})
 
 		-- Open -> 󰏌
