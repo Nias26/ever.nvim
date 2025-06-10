@@ -25,5 +25,22 @@ return {
         }
 			),
 		})
+
+		ls.add_snippets("gitignore", {
+			s(
+				"#cmake",
+				fmt(
+					[[
+        ./build/bin/*
+        ./build/CMakeFiles/
+        ./build/.cmake/
+        ./build/CMakeCache.txt
+        ./build/Makefile
+        ./build/cmake_install.cmake
+        ]],
+					{}
+				)
+			),
+		})
 	end,
 }
