@@ -11,6 +11,7 @@ return {
 		local t = ls.text_node
 		local i = ls.insert_node
 		local extras = require("luasnip.extras")
+		local fmt = require("luasnip.extras.fmt").fmt
 		local rep = extras.rep
 
     -- stylua: ignore
@@ -23,6 +24,33 @@ return {
           t({"", ""}),
           t({"", "#endif // !"}), rep(1),
         }
+			),
+		})
+
+		ls.add_snippets("cmake", {
+			s(
+				"init",
+				fmt(
+					[[
+        cmake_minimum_required(VERSION {})
+        set(CMAKE_CXX_STANDARD {})
+        set(CMAKE_CXX_STANDARD_REQUIRED True)
+        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${{{}}}/bin")
+
+        project({} VERSION {})
+
+        add_executable({} ../{}.cpp)
+        ]],
+					{
+						i(1, "CMAKE_VERSION"),
+						i(2, "C++_STANDARD"),
+						i(3, "CMAKE_BINARY_DIR"),
+						i(3, "PROJECT_NAME"),
+						i(4, "1.0.0"),
+						i(5, "main"),
+						i(6, "main"),
+					}
+				)
 			),
 		})
 
