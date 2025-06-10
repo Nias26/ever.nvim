@@ -44,10 +44,14 @@ return {
 			root_dir = lspconfig.util.root_pattern("*.c", "*.cpp", "*.h", "*.hpp"),
 		})
 
-    lspconfig.pyright.setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
+		lspconfig.pyright.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
 
+		lspconfig.cmake.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
 	end,
 }
