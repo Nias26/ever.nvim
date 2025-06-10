@@ -14,6 +14,8 @@ map("n", "<C-Up>", "<C-w>k", { desc = "Go to the up window" })
 map("n", "<C-Right>", "<C-w>l", { desc = "Go to the right window" })
 map("n", "<C-w><", "10<C-w><", { desc = "Decrease width" })
 map("n", "<C-w>>", "10<C-w>>", { desc = "Increase width" })
+map("n", "<C-W>+", "10<C-W>+", { desc = "Increase Height" })
+map("n", "<C-W>-", "10<C-W>-", { desc = "Decrease Height" })
 map("n", "!", "<C-w>w")
 map("t", "<C-n>", "<C-\\><C-n>", { desc = "Exit terminal mode", noremap = true, silent = true })
 
