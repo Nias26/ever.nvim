@@ -57,6 +57,7 @@ return {
 			{ "<leader>cla", "<cmd>Lspsaga code_action<CR>", desc = "Code Actions" },
 			{ "<leader>clh", "<cmd>Lspsaga hover_doc<CR>", desc = "LSP Signature" },
 			{ "<leader>clf", "<cmd>Lspsaga finder<CR>", desc = "Find References" },
+			{ "<leader>clp", "<cmd>Lspsaga peek_definition<CR>", desc = "Peek Definition" },
 		})
 
 		-- Search -> 
