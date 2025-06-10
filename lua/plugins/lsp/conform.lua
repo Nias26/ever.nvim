@@ -17,6 +17,7 @@ return {
 				lua = { "stylua" },
 				cpp = { "clang-format" },
 				go = { "goimports" },
+				cmake = { "cmake-format" },
 			},
 			format_after_save = {
 				lsp_format = "fallback",
