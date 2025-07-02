@@ -42,7 +42,7 @@ return {
         add_executable({} ../{}.cpp)
         ]],
 					{
-						i(1, "CMAKE_VERSION"),
+						i(1, "CMAKE_VERSION (>=3.5)"),
 						i(2, "C++_STANDARD"),
 						i(3, "CMAKE_BINARY_DIR"),
 						i(3, "PROJECT_NAME"),
