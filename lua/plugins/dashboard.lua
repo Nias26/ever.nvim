@@ -1,6 +1,5 @@
 return {
-	"glepnir/dashboard-nvim",
-	commit = "000448d837f6e7a47f8f342f29526c4d7e49e9ce",
+	"nvimdev/dashboard-nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
 		require("dashboard").setup({
