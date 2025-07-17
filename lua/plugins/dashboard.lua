@@ -61,7 +61,7 @@ return {
 						icon_hl = "Number",
 						desc = "Find word           ",
 						desc_hl = "Number",
-						key = "g",
+						key = "w",
 						key_hl = "@string",
 						key_format = " %s",
 						action = "Telescope live_grep",
