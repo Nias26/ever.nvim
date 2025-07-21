@@ -29,7 +29,7 @@ return {
 
 		ls.add_snippets("cmake", {
 			s(
-				"init",
+				"c++",
 				fmt(
 					[[
         cmake_minimum_required(VERSION {})
