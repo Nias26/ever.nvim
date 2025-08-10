@@ -1,3 +1,4 @@
+-- TODO: replace with naive neovim autocmds
 return {
 	"mvllow/modes.nvim",
 	keys = { "v", "y", "<C-v>", "V", "d", "i", "a", "s", "o", "r", "R" },
