@@ -1,3 +1,4 @@
+-- TODO: Replace with naive neovim commands
 return {
 	"numToStr/Comment.nvim",
 	keys = {
