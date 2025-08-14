@@ -17,58 +17,77 @@ return {
     -- stylua: ignore
 		ls.add_snippets("cpp" , {
 			s(
-				"guard",{
-          t("#ifndef H_"), i(1),
-          t({"", "#define H_"}), rep(1),
-          t({"", ""}),
-          t({"", ""}),
-          t({"", "#endif // !"}), rep(1),
-        }
+				"guard",
+        fmt(
+          [[
+          #ifndef H_{}
+          #define H_{}
+
+
+          #endif // !{}
+          ]],{
+            i(1, "HEADER"),
+            rep(1),
+            rep(1),
+          }
+        )
 			),
 		})
 
 		ls.add_snippets("cmake", {
 			s(
-				"c++",
+				{ trig = "init", desc = "Inizialize C++ Project" },
 				fmt(
 					[[
+        # -[-[ CMake Build File ]-]-
         cmake_minimum_required(VERSION {})
-        project({} VERSION {})
+        project(
+          {}
+          VERSION {}
+          DESCRIPTION "{}")
 
-        set(CMAKE_CXX_STANDARD {})
-        set(CMAKE_CXX_STANDARD_REQUIRED True)
-        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${{CMAKE_BINARY_DIR}}/bin")
+        # -[-[ CMake Binary Oputput Dir ]-]-
+        set(PROJECT_BINARY_DIR "./bin")
+        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${{PROJECT_BINARY_DIR}})
+
+        # -[-[ Build Properties ]-]-
         set(CMAKE_BUILD_TYPE "{}")
+        set(CMAKE_CXX_STANDARD {})
+        set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
+        # -[-[ Source Files and Libraries ]-]-
+        file(GLOB SRC src/*.cpp)
+        add_executable(${{PROJECT_NAME}} ${{SRC}})
 
-        add_executable({} ../{}.cpp)
+        # -[-[ Project Status ]-]-
+        message(STATUS "Configuring project: ${{PROJECT_NAME}}")
+        if(NOT "${{PROJECT_DESCRIPTION}}" STREQUAL "")
+          message(STATUS "Project Description: ${{PROJECT_DESCRIPTION}}")
+        endif()
+        message(STATUS "Bin Dir: ${{CMAKE_RUNTIME_OUTPUT_DIRECTORY}}")
+        message(STATUS "Build Type: ${{CMAKE_BUILD_TYPE}}")
+        message(STATUS "C++ Standard: ${{CMAKE_CXX_STANDARD}}")
         ]],
 					{
 						i(1, "CMAKE_VERSION (>=3.5)"),
 						i(2, "PROJECT_NAME"),
-						i(3, "1.0.0"),
-						i(4, "C++_STANDARD"),
+						i(3, "1.0"),
+						i(4, "DESCRIPTION"),
 						i(5, "Debug|Release|RelWithDebInfo|MinSizeRel"),
-						i(6, "${PROJECT_NAME}"),
-						rep(6),
+						i(6, "CXX_STANDARD"),
 					}
 				)
 			),
+			s({ trig = "lib", desc = "Link library" }, {
+				t('target_link_libraries(${PROJECT_NAME} "{}")'),
+				i(1, "LIB_NAME"),
+			}),
 		})
 
-		-- TODO: Add target library snippet, called 'lib'
-		ls.add_snippets("cmake", {})
-
 		ls.add_snippets("gitignore", {
-			s(
-				"#cmake",
-				fmt(
-					[[
-        ./build/*
-        ]],
-					{}
-				)
-			),
+			s({ trig = "cmake", desc = "Add CMake cache" }, {
+				t("./build/*"),
+			}),
 		})
 	end,
 }
