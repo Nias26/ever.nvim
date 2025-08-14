@@ -18,6 +18,8 @@ map("n", "<C-W>+", "10<C-W>+", { desc = "Increase Height" })
 map("n", "<C-W>-", "10<C-W>-", { desc = "Decrease Height" })
 map("n", "!", "<C-w>w")
 map("t", "<C-n>", "<C-\\><C-n>", { desc = "Exit terminal mode", noremap = true, silent = true })
+map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move line upwards", silent = true })
+map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line downwards", silent = true })
 
 -- Remove highlightning
 map("n", "<ESC><ESC>", "<cmd>nohlsearch<CR>")
@@ -32,6 +34,10 @@ map("n", ";b", "<cmd>Telescope buffers<CR>", { desc = "Buffers" })
 map("n", ";h", "<cmd>Telescope help_tags<CR>", { desc = "Help Tags" })
 map("n", ";m", "<cmd>Telescope man_pages<CR>", { desc = "Man Pages" })
 map("n", ";f", "<cmd>Telescope find_files<CR>", { desc = "Find Files" })
+
+-- Comment
+map("n", "cc", "gcc", { desc = "Comment line", remap = true })
+map("v", "Cc", "gc", { desc = "Comment selection", remap = true })
 
 -- Open Nvim Tree
 map("n", "<F3>", "<cmd>Neotree source=filesystem toggle<CR>", { desc = "Open Nvim Tree (Sizebar)" })
