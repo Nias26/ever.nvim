@@ -33,31 +33,31 @@ return {
 				fmt(
 					[[
         cmake_minimum_required(VERSION {})
+        project({} VERSION {})
+
         set(CMAKE_CXX_STANDARD {})
         set(CMAKE_CXX_STANDARD_REQUIRED True)
-        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "{}/bin")
+        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${{CMAKE_BINARY_DIR}}/bin")
         set(CMAKE_BUILD_TYPE "{}")
 
-        project({} VERSION {})
 
         add_executable({} ../{}.cpp)
         ]],
 					{
 						i(1, "CMAKE_VERSION (>=3.5)"),
-						i(2, "C++_STANDARD"),
-						i(3, "${CMAKE_BINARY_DIR}"),
-						i(3, "Debug|Release|RelWithDebInfo|MinSizeRel"),
-						i(4, "PROJECT_NAME"),
-						i(5, "1.0.0"),
+						i(2, "PROJECT_NAME"),
+						i(3, "1.0.0"),
+						i(4, "C++_STANDARD"),
+						i(5, "Debug|Release|RelWithDebInfo|MinSizeRel"),
 						i(6, "${PROJECT_NAME}"),
-						i(7, "${PROJECT_NAME}"),
+						rep(6),
 					}
 				)
 			),
 		})
 
-  //TODO: Add target library snippet, called 'lib'
-  ls.add_snippets("cmake", {})
+		-- TODO: Add target library snippet, called 'lib'
+		ls.add_snippets("cmake", {})
 
 		ls.add_snippets("gitignore", {
 			s(
