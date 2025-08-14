@@ -83,15 +83,6 @@ return {
 			{ "<leader>bsc", "<cmd>q<CR>", desc = "Close current split" },
 		})
 
-		-- Tabs -> 󰓪
-		wk.add({
-			{ "<leader><Tab>", group = "󰓪 Tabs" },
-			{ "<leader><Tab>t", "<cmd>tabnew<CR>", desc = "New Tab" },
-			{ "<leader><Tab>d", "<cmd>tabclose<CR>", desc = "Delete current tab" },
-			{ "<leader><Tab>h", "<cmd>tabprevious<CR>", desc = "Previous tab" },
-			{ "<leader><Tab>l", "<cmd>tabnext<CR>", desc = "Next tab" },
-		})
-
 		-- Open -> 󰏌
 		wk.add({
 			{ "<leader>o", group = "󰏌 Open" },

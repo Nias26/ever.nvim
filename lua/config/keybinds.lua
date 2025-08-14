@@ -21,6 +21,24 @@ map("t", "<C-n>", "<C-\\><C-n>", { desc = "Exit terminal mode", noremap = true, 
 map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move line upwards", silent = true })
 map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line downwards", silent = true })
 
+-- Tabs
+---@param dir string
+local function tabSwitch(dir)
+	local tol = vim.o.timeoutlen
+	vim.o.timeoutlen = 100
+	vim.cmd("tab" .. dir)
+	vim.o.timeoutlen = tol
+end
+
+map("n", "<leader>t", "<cmd>tabnew<CR>", { desc = "Create new Tab" })
+map("n", "<leader>D", "<cmd>tabclose<CR>", { desc = "Close current Tab" })
+map("n", "[", function()
+	tabSwitch("previous")
+end, { desc = "Previous tab" })
+map("n", "]", function()
+	tabSwitch("next")
+end, { desc = "Next tab" })
+
 -- Remove highlightning
 map("n", "<ESC><ESC>", "<cmd>nohlsearch<CR>")
 
