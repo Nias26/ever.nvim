@@ -47,7 +47,7 @@ return {
           DESCRIPTION "{}")
 
         # -[-[ CMake Binary Oputput Dir ]-]-
-        set(PROJECT_BINARY_DIR "./bin")
+        set(PROJECT_BINARY_DIR "bin")
         set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${{PROJECT_BINARY_DIR}})
 
         # -[-[ Build Properties ]-]-
@@ -60,11 +60,13 @@ return {
         add_executable(${{PROJECT_NAME}} ${{SRC}})
 
         # -[-[ Project Status ]-]-
+        message(STATUS "")
+        message(STATUS "-[-[ Build Info ]-]-")
         message(STATUS "Configuring project: ${{PROJECT_NAME}}")
         if(NOT "${{PROJECT_DESCRIPTION}}" STREQUAL "")
           message(STATUS "Project Description: ${{PROJECT_DESCRIPTION}}")
         endif()
-        message(STATUS "Bin Dir: ${{CMAKE_RUNTIME_OUTPUT_DIRECTORY}}")
+        message(STATUS "Bin Dir: ${{CMAKE_CURRENT_BINARY_DIR}}/${{CMAKE_RUNTIME_OUTPUT_DIRECTORY}}")
         message(STATUS "Build Type: ${{CMAKE_BUILD_TYPE}}")
         message(STATUS "C++ Standard: ${{CMAKE_CXX_STANDARD}}")
         ]],
