@@ -6,6 +6,7 @@ local user_cmd = vim.api.nvim_create_user_command
 
 -- Custom Highlight group
 vim.api.nvim_set_hl(0, "DashboardFooter", { fg = "#08A045" })
+vim.api.nvim_set_hl(0, "Comment", { fg = "#525252", italic = false })
 
 -- User commands
 user_cmd("Q", "bdelete! | Dashboard", {})
