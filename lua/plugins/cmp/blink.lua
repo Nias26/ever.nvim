@@ -73,14 +73,7 @@ return {
 			signature = { enabled = false },
 			snippets = { preset = "luasnip" },
 			sources = {
-				default = { "lazydev", "lsp", "snippets", "path", "buffer" },
-				providers = {
-					lazydev = {
-						name = "lazydev",
-						module = "lazydev.integrations.blink",
-						score_offset = 100,
-					},
-				},
+				default = { "lsp", "snippets", "path", "buffer" },
 			},
 		})
 
