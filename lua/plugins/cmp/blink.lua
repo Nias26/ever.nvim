@@ -25,10 +25,14 @@ return {
 				["<Tab>"] = { "snippet_forward", "select_next", "fallback" },
 				["|"] = {
 					function(cmp)
-						cmp.cancel()
+						if cmp.is_active() then
+							cmp.cancel()
+						end
 					end,
 					"fallback",
 				},
+				["<C-u>"] = { "scroll_documentation_up", "fallback" },
+				["<C-d>"] = { "scroll_documentation_down", "fallback" },
 			},
 			appearance = {
 				nerd_font_variant = "normal",
