@@ -53,8 +53,8 @@ local options = {
   },                    -- List chars
   conceallevel = 2,     -- Font conceal
   signcolumn = "yes:1", -- Draw signs on statuscolumn
-  writebackup = true,   -- No backups of files
-  swapfile = true,      -- No swap file
+  writebackup = false,   -- No backups of files
+  swapfile = false,      -- No swap file
   smartcase = true,     -- Ignore ignorecase if case all uppercase
   gdefault = true,      -- Always substitute globally
   path = { ".", "**" }, -- Search path
