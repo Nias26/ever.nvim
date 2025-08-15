@@ -3,7 +3,6 @@ return {
 		"nyoom-engineering/oxocarbon.nvim",
 		config = function()
 			vim.opt.background = "dark" -- set this to dark or light
-			vim.api.nvim_set_hl(0, "Comment", { italic = false })
 		end,
 	},
 	{
