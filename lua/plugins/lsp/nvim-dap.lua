@@ -24,6 +24,7 @@ return {
 			args = { "--interpreter=dap", "--eval-command", "set print pretty on" },
 		}
 
+		---@diagnostic disable-next-line: inject-field
 		dap.configurations.cpp = {
 			{
 				name = "Launch",
@@ -65,6 +66,10 @@ return {
 		vim.keymap.set("n", "<localleader>c", dap.continue, { desc = "(DAP) Continue" })
 		vim.keymap.set("n", "<localleader>o", dap.step_over, { desc = "(DAP) Step Over" })
 		vim.keymap.set("n", "<localleader>i", dap.step_into, { desc = "(DAP) Step Into" })
-		vim.keymap.set("n", "<localleader>r", dap.repl.open, { desc = "(DAP) REPL" })
+		vim.keymap.set("n", "<localleader>R", dap.repl.open, { desc = "(DAP) REPL" })
+		vim.keymap.set("n", "<localleader>n", "<cmd>DapNew<CR>", { desc = "(DAP) New Session", silent = true })
+		vim.keymap.set("n", "<localleader>O", "<cmd>DapStepOut<CR>", { desc = "(DAP) Step Out" })
+		vim.keymap.set("n", "<localleader>r", "<cmd>DapRestartFrame<CR>", { desc = "(DAP) Restart Session" })
+		vim.keymap.set("n", "<localleader>t", "<cmd>DapTerminate<CR>", { desc = "(DAP) Terminate Session" })
 	end,
 }
