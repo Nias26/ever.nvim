@@ -1,13 +1,13 @@
 return {
 	"neovim/nvim-lspconfig",
-	lazy = true,
 	event = "BufReadPost",
 	dependencies = { "saghen/blink.cmp" },
-	opts = {
-		inlay_hints = { enabled = true },
-	},
+	init = function()
+		-- Enable lsp servers
+		vim.lsp.enable({ "lua_ls", "clangd", "cmake" })
+	end,
 	config = function()
-		local lspconfig = require("lspconfig")
+		local lsp = vim.lsp
 
 		local signs = { Error = " ", Warn = " ", Hint = "󰌵 ", Info = "󱈸 " }
 		for type, icon in pairs(signs) do
@@ -22,7 +22,8 @@ return {
 			require("nvim-navic").attach(client, bufnr)
 		end
 
-		lspconfig.lua_ls.setup({
+		-- Config
+		lsp.config("lua_ls", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 			settings = {
@@ -37,18 +38,13 @@ return {
 			},
 		})
 
-		lspconfig.clangd.setup({
+		lsp.config("clangd", {
 			capabilities = capabilities,
 			on_attach = on_attach,
-			root_dir = lspconfig.util.root_pattern("*.c", "*.cpp", "*.h", "*.hpp"),
+			root_markers = { "*.cpp", "*.h", "*.hpp" },
 		})
 
-		lspconfig.pyright.setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		lspconfig.cmake.setup({
+		lsp.config("cmake", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
