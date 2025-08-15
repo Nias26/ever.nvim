@@ -46,6 +46,8 @@ return {
 					["<C-v>"] = "open_vsplit",
 					[","] = "navigate_up",
 					["."] = "set_root",
+					["l"] = "open",
+					["h"] = "close_node",
 				},
 			},
 			filesystem = {
