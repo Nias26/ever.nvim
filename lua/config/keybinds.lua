@@ -18,8 +18,8 @@ map("n", "<C-W>+", "10<C-W>+", { desc = "Increase Height" })
 map("n", "<C-W>-", "10<C-W>-", { desc = "Decrease Height" })
 map("n", "!", "<C-w>w")
 map("t", "<C-n>", "<C-\\><C-n>", { desc = "Exit terminal mode", noremap = true, silent = true })
-map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move line upwards", silent = true })
-map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line downwards", silent = true })
+map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move line upwards", silent = true })
+map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move line downwards", silent = true })
 
 -- Tabs
 ---@param dir string
