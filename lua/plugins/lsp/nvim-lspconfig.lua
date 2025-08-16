@@ -4,7 +4,7 @@ return {
 	dependencies = { "saghen/blink.cmp" },
 	init = function()
 		-- Enable lsp servers
-		vim.lsp.enable({ "lua_ls", "clangd", "cmake" })
+		vim.lsp.enable({ "lua_ls", "clangd", "cmake", "java_language_server" })
 	end,
 	config = function()
 		local lsp = vim.lsp
@@ -24,7 +24,9 @@ return {
 		local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 		local on_attach = function(client, bufnr)
-			require("nvim-navic").attach(client, bufnr)
+			if client:supports_method("textDocument/documentSymbolProvider") then
+				require("nvim-navic").attach(client, bufnr)
+			end
 		end
 
 		-- Config
@@ -50,6 +52,11 @@ return {
 		})
 
 		lsp.config("cmake", {
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+
+		lsp.config("java_language_server", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
