@@ -7,19 +7,20 @@ return {
 	config = function()
 		local lualine = require("lualine")
 
-        -- Color table for highlights
-        -- stylua: ignore
-        local colors = {
-            bg       = '#161616',
-            fg       = '#bbc2cf',
-            grey     = '#262626',
-            green    = '#42be65',
-            orange   = '#FF8800',
-            violet   = '#be95ff',
-            red      = '#ee5396',
-            cyan     = '#3ddbd9',
-            blue     = '#33b1ff',
-        }
+    -- Color table for highlights
+    -- stylua: ignore
+    local colors = {
+        bg       = '#161616',
+        fg       = '#bbc2cf',
+        grey     = '#262626',
+        green    = '#42be65',
+        orange   = '#FF8800',
+        violet   = '#be95ff',
+        red      = '#ee5396',
+        cyan     = '#3ddbd9',
+        blue     = '#33b1ff',
+    }
+		vim.api.nvim_set_hl(0, "Statusline", { bg = "NONE" })
 
 		local conditions = {
 			buffer_not_empty = function()
@@ -158,11 +159,7 @@ return {
 					},
 					{
 						function()
-							local function get_severity(severity)
-								return #vim.diagnostic.get(0, { severity = severity })
-							end
-
-							local result = get_severity(vim.diagnostic.severity.WARN)
+							local result = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
 							return result or 0
 						end,
 						color = { fg = colors.violet },
@@ -170,11 +167,7 @@ return {
 					},
 					{
 						function()
-							local function get_severity(severity)
-								return #vim.diagnostic.get(0, { severity = severity })
-							end
-
-							local result = get_severity(vim.diagnostic.severity.ERROR)
+							local result = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
 							return result or 0
 						end,
 						padding = -1,
