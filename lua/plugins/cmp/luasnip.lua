@@ -15,9 +15,8 @@ return {
 		local rep = extras.rep
 
     -- stylua: ignore
-		ls.add_snippets("cpp" , {
-			s(
-				"guard",
+    ls.add_snippets("cpp" , {
+      s({ trig = "guard", desc = "Header Guard"},
         fmt(
           [[
           #ifndef H_{}
@@ -31,8 +30,8 @@ return {
             rep(1),
           }
         )
-			),
-		})
+      ),
+    })
 
 		ls.add_snippets("cmake", {
 			s(
@@ -47,8 +46,7 @@ return {
           DESCRIPTION "{}")
 
         # -[-[ CMake Binary Oputput Dir ]-]-
-        set(PROJECT_BINARY_DIR "bin")
-        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${{PROJECT_BINARY_DIR}})
+        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${{PROJECT_BINARY_DIR}}/bin")
 
         # -[-[ Build Properties ]-]-
         set(CMAKE_BUILD_TYPE "{}")
@@ -56,8 +54,7 @@ return {
         set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
         # -[-[ Source Files and Libraries ]-]-
-        file(GLOB SRC src/*.cpp)
-        add_executable(${{PROJECT_NAME}} ${{SRC}})
+        add_subdirectory("./src")
 
         # -[-[ Project Status ]-]-
         message(STATUS "")
@@ -66,7 +63,7 @@ return {
         if(NOT "${{PROJECT_DESCRIPTION}}" STREQUAL "")
           message(STATUS "Project Description: ${{PROJECT_DESCRIPTION}}")
         endif()
-        message(STATUS "Bin Dir: ${{CMAKE_CURRENT_BINARY_DIR}}/${{CMAKE_RUNTIME_OUTPUT_DIRECTORY}}")
+        message(STATUS "Bin Dir: ${{CMAKE_RUNTIME_OUTPUT_DIRECTORY}}")
         message(STATUS "Build Type: ${{CMAKE_BUILD_TYPE}}")
         message(STATUS "C++ Standard: ${{CMAKE_CXX_STANDARD}}")
         ]],
@@ -74,10 +71,22 @@ return {
 						i(1, "CMAKE_VERSION (>=3.5)"),
 						i(2, "PROJECT_NAME"),
 						i(3, "1.0"),
-						i(4, "DESCRIPTION"),
+						i(4),
 						i(5, "Debug|Release|RelWithDebInfo|MinSizeRel"),
 						i(6, "CXX_STANDARD"),
 					}
+				)
+			),
+			s(
+				{ trig = "src", desc = "Setup Sources" },
+				fmt(
+					[[
+        # -[-[ Sources Build ]-]-
+
+        file(GLOB SRC *.cpp)
+        add_executable(${{PROJECT_NAME}} ${{SRC}})
+        ]],
+					{}
 				)
 			),
 			s({ trig = "lib", desc = "Link library" }, {
