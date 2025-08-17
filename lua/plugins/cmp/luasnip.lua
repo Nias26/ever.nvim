@@ -97,7 +97,7 @@ return {
 
 		ls.add_snippets("gitignore", {
 			s({ trig = "cmake", desc = "Add CMake cache" }, {
-				t("./build/*"),
+				t("build/"),
 			}),
 		})
 	end,
