@@ -22,21 +22,13 @@ map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move line upwards", silent = tru
 map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move line downwards", silent = true })
 
 -- Tabs
----@param dir string
-local function tabSwitch(dir)
-	local tol = vim.o.timeoutlen
-	vim.o.timeoutlen = 100
-	vim.cmd("tab" .. dir)
-	vim.o.timeoutlen = tol
-end
-
 map("n", "<leader>t", "<cmd>tabnew<CR>", { desc = "Create new Tab" })
 map("n", "<leader>D", "<cmd>tabclose<CR>", { desc = "Close current Tab" })
 map("n", "[", function()
-	tabSwitch("previous")
+	vim.cmd("tabprevious")
 end, { desc = "Previous tab" })
 map("n", "]", function()
-	tabSwitch("next")
+	vim.cmd("tabnext")
 end, { desc = "Next tab" })
 
 -- Remove highlightning
