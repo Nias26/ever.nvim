@@ -18,6 +18,11 @@ return {
 		require("blink-cmp").setup({
 			keymap = {
 				preset = "enter",
+				["<C-n>"] = {
+					function(cmp)
+						cmp.show({ providers = { "snippets" } })
+					end,
+				},
 				["<Up>"] = { "hide", "fallback" },
 				["<Down>"] = { "hide", "fallback" },
 				["<CR>"] = { "accept", "fallback" },
@@ -65,7 +70,7 @@ return {
 									return ctx.kind
 								end,
 								highlight = function(ctx)
-									return ctx.label_description
+									return "BlinkCmpKind"
 								end,
 							},
 						},
