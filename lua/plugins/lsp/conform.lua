@@ -16,7 +16,6 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				cpp = { "clang-format" },
-				go = { "goimports" },
 				cmake = { "cmake-format" },
 			},
 			format_after_save = {
