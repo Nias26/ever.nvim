@@ -135,6 +135,13 @@ return {
 						color = { fg = colors.grey },
 						padding = -1,
 					},
+					{
+						function()
+							return string.format("[󰒠 • #%s]", vim.lsp.get_clients({ bufnr = 0 })[1].name)
+						end,
+
+						color = { fg = colors.violet },
+					},
 				},
 				lualine_x = {
 					{
