@@ -2,24 +2,18 @@
 local map = vim.keymap.set
 
 -- Movment
-map({ "n", "v" }, "H", "<S-Left>", { desc = "Move 1 word to the left" })
-map({ "n", "v" }, "L", "<S-Right>", { desc = "Move 1 word to the right" })
 map("n", "<C-h>", "<C-w>h", { desc = "Go to the left window" })
 map("n", "<C-j>", "<C-w>j", { desc = "Go to the down window" })
 map("n", "<C-k>", "<C-w>k", { desc = "Go to the up window" })
 map("n", "<C-l>", "<C-w>l", { desc = "Go to the left window" })
-map("n", "<C-Left>", "<C-w>h", { desc = "Go to the left window" })
-map("n", "<C-Down>", "<C-w>j", { desc = "Go to the down window" })
-map("n", "<C-Up>", "<C-w>k", { desc = "Go to the up window" })
-map("n", "<C-Right>", "<C-w>l", { desc = "Go to the right window" })
 map("n", "<C-w><", "10<C-w><", { desc = "Decrease width" })
 map("n", "<C-w>>", "10<C-w>>", { desc = "Increase width" })
 map("n", "<C-W>+", "10<C-W>+", { desc = "Increase Height" })
 map("n", "<C-W>-", "10<C-W>-", { desc = "Decrease Height" })
 map("n", "!", "<C-w>w")
 map("t", "<C-n>", "<C-\\><C-n>", { desc = "Exit terminal mode", noremap = true, silent = true })
-map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move line upwards", silent = true })
-map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move line downwards", silent = true })
+map("v", "<A-k>", ":m '<-2<CR>gv", { desc = "Move line upwards", silent = true })
+map("v", "<A-j>", ":m '>+1<CR>gv", { desc = "Move line downwards", silent = true })
 
 -- Tabs
 map("n", "<leader>t", "<cmd>tabnew<CR>", { desc = "Create new Tab" })
