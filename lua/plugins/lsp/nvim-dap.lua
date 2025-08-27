@@ -135,5 +135,9 @@ return {
 		-- hl(0, "DapUIWatchesError" )
 		-- hl(0, "DapUIWatchesValue" )
 		-- hl(0, "DapUIWinSelect" )
+
+		vim.fn.sign_define("DapBreakpoint", { text = "B", texthl = oxocarbon.base0A })
+		vim.fn.sign_define("DapStopped", { text = "", texthl = oxocarbon.base06 })
+		vim.fn.sign_define("DapBreakpointRejected", { text = "R", texthl = oxocarbon.base03 })
 	end,
 }
