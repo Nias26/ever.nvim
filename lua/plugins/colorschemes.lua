@@ -3,8 +3,6 @@ return {
 		"nyoom-engineering/oxocarbon.nvim",
 		config = function()
 			vim.opt.background = "dark" -- set this to dark or light
-
-			-- TODO: Modify DAP-UI icons hl like in nyoom.nvim
 		end,
 	},
 	{
