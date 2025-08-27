@@ -6,7 +6,7 @@ return {
 			theme = "doom",
 			config = {
 				header = {
-					"                                   ",
+					"            ever.nvim            ",
 					"                                   ",
 					"                                   ",
 					"   ⣴⣶⣤⡤⠦⣤⣀⣤⠆     ⣈⣭⣿⣶⣿⣦⣼⣆          ",
@@ -32,7 +32,7 @@ return {
 						desc_hl = "Number",
 						key = "e",
 						key_hl = "@string",
-						key_format = " %s", -- remove default surrounding `[]`
+						key_format = " %s",
 						action = "ene ",
 					},
 					{
@@ -96,7 +96,15 @@ return {
 						action = "Lazy",
 					},
 				},
-				footer = { " ", " ever.nvim " },
+				-- footer = { " ", " ever.nvim " },
+				footer = function()
+					local lazy_stats = require("lazy.stats").stats()
+					local ms = (math.floor(lazy_stats.startuptime * 100 + 0.5) / 100)
+					return {
+						" ",
+						string.format("Loaded %d/%d plugins in %dms", lazy_stats.loaded, lazy_stats.count, ms),
+					}
+				end,
 				vertical_center = true,
 			},
 		})
