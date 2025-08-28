@@ -57,6 +57,17 @@ return {
 			{ "<leader>clh", "<cmd>Lspsaga hover_doc<CR>", desc = "LSP Signature" },
 			{ "<leader>clf", "<cmd>Lspsaga finder<CR>", desc = "Find References" },
 			{ "<leader>clp", "<cmd>Lspsaga peek_definition<CR>", desc = "Peek Definition" },
+			{
+				"<leader>cM",
+				function()
+					vim.ui.input({ prompt = "Enter make command" }, function(input)
+						vim.bo.makeprg = input
+						vim.notify(string.format("Set :make to -> `%s`", input), vim.log.levels.INFO)
+					end)
+				end,
+				desc = "Change make command",
+			},
+			{ "<leader>cm", "<cmd>make<CR>", desc = "Make" },
 		})
 
 		-- Search -> 
