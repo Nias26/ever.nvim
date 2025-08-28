@@ -18,12 +18,8 @@ map("v", "<A-j>", ":m '>+1<CR>gv", { desc = "Move line downwards", silent = true
 -- Tabs
 map("n", "<leader>t", "<cmd>tabnew<CR>", { desc = "Create new Tab" })
 map("n", "<leader>D", "<cmd>tabclose<CR>", { desc = "Close current Tab" })
-map("n", "[", function()
-	vim.cmd("tabprevious")
-end, { desc = "Previous tab" })
-map("n", "]", function()
-	vim.cmd("tabnext")
-end, { desc = "Next tab" })
+map("n", "[", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
+map("n", "]", "<cmd>tabnext<CR>", { desc = "Next tab" })
 
 -- Remove highlightning
 map("n", "<ESC><ESC>", "<cmd>nohlsearch<CR>")
@@ -55,7 +51,7 @@ map("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Next buffer" })
 -- Splits
 map("n", "Ss", ":split ", { desc = "Horizzontal Split" })
 map("n", "Sv", ":vsplit ", { desc = "Vertical Split" })
-map({ "n", "v" }, "Q", "<cmd>bd!<CR>", { desc = "Quit current buffer" })
+map("n", "Q", "<cmd>bd!<CR>", { desc = "Quit current buffer" })
 
 -- LSP
 map({ "n", "v" }, "gd", vim.lsp.buf.definition, { desc = "Go to Definition" })
