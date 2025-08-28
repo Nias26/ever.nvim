@@ -59,27 +59,25 @@ return {
 		"xiyaowong/transparent.nvim",
 		config = function()
 			-- Statuscol
-			vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, { "FoldColumn", "CursorColumn" })
-
-			-- Trouble
-			vim.g.transparent_groups =
-				vim.list_extend(vim.g.transparent_groups or {}, { "TroubleNormal", "TroubleNormalNC" })
+			vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, {
+				-- Statusbar
+				"FoldColumn",
+				"CursorColumn",
+				-- Trouble
+				"TroubleNormal",
+				"TroubleNormalNC",
+				-- Window Separator
+				"WinSeparator",
+				-- Folds
+				"Folded",
+				"UfoFoldedBg",
 				-- Winbar
 				"WinBar",
 				"WinBarNC",
+			})
 
 			-- Lualine.nvim
 			require("transparent").clear_prefix("lualine")
-
-			-- Window Separator ( Split bar )
-			vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, { "WinSeparator" })
-
-			-- Fold bg
-			vim.g.transparent_groups = vim.list_extend(vim.g.transparent_groups or {}, { "Folded", "UfoFoldedBg" })
-
-			-- NvimTree
-			vim.g.transparent_groups =
-				vim.list_extend(vim.g.transparent_groups or {}, { "NvimTreeNormal", "NvimTreeWinSeparator" })
 
 			-- Exclude groups
 			require("transparent").setup({
@@ -99,9 +97,6 @@ return {
 					"BlinkCmpDoc",
 				},
 			})
-
-			-- Disable italic comments
-			vim.api.nvim_set_hl(0, "Comment", { italic = false })
 		end,
 	},
 }
