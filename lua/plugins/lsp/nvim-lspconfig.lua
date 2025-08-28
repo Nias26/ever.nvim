@@ -25,13 +25,11 @@ return {
 
 		-- Servers Configuration
 		local capabilities = require("blink.cmp").get_lsp_capabilities()
-		-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 		local on_attach = function(client, bufnr)
 			if client:supports_method("textDocument/documentSymbolProvider") then
 				require("nvim-navic").attach(client, bufnr)
 			end
-			vim.notify(vim.lsp.get_clients()[1].name .. " attached", vim.log.levels.INFO)
 		end
 
 		-- Config
