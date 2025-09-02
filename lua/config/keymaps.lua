@@ -44,14 +44,13 @@ map("n", "<F3>", "<cmd>Neotree source=filesystem toggle<CR>", { desc = "Open Nvi
 map("n", "<F4>", "<cmd>Neotree position=current toggle<CR>", { desc = "Open Nvim Tree (Full)" })
 
 -- Buffer managing
-map("n", "bd", "<cmd>bd<CR>", { desc = "Delete current buffer" })
 map("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Previous buffer" })
 map("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Next buffer" })
 
 -- Splits
 map("n", "Ss", ":split ", { desc = "Horizzontal Split" })
 map("n", "Sv", ":vsplit ", { desc = "Vertical Split" })
-map("n", "Q", "<cmd>bd!<CR>", { desc = "Quit current buffer" })
+map("n", "Q", "<cmd>bd<CR>", { desc = "Quit current buffer" })
 
 -- LSP
 map({ "n", "v" }, "gd", vim.lsp.buf.definition, { desc = "Go to Definition" })
