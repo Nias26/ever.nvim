@@ -13,7 +13,6 @@ vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 vim.o.foldenable = false
 vim.o.timeoutlen = 250
 vim.o.updatetime = 250
-vim.o.winborder = "rounded"
 
 -- [[					Keymaps					]]
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
@@ -119,7 +118,8 @@ vim.lsp.config("clangd", {
 
 vim.api.nvim_create_autocmd("BufWritePre", {
 	callback = function()
-		if vim.tbl_contains(vim.lsp.get_clients({ bufnr = 0 })[1].capabilities, function(t)
+		local client = vim.lsp.get_clients({ bufnr = 0 })[1].capabilities or {}
+		if vim.tbl_contains(client, function(t)
 					return vim.deep_equal(t,
 						"formatting")
 				end) then
