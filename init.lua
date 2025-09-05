@@ -3,14 +3,17 @@ vim.loader.enable()
 
 -- [[					Opts					]]
 vim.g.mapleader = " "
-vim.opt.relativenumber = true
-vim.opt.number = true
-vim.opt.termguicolors = true
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldenable = false
+vim.o.relativenumber = true
+vim.o.number = true
+vim.o.termguicolors = true
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+vim.o.foldenable = false
+vim.o.timeoutlen = 250
+vim.o.updatetime = 250
+vim.o.winborder = "rounded"
 
 -- [[					Keymaps					]]
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
@@ -31,8 +34,12 @@ vim.keymap.set("n", "cf", vim.lsp.buf.format, { desc = "Code Format" })
 vim.keymap.set("n", "ca", vim.lsp.buf.code_action, { desc = "Code Actions" })
 vim.keymap.set("n", "cd", vim.lsp.buf.hover, { desc = "LSP Code Doc" })
 vim.keymap.set("n", "cr", vim.lsp.buf.rename, { desc = "LSP Rename" })
-vim.keymap.set("n", "c]", function() vim.diagnostic.jump({ count = 1 }) end, { desc = "Go to Next Diagnostic" })
-vim.keymap.set("n", "c[", function() vim.diagnostic.jump({ count = -1 }) end, { desc = "Go to Previous Diagnostic" })
+vim.keymap.set("n", "c]", function()
+	vim.diagnostic.jump({ count = 1 })
+end, { desc = "Go to Next Diagnostic" })
+vim.keymap.set("n", "c[", function()
+	vim.diagnostic.jump({ count = -1 })
+end, { desc = "Go to Previous Diagnostic" })
 
 -- [[					Plugins					]]
 vim.pack.add({
@@ -112,6 +119,34 @@ vim.lsp.config("clangd", {
 
 vim.api.nvim_create_autocmd("BufWritePre", {
 	callback = function()
-		vim.lsp.buf.format({ async = false })
+		if vim.tbl_contains(vim.lsp.get_clients({ bufnr = 0 })[1].capabilities, function(t)
+					return vim.deep_equal(t,
+						"formatting")
+				end) then
+			vim.lsp.buf.format({ async = true })
+		end
+	end
+})
+
+vim.api.nvim_create_autocmd("CursorHold", {
+	pattern = "*.*",
+	callback = function()
+		for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
+			if vim.api.nvim_win_get_config(winid).zindex then
+				return
+			end
+		end
+
+		vim.diagnostic.open_float(0, {
+			scope = "cursor",
+			focusable = false,
+			close_events = {
+				"CursorMoved",
+				"CursorMovedI",
+				"BufHidden",
+				"InsertCharPre",
+				"WinLeave",
+			},
+		})
 	end
 })
