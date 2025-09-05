@@ -118,12 +118,15 @@ vim.lsp.config("clangd", {
 
 vim.api.nvim_create_autocmd("BufWritePre", {
 	callback = function()
-		local client = vim.lsp.get_clients({ bufnr = 0 })[1].capabilities or {}
-		if vim.tbl_contains(client, function(t)
+		if #vim.lsp.get_clients({ bufnr = 0 })  > 0 then
+			if vim.tbl_contains(
+				vim.lsp.get_clients({ bufnr = 0 })[1].capabilities,
+				function(t)
 					return vim.deep_equal(t,
-						"formatting")
+					"formatting")
 				end) then
-			vim.lsp.buf.format({ async = true })
+				vim.lsp.buf.format({ async = true })
+			end
 		end
 	end
 })
