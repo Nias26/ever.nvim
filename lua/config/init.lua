@@ -1,5 +1,0 @@
-require("config.keymaps")
-require("config.options")
-require("config.macros")
-require("config.autocmd")
-require("config.tabline").setup()
