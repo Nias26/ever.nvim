@@ -47,6 +47,7 @@ vim.pack.add({
 	{ src = "https://github.com/stevearc/oil.nvim" },               -- File Manager
 	{ src = "https://github.com/echasnovski/mini.jump" },           -- Search QoL
 	{ src = "https://github.com/romainl/vim-cool" },                -- Search QoL
+	{ src = "https://github.com/echasnovski/mini.statusline" },     -- Statusline
 })
 
 -- [[					Setup					]]
@@ -83,6 +84,7 @@ require("blink.cmp").setup({
 })
 require("mini.icons").setup()
 require("mini.jump").setup()
+require("mini.statusline").setup()
 require("oil").setup()
 vim.cmd.colorscheme("oxocarbon")
 
