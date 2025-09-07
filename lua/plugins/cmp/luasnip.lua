@@ -90,7 +90,7 @@ return {
 				)
 			),
 			s({ trig = "lib", desc = "Link library" }, {
-				t('target_link_libraries(${PROJECT_NAME} "{}")'),
+				t('target_link_libraries(${{PROJECT_NAME}} "{}")'),
 				i(1, "LIB_NAME"),
 			}),
 		})
