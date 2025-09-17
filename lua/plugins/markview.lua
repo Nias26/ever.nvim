@@ -7,6 +7,9 @@ return {
 	},
 	config = function()
 		require("markview").setup({
+			experimental = {
+				check_rtp_message = false,
+			},
 			preview = {
 				modes = { "n", "i", "no", "c" },
 				hybrid_modes = { "n", "i" },
