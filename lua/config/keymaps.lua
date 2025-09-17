@@ -94,3 +94,8 @@ end, { desc = "Toggle Numbers", noremap = true })
 map("n", "<F6>", function()
 	vim.wo.nu = not vim.wo.nu
 end, { desc = "Toggle Relative Numbers", noremap = true })
+
+-- Sudo write
+map("c", "w!!", function()
+	Sudo_write()
+end, { desc = "Write file with priviledges" })
