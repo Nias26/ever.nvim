@@ -98,4 +98,4 @@ end, { desc = "Toggle Relative Numbers", noremap = true })
 -- Sudo write
 map("c", "w!!", function()
 	Sudo_write()
-end, { desc = "Write file with priviledges" })
+end, { desc = "Write file with priviledges", silent = true })
