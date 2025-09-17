@@ -16,6 +16,12 @@ return {
 	version = "1.*",
 	config = function()
 		require("blink-cmp").setup({
+			enabled = function()
+				if vim.bo.filetype == "DressingInput" or vim.bo.filetype == "TelescopePrompt" then
+					return false
+				end
+				return true
+			end,
 			keymap = {
 				preset = "enter",
 				["<C-n>"] = {
