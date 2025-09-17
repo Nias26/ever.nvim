@@ -69,7 +69,7 @@ local function sudo_exec(cmd, print_output)
 	return true
 end
 
-function Sudo_write(tmpfile, filepath)
+local function sudo_write(tmpfile, filepath)
 	if not tmpfile then
 		tmpfile = vim.fn.tempname()
 	end
@@ -93,3 +93,7 @@ function Sudo_write(tmpfile, filepath)
 	end
 	vim.fn.delete(tmpfile)
 end
+
+user_cmd("W", function()
+	sudo_write()
+end, {})
