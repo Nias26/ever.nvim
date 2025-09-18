@@ -31,3 +31,13 @@ autocmd("FileType", {
 		vim.keymap.set("n", "S", "?\\|\\zs\\S\\+\\ze\\|<CR>", { buffer = true, noremap = true, silent = true })
 	end,
 })
+
+augroup("folds", { clear = false })
+autocmd("FileType", {
+	group = "folds",
+	pattern = { "neo-tree" },
+	callback = function()
+		require("ufo").detach()
+		vim.opt_local.foldenable = false
+	end,
+})
