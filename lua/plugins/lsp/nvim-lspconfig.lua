@@ -7,7 +7,7 @@ return {
 	},
 	init = function()
 		-- Enable lsp servers
-		vim.lsp.enable({ "lua_ls", "clangd", "cmake" })
+		vim.lsp.enable({ "lua_ls", "clangd", "cmake", "jdtls" })
 	end,
 	config = function()
 		local lsp = vim.lsp
@@ -58,30 +58,13 @@ return {
 			on_attach = on_attach,
 		})
 
-		vim.api.nvim_create_autocmd("FileType", {
-			pattern = "java",
-			callback = function()
-				require("jdtls").start_or_attach({
-					cmd = {
-						"jdtls",
-						("--jvm-arg=-javaagent:%s"):format(
-							vim.fn.expand(vim.fn.stdpath("data") .. "/mason/packages/jdtls/lombok.jar")
-						),
-					},
-					bundle = {
-						vim.split(
-							vim.fn.glob(
-								vim.fn.stdpath("data")
-									.. "/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar'",
-								true
-							),
-							"\n"
-						),
-					},
-					capabilities = capabilities,
-					on_attach = on_attach,
-				})
-			end,
+		lsp.config("jdtsl", {
+			capabilities = capabilities,
+			on_attach = on_attach,
+			settings = {
+				java = {},
+			},
+			-- root_dir = vim.fs.root(0, { ".git", "gradlew", "mvnw", "justfile" }),
 		})
 	end,
 }
