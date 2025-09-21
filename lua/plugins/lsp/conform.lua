@@ -17,6 +17,7 @@ return {
 				lua = { "stylua" },
 				cpp = { "clang-format" },
 				cmake = { "cmake-format" },
+				python = { "black" },
 			},
 			format_after_save = {
 				lsp_format = "fallback",

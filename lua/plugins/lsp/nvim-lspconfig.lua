@@ -7,7 +7,7 @@ return {
 	},
 	init = function()
 		-- Enable lsp servers
-		vim.lsp.enable({ "lua_ls", "clangd", "cmake", "jdtls" })
+		vim.lsp.enable({ "lua_ls", "clangd", "cmake", "jdtls", "pyright" })
 	end,
 	config = function()
 		local lsp = vim.lsp
@@ -64,7 +64,11 @@ return {
 			settings = {
 				java = {},
 			},
-			-- root_dir = vim.fs.root(0, { ".git", "gradlew", "mvnw", "justfile" }),
+		})
+
+		lsp.config("pyright", {
+			capabilities = capabilities,
+			on_attach = on_attach,
 		})
 	end,
 }
