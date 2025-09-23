@@ -100,5 +100,42 @@ return {
 				t("build/"),
 			}),
 		})
+
+		ls.add_snippets("just", {
+			s(
+				{ trig = "java", desc = "Setup Java Build Environment" },
+				fmt(
+					[[
+        srcdir := "./src"
+        bindir := "./bin"
+        docdir := "./docs"
+        JAVAC_FLAGS := "" # -verbose
+
+        # Build Informations
+        module := "{}"
+        package := "{}"
+        class := "{}"
+        jarfile := class + ".jar"
+
+        build:
+          javac -d {{{{bindir}}}} --module-source-path {{{{srcdir}}}} --module {{{{module}}}} {{{{JAVAC_FLAGS}}}}
+
+        run: build
+          java --module-path {{{{bindir}}}} --module {{{{module}}}}/{{{{package}}}}.{{{{class}}}}
+
+        doc:
+          javadoc -d {{{{docdir}}}} --module-source-path {{{{srcdir}}}} -author 
+
+        ar:
+          jar -cfv {{{{jarfile}}}}
+        ]],
+					{
+						i(1, "MAIN_MODULE"),
+						i(2, "test"),
+						i(3, "MAIN_CLASS"),
+					}
+				)
+			),
+		})
 	end,
 }
