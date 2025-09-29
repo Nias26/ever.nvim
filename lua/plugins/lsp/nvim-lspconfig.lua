@@ -64,7 +64,7 @@ return {
 			settings = {
 				java = {},
 			},
-			root_markers = vim.fs.root(0, { "justfile" }),
+			root_markers = vim.fs.root(0, { "justfile", ".project" }),
 		})
 
 		lsp.config("pyright", {
