@@ -61,9 +61,11 @@ return {
 			capabilities = capabilities,
 			on_attach = on_attach,
 			settings = {
-				java = {},
+				java = {
+					home = "/usr/lib/jvm/default-runtime",
+				},
 			},
-			root_markers = vim.fs.root(0, { "justfile", ".project" }),
+			root_markers = { "justfile", ".project" },
 		})
 
 		lsp.config("pyright", {
