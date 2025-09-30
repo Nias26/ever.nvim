@@ -25,7 +25,6 @@ return {
 
 		-- Servers Configuration
 		local capabilities = require("blink.cmp").get_lsp_capabilities()
-
 		local on_attach = function(client, bufnr)
 			if client:supports_method("textDocument/documentSymbolProvider") then
 				require("nvim-navic").attach(client, bufnr)
@@ -58,7 +57,7 @@ return {
 			on_attach = on_attach,
 		})
 
-		lsp.config("jdtsl", {
+		lsp.config("jdtls", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 			settings = {
