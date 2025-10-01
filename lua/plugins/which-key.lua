@@ -21,6 +21,13 @@ return {
 			{ "<leader>", group = " Index" },
 			{ "<Esc><Esc>", hidden = true },
 			{ "<leader>m", "<cmd>Telescope keymaps<CR>", desc = "Show keymaps", icon = "" },
+			{
+				"<leader>j",
+				function()
+					BufferSticks.jump()
+				end,
+				desc = "Jump Buffer",
+			},
 		})
 
 		-- Ever.nvim -> 
