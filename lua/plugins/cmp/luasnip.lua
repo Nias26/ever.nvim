@@ -118,14 +118,13 @@ return {
         jarfile := class + ".jar"
 
         build:
-          javac -d {{{{bindir}}}} {{{{srcdir}}}}/*.java
+          javac -d {{{{bindir}}}} --module-source-path {{{{srcdir}}}} --module {{{{module}}}} {{{{JAVAC_FLAGS}}}}
 
         run: build
-          java -classpath {{{{bindir}}}} {{{{package}}}}.{{{{class}}}}
+          java --module-path {{{{bindir}}}} --module {{{{module}}}}/{{{{package}}}}.{{{{class}}}}
 
         doc:
-
-        ar:
+          javadoc -d {{{{docdir}}}} --module-source-path {{{{srcdir}}}} -author 
         ]],
 					{
 						i(1, "MAIN_MODULE"),
