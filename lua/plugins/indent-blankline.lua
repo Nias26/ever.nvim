@@ -49,6 +49,7 @@ return {
 	},
 	{
 		"echasnovski/mini.indentscope",
+		event = "BufRead",
 		version = "*",
 		opts = {
 			symbol = "|",

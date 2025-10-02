@@ -3,7 +3,7 @@ return {
 	event = "BufReadPost",
 	dependencies = {
 		"saghen/blink.cmp",
-		"mfussenegger/nvim-jdtls",
+		{ "mfussenegger/nvim-jdtls", ft = "java" },
 	},
 	init = function()
 		-- Enable lsp servers
