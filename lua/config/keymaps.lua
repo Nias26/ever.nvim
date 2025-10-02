@@ -1,76 +1,73 @@
--- keybinds
-local map = vim.keymap.set
-
 -- Movment
-map("n", "<C-h>", "<C-w>h", { desc = "Go to the left window" })
-map("n", "<C-j>", "<C-w>j", { desc = "Go to the down window" })
-map("n", "<C-k>", "<C-w>k", { desc = "Go to the up window" })
-map("n", "<C-l>", "<C-w>l", { desc = "Go to the left window" })
-map("n", "<C-w><", "10<C-w><", { desc = "Decrease width" })
-map("n", "<C-w>>", "10<C-w>>", { desc = "Increase width" })
-map("n", "<C-W>+", "10<C-W>+", { desc = "Increase Height" })
-map("n", "<C-W>-", "10<C-W>-", { desc = "Decrease Height" })
-map("n", "!", "<C-w>w")
-map("t", "<C-n>", "<C-\\><C-n>", { desc = "Exit terminal mode", noremap = true, silent = true })
-map("v", "<A-k>", ":m '<-2<CR>gv", { desc = "Move line upwards", silent = true })
-map("v", "<A-j>", ":m '>+1<CR>gv", { desc = "Move line downwards", silent = true })
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to the left window" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to the down window" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to the up window" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to the left window" })
+vim.keymap.set("n", "<C-w><", "10<C-w><", { desc = "Decrease width" })
+vim.keymap.set("n", "<C-w>>", "10<C-w>>", { desc = "Increase width" })
+vim.keymap.set("n", "<C-W>+", "10<C-W>+", { desc = "Increase Height" })
+vim.keymap.set("n", "<C-W>-", "10<C-W>-", { desc = "Decrease Height" })
+vim.keymap.set("n", "!", "<C-w>w")
+vim.keymap.set("t", "<C-n>", "<C-\\><C-n>", { desc = "Exit terminal mode", noremap = true, silent = true })
+vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv", { desc = "Move line upwards", silent = true })
+vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv", { desc = "Move line downwards", silent = true })
 
 -- Tabs
-map("n", "<leader>t", "<cmd>tabnew<CR>", { desc = "Create new Tab" })
-map("n", "<leader>D", "<cmd>tabclose<CR>", { desc = "Close current Tab" })
-map("n", "[", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
-map("n", "]", "<cmd>tabnext<CR>", { desc = "Next tab" })
+vim.keymap.set("n", "<leader>t", "<cmd>tabnew<CR>", { desc = "Create new Tab" })
+vim.keymap.set("n", "<leader>D", "<cmd>tabclose<CR>", { desc = "Close current Tab" })
+vim.keymap.set("n", "[", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
+vim.keymap.set("n", "]", "<cmd>tabnext<CR>", { desc = "Next tab" })
 
 -- Remove highlightning
-map("n", "<ESC><ESC>", "<cmd>nohlsearch<CR>")
+vim.keymap.set("n", "<ESC><ESC>", "<cmd>nohlsearch<CR>")
 
 -- Open Telescope
-map("n", ";;", "<cmd>Telescope<CR>", { desc = "Telescope" })
-map("n", ";G", "<cmd>Telescope live_grep<CR>", { desc = "Live Grep" })
-map("n", ";g", "<cmd>Telescope git_files<CR>", { desc = "Git Files" })
-map("n", "<F2>", "<cmd>Telescope find_files<CR>", { desc = "Find Files" })
-map("n", ";s", "<cmd>Telescope file_browser<CR>", { desc = "File Browser" })
-map("n", ";b", "<cmd>Telescope buffers<CR>", { desc = "Buffers" })
-map("n", ";h", "<cmd>Telescope help_tags<CR>", { desc = "Help Tags" })
-map("n", ";m", "<cmd>Telescope man_pages<CR>", { desc = "Man Pages" })
-map("n", ";f", "<cmd>Telescope find_files<CR>", { desc = "Find Files" })
+vim.keymap.set("n", ";;", "<cmd>Telescope<CR>", { desc = "Telescope" })
+vim.keymap.set("n", ";G", "<cmd>Telescope live_grep<CR>", { desc = "Live Grep" })
+vim.keymap.set("n", ";g", "<cmd>Telescope git_files<CR>", { desc = "Git Files" })
+vim.keymap.set("n", "<F2>", "<cmd>Telescope find_files<CR>", { desc = "Find Files" })
+vim.keymap.set("n", ";s", "<cmd>Telescope file_browser<CR>", { desc = "File Browser" })
+vim.keymap.set("n", ";b", "<cmd>Telescope buffers<CR>", { desc = "Buffers" })
+vim.keymap.set("n", ";h", "<cmd>Telescope help_tags<CR>", { desc = "Help Tags" })
+vim.keymap.set("n", ";m", "<cmd>Telescope man_pages<CR>", { desc = "Man Pages" })
+vim.keymap.set("n", ";f", "<cmd>Telescope find_files<CR>", { desc = "Find Files" })
 
 -- Comment
-map("n", "cc", "gcc", { desc = "Comment line", remap = true })
-map("v", "Cc", "gc", { desc = "Comment selection", remap = true })
+vim.keymap.set("n", "cc", "gcc", { desc = "Comment line", remap = true })
+vim.keymap.set("v", "Cc", "gc", { desc = "Comment selection", remap = true })
 
 -- Open Nvim Tree
-map("n", "<F3>", "<cmd>Neotree source=filesystem toggle<CR>", { desc = "Open Nvim Tree (Sizebar)" })
-map("n", "<F4>", "<cmd>Neotree position=current toggle<CR>", { desc = "Open Nvim Tree (Full)" })
+vim.keymap.set("n", "<F3>", "<cmd>Neotree source=filesystem toggle<CR>", { desc = "Open Nvim Tree (Sizebar)" })
+vim.keymap.set("n", "<F4>", "<cmd>Neotree position=current toggle<CR>", { desc = "Open Nvim Tree (Full)" })
 
 -- Buffer managing
-map("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Previous buffer" })
-map("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Next buffer" })
+vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Previous buffer" })
+vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Next buffer" })
 
 -- Splits
-map("n", "Ss", ":split ", { desc = "Horizzontal Split" })
-map("n", "Sv", ":vsplit ", { desc = "Vertical Split" })
-map("n", "Q", "<cmd>bd<CR>", { desc = "Quit current buffer" })
+vim.keymap.set("n", "Ss", ":split ", { desc = "Horizzontal Split" })
+vim.keymap.set("n", "Sv", ":vsplit ", { desc = "Vertical Split" })
+vim.keymap.set("n", "Q", "<cmd>bd<CR>", { desc = "Quit current buffer" })
 
 -- LSP
-map({ "n", "v" }, "gd", vim.lsp.buf.definition, { desc = "Go to Definition" })
-map({ "n", "v" }, "gr", vim.lsp.buf.references, { desc = "Go to Reference" })
-map({ "n", "v" }, "cs", vim.lsp.buf.signature_help, { desc = "Signature Help" })
-map("n", "cf", function()
+vim.keymap.set({ "n", "v" }, "gd", vim.lsp.buf.definition, { desc = "Go to Definition" })
+vim.keymap.set({ "n", "v" }, "gr", vim.lsp.buf.references, { desc = "Go to Reference" })
+vim.keymap.set({ "n", "v" }, "cs", vim.lsp.buf.signature_help, { desc = "Signature Help" })
+vim.keymap.set("n", "cf", function()
 	vim.lsp.buf.format({ async = true })
 end, { desc = "Code Format" })
-map("n", "cz", "<cmd>Lspsaga code_action<CR>", { desc = "Code Actions" })
-map("n", "cd", "<cmd>Lspsaga hover_doc<CR>", { desc = "LSP Code Doc" })
-map("n", "gr", "<cmd>Lspsaga finder<CR>", { desc = "Find References" })
-map("n", "cr", vim.lsp.buf.rename, { desc = "LSP Rename" })
-map("n", "c[", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { desc = "Go to Previous Diagnostic" })
-map("n", "c]", "<cmd>Lspsaga diagnostic_jump_next<CR>", { desc = "Go to Next Diagnostic" })
+vim.keymap.set("n", "cz", "<cmd>Lspsaga code_action<CR>", { desc = "Code Actions" })
+vim.keymap.set("n", "cd", "<cmd>Lspsaga hover_doc<CR>", { desc = "LSP Code Doc" })
+vim.keymap.set("n", "gr", "<cmd>Lspsaga finder<CR>", { desc = "Find References" })
+vim.keymap.set("n", "cr", vim.lsp.buf.rename, { desc = "LSP Rename" })
+vim.keymap.set("n", "c[", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { desc = "Go to Previous Diagnostic" })
+vim.keymap.set("n", "c]", "<cmd>Lspsaga diagnostic_jump_next<CR>", { desc = "Go to Next Diagnostic" })
 
 -- Undotree
-map("n", "U", "<cmd>UndotreeToggle<CR>", { desc = "Open undo history" })
+vim.keymap.set("n", "U", "<cmd>UndotreeToggle<CR>", { desc = "Open undo history" })
 
 -- Indent whole page
-map("n", "==", function()
+vim.keymap.set("n", "==", function()
 	local c = vim.fn.getpos(".")
 	local v = vim.fn.winsaveview()
 	vim.cmd.normal("ggVG==")
@@ -79,7 +76,7 @@ map("n", "==", function()
 end, { desc = "Indent whole page" })
 
 -- Grug-far
-map("n", ";r", function()
+vim.keymap.set("n", ";r", function()
 	require("grug-far").open({
 		prefills = {
 			search = vim.fn.expand("<cword>"),
@@ -88,10 +85,10 @@ map("n", ";r", function()
 end, { desc = "Grug-Far" })
 
 -- Toggle (relative)numbers
-map("n", "<F5>", function()
+vim.keymap.set("n", "<F5>", function()
 	vim.wo.nu = not vim.wo.nu
 	vim.wo.rnu = not vim.wo.rnu
 end, { desc = "Toggle Numbers", noremap = true })
-map("n", "<F6>", function()
+vim.keymap.set("n", "<F6>", function()
 	vim.wo.nu = not vim.wo.nu
 end, { desc = "Toggle Relative Numbers", noremap = true })
