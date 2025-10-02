@@ -1,13 +1,13 @@
 -- Show diagnostics under the cursor when holding position
 vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
-vim.api.nivm_create_autocmd({ "CursorHold" }, {
+vim.api.nvim_create_autocmd({ "CursorHold" }, {
 	pattern = "*.*",
 	callback = OpenDiagnosticIfNoFloat,
 	group = "lsp_diagnostics_hold",
 })
 
 -- Disable folding in certain filetypes
-vim.api.nivm_create_autocmd("FileType", {
+vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "Trouble", "NvimTree", "lazy", "dashboard", "TelescopePrompt", "" },
 	callback = function()
 		require("ufo").detach()
@@ -16,7 +16,7 @@ vim.api.nivm_create_autocmd("FileType", {
 })
 
 -- Help pages keybinds
-vim.api.nivm_create_autocmd("FileType", {
+vim.api.nvim_create_autocmd("FileType", {
 	pattern = "help",
 	callback = function()
 		vim.keymap.set("n", "<CR>", "<C-]>", { buffer = true, noremap = true, silent = true })
@@ -29,7 +29,7 @@ vim.api.nivm_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_augroup("folds", { clear = false })
-vim.api.nivm_create_autocmd("FileType", {
+vim.api.nvim_create_autocmd("FileType", {
 	group = "folds",
 	pattern = { "neo-tree" },
 	callback = function()
