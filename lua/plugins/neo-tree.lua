@@ -1,5 +1,6 @@
 return {
 	"nvim-neo-tree/neo-tree.nvim",
+	lazy = false,
 	cmd = "Neotree",
 	branch = "v3.x",
 	dependences = {
@@ -57,6 +58,7 @@ return {
 					hide_gitignored = false,
 				},
 				hijack_netrw_behavior = "open_current",
+				bind_to_cwd = false,
 			},
 			document_symbols = {
 				follow_cursor = true,
