@@ -3,12 +3,14 @@ return {
 	lazy = false,
 	cmd = "Neotree",
 	branch = "v3.x",
-	dependences = {
+	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 		"nvim-lua/plenary.nvim",
 		"MunifTanjim/nui.nvim",
+		"saifulapm/neotree-file-nesting-config",
 	},
 	config = function()
+		local nesting_rules = require("neotree-file-nesting-config").nesting_rules
 		require("neo-tree").setup({
 			sources = {
 				"filesystem",
@@ -63,6 +65,7 @@ return {
 			document_symbols = {
 				follow_cursor = true,
 			},
+			nesting_rules = nesting_rules,
 		})
 	end,
 }
