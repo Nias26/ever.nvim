@@ -40,7 +40,6 @@ return {
 					[[
         # -[-[ CMake Build File ]-]-
         cmake_minimum_required(VERSION {})
-        set(BUILD_INFO "${{CXX_COMPILER_NAME}} ${{CMAKE_CXX_COMPILER_VERSION}} - ${{CMAKE_BUILD_TYPE}}")
 
         # -[-[ Project ]-]-
         project( {} VERSION {} DESCRIPTION "{}")
@@ -64,7 +63,6 @@ return {
         message(STATUS "Bin Dir: ${{CMAKE_RUNTIME_OUTPUT_DIRECTORY}}")
         message(STATUS "Build Type: ${{CMAKE_BUILD_TYPE}}")
         message(STATUS "C++ Standard: ${{CMAKE_CXX_STANDARD}}")
-        message(STATUS "Build info: ${{BUILD_INFO}}")
         ]],
 					{
 						i(1, "CMAKE_VERSION (>=3.5)"),
