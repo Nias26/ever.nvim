@@ -40,18 +40,16 @@ return {
 					[[
         # -[-[ CMake Build File ]-]-
         cmake_minimum_required(VERSION {})
-        project(
-          {}
-          VERSION {}
-          DESCRIPTION "{}")
+        set(BUILD_INFO "${{CXX_COMPILER_NAME}} ${{CMAKE_CXX_COMPILER_VERSION}} - ${{CMAKE_BUILD_TYPE}}")
 
-        # -[-[ CMake Binary Oputput Dir ]-]-
-        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${{PROJECT_BINARY_DIR}}/bin")
+        # -[-[ Project ]-]-
+        project( {} VERSION {} DESCRIPTION "{}")
 
         # -[-[ Build Properties ]-]-
         set(CMAKE_BUILD_TYPE "{}")
         set(CMAKE_CXX_STANDARD {})
         set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
+        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${{PROJECT_BINARY_DIR}}/bin")
 
         # -[-[ Source Files and Libraries ]-]-
         add_subdirectory("./src")
@@ -66,6 +64,7 @@ return {
         message(STATUS "Bin Dir: ${{CMAKE_RUNTIME_OUTPUT_DIRECTORY}}")
         message(STATUS "Build Type: ${{CMAKE_BUILD_TYPE}}")
         message(STATUS "C++ Standard: ${{CMAKE_CXX_STANDARD}}")
+        message(STATUS "Build info: ${{BUILD_INFO}}")
         ]],
 					{
 						i(1, "CMAKE_VERSION (>=3.5)"),
