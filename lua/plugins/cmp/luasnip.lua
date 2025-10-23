@@ -104,7 +104,7 @@ return {
 				fmt(
 					[[
         srcdir := "./src"
-        bindir := "./bin"
+        bindir := "./out"
         docdir := "./docs"
         JAVAC_FLAGS := "" # -verbose
 
@@ -115,7 +115,7 @@ return {
         jarfile := class + ".jar"
 
         build:
-          javac -d {{{{bindir}}}} --module-source-path {{{{srcdir}}}} --module {{{{module}}}} {{{{JAVAC_FLAGS}}}}
+          javac -d {{{{bindir}}}} $(find src -name "*.java") {{{{JAVAC_FLAGS}}}}
 
         run: build
           java --module-path {{{{bindir}}}} --module {{{{module}}}}/{{{{package}}}}.{{{{class}}}}
