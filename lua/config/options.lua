@@ -73,4 +73,8 @@ for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
+if vim.g.neovide then
+  vim.o.guifont = "FiraCode Nerd Font:h9"
+end
+
 -- stylua: ignore end
