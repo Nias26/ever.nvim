@@ -77,4 +77,16 @@ if vim.g.neovide then
   vim.o.guifont = "FiraCode Nerd Font:h9"
 end
 
+-- Set Virtual text
+vim.diagnostic.config({
+	virtual_text = true,
+	signs = true,
+	underline = true,
+	update_in_insert = false,
+	seveirty_sort = false,
+	float = {
+		source = true,
+	},
+})
+
 -- stylua: ignore end

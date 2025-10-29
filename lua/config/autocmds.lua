@@ -2,7 +2,20 @@
 vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
 vim.api.nvim_create_autocmd({ "CursorHold" }, {
 	pattern = "*.*",
-	callback = OpenDiagnosticIfNoFloat,
+	-- callback = OpenDiagnosticIfNoFloat,
+	callback = function()
+		vim.diagnostic.open_float(0, {
+			scope = "cursor",
+			focusable = false,
+			close_events = {
+				"CursorMoved",
+				"CursorMovedI",
+				"BufHidden",
+				"InsertCharPre",
+				"WinLeave",
+			},
+		})
+	end,
 	group = "lsp_diagnostics_hold",
 })
 
