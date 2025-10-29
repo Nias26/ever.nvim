@@ -3,11 +3,10 @@ return {
 	event = "BufReadPost",
 	dependencies = {
 		"saghen/blink.cmp",
-		{ "mfussenegger/nvim-jdtls", ft = "java" },
 	},
 	init = function()
 		-- Enable lsp servers
-		vim.lsp.enable({ "lua_ls", "clangd", "cmake", "jdtls", "pyright" })
+		vim.lsp.enable({ "lua_ls", "clangd", "cmake", "pyright" })
 	end,
 	config = function()
 		local lsp = vim.lsp
@@ -55,23 +54,6 @@ return {
 		lsp.config("cmake", {
 			capabilities = capabilities,
 			on_attach = on_attach,
-		})
-
-		lsp.config("jdtls", {
-			capabilities = capabilities,
-			on_attach = on_attach,
-			settings = {
-				java = {
-					home = "/usr/lib/jvm/default-runtime",
-				},
-			},
-			root_markers = {
-				"justfile",
-				".project",
-				function(name, _)
-					return name:match("%.iml$") ~= nil
-				end,
-			},
 		})
 
 		lsp.config("pyright", {

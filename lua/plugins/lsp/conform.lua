@@ -18,8 +18,6 @@ return {
 				cpp = { "clang-format" },
 				cmake = { "cmake-format" },
 				python = { "black" },
-				java = { "clang-format" },
-				-- ["_"] = { "prettierd", "ast-grep" },
 			},
 			format_after_save = {
 				lsp_format = "fallback",
