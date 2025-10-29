@@ -65,7 +65,13 @@ return {
 					home = "/usr/lib/jvm/default-runtime",
 				},
 			},
-			root_markers = { "justfile", ".project" },
+			root_markers = {
+				"justfile",
+				".project",
+				function(name, _)
+					return name:match("%.iml$") ~= nil
+				end,
+			},
 		})
 
 		lsp.config("pyright", {
