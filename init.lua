@@ -30,7 +30,7 @@ vim.keymap.set({ "n", "v" }, "gd", vim.lsp.buf.definition, { desc = "Go to Defin
 vim.keymap.set({ "n", "v" }, "gr", vim.lsp.buf.references, { desc = "Go to Reference" })
 vim.keymap.set({ "n", "v" }, "cs", vim.lsp.buf.signature_help, { desc = "Signature Help" })
 vim.keymap.set("n", "cf", vim.lsp.buf.format, { desc = "Code Format" })
-vim.keymap.set("n", "ca", vim.lsp.buf.code_action, { desc = "Code Actions" })
+vim.keymap.set("n", "cz", vim.lsp.buf.code_action, { desc = "Code Actions" })
 vim.keymap.set("n", "cd", vim.lsp.buf.hover, { desc = "LSP Code Doc" })
 vim.keymap.set("n", "cr", vim.lsp.buf.rename, { desc = "LSP Rename" })
 vim.keymap.set("n", "c]", function()
