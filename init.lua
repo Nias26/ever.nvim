@@ -147,3 +147,16 @@ vim.api.nvim_create_autocmd("CursorHold", {
 		})
 	end
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "help",
+	callback = function()
+		vim.keymap.set("n", "<CR>", "<C-]>", { buffer = true, noremap = true, silent = true })
+		vim.keymap.set("n", "<BS>", "<C-T>", { buffer = true, noremap = true, silent = true })
+		vim.keymap.set("n", "o", "/'\\l\\{2,\\}'<CR>", { buffer = true, noremap = true, silent = true })
+		vim.keymap.set("n", "O", "?'\\l\\{2,\\}'<CR>", { buffer = true, noremap = true, silent = true })
+		vim.keymap.set("n", "s", "/\\|\\zs\\S\\+\\ze\\|<CR>", { buffer = true, noremap = true, silent = true })
+		vim.keymap.set("n", "S", "?\\|\\zs\\S\\+\\ze\\|<CR>", { buffer = true, noremap = true, silent = true })
+	end,
+})
+
