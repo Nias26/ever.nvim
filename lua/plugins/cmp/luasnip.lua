@@ -86,10 +86,17 @@ return {
 					{}
 				)
 			),
-			s({ trig = "lib", desc = "Link library" }, {
-				t('target_link_libraries(${{PROJECT_NAME}} "{}")'),
-				i(1, "LIB_NAME"),
-			}),
+			s(
+				{ trig = "lib", desc = "Link library" },
+				fmt(
+					[[
+      target_link_libraries(${{PROJECT_NAME}} "{}")
+      ]],
+					{
+						i(1, "LIB_NAME"),
+					}
+				)
+			),
 		})
 
 		ls.add_snippets("gitignore", {
