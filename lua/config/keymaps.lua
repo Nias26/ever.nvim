@@ -92,3 +92,38 @@ end, { desc = "Toggle Numbers", noremap = true })
 vim.keymap.set("n", "<F6>", function()
 	vim.wo.nu = not vim.wo.nu
 end, { desc = "Toggle Relative Numbers", noremap = true })
+
+-- Get help
+vim.keymap.set("n", "<F1>", function()
+	local line = vim.fn.getline(".")
+	local cword = vim.fn.expand("<cword>")
+	line = line:sub(1, select(2, line:find(cword)))
+	local match = line:gmatch("vim%.[%w_.]+") -- get all word with vim.
+	local word = nil
+
+	for w in match do
+		word = w
+	end
+
+	if not word then
+		return
+	end
+
+	-- Rokudo's Bad Girls
+	local bad_girls = {
+		"vim.fn",
+		"vim.cmd",
+		"vim.w",
+		"vim.o",
+		"vim.b",
+		"vim.g",
+	}
+
+	for _, bad in ipairs(bad_girls) do
+		if word and word:match("^" .. bad) then
+			word = bad
+		end
+	end
+
+	vim.cmd.help(word)
+end, { desc = "Get help" })
