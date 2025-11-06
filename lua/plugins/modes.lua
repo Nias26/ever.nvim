@@ -1,0 +1,15 @@
+return {
+	"mvllow/modes.nvim",
+	tag = "v0.2.1",
+	keys = { "v", "y", "<C-v>", "V", "d", "i", "a", "s", "o", "r", "R" },
+	config = function()
+		require("modes").setup({
+			colors = {
+				insert = "#be95ff",
+				delete = "#ff7eb6",
+				visual = "#82cfff",
+				copy = "#42be65",
+			},
+		})
+	end,
+}
