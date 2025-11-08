@@ -1,16 +1,4 @@
--- Set colorscheme
-vim.cmd.colorscheme("oxocarbon")
-
--- Local variables
-local user_cmd = vim.api.nvim_create_user_command
-
--- Custom Highlight group
-vim.api.nvim_set_hl(0, "DashboardFooter", { fg = "#08A045" })
-vim.api.nvim_set_hl(0, "Comment", { fg = "#525252", italic = false })
-
--- User commands
-user_cmd("Q", "bdelete! | Dashboard", {})
-user_cmd("D", "Dashboard", {})
+local M = {}
 
 local function sudo_exec(cmd, print_output)
 	vim.fn.inputsave()
@@ -59,6 +47,12 @@ local function sudo_write(tmpfile, filepath)
 	vim.fn.delete(tmpfile)
 end
 
-user_cmd("W", function()
-	sudo_write()
-end, {})
+M.setup = function()
+	vim.api.nvim_create_user_command("Q", "bdelete! | Dashboard", {})
+	vim.api.nvim_create_user_command("D", "Dashboard", {})
+	vim.api.nvim_create_user_command("W", function()
+		sudo_write()
+	end, {})
+end
+
+return M

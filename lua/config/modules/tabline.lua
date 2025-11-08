@@ -114,7 +114,7 @@ tabline.setup = function(config)
 		tabline.config = vim.tbl_deep_extend("force", tabline.config, config)
 	end
 
-	vim.o.tabline = "%!v:lua.require('config.tabline').render()"
+	vim.o.tabline = "%!v:lua.require('config.modules.tabline').render()"
 end
 
 return tabline
