@@ -14,6 +14,7 @@ return {
 				label = { fg = "#aaaaaa", italic = true },
 			},
 		})
+		---@diagnostic disable-next-line: undefined-global
 		BufferSticks.show()
 	end,
 }
