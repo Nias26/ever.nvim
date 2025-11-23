@@ -6,7 +6,7 @@ return {
 	},
 	init = function()
 		-- Enable lsp servers
-		vim.lsp.enable({ "lua_ls", "clangd", "cmake", "pyright" })
+		vim.lsp.enable({ "lua_ls", "clangd", "cmake", "pyright", "rust_analyzer", "zsl" })
 	end,
 	config = function()
 		local lsp = vim.lsp
@@ -57,6 +57,16 @@ return {
 		})
 
 		lsp.config("pyright", {
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+
+		lsp.config("rust-analyzer", {
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+
+		lsp.config("zsl", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})

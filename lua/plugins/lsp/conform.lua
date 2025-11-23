@@ -18,6 +18,8 @@ return {
 				cpp = { "clang-format" },
 				cmake = { "cmake-format" },
 				python = { "black" },
+				rust = { "rustfmt" },
+				["_"] = { "trim_whitespace" },
 			},
 			format_after_save = {
 				lsp_format = "fallback",
