@@ -6,7 +6,7 @@ return {
 	},
 	init = function()
 		-- Enable lsp servers
-		vim.lsp.enable({ "lua_ls", "clangd", "cmake", "pyright", "rust_analyzer", "zsl" })
+		vim.lsp.enable({ "lua_ls", "clangd", "pyright", "rust_analyzer", "biome" })
 	end,
 	config = function()
 		local lsp = vim.lsp
@@ -51,11 +51,6 @@ return {
 			on_attach = on_attach,
 		})
 
-		lsp.config("cmake", {
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
 		lsp.config("pyright", {
 			capabilities = capabilities,
 			on_attach = on_attach,
@@ -66,7 +61,7 @@ return {
 			on_attach = on_attach,
 		})
 
-		lsp.config("zsl", {
+		lsp.config("biome", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
