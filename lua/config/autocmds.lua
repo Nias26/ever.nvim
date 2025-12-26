@@ -4,20 +4,36 @@ vim.cmd.colorscheme("oxocarbon")
 -- Show diagnostics under the cursor when holding position
 vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
 vim.api.nvim_create_autocmd({ "CursorHold" }, {
-	pattern = "*.*",
-	-- callback = OpenDiagnosticIfNoFloat,
+	pattern = "*",
 	callback = function()
-		vim.diagnostic.open_float(0, {
-			scope = "cursor",
-			focusable = false,
-			close_events = {
-				"CursorMoved",
-				"CursorMovedI",
-				"BufHidden",
-				"InsertCharPre",
-				"WinLeave",
-			},
-		})
+		if vim.api.nvim_get_mode().mode ~= "n" then
+			return
+		end
+
+		-- Check for existing floating windows
+		for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
+			local conf = vim.api.nvim_win_get_config(winid)
+			if conf.relative ~= "" and conf.focusable then
+				return
+			end
+		end
+
+		local line, _ = unpack(vim.api.nvim_win_get_cursor(0))
+		local diagnostics = vim.diagnostic.get(0, { lnum = line - 1 })
+
+		if #diagnostics > 0 then
+			vim.diagnostic.open_float(nil, {
+				scope = "cursor",
+				focusable = false,
+				close_events = {
+					"CursorMoved",
+					"CursorMovedI",
+					"BufHidden",
+					"InsertCharPre",
+					"WinLeave",
+				},
+			})
+		end
 	end,
 	group = "lsp_diagnostics_hold",
 })
