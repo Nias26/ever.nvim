@@ -100,7 +100,7 @@ vim.diagnostic.config({
 	virtual_text = true,
 })
 
-vim.lsp.enable({ "lua_ls", "clangd" })
+vim.lsp.enable({ "lua_ls", "clangd", "rust_analyzer" })
 vim.lsp.config("lua_ls", {
 	capabilities = capabilities,
 	settings = {
@@ -113,6 +113,10 @@ vim.lsp.config("lua_ls", {
 })
 
 vim.lsp.config("clangd", {
+	capabilities = capabilities,
+})
+
+vim.lsp.config("rust_analyzer", {
 	capabilities = capabilities,
 })
 
