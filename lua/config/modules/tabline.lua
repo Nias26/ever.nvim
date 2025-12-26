@@ -1,110 +1,80 @@
 local tabline = {}
 
 -- Helper Function for applying highlight groups
----@param hl string
----@return string
 local function set_hl(hl)
-	if type(hl) ~= "string" then
+	if type(hl) ~= "string" or vim.fn.hlexists(hl) == 0 then
 		return ""
-	elseif vim.fn.hlexists(hl) == 0 then
-		return ""
-	else
-		return "%#" .. hl .. "#"
 	end
+	return "%#" .. hl .. "#"
 end
 
 -- Create highlight groups
-vim.api.nvim_set_hl(0, "TablineActive", { fg = "#161616", bg = "#41be65" })
-vim.api.nvim_set_hl(0, "TablineInactive", { fg = "#bbc2cf", bg = "NONE" })
+vim.api.nvim_set_hl(0, "TablineActive", { fg = "#161616", bg = "#41be65", bold = true })
+vim.api.nvim_set_hl(0, "TablineInactive", { fg = "#bbc2cf", bg = "#282c34" })
 
 -- Configuration table
 tabline.config = {
-	{ kind = "text", hl = "TablineInactive", text = "Tabs: ", icon = "󰓩 " },
+	{ kind = "text", hl = "TablineInactive", text = "Tabs ", icon = "󰓩 " },
 	{ kind = "separator", hl = "Normal" },
-	{
-		kind = "tabs",
-
-		active_hl = "TablineActive",
-		inactive_hl = "TablineInactive",
-	},
+	{ kind = "tabs", active_hl = "TablineActive", inactive_hl = "TablineInactive" },
 	{ kind = "separator", hl = "Normal" },
 }
 
----@class tabline.text
----@field hl? string
----@field icon? string
----@field text? string
----@param config tabline.text
+---@param config table
 tabline.text = function(config)
-	return set_hl(config.hl) .. config.icon .. config.text
+	return set_hl(config.hl) .. (config.icon or "") .. (config.text or "")
 end
 
----@class tabline.tabs
--- Highlight group for current tab
----@field active_hl? string
--- Highlight group for other tab(s)
----@field inactive_hl? string
-
--- Shows a list of tabs
----@param config tabline.tabs
----@return string
+---@param config table
 tabline.tabs = function(config)
 	local _o = ""
-	---@type integer[]
 	local tabs = vim.api.nvim_list_tabpages()
-	---@type integer
-	local current = vim.api.nvim_get_current_tabpage()
+	local current_tab = vim.api.nvim_get_current_tabpage()
 
-	for t, tab in ipairs(tabs) do
-		if tab == current then
-			_o = table.concat({
-				_o,
-				set_hl(config.active_hl),
-				" ",
-				tab,
-				" ",
-			})
+	for i, tab in ipairs(tabs) do
+		local is_active = (tab == current_tab)
+		local hl = is_active and config.active_hl or config.inactive_hl
+
+		-- Start clickable area
+		_o = _o .. "%" .. i .. "T"
+		_o = _o .. set_hl(hl)
+
+		if is_active then
+			-- Get the buffer in the active window of THIS tab
+			local win = vim.api.nvim_tabpage_get_win(tab)
+			local buf = vim.api.nvim_win_get_buf(win)
+			local name = vim.api.nvim_buf_get_name(buf)
+
+			-- Format name: show filename or [No Name]
+			local display_name = (name ~= "" and vim.fn.fnamemodify(name, ":t")) or "[No Name]"
+			_o = _o .. " " .. i .. ": " .. display_name .. " "
 		else
-			_o = table.concat({
-				_o,
-				"%" .. t .. "T",
-				set_hl(config.inactive_hl),
-				" ",
-				tab,
-				" ",
-				"%X",
-			})
-		end
-
-		if t ~= #tabs then
-			_o = _o .. "%#Normal#"
+			-- Just show the number for inactive tabs
+			_o = _o .. " " .. i .. " "
 		end
 	end
 
+	_o = _o .. "%T" -- Reset click area
+	_o = _o .. set_hl("Normal") -- Reset highlight to avoid leaking into empty space
 	return _o
 end
-
----@class tabline.separator
----@field hl? string
----@param config tabline.separator
+---@param config table
 tabline.separator = function(config)
 	return set_hl(config.hl) .. "%="
 end
 
 -- Function to create the tabline
----@return string
 tabline.render = function()
 	local _tabline = ""
-
 	for _, component in ipairs(tabline.config) do
-		local ok, part_text = pcall(tabline[component.kind], component)
-
-		if ok then
-			-- Add text if pcall doesn't fail
-			_tabline = _tabline .. part_text
+		local func = tabline[component.kind]
+		if type(func) == "function" then
+			local ok, part_text = pcall(func, component)
+			if ok then
+				_tabline = _tabline .. part_text
+			end
 		end
 	end
-
 	return _tabline
 end
 
@@ -114,7 +84,10 @@ tabline.setup = function(config)
 		tabline.config = vim.tbl_deep_extend("force", tabline.config, config)
 	end
 
-	vim.o.tabline = "%!v:lua.require('config.modules.tabline').render()"
+	-- IMPORTANT: Ensure the path matches your filename
+	-- If this file is `lua/my_tabline.lua`, use `require('my_tabline')`
+	_G._tabline = tabline.render
+	vim.o.tabline = "%!v:lua._tabline()"
 end
 
 return tabline
