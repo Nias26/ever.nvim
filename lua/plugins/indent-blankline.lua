@@ -7,9 +7,7 @@ return {
 			require("ibl").setup({
 				exclude = {
 					buftypes = {
-						"alpha",
 						"dashboard",
-						"lspinfo",
 						"lazy",
 						"checkhealth",
 						"help",
@@ -20,9 +18,7 @@ return {
 						"mason",
 					},
 					filetypes = {
-						"alpha",
 						"dashboard",
-						"lspinfo",
 						"lazy",
 						"checkhealth",
 						"help",
@@ -48,7 +44,7 @@ return {
 		end,
 	},
 	{
-		"echasnovski/mini.indentscope",
+		"nvim-mini/mini.indentscope",
 		event = "BufRead",
 		version = "*",
 		opts = {
