@@ -24,6 +24,7 @@ return {
 			{
 				"<leader>j",
 				function()
+					---@diagnostic disable-next-line: undefined-global
 					BufferSticks.jump()
 				end,
 				desc = "Jump Buffer",
@@ -48,7 +49,6 @@ return {
 		-- Code -> 
 		wk.add({
 			{ "<leader>c", group = " Code" },
-			{ "<leader>ct", "<cmd>Trouble diagnostics toggle<CR>", desc = "Trouble" },
 			{
 				"<leader>cd",
 				function()
@@ -56,7 +56,6 @@ return {
 				end,
 				desc = "Debug Adapter Protocol",
 			},
-			{ "<leader>cb", "<cmd>Gitsigns toggle_current_line_blame<CR>", desc = "Toggle Git Blame" },
 			{ "<leader>cl", group = " [LSP]" },
 			{ "<leader>cld", "<cmd>lua vim.lsp.buf.definition()<CR>", desc = "Go to definition" },
 			{ "<leader>clr", "<cmd>lua vim.lsp.buf.references()<CR>", desc = "Go to references" },
@@ -64,17 +63,6 @@ return {
 			{ "<leader>clh", "<cmd>Lspsaga hover_doc<CR>", desc = "LSP Signature" },
 			{ "<leader>clf", "<cmd>Lspsaga finder<CR>", desc = "Find References" },
 			{ "<leader>clp", "<cmd>Lspsaga peek_definition<CR>", desc = "Peek Definition" },
-			{
-				"<leader>cM",
-				function()
-					vim.ui.input({ prompt = "Enter make command" }, function(input)
-						vim.bo.makeprg = input
-						vim.notify(string.format("Set :make to -> `%s`", input), vim.log.levels.INFO)
-					end)
-				end,
-				desc = "Change make command",
-			},
-			{ "<leader>cm", "<cmd>make<CR>", desc = "Make" },
 		})
 
 		-- Search -> 
@@ -83,7 +71,7 @@ return {
 			{ "<leader>st", group = " [Telescope]" },
 			{ "<leader>stt", "<cmd>Telescope file_browser<CR>", desc = "Find files" },
 			{ "<leader>stg", "<cmd>Telescope live_grep<CR>", desc = "Find text" },
-			{ "<leader?stb", "<cmd>Telescope buffers<CR>", desc = "Find Buffers" },
+			{ "<leader>stb", "<cmd>Telescope buffers<CR>", desc = "Find Buffers" },
 			{ "<leader>std", "<cmd>Telescope diagnostics<CR>", desc = "Diagnostics" },
 			{ "<leader>sth", "<cmd>Telescope command_history<CR>", desc = "Command history" },
 		})
