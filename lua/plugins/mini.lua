@@ -1,6 +1,6 @@
 return {
 	{
-		"echasnovski/mini.cursorword",
+		"nvim-mini/mini.cursorword",
 		event = "BufRead",
 		version = "*",
 		config = function()
@@ -8,12 +8,12 @@ return {
 		end,
 	},
 	{
-		"echasnovski/mini.jump",
+		"nvim-mini/mini.jump",
 		version = "*",
 		keys = { "f", "F", "t", "T" },
 		config = function()
 			require("mini.jump").setup({
-				-- module mappings. use `''` (empty string) to disable one.
+				keys = { "f", "F", "t", "T" },
 				mappings = {
 					forward = "f",
 					backward = "F",
@@ -35,11 +35,31 @@ return {
 		end,
 	},
 	{
-		"echasnovski/mini.surround",
+		"nvim-mini/mini.surround",
 		version = "*",
 		keys = { "sa", "sd", "sf", "sF", "sh", "sr", "sn" },
 		config = function()
 			require("mini.surround").setup()
+		end,
+	},
+	{
+		"nvim-mini/mini.ai",
+		version = "*",
+		keys = { "g", "c", "v" },
+		config = function()
+			require("mini.ai").setup()
+		end,
+	},
+	{
+		"nvim-mini/mini.hipatterns",
+		version = "*",
+		event = "BufRead",
+		config = function()
+			require("mini.hipatterns").setup({
+				highlighters = {
+					hex_color = require("mini.hipatterns").gen_highlighter.hex_color(),
+				},
+			})
 		end,
 	},
 }
