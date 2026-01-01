@@ -100,10 +100,7 @@ return {
 					{
 						"filename",
 						file_status = false,
-						symbols = {
-							modified = "",
-							readonly = "!",
-						},
+						symbols = false,
 						color = function()
 							if vim.bo.readonly then
 								return { fg = colors.red }
@@ -120,7 +117,7 @@ return {
 						function()
 							local branch = vim.api.nvim_buf_get_var(0, "gitsigns_status_dict") or { head = "" }
 							local is_head_empty = branch.head ~= ""
-							return is_head_empty and string.format("(λ • #%s) ", branch.head) or ""
+							return is_head_empty and string.format("(λ  #%s) ", branch.head) or ""
 						end,
 
 						icon = "",
@@ -134,13 +131,6 @@ return {
 						end,
 						color = { fg = colors.grey },
 						padding = -1,
-					},
-					{
-						function()
-							return string.format("[󰒠 • #%s]", vim.lsp.get_clients({ bufnr = 0 })[1].name)
-						end,
-
-						color = { fg = colors.violet },
 					},
 				},
 				lualine_x = {
