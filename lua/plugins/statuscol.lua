@@ -29,7 +29,6 @@ return {
 				DapBreakpoint = builtin.toggle_breakpoint,
 				DapBreakpointCondition = builtin.toggle_breakpoint,
 				["diagnostic/signs"] = builtin.diagnostic_click,
-				gitsigns = builtin.gitsigns_click,
 			},
 			ft_ignore = { "neo-tree" },
 			bt_ignore = { "neo-tree" },
