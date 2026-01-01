@@ -3,6 +3,7 @@ return {
 	event = "BufEnter",
 	config = function()
 		require("buffer-sticks").setup({
+			preview = false,
 			filter = {
 				filetypes = { "help", "qf", "neo-tree", "Trouble", "dashboard", "TelescopePrompt" },
 			},
