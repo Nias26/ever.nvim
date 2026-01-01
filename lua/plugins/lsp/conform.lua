@@ -16,7 +16,6 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				cpp = { "clang-format" },
-				cmake = { "cmake-format" },
 				python = { "black" },
 				rust = { "rustfmt" },
 				["_"] = { "trim_whitespace" },

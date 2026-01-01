@@ -2,15 +2,10 @@ return {
 	"neovim/nvim-lspconfig",
 	event = "BufReadPost",
 	dependencies = {
-		"saghen/blink.cmp",
+		"mason-org/mason.nvim",
+		"mason-org/mason-lspconfig.nvim",
 	},
-	init = function()
-		-- Enable lsp servers
-		vim.lsp.enable({ "lua_ls", "clangd", "pyright", "rust_analyzer", "biome" })
-	end,
 	config = function()
-		local lsp = vim.lsp
-
 		vim.diagnostic.config({
 			signs = {
 				text = {
@@ -21,48 +16,26 @@ return {
 				},
 			},
 		})
+		vim.api.nvim_set_hl(0, "LspCodeLens", { bg = "NONE" })
 
-		-- Servers Configuration
 		local capabilities = require("blink.cmp").get_lsp_capabilities()
-		-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
 		local on_attach = function(client, bufnr)
-			if client:supports_method("textDocument/documentSymbolProvider") then
-				require("nvim-navic").attach(client, bufnr)
+			if client:supports_method("textDocument/inlayHint") then
+				if client.name ~= "lua_ls" then
+					vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+				end
+			end
+
+			if client:supports_method("textDocuments/codeLens") then
+				vim.lsp.codelens.refresh()
+				vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+					buffer = bufnr,
+					callback = vim.lsp.codelens.refresh,
+				})
 			end
 		end
 
-		-- Config
-		lsp.config("lua_ls", {
-			capabilities = capabilities,
-			on_attach = on_attach,
-			settings = {
-				Lua = {
-					completion = {
-						callSnippet = "Replace",
-					},
-					workspace = {
-						-- library = vim.api.nvim_get_runtime_file("", true),
-					},
-				},
-			},
-		})
-
-		lsp.config("clangd", {
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		lsp.config("pyright", {
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		lsp.config("rust-analyzer", {
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		lsp.config("biome", {
+		vim.lsp.config("*", {
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})

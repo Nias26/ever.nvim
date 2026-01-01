@@ -49,16 +49,6 @@ return {
 				end,
 				cwd = "${workspaceFolder}",
 			},
-			{
-				name = "Attach to gdbserver :1234",
-				type = "gdb",
-				request = "attach",
-				target = "localhost:1234",
-				program = function()
-					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-				end,
-				cwd = "${workspaceFolder}",
-			},
 		}
 
 		vim.keymap.set("n", "<localleader>e", dapui.eval, { desc = "(DAP) Eval Expression" })
@@ -98,16 +88,9 @@ return {
 		hl(0, "DapUIBreakpointsLine", { fg = oxocarbon.base08 })
 		hl(0, "DapUIBreakpointsPath", { fg = oxocarbon.base07 })
 		hl(0, "DapUICurrentFrameName", { fg = oxocarbon.base0D })
-		-- hl(0, "DapUIDecoration" )
-		-- hl(0, "DapUIEndofBuffer")
-		-- hl(0, "DapUIFloatBorder" )
-		-- hl(0, "DapUIFloatNormal" )
-		-- hl(0, "DapUIFloatNormalNC" )
 		hl(0, "DapUIFrameName", { fg = oxocarbon.base0D })
 		hl(0, "DapUILineNumber", { fg = oxocarbon.base0A })
 		hl(0, "DapUIModifiedValue", { fg = oxocarbon.base09 })
-		-- hl(0, "DapUINormal" )
-		-- hl(0, "DapUINormalNC" )
 		hl(0, "DapUIPlayPause", { fg = oxocarbon.base0D })
 		hl(0, "DapUIPlayPauseNC", { fg = oxocarbon.base0D })
 		hl(0, "DapUIRestart", { fg = oxocarbon.base0D })
@@ -131,10 +114,6 @@ return {
 		hl(0, "DapUIUnavailableNC", { fg = oxocarbon.base02 })
 		hl(0, "DapUIValue", { fg = oxocarbon.base04 })
 		hl(0, "DapUIVariable", { fg = oxocarbon.base04 })
-		-- hl(0, "DapUIWatchesEmpty" )
-		-- hl(0, "DapUIWatchesError" )
-		-- hl(0, "DapUIWatchesValue" )
-		-- hl(0, "DapUIWinSelect" )
 
 		vim.fn.sign_define("DapBreakpoint", { text = "B", texthl = oxocarbon.base0A })
 		vim.fn.sign_define("DapStopped", { text = "", texthl = oxocarbon.base06 })
