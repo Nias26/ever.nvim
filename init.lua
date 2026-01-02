@@ -139,19 +139,36 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.api.nvim_create_autocmd("CursorHold", {
 	pattern = "*.*",
 	callback = function()
----@diagnostic disable-next-line: param-type-mismatch
-		vim.diagnostic.open_float(0, {
-			scope = "cursor",
-			focusable = false,
-			close_events = {
-				"CursorMoved",
-				"CursorMovedI",
-				"BufHidden",
-				"InsertCharPre",
-				"WinLeave",
-			},
-		})
-	end
+		if vim.api.nvim_get_mode().mode ~= "n" then
+			return
+		end
+
+		-- Check for existing floating windows
+		for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
+			local conf = vim.api.nvim_win_get_config(winid)
+			if conf.relative ~= "" and conf.focusable then
+				return
+			end
+		end
+
+		-- TODO: Change `unpack` with `table.unpack` after deprecation
+		local line, _ = unpack(vim.api.nvim_win_get_cursor(0))
+		local diagnostics = vim.diagnostic.get(0, { lnum = line - 1 })
+
+		if #diagnostics > 0 then
+			vim.diagnostic.open_float(nil, {
+				scope = "cursor",
+				focusable = false,
+				close_events = {
+					"CursorMoved",
+					"CursorMovedI",
+					"BufHidden",
+					"InsertCharPre",
+					"WinLeave",
+				},
+			})
+		end
+	end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
