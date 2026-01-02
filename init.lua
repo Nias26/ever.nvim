@@ -96,13 +96,23 @@ vim.cmd.colorscheme("oxocarbon")
 
 -- [[					Lsp					]]
 local capabilities = require('blink.cmp').get_lsp_capabilities()
+local on_attach = function(client, _)
+	if client:supports_method("textDocument/inlayHint") then
+		if client.name ~= "lua_ls" then
+			vim.lsp.inlay_hint.enable(true)
+		end
+	end
+end
 vim.diagnostic.config({
 	virtual_text = true,
 })
 
 vim.lsp.enable({ "lua_ls", "clangd", "rust_analyzer" })
-vim.lsp.config("lua_ls", {
+vim.lsp.config("*", {
 	capabilities = capabilities,
+	on_attach = on_attach,
+})
+vim.lsp.config("lua_ls", {
 	settings = {
 		Lua = {
 			workspace = {
@@ -112,22 +122,13 @@ vim.lsp.config("lua_ls", {
 	}
 })
 
-vim.lsp.config("clangd", {
-	capabilities = capabilities,
-})
-
-vim.lsp.config("rust_analyzer", {
-	capabilities = capabilities,
-})
-
 vim.api.nvim_create_autocmd("BufWritePre", {
 	callback = function()
 		if #vim.lsp.get_clients({ bufnr = 0 })  > 0 then
 			if vim.tbl_contains(
 				vim.lsp.get_clients({ bufnr = 0 })[1].capabilities,
 				function(t)
-					return vim.deep_equal(t,
-					"formatting")
+					return vim.deep_equal(t, "formatting")
 				end) then
 				vim.lsp.buf.format({ async = true })
 			end
@@ -138,6 +139,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.api.nvim_create_autocmd("CursorHold", {
 	pattern = "*.*",
 	callback = function()
+---@diagnostic disable-next-line: param-type-mismatch
 		vim.diagnostic.open_float(0, {
 			scope = "cursor",
 			focusable = false,
