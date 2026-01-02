@@ -73,6 +73,7 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
 			end
 		end
 
+		-- TODO: Use `table.unpack` instead of `unpack` after deprecation
 		local line, _ = unpack(vim.api.nvim_win_get_cursor(0))
 		local diagnostics = vim.diagnostic.get(0, { lnum = line - 1 })
 
