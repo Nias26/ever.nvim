@@ -13,6 +13,7 @@ vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 vim.o.foldenable = false
 vim.o.timeoutlen = 250
 vim.o.updatetime = 250
+vim.o.clipboard = "unnamedplus"
 
 -- [[					Keymaps					]]
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
