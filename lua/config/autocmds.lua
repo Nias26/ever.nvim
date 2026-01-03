@@ -27,6 +27,7 @@ local function sudo_exec(cmd, print_output)
 	end
 	return true
 end
+
 local function sudo_write(tmpfile, filepath)
 	if not tmpfile then
 		tmpfile = vim.fn.tempname()
