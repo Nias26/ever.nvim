@@ -78,16 +78,9 @@ return {
 				"NeoTreeEndOfBuffer",
 			})
 
-			-- Lualine.nvim
-			require("transparent").clear_prefix("lualine")
-
 			-- Exclude groups
 			require("transparent").setup({
 				exclude_groups = {
-					-- Lualine components
-					"lualine_c_8",
-					"lualine_c_2",
-					"lualine_c_7",
 					-- Blink
 					"BlinkCmpMenu",
 					"BlinkCmpMenuBorder",
