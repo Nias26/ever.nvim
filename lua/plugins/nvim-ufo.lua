@@ -10,7 +10,7 @@ return {
 		vim.opt.foldenable = true
 		vim.g.markdown_folding = 1
 		vim.opt.foldmethod = "expr"
-		vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+		vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
 		-- Fold Highlightning group
 		vim.api.nvim_set_hl(0, "FoldColumn", { fg = "#525252" })
