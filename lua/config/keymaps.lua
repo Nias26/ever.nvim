@@ -82,6 +82,7 @@ vim.keymap.set("n", ";r", function()
 	require("grug-far").open({
 		prefills = {
 			search = vim.fn.expand("<cword>"),
+			paths = vim.fn.expand("%:p"),
 		},
 	})
 end, { desc = "Grug-Far" })
