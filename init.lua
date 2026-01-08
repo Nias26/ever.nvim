@@ -125,12 +125,12 @@ vim.lsp.config("lua_ls", {
 
 vim.api.nvim_create_autocmd("BufWritePre", {
 	callback = function()
-		if #vim.lsp.get_clients({ bufnr = 0 })  > 0 then
+		if #vim.lsp.get_clients({ bufnr = 0 }) > 0 then
 			if vim.tbl_contains(
-				vim.lsp.get_clients({ bufnr = 0 })[1].capabilities,
-				function(t)
-					return vim.deep_equal(t, "formatting")
-				end) then
+						vim.lsp.get_clients({ bufnr = 0 })[1].capabilities,
+						function(t)
+							return vim.deep_equal(t, "formatting")
+						end) then
 				vim.lsp.buf.format({ async = true })
 			end
 		end
@@ -184,3 +184,53 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+vim.api.nvim_create_user_command("W", function()
+	local filepath = vim.fn.expand("%:p")
+	if filepath == "" then
+		vim.notify("E32: No file name", vim.log.levels.ERROR)
+		return
+	end
+
+	vim.fn.inputsave()
+	local password = vim.fn.inputsecret("󰌆 Password: ")
+	vim.fn.inputrestore()
+
+	if not password or #password == 0 then
+		vim.notify("Abort: No password provided", vim.log.levels.WARN)
+		return
+	end
+
+	local tmpfile = vim.fn.tempname()
+	local ok_write = pcall(function()
+		vim.api.nvim_command("write! " .. vim.fn.fnameescape(tmpfile))
+	end)
+
+	if not ok_write then
+		vim.notify("Failed to write temporary file", vim.log.levels.ERROR)
+		return
+	end
+
+	local obj = vim.system({
+		"sudo",
+		"-S",
+		"-p",
+		"",
+		"dd",
+		"if=" .. tmpfile,
+		"of=" .. filepath,
+		"bs=1M",
+	}, {
+		stdin = password .. "\n",
+		text = true,
+	}):wait()
+
+	if obj.code == 0 then
+		vim.notify("File written with sudo permissions", vim.log.levels.INFO)
+		vim.cmd.checktime()
+		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
+	else
+		vim.notify("Sudo write failed: " .. (obj.stderr or "Unknown error"), vim.log.levels.ERROR)
+	end
+
+	vim.fn.delete(tmpfile)
+end, {})
