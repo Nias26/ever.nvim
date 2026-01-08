@@ -67,7 +67,6 @@ local options = {
   gdefault = true,                                                                  -- Always substitute globally
   path = { ".", "**" },                                                             -- Search path
   splitkeep = "screen",                                                             -- Keep text on screen line
-  confirm = true                                                                    -- Ask for confiration on exit
 }
 
 for k, v in pairs(options) do
