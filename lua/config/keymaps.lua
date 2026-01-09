@@ -35,7 +35,7 @@ vim.keymap.set("n", ";x", "<cmd>Telescope oldfiles<CR>", { desc = "Old Files" })
 
 -- Comment
 vim.keymap.set("n", "cc", "gcc", { desc = "Comment line", remap = true })
-vim.keymap.set("v", "Cc", "gc", { desc = "Comment selection", remap = true })
+vim.keymap.set("v", "cc", "gc", { desc = "Comment selection", remap = true })
 
 -- Open Nvim Tree
 vim.keymap.set("n", "<F3>", "<cmd>Neotree source=filesystem toggle<CR>", { desc = "Open Nvim Tree (Sizebar)" })
@@ -44,10 +44,6 @@ vim.keymap.set("n", "<F4>", "<cmd>Neotree position=current toggle<CR>", { desc =
 -- Buffer managing
 vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Previous buffer" })
 vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Next buffer" })
-
--- Splits
-vim.keymap.set("n", "Ss", ":split ", { desc = "Horizzontal Split" })
-vim.keymap.set("n", "Sv", ":vsplit ", { desc = "Vertical Split" })
 vim.keymap.set("n", "Q", "<cmd>bd<CR>", { desc = "Quit current buffer" })
 
 -- LSP
