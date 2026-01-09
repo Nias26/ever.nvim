@@ -33,7 +33,7 @@ return {
 						key = "e",
 						key_hl = "@string",
 						key_format = " %s",
-						action = "ene ",
+						action = "enew",
 					},
 					{
 						icon = "󰈞  ",
@@ -96,7 +96,6 @@ return {
 						action = "Lazy",
 					},
 				},
-				-- footer = { " ", " ever.nvim " },
 				footer = function()
 					local lazy_stats = require("lazy.stats").stats()
 					local ms = (math.floor(lazy_stats.startuptime * 100 + 0.5) / 100)
