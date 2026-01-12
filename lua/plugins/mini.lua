@@ -10,7 +10,12 @@ return {
 	{
 		"nvim-mini/mini.jump",
 		version = "*",
-		keys = { "f", "F", "t", "T" },
+		keys = {
+			{ "f", mode = "n" },
+			{ "F", mode = "n" },
+			{ "t", mode = "n" },
+			{ "T", mode = "n" },
+		},
 		config = function()
 			require("mini.jump").setup({
 				keys = { "f", "F", "t", "T" },
@@ -21,14 +26,8 @@ return {
 					backward_till = "T",
 					repeat_jump = ".",
 				},
-
-				-- delay values (in ms) for different functionalities. set any of them to
-				-- a very big number (like 10^7) to virtually disable.
 				delay = {
-					-- delay between jump and highlighting all possible jumps
 					highlight = 250,
-
-					-- delay between jump and automatic stop if idle (no jump is done)
 					idle_stop = 1500,
 				},
 			})
@@ -37,7 +36,15 @@ return {
 	{
 		"nvim-mini/mini.surround",
 		version = "*",
-		keys = { "sa", "sd", "sf", "sF", "sh", "sr", "sn" },
+		keys = {
+			{ "sa", mode = "n" },
+			{ "sd", mode = "n" },
+			{ "sf", mode = "n" },
+			{ "sF", mode = "n" },
+			{ "sh", mode = "n" },
+			{ "sr", mode = "n" },
+			{ "sn", mode = "n" },
+		},
 		config = function()
 			require("mini.surround").setup()
 		end,
@@ -45,7 +52,11 @@ return {
 	{
 		"nvim-mini/mini.ai",
 		version = "*",
-		keys = { "g", "c", "v" },
+		keys = {
+			{ "a", mode = "o" },
+			{ "i", mode = "o" },
+			{ "g", mode = "n" },
+		},
 		config = function()
 			require("mini.ai").setup()
 		end,

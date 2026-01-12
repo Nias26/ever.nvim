@@ -98,6 +98,7 @@ return {
 			{ "<leader>on", "<cmd>Nerdy<CR>", desc = "Choose Nerd Font Icon" },
 			{ "<leader>oh", "<cmd>Noice<CR>", desc = "Notification history" },
 			{ "<leader>ot", "<cmd>Telescope<CR>", desc = "Telescope" },
+			{ "<leader>oo", "<cmd>Oil<CR>", desc = "Oil" },
 		})
 
 		-- Diffview -> 

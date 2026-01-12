@@ -1,10 +1,6 @@
 return {
 	"neovim/nvim-lspconfig",
-	event = "BufReadPost",
-	dependencies = {
-		"mason-org/mason.nvim",
-		"mason-org/mason-lspconfig.nvim",
-	},
+	event = "VeryLazy",
 	config = function()
 		vim.diagnostic.config({
 			signs = {

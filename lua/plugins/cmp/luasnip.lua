@@ -1,6 +1,6 @@
 return {
 	"L3MON4D3/LuaSnip",
-	event = "InsertEnter",
+	event = "VeryLazy",
 	dependencies = { "rafamadriz/friendly-snippets" },
 	run = { "make install_jsregexp" },
 	config = function()

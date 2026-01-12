@@ -1,6 +1,8 @@
 return {
 	"kevinhwang91/nvim-ufo",
-	keys = { "za" },
+	keys = {
+		{ "z", mode = "n" },
+	},
 	dependencies = { "kevinhwang91/promise-async" },
 	config = function()
 		vim.opt.foldcolumn = "1"

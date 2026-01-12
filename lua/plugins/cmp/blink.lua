@@ -6,12 +6,10 @@ return {
 		{
 			"onsails/lspkind.nvim",
 			opts = {
-				-- (requires vscode-codicons font)
 				preset = "codicons",
 			},
 		},
 		"L3MON4D3/LuaSnip",
-		version = "v2.*",
 	},
 	version = "1.*",
 	config = function()

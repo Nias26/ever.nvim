@@ -1,9 +1,8 @@
 return {
 	{
-		"williamboman/mason.nvim",
+		"mason-org/mason.nvim",
 		event = "VeryLazy",
 		build = ":MasonUpdate",
-		cmd = "Mason",
 		config = function()
 			require("mason").setup({
 				ui = {
@@ -20,6 +19,7 @@ return {
 	},
 	{
 		"mason-org/mason-lspconfig.nvim",
+		dependencies = { "mason-org/mason.nvim" },
 		event = "VeryLazy",
 		opts = {
 			ensure_installed = {
