@@ -94,6 +94,9 @@ return {
 					"NormalFloat",
 					-- NeoTree
 					"NeoTreeFloatNormal",
+					-- Tabline
+					"TablineActive",
+					"TablineInactive",
 				},
 			})
 		end,
