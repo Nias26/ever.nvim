@@ -33,6 +33,7 @@ tabline.tabs = function(config)
 
 	for i, tab in ipairs(tabs) do
 		local is_active = (tab == current_tab)
+		local is_modified = vim.bo.modified
 		local hl = is_active and config.active_hl or config.inactive_hl
 
 		-- Start clickable area
@@ -47,6 +48,9 @@ tabline.tabs = function(config)
 
 			-- Format name: show filename or [No Name]
 			local display_name = (name ~= "" and vim.fn.fnamemodify(name, ":t")) or "[No Name]"
+			if is_modified then
+				display_name = "+ " .. display_name
+			end
 			_o = _o .. " " .. i .. ": " .. display_name .. " "
 		else
 			-- Just show the number for inactive tabs
