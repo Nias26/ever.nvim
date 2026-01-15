@@ -16,6 +16,11 @@ return {
 				},
 				scope = {},
 			},
+			pickers = {
+				buffers = {
+					initial_mode = "normal",
+				},
+			},
 		})
 		require("telescope").load_extension("file_browser")
 	end,
