@@ -93,7 +93,14 @@ require("mini.icons").setup()
 require("mini.jump").setup()
 require("mini.statusline").setup()
 require("oil").setup()
+
 vim.cmd.colorscheme("oxocarbon")
+vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "LineNR", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "CursorLineNR", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
 
 -- [[					Lsp					]]
 local capabilities = require('blink.cmp').get_lsp_capabilities()
