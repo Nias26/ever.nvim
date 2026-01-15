@@ -1,7 +1,7 @@
 {
   "plugins": {
     "blink.cmp": {
-      "rev": "10c164bbdf065f9781b6cc2f7d068c016276055b",
+      "rev": "b1b77404ce3c8b11e8f35611a28176b944c41e29",
       "src": "https://github.com/saghen/blink.cmp"
     },
     "friendly-snippets": {
@@ -9,7 +9,7 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "mason.nvim": {
-      "rev": "57e5a8addb8c71fb063ee4acda466c7cf6ad2800",
+      "rev": "44d1e90e1f66e077268191e3ee9d2ac97cc18e65",
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.icons": {
@@ -25,7 +25,7 @@
       "src": "https://github.com/echasnovski/mini.statusline"
     },
     "nvim-lspconfig": {
-      "rev": "ac04ec3c2af08e9821b4eb64ede86072b9b213bf",
+      "rev": "92ee7d42320edfbb81f3cad851314ab197fa324a",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
@@ -33,7 +33,7 @@
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "oil.nvim": {
-      "rev": "81b8a91735ad5cd24a6b3137f14a89f19176364f",
+      "rev": "6b59a6cf623fa2245c7454ddb458df5bdb6615d3",
       "src": "https://github.com/stevearc/oil.nvim"
     },
     "oxocarbon.nvim": {
