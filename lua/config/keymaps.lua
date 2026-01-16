@@ -15,8 +15,8 @@ vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv", { desc = "Move line downwards", si
 -- Tabs
 vim.keymap.set("n", "<leader>t", "<cmd>tabnew<CR>", { desc = "Create new Tab" })
 vim.keymap.set("n", "<leader>D", "<cmd>tabclose<CR>", { desc = "Close current Tab" })
-vim.keymap.set("n", "<Tab>", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
-vim.keymap.set("n", "<S-Tab>", "<cmd>tabnext<CR>", { desc = "Next tab" })
+vim.keymap.set("n", "<leader>[", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
+vim.keymap.set("n", "<leader>]", "<cmd>tabnext<CR>", { desc = "Next tab" })
 
 -- Remove highlightning
 vim.keymap.set("n", "<ESC><ESC>", "<cmd>nohlsearch<CR>")
@@ -42,6 +42,8 @@ vim.keymap.set("n", "<F3>", "<cmd>Neotree source=filesystem toggle<CR>", { desc 
 vim.keymap.set("n", "<F4>", "<cmd>Neotree position=current toggle<CR>", { desc = "Open Nvim Tree (Full)" })
 
 -- Buffer managing
+vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Previous buffer" })
+vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Next buffer" })
 vim.keymap.set("n", "Q", "<cmd>bd<CR>", { desc = "Quit current buffer" })
 
 -- LSP
