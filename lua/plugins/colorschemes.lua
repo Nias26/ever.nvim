@@ -76,6 +76,8 @@ return {
 				"NeoTreeNormal",
 				"NeoTreeNormalNC",
 				"NeoTreeEndOfBuffer",
+				-- Tabline
+				"TablineHeader",
 			})
 
 			-- Exclude groups

@@ -11,10 +11,11 @@ end
 -- Create highlight groups
 vim.api.nvim_set_hl(0, "TablineActive", { fg = "#161616", bg = "#41be65", bold = true })
 vim.api.nvim_set_hl(0, "TablineInactive", { fg = "#bbc2cf", bg = "#282c34" })
+vim.api.nvim_set_hl(0, "TablineHeader", { fg = "#bbc2cf", bg = "#282c34" })
 
 -- Configuration table
 tabline.config = {
-	{ kind = "text", hl = "TablineInactive", text = "Tabs ", icon = "󰓩 " },
+	{ kind = "text", hl = "TablineHeader", text = "Tabs ", icon = "󰓩 " },
 	{ kind = "separator", hl = "Normal" },
 	{ kind = "tabs", active_hl = "TablineActive", inactive_hl = "TablineInactive" },
 	{ kind = "separator", hl = "Normal" },
