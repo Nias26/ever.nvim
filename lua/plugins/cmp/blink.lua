@@ -63,7 +63,7 @@ return {
 								text = function(ctx)
 									local lspkind = require("lspkind")
 									local icon =
-										vim.split(lspkind.symbolic(ctx.kind, "symbol"), "%s", { trimempty = true })
+										vim.split(lspkind.symbol_map[ctx.kind] or "", "%s", { trimempty = true })
 									return " " .. icon[1] .. ctx.icon_gap
 								end,
 							},
