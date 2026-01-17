@@ -32,6 +32,7 @@ vim.keymap.set("n", ";h", "<cmd>Telescope help_tags<CR>", { desc = "Help Tags" }
 vim.keymap.set("n", ";m", "<cmd>Telescope man_pages<CR>", { desc = "Man Pages" })
 vim.keymap.set("n", ";f", "<cmd>Telescope find_files<CR>", { desc = "Find Files" })
 vim.keymap.set("n", ";x", "<cmd>Telescope oldfiles<CR>", { desc = "Old Files" })
+vim.keymap.set("n", ";d", "<cmd>Telescope diagnostics<CR>", { desc = "Diagnostics" })
 
 -- Comment
 vim.keymap.set("n", "cc", "gcc", { desc = "Comment line", remap = true })
