@@ -115,7 +115,7 @@ vim.diagnostic.config({
 	virtual_text = true,
 })
 
-vim.lsp.enable({ "lua_ls", "clangd", "rust_analyzer" })
+vim.lsp.enable({ "lua_ls", "clangd", "rust_analyzer", "gopls" })
 vim.lsp.config("*", {
 	capabilities = capabilities,
 	on_attach = on_attach,
