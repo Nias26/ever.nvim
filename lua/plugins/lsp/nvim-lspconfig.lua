@@ -1,6 +1,7 @@
 return {
 	"neovim/nvim-lspconfig",
 	event = "VeryLazy",
+	lazy = false, -- Important!!
 	config = function()
 		vim.diagnostic.config({
 			signs = {
