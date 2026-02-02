@@ -75,6 +75,7 @@ end
 
 if vim.g.neovide then
   vim.o.guifont = "FiraCode Nerd Font:h9"
+  vim.g.neovide_opacity = 0.6;
 end
 
 -- Set Virtual text
