@@ -45,7 +45,7 @@ vim.keymap.set("n", "<F4>", "<cmd>Neotree position=current toggle<CR>", { desc =
 -- Buffer managing
 vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Previous buffer" })
 vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Next buffer" })
-vim.keymap.set("n", "Q", "<cmd>bd<CR>", { desc = "Quit current buffer" })
+vim.keymap.set("n", "Q", "<cmd>BufDel<CR>", { desc = "Quit current buffer" })
 
 -- LSP
 vim.keymap.set({ "n", "v" }, "gd", vim.lsp.buf.definition, { desc = "Goto Definition" })

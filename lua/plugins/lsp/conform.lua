@@ -18,6 +18,9 @@ return {
 				cpp = { "clang-format" },
 				python = { "black" },
 				rust = { "rustfmt" },
+				typescript = { "eslint_d", "prettierd" },
+				javascript = { "eslint_d", "prettierd" },
+				svelte = { "eslint_d", "prettierd" },
 				["_"] = { "trim_whitespace" },
 			},
 			format_after_save = {
