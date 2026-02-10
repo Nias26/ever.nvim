@@ -1,6 +1,6 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	event = "VeryLazy",
+	event = { "BufEnter", "BufReadPost", "BufNewFile" },
 	branch = "master",
 	dependencies = {
 		{ "folke/ts-comments.nvim", opts = {} },

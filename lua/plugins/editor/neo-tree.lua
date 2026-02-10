@@ -3,10 +3,10 @@ return {
 	lazy = false,
 	branch = "v3.x",
 	dependencies = {
-		"nvim-tree/nvim-web-devicons",
-		"nvim-lua/plenary.nvim",
-		"MunifTanjim/nui.nvim",
-		"saifulapm/neotree-file-nesting-config",
+		{ "nvim-tree/nvim-web-devicons", lazy = true },
+		{ "nvim-lua/plenary.nvim", lazy = true },
+		{ "MunifTanjim/nui.nvim", lazy = true },
+		{ "saifulapm/neotree-file-nesting-config", lazy = true },
 	},
 	config = function()
 		local nesting_rules = require("neotree-file-nesting-config").nesting_rules

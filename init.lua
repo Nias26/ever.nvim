@@ -1,8 +1,8 @@
--- Init.lua file (Main loaded lua file)
-
 vim.loader.enable() -- Faster boot time
 vim.g.mapleader = " " -- Set leader key
 vim.g.maplocalleader = "," -- Set localleader
+vim.g.loaded_netrw = 1 -- Disable netrw
+vim.g.loaded_netrwPlugin = 1 -- Disable netrw
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -21,9 +21,10 @@ vim.opt.rtp:prepend(lazypath)
 -- Lazy.nvim setup
 require("lazy").setup({
 	-- Core Files
-	{ import = "plugins" },
+	{ import = "plugins.editor" },
+	{ import = "plugins.ui" },
 	{ import = "plugins.lsp" },
-	{ import = "plugins.cmp" },
+	{ import = "plugins.extra" },
 	-- Lazy.nvim Opts
 	ui = {
 		icons = {
@@ -52,6 +53,20 @@ require("lazy").setup({
 		},
 	},
 	concurrency = 5,
+	performance = {
+		rtp = {
+			disabled_plugins = {
+				"gzip",
+				"matchit",
+				"matchparen",
+				"netrwPlugin",
+				"tarPlugin",
+				"tohtml",
+				"tutor",
+				"zipPlugin",
+			},
+		},
+	},
 })
 
 require("config")

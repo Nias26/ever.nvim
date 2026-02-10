@@ -1,26 +1,23 @@
 return {
 	{
 		"mason-org/mason.nvim",
-		event = "VeryLazy",
+		cmd = "Mason",
 		build = ":MasonUpdate",
-		config = function()
-			require("mason").setup({
-				ui = {
-					icons = {
-						package_installed = "",
-						package_pending = "󰇚",
-						package_uninstalled = "",
-					},
-					check_outdated_packages_on_open = true,
-					border = "none",
+		opts = {
+			ui = {
+				icons = {
+					package_installed = "",
+					package_pending = "󰇚",
+					package_uninstalled = "",
 				},
-			})
-		end,
+				check_outdated_packages_on_open = true,
+				border = "none",
+			},
+		},
 	},
 	{
 		"mason-org/mason-lspconfig.nvim",
-		dependencies = { "mason-org/mason.nvim" },
-		event = "VeryLazy",
+		-- event = { "BufReadPost", "BufWritePost", "BufNewFile" },
 		opts = {
 			ensure_installed = {
 				"lua_ls",
