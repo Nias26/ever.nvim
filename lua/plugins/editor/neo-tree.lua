@@ -8,6 +8,10 @@ return {
 		{ "MunifTanjim/nui.nvim", lazy = true },
 		{ "saifulapm/neotree-file-nesting-config", lazy = true },
 	},
+	keys = {
+		{ "<leader>os", "<cmd>Neotree document_symbols toggle<CR>", desc = "Document Symbols" },
+		{ "<leader>oe", "<cmd>Neotree source=filesystem toggle<CR>", desc = "NeoTree" },
+	},
 	config = function()
 		local nesting_rules = require("neotree-file-nesting-config").nesting_rules
 		require("neo-tree").setup({

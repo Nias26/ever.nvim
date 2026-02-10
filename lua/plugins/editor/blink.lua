@@ -8,8 +8,9 @@ return {
 			opts = {
 				preset = "codicons",
 			},
+			lazy = true,
 		},
-		"L3MON4D3/LuaSnip",
+		{ "L3MON4D3/LuaSnip", lazy = true },
 	},
 	version = "1.*",
 	config = function()

@@ -1,6 +1,6 @@
 return {
 	"nvimdev/dashboard-nvim",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
+	dependencies = { "nvim-tree/nvim-web-devicons", lazy = true },
 	config = function()
 		require("dashboard").setup({
 			theme = "doom",

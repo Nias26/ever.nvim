@@ -1,5 +1,5 @@
 return {
 	"tiagovla/scope.nvim",
-	event = "VeryLazy",
+	event = { "BufReadPost", "BufWritePost", "BufNewFile" },
 	opts = {},
 }

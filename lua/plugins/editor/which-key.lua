@@ -1,9 +1,6 @@
 return {
 	"folke/which-key.nvim",
-	event = "VeryLazy",
-	init = function()
-		vim.o.timeout = true
-	end,
+	keys = { "<leader>" },
 	config = function()
 		local wk = require("which-key")
 		wk.setup({
@@ -15,68 +12,20 @@ return {
 			},
 		})
 
-		-- Index
 		wk.add({
+			-- Index
 			{ "<leader>", group = " Index" },
 			{ "<Esc><Esc>", hidden = true },
-			{ "<leader>m", "<cmd>Telescope keymaps<CR>", desc = "Show keymaps", icon = "" },
-			{
-				"<leader>j",
-				function()
-					---@diagnostic disable-next-line: undefined-global
-					BufferSticks.jump()
-				end,
-				desc = "Jump Buffer",
-			},
-		})
-
-		-- Ever.nvim -> 
-		wk.add({
+			-- Ever.nvim -> 
 			{ "<leader>e", group = " Ever.nvim" },
-			{ "<leader>ec", "<cmd>cd $HOME/.config/nvim | NvimTreeOpen<CR>", desc = "Edit config" },
 			{ "<leader>el", "<cmd>Lazy<CR>", desc = "󰒲 Lazy" },
-			{
-				"<leader>eg",
-				function()
-					vim.ui.open("https://github.com/Nias26/ever.nvim")
-				end,
-				desc = " Git repo",
-			},
 			{ "<leader>ev", "<cmd>TransparentToggle<CR>", desc = "Toggle transparency theme" },
-		})
-
-		-- Code -> 
-		wk.add({
+			-- Code -> 
 			{ "<leader>c", group = " Code" },
-			{
-				"<leader>cd",
-				function()
-					require("dapui").toggle()
-				end,
-				desc = "Debug Adapter Protocol",
-			},
 			{ "<leader>cl", group = " [LSP]" },
-			{ "<leader>cld", "<cmd>lua vim.lsp.buf.definition()<CR>", desc = "Go to definition" },
-			{ "<leader>clr", "<cmd>lua vim.lsp.buf.references()<CR>", desc = "Go to references" },
-			{ "<leader>cla", "<cmd>Lspsaga code_action<CR>", desc = "Code Actions" },
-			{ "<leader>clh", "<cmd>Lspsaga hover_doc<CR>", desc = "LSP Signature" },
-			{ "<leader>clf", "<cmd>Lspsaga finder<CR>", desc = "Find References" },
-			{ "<leader>clp", "<cmd>Lspsaga peek_definition<CR>", desc = "Peek Definition" },
-		})
-
-		-- Search -> 
-		wk.add({
+			-- Search -> 
 			{ "<leader>s", group = " Search" },
-			{ "<leader>st", group = " [Telescope]" },
-			{ "<leader>stt", "<cmd>Telescope file_browser<CR>", desc = "Find files" },
-			{ "<leader>stg", "<cmd>Telescope live_grep<CR>", desc = "Find text" },
-			{ "<leader>stb", "<cmd>Telescope buffers<CR>", desc = "Find Buffers" },
-			{ "<leader>std", "<cmd>Telescope diagnostics<CR>", desc = "Diagnostics" },
-			{ "<leader>sth", "<cmd>Telescope command_history<CR>", desc = "Command history" },
-		})
-
-		-- Buffer -> 󰓩
-		wk.add({
+			-- Buffer -> 󰓩
 			{ "<leader>b", group = "󰓩 Buffer" },
 			{ "<leader>bn", "<cmd>enew<CR>", desc = "New buffer" },
 			{ "<leader>bd", "<cmd>bdel<CR>", desc = "Delete current buffer" },
@@ -86,27 +35,8 @@ return {
 			{ "<leader>bsh", ":split ", desc = "Horizzontal Split" },
 			{ "<leader>bst", ":vsplit ", desc = "Vertical Split" },
 			{ "<leader>bsc", "<cmd>q<CR>", desc = "Close current split" },
-		})
-
-		-- Open -> 󰏌
-		wk.add({
+			-- Open -> 󰏌
 			{ "<leader>o", group = "󰏌 Open" },
-			{ "<leader>os", "<cmd>Neotree document_symbols toggle<CR>", desc = "Document Symbols" },
-			{ "<leader>oe", "<cmd>Neotree source=filesystem toggle<CR>", desc = "NeoTree" },
-			{ "<leader>od", "<cmd>Dashboard<CR>", desc = "Dashboard" },
-			{ "<leader>on", "<cmd>Nerdy<CR>", desc = "Choose Nerd Font Icon" },
-			{ "<leader>oh", "<cmd>Noice<CR>", desc = "Notification history" },
-			{ "<leader>ot", "<cmd>Telescope<CR>", desc = "Telescope" },
-			{ "<leader>oo", "<cmd>Oil<CR>", desc = "Oil" },
-		})
-
-		-- Diffview -> 
-		wk.add({
-			{ "<leader>d", group = " Diffview" },
-			{ "<leader>do", "<cmd>DiffviewOpen<CR>", desc = "Open" },
-			{ "<leader>dc", "<cmd>DiffviewClose<CR>", desc = "Close" },
-			{ "<leader>dr", "<cmd>DiffviewRefresh>CR>", desc = "Refresh" },
-			{ "<leader>dh", "<cmd>DiffviewFileHistory<CR>", desc = "File History" },
 		})
 	end,
 }

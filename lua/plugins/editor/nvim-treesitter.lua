@@ -1,6 +1,6 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	event = { "BufEnter", "BufReadPost", "BufNewFile" },
+	event = { "BufReadPost", "BufWritePost", "BufNewFile" },
 	branch = "master",
 	dependencies = {
 		{ "folke/ts-comments.nvim", opts = {} },
