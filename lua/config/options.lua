@@ -1,7 +1,5 @@
 -- stylua: ignore start
 -- Globals
-vim.g.loaded_netrw = 1                                                              -- Disable netrw
-vim.g.loaded_netrwPlugin = 1                                                        -- Disable netrw
 vim.g.showcmdloc = "statusline"                                                     -- Show command message location
 
 -- Disable language provider support (lua and vimscript plugins only)
