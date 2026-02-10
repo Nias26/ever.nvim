@@ -57,8 +57,6 @@ local function sudo_write()
 	vim.fn.delete(tmpfile)
 end
 
-vim.api.nvim_create_user_command("Q", "bdelete! | Dashboard", {})
-vim.api.nvim_create_user_command("D", "Dashboard", {})
 vim.api.nvim_create_user_command("W", sudo_write, {})
 
 -- Show diagnostics under the cursor when holding position
@@ -99,15 +97,6 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
 	group = "lsp_diagnostics_hold",
 })
 
--- Disable folding in certain filetypes
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "Trouble", "NvimTree", "lazy", "dashboard", "TelescopePrompt", "" },
-	callback = function()
-		require("ufo").detach()
-		vim.opt_local.foldenable = false
-	end,
-})
-
 -- Help pages keybinds
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "help",
@@ -118,15 +107,5 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.keymap.set("n", "O", "?'\\l\\{2,\\}'<CR>", { buffer = true, noremap = true, silent = true })
 		vim.keymap.set("n", "s", "/\\|\\zs\\S\\+\\ze\\|<CR>", { buffer = true, noremap = true, silent = true })
 		vim.keymap.set("n", "S", "?\\|\\zs\\S\\+\\ze\\|<CR>", { buffer = true, noremap = true, silent = true })
-	end,
-})
-
-vim.api.nvim_create_augroup("folds", { clear = false })
-vim.api.nvim_create_autocmd("FileType", {
-	group = "folds",
-	pattern = { "neo-tree" },
-	callback = function()
-		require("ufo").detach()
-		vim.opt_local.foldenable = false
 	end,
 })

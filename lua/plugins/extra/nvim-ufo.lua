@@ -3,7 +3,7 @@ return {
 	keys = {
 		{ "z", mode = "n" },
 	},
-	dependencies = { "kevinhwang91/promise-async" },
+	dependencies = { "kevinhwang91/promise-async", lazy = true },
 	config = function()
 		vim.opt.foldcolumn = "1"
 		-- vim.o.foldnestmax = 1
@@ -18,8 +18,17 @@ return {
 		vim.api.nvim_set_hl(0, "FoldColumn", { fg = "#525252" })
 
 		require("ufo").setup({
-			provider_selector = function(bufnr, filetype, buftype)
+			provider_selector = function()
 				return { "treesitter", "indent" }
+			end,
+		})
+
+		-- Disable folding in certain filetypes
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = { "Trouble", "NvimTree", "lazy", "dashboard", "TelescopePrompt", "neo-tree", "" },
+			callback = function()
+				require("ufo").detach()
+				vim.opt_local.foldenable = false
 			end,
 		})
 	end,
