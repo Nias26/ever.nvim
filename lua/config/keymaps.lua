@@ -45,7 +45,8 @@ vim.keymap.set("n", "<F4>", "<cmd>Neotree position=current toggle<CR>", { desc =
 -- Buffer managing
 vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Previous buffer" })
 vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Next buffer" })
-vim.keymap.set("n", "Q", "<cmd>BufDel<CR>", { desc = "Quit current buffer" })
+vim.keymap.set("n", "<C-Q>", "<cmd>bd<CR>", { desc = "Quit current buffer" })
+vim.keymap.set("n", "Q", "<cmd>bd!<CR>", { desc = "Quit current buffer [force]" })
 
 -- LSP
 vim.keymap.set({ "n", "v" }, "gd", vim.lsp.buf.definition, { desc = "Goto Definition" })
@@ -127,3 +128,8 @@ vim.keymap.set("n", "<F1>", function()
 
 	vim.cmd.help(word)
 end, { desc = "Get help" })
+
+-- dap.ui
+vim.keymap.set("n", "<leader>cd", function()
+	require("dapui").toggle()
+end, { desc = "Debug Adapter Protocol" })
