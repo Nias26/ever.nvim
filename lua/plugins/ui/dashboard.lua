@@ -6,7 +6,7 @@ return {
 			theme = "doom",
 			config = {
 				header = {
-					"            ever.nvim            ",
+					"           ⛩️ ever.nvim ⛩️         ",
 					"                                   ",
 					"                                   ",
 					"   ⣴⣶⣤⡤⠦⣤⣀⣤⠆     ⣈⣭⣿⣶⣿⣦⣼⣆          ",
