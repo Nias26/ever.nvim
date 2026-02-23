@@ -1,4 +1,3 @@
-if vim.opt.diff:get() then
 	-- Bootstrap lazy.nvim
 	local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 	if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -124,4 +123,3 @@ if vim.opt.diff:get() then
 
 	vim.opt.background = "dark"
 	vim.cmd.colorscheme("oxocarbon")
-end
