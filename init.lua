@@ -92,7 +92,21 @@ require("blink.cmp").setup({
 require("mini.icons").setup()
 require("mini.jump").setup()
 require("mini.statusline").setup()
-require("oil").setup()
+require("oil").setup({
+		columns = {
+			"permissions",
+			"size",
+			"mtime",
+			"icon",
+		},
+		skip_confirm_for_simple_edits = true,
+		constrain_cursor = "name",
+		watch_for_changes = true,
+		view_options = {
+			show_hidden = true,
+			case_insensitive = true,
+		}
+	})
 
 vim.cmd.colorscheme("oxocarbon")
 vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
