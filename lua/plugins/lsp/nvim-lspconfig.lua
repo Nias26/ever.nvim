@@ -1,4 +1,5 @@
 return {
+	-- TODO: Lazy load lsp upon opening a file (reading, no on new buffers)
 	"neovim/nvim-lspconfig",
 	event = "VeryLazy", -- We lost a war
 	dependencies = {
@@ -17,8 +18,19 @@ return {
 			},
 		})
 
+		local capabilities = require("blink.cmp").get_lsp_capabilities()
+		vim.tbl_deep_extend("force", capabilities, {
+			textDocument = {
+				completion = {
+					snippetSupport = true,
+					insertReplaceEdit = true,
+					labelDetailSupport = true,
+				},
+			},
+		})
+
 		vim.lsp.config("*", {
-			capabilities = require("blink.cmp").get_lsp_capabilities(),
+			capabilities = capabilities,
 			on_attach = function(client, bufnr)
 				if client:supports_method("textDocument/inlayHint") then
 					local excluded = { "lua_ls" }
