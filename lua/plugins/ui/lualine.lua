@@ -7,20 +7,19 @@ return {
 	config = function()
 		local lualine = require("lualine")
 
-    -- Color table for highlights
+		-- Color table for highlights
     -- stylua: ignore
-    local colors = {
-        bg       = '#161616',
-        fg       = '#bbc2cf',
-        grey     = '#262626',
-        green    = '#42be65',
-        orange   = '#FF8800',
-        violet   = '#be95ff',
-        red      = '#ee5396',
-        cyan     = '#3ddbd9',
-        blue     = '#33b1ff',
-    }
-		vim.api.nvim_set_hl(0, "Statusline", { bg = "NONE" })
+		local colors = {
+			bg        = "#161616",
+			fg        = "#bbc2cf",
+			grey      = "#262626",
+			green     = "#42be65",
+			orange    = "#FF8800",
+			violet    = "#be95ff",
+			red       = "#ee5396",
+			cyan      = "#3ddbd9",
+			blue      = "#33b1ff",
+		}
 
 		local conditions = {
 			buffer_not_empty = function()
@@ -103,11 +102,11 @@ return {
 						symbols = false,
 						color = function()
 							if vim.bo.readonly then
-								return { fg = colors.red }
+								return { bg = colors.bg, fg = colors.red }
 							elseif vim.bo.modified then
-								return { fg = colors.cyan }
+								return { bg = colors.bg, fg = colors.cyan }
 							else
-								return { fg = colors.fg }
+								return { bg = colors.bg, fg = colors.fg }
 							end
 						end,
 						cond = conditions.buffer_not_empty,
@@ -121,7 +120,7 @@ return {
 						end,
 
 						icon = "",
-						color = { fg = colors.fg, gui = "bold" },
+						color = { bg = colors.bg, fg = colors.fg, gui = "bold" },
 						cond = conditions.check_git_workspace,
 						padding = -1,
 					},
@@ -129,7 +128,7 @@ return {
 						function()
 							return vim.api.nvim_get_current_buf()
 						end,
-						color = { fg = colors.grey },
+						color = { bg = colors.bg, fg = colors.grey },
 						padding = -1,
 					},
 				},
@@ -138,20 +137,20 @@ return {
 						require("noice").api.status.search.get, ---@diagnostic disable-line: undefined-field
 						cond = require("noice").api.status.search.has, ---@diagnostic disable-line: undefined-field
 						icon = " ",
-						color = { fg = colors.blue },
+						color = { bg = colors.bg, fg = colors.blue },
 						padding = -1,
 					},
 					{
 						require("noice").api.status.mode.get, ---@diagnostic disable-line: undefined-field
 						cond = require("noice").api.status.mode.has, ---@diagnostic disable-line: undefined-field
-						color = { fg = colors.red },
+						color = { bg = colors.bg, fg = colors.red },
 						padding = -1,
 					},
 					{
 						require("noice").api.status.command.get, ---@diagnostic disable-line: undefined-field
 						cond = require("noice").api.status.command.has, ---@diagnostic disable-line: undefined-field
 						icon = "",
-						color = { fg = colors.green },
+						color = { bg = colors.bg, fg = colors.green },
 						padding = -1,
 					},
 					{
@@ -159,7 +158,7 @@ return {
 							local result = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
 							return result or 0
 						end,
-						color = { fg = colors.violet },
+						color = { bg = colors.bg, fg = colors.violet },
 						padding = -1,
 					},
 					{
@@ -168,17 +167,17 @@ return {
 							return result or 0
 						end,
 						padding = -1,
-						color = { fg = colors.red },
+						color = { bg = colors.bg, fg = colors.red },
 					},
 					{
 						"filetype",
 						icons_enabled = false,
-						color = { fg = colors.fg },
+						color = { bg = colors.bg, fg = colors.fg },
 						padding = -1,
 					},
 					{
 						"location",
-						color = { fg = colors.fg },
+						color = { bg = colors.bg, fg = colors.fg },
 						padding = -1,
 					},
 				},
