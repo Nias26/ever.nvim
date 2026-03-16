@@ -1,4 +1,9 @@
 return {
 	"romainl/vim-cool",
-	keys = { "/", "?", "n", "N" },
+	keys = {
+    { mode = "n", "/" },
+    { mode = "n", "?" },
+    { mode = "n", "n" },
+    { mode = "n", "N" },
+  }
 }

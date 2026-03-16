@@ -1,8 +1,7 @@
 -- stylua: ignore start
--- Globals
 vim.g.showcmdloc = "statusline"                                                     -- Show command message location
 
--- Disable language provider support (lua and vimscript plugins only)
+-- Disable language provider support
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_node_provider = 0
@@ -16,7 +15,6 @@ vim.opt.sessionoptions = {                                                      
   "globals",
 }
 
--- Locals
 local options = {
   relativenumber = false,                                                           -- Set Relative Number line
   number = false,                                                                   -- Set Number line
@@ -71,18 +69,13 @@ for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
-if vim.g.neovide then
-  vim.o.guifont = "FiraCode Nerd Font:h9"
-  vim.g.neovide_opacity = 0.6;
-end
-
 -- Set Virtual text
 vim.diagnostic.config({
 	virtual_text = true,
 	signs = true,
 	underline = true,
 	update_in_insert = false,
-	seveirty_sort = false,
+	seveirty_sort = true,
 	float = {
 		source = true,
 	},

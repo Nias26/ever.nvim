@@ -1,10 +1,23 @@
 return {
 	-- TODO: Lazy load lsp upon opening a file (reading, no on new buffers)
 	"neovim/nvim-lspconfig",
-	event = "VeryLazy", -- We lost a war
+	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		{ "mason-org/mason.nvim", build = ":MasonUpdate", opts = {} },
-		{ "mason-org/mason-lspconfig.nvim", opts = {} },
+		{ "mason-org/mason.nvim", cmd = "Mason", opts = {} },
+		{ "mason-org/mason-lspconfig.nvim", config = function() end },
+	},
+	keys = {
+		{ "gd", vim.lsp.buf.definition, desc = "Goto Definition" },
+		{ "cs", vim.lsp.buf.signature_help, desc = "Signature Help" },
+		{
+			"cx",
+			function()
+				vim.lsp.buf.format({ async = true })
+			end,
+			desc = "Code Format",
+		},
+		{ "cr", vim.lsp.buf.rename, desc = "Rename Symbol" },
+		{ "cl", vim.lsp.codelens.run, desc = "CodeLens Action" },
 	},
 	config = function()
 		vim.diagnostic.config({
@@ -18,8 +31,7 @@ return {
 			},
 		})
 
-		local capabilities = require("blink.cmp").get_lsp_capabilities()
-		vim.tbl_deep_extend("force", capabilities, {
+		local capabilities = {
 			textDocument = {
 				completion = {
 					snippetSupport = true,
@@ -27,7 +39,7 @@ return {
 					labelDetailSupport = true,
 				},
 			},
-		})
+		}
 
 		vim.lsp.config("*", {
 			capabilities = capabilities,
@@ -40,7 +52,7 @@ return {
 				end
 
 				if client:supports_method("textDocument/codeLens") then
-					local excluded = {}
+					local excluded = { "lua_ls" }
 					if not vim.tbl_contains(excluded, client.name) then
 						vim.api.nvim_set_hl(0, "LspCodeLens", { bg = "NONE" })
 						vim.lsp.codelens.enable()
@@ -52,11 +64,15 @@ return {
 		vim.lsp.config("lua_ls", {
 			settings = {
 				Lua = {
-					diagnostic = {
+					diagnostics = {
 						globals = { "vim" },
 					},
 				},
 			},
+		})
+
+		require("mason-lspconfig").setup({
+			automatic_enable = true,
 		})
 	end,
 }

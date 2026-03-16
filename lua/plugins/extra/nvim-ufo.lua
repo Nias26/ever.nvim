@@ -1,7 +1,7 @@
 return {
 	"kevinhwang91/nvim-ufo",
 	keys = {
-		{ "z", mode = "n" },
+		{ mode = "n", "z" },
 	},
 	dependencies = { "kevinhwang91/promise-async", lazy = true },
 	config = function()
@@ -25,7 +25,7 @@ return {
 
 		-- Disable folding in certain filetypes
 		vim.api.nvim_create_autocmd("FileType", {
-			pattern = { "Trouble", "NvimTree", "lazy", "dashboard", "TelescopePrompt", "neo-tree", "" },
+			pattern = { "Trouble", "lazy", "dashboard", "TelescopePrompt", "neo-tree", "" },
 			callback = function()
 				require("ufo").detach()
 				vim.opt_local.foldenable = false

@@ -11,6 +11,8 @@ return {
 	keys = {
 		{ "<leader>os", "<cmd>Neotree document_symbols toggle<CR>", desc = "Document Symbols" },
 		{ "<leader>oe", "<cmd>Neotree source=filesystem toggle<CR>", desc = "NeoTree" },
+    { "<F3>", "<cmd>Neotree source=filesystem toggle<CR>", desc = "Open Neotree (Sidebar)" },
+    { "<F4>", "<cmd>Neotree position=current toggle<CR>", desc = "Open Neotree (Full)" },
 	},
 	config = function()
 		local nesting_rules = require("neotree-file-nesting-config").nesting_rules

@@ -1,7 +1,7 @@
 return {
 	{
 		"nvim-mini/mini.cursorword",
-		event = "BufRead",
+		event = {"BufReadPost", "BufNewFile" },
 		version = "*",
 		opts = {},
 	},
@@ -56,7 +56,7 @@ return {
 	{
 		"nvim-mini/mini.hipatterns",
 		version = "*",
-		event = "BufRead",
+		event = { "BufReadPost", "BufNewFile" },
 		config = function()
 			require("mini.hipatterns").setup({
 				highlighters = {

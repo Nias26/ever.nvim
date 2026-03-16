@@ -1,36 +1,32 @@
 return {
-	"nvim-telescope/telescope.nvim",
-	event = "VeryLazy",
-	dependencies = {
-		{ "nvim-lua/plenary.nvim", lazy = true },
-		{ "nvim-telescope/telescope-file-browser.nvim" },
-		{ "ibhagwan/fzf-lua", lazy = true },
-	},
-	keys = {
-		{ "<leader>st", "<cmd>Telescope file_browser<CR>", desc = "Find files" },
-		{ "<leader>sg", "<cmd>Telescope live_grep<CR>", desc = "Find text" },
-		{ "<leader>sb", "<cmd>Telescope buffers<CR>", desc = "Find Buffers" },
-		{ "<leader>sd", "<cmd>Telescope diagnostics<CR>", desc = "Diagnostics" },
-		{ "<leader>sh", "<cmd>Telescope command_history<CR>", desc = "Command history" },
-		{ "<leader>ot", "<cmd>Telescope<CR>", desc = "Telescope" },
-		{ "<leader>m", "<cmd>Telescope keymaps<CR>", desc = "Show keymaps" },
-	},
-	config = function()
-		require("telescope").setup({
-			extensions = {
-				file_browser = {
-					hidden = { file_browser = true, folder_browse = true },
-					follow_symlinks = true,
-					gruped = false,
-				},
-				scope = {},
-			},
-			pickers = {
-				buffers = {
-					initial_mode = "normal",
-				},
-			},
-		})
-		require("telescope").load_extension("file_browser")
-	end,
+  "nvim-telescope/telescope.nvim",
+  event = "VeryLazy",
+  version = "*",
+  dependencies = {
+    { "nvim-lua/plenary.nvim", lazy = true },
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+  },
+  keys = {
+    { ";;", "<cmd>Telescope<CR>",              desc = "Telescope" },
+    { ";G", "<cmd>Telescope live_grep<CR>",    desc = "Live Grep" },
+    { ";g", "<cmd>Telescope git_files<CR>",    desc = "Git Files" },
+    { ";s", "<cmd>Telescope file_browser<CR>", desc = "File Browser" },
+    { ";b", "<cmd>Telescope buffers<CR>",      desc = "Buffers" },
+    { ";h", "<cmd>Telescope help_tags<CR>",    desc = "Help Tags" },
+    { ";m", "<cmd>Telescope man_pages<CR>",    desc = "Man Pages" },
+    { ";f", "<cmd>Telescope find_files<CR>",   desc = "Find Files" },
+    { ";x", "<cmd>Telescope oldfiles<CR>",     desc = "Old Files" },
+    { ";d", "<cmd>Telescope diagnostics<CR>",  desc = "Diagnostics" },
+    { "<F2>", "<cmd>Telescope find_files<CR>", desc = "Find Files" },
+  },
+  opts = {
+    extensions = {
+      scope = {},
+    },
+    pickers = {
+      buffers = {
+        initial_mode = "normal",
+      },
+    },
+  }
 }

@@ -10,7 +10,7 @@ return {
 			},
 			lazy = true,
 		},
-		{ "L3MON4D3/LuaSnip", lazy = true },
+    { "rafamadriz/friendly-snippets", lazy = true},
 	},
 	version = "1.*",
 	config = function()
@@ -88,8 +88,14 @@ return {
 				documentation = { auto_show = true },
 				ghost_text = { enabled = true },
 			},
+      cmdline = {
+        keymap = {
+          ['<Tab>'] = { "show", "accept" },
+          ['<Up>'] = { "select_prev" },
+          ['<Down>'] = { "select_next" },
+        },
+      },
 			signature = { enabled = false },
-			snippets = { preset = "luasnip" },
 			sources = {
 				default = { "lsp", "snippets", "path", "buffer" },
 			},

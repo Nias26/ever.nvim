@@ -7,12 +7,11 @@ return {
 		{ "nvim-tree/nvim-web-devicons", lazy = true },
 	},
 	keys = {
-		{ "<leader>cld", "<cmd>lua vim.lsp.buf.definition()<CR>", desc = "Go to definition" },
-		{ "<leader>clr", "<cmd>lua vim.lsp.buf.references()<CR>", desc = "Go to references" },
-		{ "<leader>cla", "<cmd>Lspsaga code_action<CR>", desc = "Code Actions" },
-		{ "<leader>clh", "<cmd>Lspsaga hover_doc<CR>", desc = "LSP Signature" },
-		{ "<leader>clf", "<cmd>Lspsaga finder<CR>", desc = "Find References" },
-		{ "<leader>clp", "<cmd>Lspsaga peek_definition<CR>", desc = "Peek Definition" },
+    { "cz", "<cmd>Lspsaga code_action<CR>", desc = "Code Actions" },
+    { "cd", "<cmd>Lspsaga hover_doc<CR>", desc = "Code Documentation" },
+    { "gr", "<cmd>Lspsaga finder<CR>", desc = "Find References" },
+    { "c[", "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Previous Diagnostic" },
+    { "c]", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Next Diagnostic" },
 	},
 	opts = {
 		diagnostic = {
