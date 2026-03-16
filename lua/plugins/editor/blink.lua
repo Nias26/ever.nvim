@@ -10,7 +10,7 @@ return {
 			},
 			lazy = true,
 		},
-    { "rafamadriz/friendly-snippets", lazy = true},
+		{ "rafamadriz/friendly-snippets", lazy = true },
 	},
 	version = "1.*",
 	config = function()
@@ -88,13 +88,13 @@ return {
 				documentation = { auto_show = true },
 				ghost_text = { enabled = true },
 			},
-      cmdline = {
-        keymap = {
-          ['<Tab>'] = { "show", "accept" },
-          ['<Up>'] = { "select_prev" },
-          ['<Down>'] = { "select_next" },
-        },
-      },
+			cmdline = {
+				keymap = {
+					["<Tab>"] = { "show", "accept" },
+					["<Up>"] = { "select_prev", "fallback" },
+					["<Down>"] = { "select_next", "fallback" },
+				},
+			},
 			signature = { enabled = false },
 			sources = {
 				default = { "lsp", "snippets", "path", "buffer" },
