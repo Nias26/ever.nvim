@@ -17,6 +17,7 @@ return {
 				-- Statusbar
 				"FoldColumn",
 				"CursorColumn",
+				"CursorLineSign",
 				-- Trouble
 				"TroubleNormal",
 				"TroubleNormalNC",

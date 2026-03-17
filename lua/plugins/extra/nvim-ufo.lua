@@ -15,7 +15,7 @@ return {
 		vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
 		-- Fold Highlightning group
-		vim.api.nvim_set_hl(0, "FoldColumn", { fg = "#525252" })
+		vim.api.nvim_set_hl(0, "FoldColumn", { fg = "#525252", bg = "NONE" })
 
 		require("ufo").setup({
 			provider_selector = function()
