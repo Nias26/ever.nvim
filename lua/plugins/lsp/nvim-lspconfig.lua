@@ -1,10 +1,10 @@
 return {
-	-- TODO: Lazy load lsp upon opening a file (reading, no on new buffers)
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		{ "mason-org/mason.nvim", cmd = "Mason", opts = {} },
 		{ "mason-org/mason-lspconfig.nvim", config = function() end },
+		{ "mfussenegger/nvim-jdtls", lazy = true },
 	},
 	keys = {
 		{ "gd", vim.lsp.buf.definition, desc = "Goto Definition" },
