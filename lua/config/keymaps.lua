@@ -8,9 +8,11 @@ vim.keymap.set("n", "<C-w>>", "10<C-w>>", { desc = "Increase width" })
 vim.keymap.set("n", "<C-W>+", "10<C-W>+", { desc = "Increase Height" })
 vim.keymap.set("n", "<C-W>-", "10<C-W>-", { desc = "Decrease Height" })
 vim.keymap.set("n", "!", "<C-w>w")
-vim.keymap.set("t", "<C-n>", "<C-\\><C-n>", { desc = "Exit terminal mode", noremap = true, silent = true })
 vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv", { desc = "Move line upwards", silent = true })
 vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv", { desc = "Move line downwards", silent = true })
+vim.keymap.set("n", "n", "nzz", { desc = "Find next" })
+vim.keymap.set("n", "N", "Nzz", { desc = "Find previous" })
+vim.keymap.set("t", "<ESC>", "<C-\\><C-n>", { desc = "Exit Terminal Mode", noremap = true })
 
 -- Tabs
 vim.keymap.set("n", "<leader>t", "<cmd>tabnew<CR>", { desc = "Create new Tab" })
