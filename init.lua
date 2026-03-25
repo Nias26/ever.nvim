@@ -108,20 +108,20 @@ require("mini.icons").setup()
 require("mini.jump").setup()
 require("mini.statusline").setup()
 require("oil").setup({
-		columns = {
-			"permissions",
-			"size",
-			"mtime",
-			"icon",
-		},
-		skip_confirm_for_simple_edits = true,
-		constrain_cursor = "name",
-		watch_for_changes = true,
-		view_options = {
-			show_hidden = true,
-			case_insensitive = true,
-		}
-	})
+	columns = {
+		"permissions",
+		"size",
+		"mtime",
+		"icon",
+	},
+	skip_confirm_for_simple_edits = true,
+	constrain_cursor = "name",
+	watch_for_changes = true,
+	view_options = {
+		show_hidden = true,
+		case_insensitive = true,
+	}
+})
 
 vim.cmd.colorscheme("oxocarbon")
 vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
@@ -145,6 +145,16 @@ vim.diagnostic.config({
 })
 
 vim.lsp.enable({ "lua_ls", "clangd", "rust_analyzer", "gopls" })
+vim.lsp.config("lua_ls", {
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = { "vim" },
+			},
+		},
+	},
+
+})
 vim.lsp.config("*", {
 	capabilities = capabilities,
 	on_attach = on_attach,
@@ -154,10 +164,10 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	callback = function()
 		if #vim.lsp.get_clients({ bufnr = 0 }) > 0 then
 			if vim.tbl_contains(
-						vim.lsp.get_clients({ bufnr = 0 })[1].capabilities,
-						function(t)
-							return vim.deep_equal(t, "formatting")
-						end) then
+				vim.lsp.get_clients({ bufnr = 0 })[1].capabilities,
+				function(t)
+					return vim.deep_equal(t, "formatting")
+				end) then
 				vim.lsp.buf.format({ async = true })
 			end
 		end
