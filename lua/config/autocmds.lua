@@ -58,6 +58,26 @@ local function sudo_write()
 end
 
 vim.api.nvim_create_user_command("W", sudo_write, {})
+vim.api.nvim_create_user_command("Crun", function(opts)
+	local obj = vim.system(vim.split(opts.args, " "), { text = true }):wait()
+
+	local output = obj.stdout .. obj.stderr
+	output = vim.trim(output)
+
+	if output == "" then
+		return
+	end
+
+	local lines = vim.split(output, "\n")
+
+	local qf_items = {}
+	for _, line in ipairs(lines) do
+		table.insert(qf_items, { text = line })
+	end
+
+	vim.fn.setqflist({}, "r", { title = "Output: " .. opts.args, items = qf_items })
+	vim.cmd("copen")
+end, { nargs = "+" })
 
 -- Show diagnostics under the cursor when holding position
 vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
