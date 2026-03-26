@@ -51,13 +51,13 @@ return {
 					end
 				end
 
-				if client:supports_method("textDocument/codeLens") then
-					local excluded = { "lua_ls" }
-					if not vim.tbl_contains(excluded, client.name) then
-						vim.api.nvim_set_hl(0, "LspCodeLens", { bg = "NONE" })
-						vim.lsp.codelens.enable()
-					end
-				end
+				-- if client:supports_method("textDocument/codeLens") then
+				-- 	local excluded = { "lua_ls" }
+				-- 	if not vim.tbl_contains(excluded, client.name) then
+				-- 		vim.api.nvim_set_hl(0, "LspCodeLens", { bg = "NONE" })
+				-- 		vim.lsp.codelens.enable()
+				-- 	end
+				-- end
 			end,
 		})
 
