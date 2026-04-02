@@ -40,6 +40,18 @@ vim.keymap.set("n", "==", function()
 	vim.fn.winrestview(v)
 end, { desc = "Indent whole page" })
 
+-- Set Makeprg
+vim.keymap.set("n", "<leader>cm", function()
+	vim.ui.input({
+		prompt = "Enter Makeprg: ",
+		default = vim.o.makeprg,
+	}, function(input)
+		if input and input ~= "" then
+			vim.o.makeprg = input
+		end
+	end)
+end, { desc = " Makeprg" })
+
 -- Grug-far
 vim.keymap.set("n", ";r", function()
 	require("grug-far").open({
