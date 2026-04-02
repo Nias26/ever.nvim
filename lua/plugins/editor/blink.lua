@@ -16,11 +16,7 @@ return {
 	config = function()
 		require("blink-cmp").setup({
 			enabled = function()
-				if
-					vim.bo.filetype == "DressingInput"
-					or vim.bo.filetype == "TelescopePrompt"
-					or vim.bo.filetype == "oil"
-				then
+				if vim.bo.filetype == "TelescopePrompt" or vim.bo.filetype == "oil" then
 					return false
 				end
 				return true
@@ -78,7 +74,7 @@ return {
 								text = function(ctx)
 									return ctx.kind
 								end,
-								highlight = function(ctx)
+								highlight = function(_)
 									return "BlinkCmpKind"
 								end,
 							},
