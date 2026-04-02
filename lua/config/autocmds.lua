@@ -59,6 +59,34 @@ end
 
 vim.api.nvim_create_user_command("W", sudo_write, {})
 vim.api.nvim_create_user_command("Crun", function(opts)
+	if not _G._crun_saved then
+		_G._crun_saved = {
+			last_args = nil,
+			oldargs = {},
+		}
+	end
+
+	if opts.args ~= "" then
+		local old = _G._crun_saved.oldargs
+
+		if not vim.tbl_contains(old, opts.args) then
+			local max = 20
+			if #old >= max then
+				table.remove(old, 1)
+			end
+			table.insert(old, opts.args)
+		end
+
+		_G._crun_saved.last_args = opts.args
+	else
+		opts.args = _G._crun_saved.last_args
+	end
+
+	if not opts.args or opts.args == "" then
+		print("No command to execute")
+		return
+	end
+
 	local obj = vim.system(vim.split(opts.args, " "), { text = true }):wait()
 
 	local output = obj.stdout .. obj.stderr
@@ -75,9 +103,21 @@ vim.api.nvim_create_user_command("Crun", function(opts)
 		table.insert(qf_items, { text = line })
 	end
 
-	vim.fn.setqflist({}, "r", { title = "Output: " .. opts.args, items = qf_items })
+	vim.fn.setqflist({}, "r", {
+		title = "Output: " .. opts.args,
+		items = qf_items,
+	})
+
 	vim.cmd("copen")
-end, { nargs = "+" })
+end, {
+	nargs = "*",
+	complete = function()
+		if not _G._crun_saved then
+			return {}
+		end
+		return vim.iter(_G._crun_saved.oldargs):rev():totable()
+	end,
+})
 
 -- Show diagnostics under the cursor when holding position
 vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
