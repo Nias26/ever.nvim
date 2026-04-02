@@ -1,0 +1,17 @@
+{
+  "Clangd config": {
+    "prefix": ["conf"],
+    "body": [
+      "If:",
+      " PathMatch: .*\\.cpp",
+      "",
+      "CompileFlags:",
+      " Add: [--std=c++${1:23}]",
+      "",
+      "---"
+    ],
+    "description": "Basic configuration for clangd",
+    "scope": "yaml",
+    "include": ".clangd"
+  }
+}

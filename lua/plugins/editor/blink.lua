@@ -21,6 +21,7 @@ return {
 				end
 				return true
 			end,
+			-- snippets = { preset = "vsnip" },
 			keymap = {
 				preset = "enter",
 				["<C-n>"] = {
