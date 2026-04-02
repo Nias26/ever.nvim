@@ -31,6 +31,15 @@ vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Next buffer" })
 vim.keymap.set("n", "<C-Q>", "<cmd>bd<CR>", { desc = "Quit current buffer" })
 vim.keymap.set("n", "Q", "<cmd>bd!<CR>", { desc = "Quit current buffer [force]" })
 
+-- Quickfix
+vim.kaymap.set("n", "<C-c>", function()
+	if vim.fn.getqflist({ winid = 0 }).winid ~= 0 then
+		vim.cmd("cclose")
+	else
+		vim.cmd("copen")
+	end
+end, { desc = "Toggle Quickfix", noremap = true, silent = true })
+
 -- Indent whole page
 vim.keymap.set("n", "==", function()
 	local c = vim.fn.getpos(".")

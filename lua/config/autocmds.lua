@@ -169,3 +169,14 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.keymap.set("n", "S", "?\\|\\zs\\S\\+\\ze\\|<CR>", { buffer = true, noremap = true, silent = true })
 	end,
 })
+
+-- Quickfix keybinds
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "qf",
+	callback = function()
+		local opts = { noremap = true, silent = true, buffer = true }
+		vim.keymap.set("n", "<C-n>", "<cmd>cnext<CR>", opts)
+		vim.keymap.set("n", "<C-p>", "<cmd>cprevious<CR>", opts)
+		vim.keymap.set("n", "<C-j>", "<cmd>cc<CR>", opts)
+	end,
+})
