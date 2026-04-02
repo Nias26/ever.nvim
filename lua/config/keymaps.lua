@@ -32,7 +32,7 @@ vim.keymap.set("n", "<C-Q>", "<cmd>bd<CR>", { desc = "Quit current buffer" })
 vim.keymap.set("n", "Q", "<cmd>bd!<CR>", { desc = "Quit current buffer [force]" })
 
 -- Quickfix
-vim.kaymap.set("n", "<C-c>", function()
+vim.keymap.set("n", "<C-c>", function()
 	if vim.fn.getqflist({ winid = 0 }).winid ~= 0 then
 		vim.cmd("cclose")
 	else
