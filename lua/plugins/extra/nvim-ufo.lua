@@ -9,7 +9,7 @@ return {
 		-- vim.o.foldnestmax = 1
 		vim.opt.foldlevel = 99
 		vim.opt.foldlevelstart = 99
-		vim.opt.foldenable = true
+		vim.opt.foldenable = false
 		vim.g.markdown_folding = 1
 		vim.opt.foldmethod = "expr"
 		vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
