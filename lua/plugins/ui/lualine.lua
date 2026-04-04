@@ -58,12 +58,14 @@ return {
 								return " " .. mode_id .. " "
 							end
 
-							if mode == "n" or mode == "no" or mode == "nt" then
+							if mode == "n" or mode == "nt" then
 								return _print("RW")
-							elseif mode == "i" or mode == "ic" or mode == "s" then
+							elseif mode == "i" or mode == "ic" then
 								return _print("**")
-							elseif mode == "v" or mode == "V" or mode == "\022" then
+							elseif mode == "v" or mode == "V" or mode == "" then
 								return _print("**")
+							elseif mode == "o" or mode == "no" or mode == "s" then
+								return _print("!!")
 							elseif mode == "R" then
 								return _print("RA")
 							elseif mode == "c" then
