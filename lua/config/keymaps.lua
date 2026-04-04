@@ -41,13 +41,7 @@ vim.keymap.set("n", "<C-c>", function()
 end, { desc = "Toggle Quickfix", noremap = true, silent = true })
 
 -- Indent whole page
-vim.keymap.set("n", "==", function()
-	local c = vim.fn.getpos(".")
-	local v = vim.fn.winsaveview()
-	vim.cmd.normal("ggVG==")
-	vim.fn.setpos(".", c)
-	vim.fn.winrestview(v)
-end, { desc = "Indent whole page" })
+vim.keymap.set("n", "==", "mzggVG=`zzz", { desc = "Indent whole page", noremap = true })
 
 -- Set Makeprg
 vim.keymap.set("n", "<leader>cm", function()
