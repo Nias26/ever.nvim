@@ -1,7 +1,11 @@
 return {
 	"folke/todo-comments.nvim",
 	event = { "BufReadPost", "BufNewFile" },
+	cmd = "TodoTelescope",
 	dependencies = { "nvim-lua/plenary.nvim", lazy = true },
+	keys = {
+		{ ";t", "<cmd>TodoTelescope<CR>", desc = "Todos" },
+	},
 	opts = {
 		keywords = {
 			DONE = { icon = " ", color = "success" },
