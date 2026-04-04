@@ -11,6 +11,22 @@ return {
 			lazy = true,
 		},
 		{ "rafamadriz/friendly-snippets", lazy = true },
+		{
+			"hrsh7th/vim-vsnip",
+			config = function()
+				vim.g.vsnip_snippet_dir = vim.fn.stdpath("config") .. "/snippets"
+				vim.cmd([[
+        imap <expr> <Tab>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<Tab>'
+        smap <expr> <Tab>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<Tab>'
+        imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+        smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+        nmap        s       <Plug>(vsnip-select-text)
+        xmap        s       <Plug>(vsnip-select-text)
+        nmap        S       <Plug>(vsnip-cut-text)
+        xmap        S       <Plug>(vsnip-cut-text)
+        ]])
+			end,
+		},
 	},
 	version = "1.*",
 	config = function()
@@ -21,7 +37,9 @@ return {
 				end
 				return true
 			end,
-			-- snippets = { preset = "vsnip" },
+			snippets = {
+				preset = "vsnip",
+			},
 			keymap = {
 				preset = "enter",
 				["<C-n>"] = {
@@ -32,8 +50,8 @@ return {
 				["<Up>"] = { "hide", "fallback" },
 				["<Down>"] = { "hide", "fallback" },
 				["<CR>"] = { "accept", "fallback" },
-				["<S-Tab>"] = { "snippet_backward", "select_prev", "fallback" },
-				["<Tab>"] = { "snippet_forward", "select_next", "fallback" },
+				["<S-Tab>"] = { "select_prev", "fallback" },
+				["<Tab>"] = { "select_next", "fallback" },
 				["|"] = {
 					function(cmp)
 						if cmp.is_active() then

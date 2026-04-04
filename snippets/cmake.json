@@ -3,20 +3,19 @@
     "prefix": ["new_project"],
     "body": [
     "cmake_minimum_required(VERSION ${1:4.0})",
-    "project(",
-    " \"${2}\"",
-    " VERSION 1.0",
-    " DESCRIPTION \"${3:}\"",
-    " LANGUAGES ${4:CXX}",
+    "project(\"$2\"",
+    " VERSION ${3:1.0}",
+    " DESCRIPTION \"$4\"",
+    " LANGUAGES ${5:|CXX,C|}",
     ")",
     "",
     "set(CXX_STANDARD_REQUIRED true)",
+    "set(CMAKE_CXX_STANDARD $6)",
     "",
-    "add_executable(${5})",
-    "set_property(TARGET ${5} PROPERTY CXX_STANDARD ${6})",
-    "target_sources(${5}",
+    "add_executable($7)",
+    "target_sources($7",
     " PRIVATE",
-    " src/${7:main}.cpp",
+    " src/$8.cpp",
     ")"
     ],
     "description": "Create new C++ project",
@@ -24,5 +23,3 @@
     "include": "CMakeLists.txt"
   }
 }
-
-
