@@ -1,0 +1,15 @@
+{
+  "Header Guard":{
+    "prefix": ["guard"],
+    "body": [
+      "#ifndef H_${VIM:toupper(expand('%:t:r'))}",
+      "#define H_${VIM:toupper(expand('%:t:r'))}",
+      "",
+      "${0}",
+      "",
+      "#endif //!H_${VIM:toupper(expand('%:t:r'))}"
+    ],
+    "description": "Header Guard",
+    "scope": ["cpp", "c", "h", "hpp"]
+  }
+}

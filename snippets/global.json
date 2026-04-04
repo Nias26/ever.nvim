@@ -1,0 +1,9 @@
+{
+  "Copy and paste": {
+    "prefix": ["paste"],
+    "body": [
+      "$TM_SELECTED_TEXT"
+    ],
+    "description": "Copy and paste text with snippet"
+  }
+}
