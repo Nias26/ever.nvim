@@ -89,7 +89,7 @@ return {
 							},
 							kind = {
 								ellipsis = false,
-								width = { fill = true },
+								width = { fill = false },
 								text = function(ctx)
 									return ctx.kind
 								end,
