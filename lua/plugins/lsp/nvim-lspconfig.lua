@@ -1,3 +1,4 @@
+-- TODO: Fix lsp on rust
 return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
