@@ -5,37 +5,6 @@ return {
 	keys = {
 		{ "<leader>0", "<cmd>Oil<CR>", desc = "Oil" },
 	},
-	opts = {
-		-- columns shown in normal :Oil mode (all the usual info)
-		columns = { "icon", "permissions", "size", "mtime" },
-
-		-- sensible defaults that apply to both modes
-		default_file_explorer = true,
-		buf_options = {
-			buflisted = false,
-			bufhidden = "hide",
-		},
-		win_options = {
-			wrap = false,
-			signcolumn = "no",
-			cursorcolumn = false,
-			foldcolumn = "0",
-			spell = false,
-			list = false,
-			conceallevel = 3,
-			concealcursor = "nvic",
-		},
-		view_options = {
-			show_hidden = true,
-		},
-		float = {
-			padding = 2,
-			max_width = 0,
-			max_height = 0,
-			border = "rounded",
-			win_options = { winblend = 0 },
-		},
-	},
 	config = function()
 		function _G.get_oil_winbar()
 			local bufnr = vim.api.nvim_win_get_buf(vim.g.statusline_winid)
@@ -50,12 +19,7 @@ return {
 
 		require("oil").setup({
 			default_file_explorer = true,
-			columns = {
-				"permissions",
-				"size",
-				"mtime",
-				"icon",
-			},
+			columns = { "permissions", "size", "mtime", "icon" },
 			skip_confirm_for_simple_edits = true,
 			constrain_cursor = "editable",
 			watch_for_changes = true,
