@@ -58,6 +58,7 @@ local function sudo_write()
 end
 
 vim.api.nvim_create_user_command("W", sudo_write, {})
+-- TODO: Make it asyncronous and output lines as we collect them
 vim.api.nvim_create_user_command("Crun", function(opts)
 	if not _G._crun_saved then
 		_G._crun_saved = {
