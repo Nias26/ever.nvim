@@ -27,8 +27,10 @@ vim.keymap.set("v", "cc", "gc", { desc = "Comment selection", remap = true })
 -- Buffer managing
 vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Previous buffer" })
 vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Next buffer" })
-vim.keymap.set("n", "<C-Q>", "<cmd>bd<CR>", { desc = "Quit current buffer" })
 vim.keymap.set("n", "Q", "<cmd>bd!<CR>", { desc = "Quit current buffer [force]" })
+vim.keymap.set("n", "<C-q>", function()
+	Snacks.bufdelete()
+end, { desc = "Quit current buffer" })
 
 -- Quickfix
 vim.keymap.set("n", "<C-c>", function()
