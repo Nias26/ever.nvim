@@ -110,8 +110,14 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
-vim.api.nvim_create_user_command("Search", function()
-	vim.ui.input({ prompt = " Search" }, function(input)
-		vim.cmd("vimgrep /" .. input .. "/gj %|copen")
-	end)
-end, {})
+vim.api.nvim_create_user_command("Search", function(opts)
+	vim.cmd("vimgrep /" .. opts.args .. "/gj %|copen")
+end, {
+	nargs = "+",
+})
+
+vim.api.nvim_create_user_command("Grep", function(opts)
+	vim.cmd("silent grep! " .. opts.args .. "|copen")
+end, {
+	nargs = "+",
+})
