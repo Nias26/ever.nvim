@@ -1,6 +1,6 @@
 return {
 	"nvim-lualine/lualine.nvim",
-	event = { "BufReadPre", "BufNewFile" },
+	event = { "BufReadPre", "BufNewFile", "TermEnter" },
 	dependencies = {
 		{ "nvim-tree/nvim-web-devicons", lazy = true },
 	},
@@ -72,6 +72,8 @@ return {
 								return _print("VIEX")
 							elseif mode == "t" then
 								return _print("")
+							else
+								return _print(mode)
 							end
 						end,
 						color = function()
@@ -94,6 +96,8 @@ return {
 								return _ctable("#42be65")
 							elseif mode == "t" then
 								return _ctable("#33b1ff")
+							else
+								return _ctable(colors.bg)
 							end
 						end,
 						padding = { rignt = 1 },
