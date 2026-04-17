@@ -56,8 +56,8 @@ return {
 				["cmp.entry.get_documentation"] = true,
 			},
 		},
-		-- Show shell stdout and stderr
 		routes = {
+			-- Show shell stdout and stderr
 			{
 				filter = {
 					event = "msg_show",
