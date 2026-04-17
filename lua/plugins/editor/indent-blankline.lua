@@ -15,6 +15,7 @@ return {
 					"TelescopePrompt",
 					"TelescopeResults",
 					"mason",
+					"qf",
 				},
 				filetypes = {
 					"dashboard",
@@ -26,6 +27,7 @@ return {
 					"TelescopePrompt",
 					"TelescopeResults",
 					"mason",
+					"qf",
 				},
 			},
 			indent = {
@@ -46,6 +48,23 @@ return {
 		event = { "BufReadPost", "BufNewFile" },
 		version = "*",
 		opts = {
+			draw = {
+				predicate = function(scope)
+					local ft = {
+						"dashboard",
+						"lazy",
+						"checkhealth",
+						"help",
+						"man",
+						"Terminal",
+						"TelescopePrompt",
+						"TelescopeResults",
+						"mason",
+						"qf",
+					}
+					return not scope.body.is_incomplete and not vim.tbl_contains(ft, vim.bo.filetype)
+				end,
+			},
 			symbol = "|",
 		},
 	},
