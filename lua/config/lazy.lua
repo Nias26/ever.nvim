@@ -28,6 +28,9 @@ require("lazy").setup({
 		{ import = "plugins.lsp" },
 		{ import = "plugins.extra" },
 	},
+	change_detection = {
+		enabled = false,
+	},
 	performance = {
 		rtp = {
 			disabled_plugins = {
