@@ -1,6 +1,7 @@
 return {
 	"stevearc/conform.nvim",
 	event = "BufWritePre",
+	cmd = "ConformInfo",
 	opts = {
 		log_level = vim.log.levels.DEBUG,
 		formatters = {
@@ -27,6 +28,7 @@ return {
 			["_"] = { "trim_whitespace" },
 		},
 		format_after_save = {
+			timeout_ms = 500,
 			lsp_format = "fallback",
 		},
 	},
