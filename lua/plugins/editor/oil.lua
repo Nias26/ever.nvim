@@ -20,10 +20,6 @@ return {
 		require("oil").setup({
 			default_file_explorer = true,
 			columns = { "permissions", "size", "mtime", "icon" },
-			buf_options = {
-				buflisted = true,
-				bufhidden = "hide",
-			},
 			skip_confirm_for_simple_edits = true,
 			prompt_save_on_select_new_entry = false,
 			cleanup_delay_ms = false,
