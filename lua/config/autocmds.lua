@@ -110,12 +110,8 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
--- Quickfix keybinds
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "qf",
-	callback = function()
-		local opts = { noremap = true, silent = true, buffer = true }
-		vim.keymap.set("n", "<C-n>", "<cmd>cnext<CR>", opts)
-		vim.keymap.set("n", "<C-p>", "<cmd>cprevious<CR>", opts)
-	end,
-})
+vim.api.nvim_create_user_command("Search", function()
+	vim.ui.input({ prompt = " Search" }, function(input)
+		vim.cmd("vimgrep /" .. input .. "/gj %|copen")
+	end)
+end, {})
