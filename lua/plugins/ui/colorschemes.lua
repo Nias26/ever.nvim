@@ -37,8 +37,8 @@ return {
 				"TablineHeader",
 				-- Lsp CodeLens
 				"LspCodeLens",
-				-- Float
-				"FloatBorder",
+				-- nvim-bqf
+				"BqfPreviewBorder",
 			})
 
 			-- Exclude groups
