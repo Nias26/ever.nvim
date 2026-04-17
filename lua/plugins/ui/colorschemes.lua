@@ -37,6 +37,8 @@ return {
 				"TablineHeader",
 				-- Lsp CodeLens
 				"LspCodeLens",
+				-- Float
+				"FloatBorder",
 			})
 
 			-- Exclude groups
