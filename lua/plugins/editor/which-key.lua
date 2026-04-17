@@ -11,6 +11,9 @@ return {
 				separator = " ",
 				mappings = false,
 			},
+			win = {
+				border = "solid",
+			},
 		})
 
 		wk.add({
