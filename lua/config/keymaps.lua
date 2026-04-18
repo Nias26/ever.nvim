@@ -14,8 +14,8 @@ vim.keymap.set("t", "<ESC>", "<C-\\><C-n>", { desc = "Exit Terminal Mode", norem
 -- Tabs
 vim.keymap.set("n", "<leader>t", "<cmd>tabnew<CR>", { desc = "Create new Tab" })
 vim.keymap.set("n", "<leader>D", "<cmd>tabclose<CR>", { desc = "Close current Tab" })
-vim.keymap.set("n", "<leader>[", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
-vim.keymap.set("n", "<leader>]", "<cmd>tabnext<CR>", { desc = "Next tab" })
+vim.keymap.set("n", "[t", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
+vim.keymap.set("n", "]t", "<cmd>tabnext<CR>", { desc = "Next tab" })
 
 -- Remove highlightning
 vim.keymap.set("n", "<ESC><ESC>", "<cmd>nohlsearch<CR>")
