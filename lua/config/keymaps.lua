@@ -80,3 +80,13 @@ end, { desc = "Toggle Relative Numbers", noremap = true })
 vim.keymap.set("n", "<leader>cd", function()
 	require("dapui").toggle()
 end, { desc = "Debug Adapter Protocol" })
+
+-- Folds
+vim.keymap.set("n", "zi", function()
+	if not vim.wo.foldenable then
+		vim.wo.foldcolumn = "0"
+	else
+		vim.wo.foldcolumn = "1"
+	end
+	vim.cmd([[ normal! zi ]])
+end, { noremap = true, desc = "Toggle folds" })
