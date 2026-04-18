@@ -2,6 +2,7 @@ return {
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = { "BufReadPost", "BufNewFile" },
+		enabled = false,
 		name = "ibl",
 		opts = {
 			exclude = {
@@ -45,6 +46,7 @@ return {
 	},
 	{
 		"nvim-mini/mini.indentscope",
+		enabled = false,
 		event = { "BufReadPost", "BufNewFile" },
 		version = "*",
 		opts = {
