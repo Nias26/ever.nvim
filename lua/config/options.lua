@@ -42,19 +42,9 @@ local options = {
   grepformat = "%f:%l:%c:%m",                          -- Grep formatting
   formatexpr = "v:lua.require'conform'.formatexpr()",  -- Format function
   mousemodel = "extend",                               -- Right click extend selection
-  fillchars = {
-    eob = " ",
-    vert = "│",
-    horiz = "─",
-    diff = "╱",
-    foldopen = "",
-    foldclose = "",
-    fold = " ",
-    msgsep = "─",
-  },                                                   -- Fill chars
-  listchars = {
-    trail = "·",
-  },                                                   -- List chars
+  fillchars = "eob: ,vert:│,horiz:─,diff:╱,foldopen:,foldclose:,fold: ,msgsep:─", -- Fill chars
+  listchars = "tab: ,space:·,multispace: ,trail:·",                               -- List chars
+  list = true,                                         -- List chars
   conceallevel = 2,                                    -- Font conceal
   signcolumn = "yes:1",                                -- Draw signs on statuscolumn
   writebackup = false,                                 -- No backups of files
@@ -63,6 +53,7 @@ local options = {
   gdefault = true,                                     -- Always substitute globally
   path = { ".", "**" },                                -- Search path
   splitkeep = "screen",                                -- Keep text on screen line
+  colorcolumn = "100"                                  -- Colorcolumn
 }
 
 for k, v in pairs(options) do
@@ -71,16 +62,16 @@ end
 
 -- Set Virtual text
 vim.diagnostic.config({
-	virtual_text = {
+  virtual_text = {
     current_line = true
   },
-	signs = true,
-	underline = true,
-	update_in_insert = false,
-	seveirty_sort = true,
-	float = {
-		source = true,
-	},
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  seveirty_sort = true,
+  float = {
+    source = true,
+  },
 })
 
 -- stylua: ignore end
