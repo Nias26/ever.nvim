@@ -1,5 +1,6 @@
 return {
 	"MagicDuck/grug-far.nvim",
+	cmd = "GrugFar",
 	lazy = true,
 	opts = {
 		minSearchChars = 1,
