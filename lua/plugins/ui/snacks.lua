@@ -9,7 +9,11 @@ return {
 			filter = function(buf, _)
 				return vim.bo[buf].filetype ~= "dashboard"
 					and vim.bo[buf].filetype ~= "help"
-					and vim.bo[buf].filetype ~= "telescope"
+					and vim.bo[buf].filetype ~= "TelescopePrompt"
+					and vim.bo[buf].filetype ~= "noice"
+					and vim.bo[buf].filetype ~= "lazy"
+					and vim.bo[buf].filetype ~= "wk"
+					and vim.bo[buf].buftype ~= "prompt"
 			end,
 		},
 		quickfile = { enabled = true },
