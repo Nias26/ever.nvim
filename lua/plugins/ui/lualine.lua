@@ -84,12 +84,14 @@ return {
 								return { bg = color, fg = colors.bg, gui = "bold" }
 							end
 
-							if mode == "n" or mode == "no" or mode == "nt" then
+							if mode == "n" or mode == "nt" then
 								return _ctable("#82cfff")
-							elseif mode == "i" or mode == "ic" or mode == "s" then
+							elseif mode == "i" or mode == "ic" then
 								return _ctable("#ff7eb6")
 							elseif mode == "v" or mode == "V" or mode == "\022" then
 								return _ctable("#be95ff")
+							elseif mode == "o" or mode == "no" or mode == "s" then
+								return _ctable("#ee5396")
 							elseif mode == "R" then
 								return _ctable("#3ddbd9")
 							elseif mode == "c" then
