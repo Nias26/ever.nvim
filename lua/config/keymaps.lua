@@ -40,7 +40,6 @@ vim.keymap.set("n", "<C-c>", function()
 		vim.cmd("copen")
 	end
 end, { desc = "Toggle Quickfix", noremap = true, silent = true })
-vim.keymap.set("n", "!", ":Crun ", { desc = "Exec command on Quickfix" })
 
 -- Indent whole page
 vim.keymap.set("n", "==", "mzggVG=`zzz", { desc = "Indent whole page", noremap = true })
