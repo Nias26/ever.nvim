@@ -126,3 +126,10 @@ end, {
 	nargs = "+",
 	bang = true,
 })
+
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	pattern = "qf",
+-- 	callback = function()
+-- 		vim.treesitter.stop()
+-- 	end,
+-- })
