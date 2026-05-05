@@ -75,11 +75,6 @@ vim.keymap.set("n", "<F6>", function()
 	vim.wo.nu = not vim.wo.nu
 end, { desc = "Toggle Relative Numbers", noremap = true })
 
--- dap.ui
-vim.keymap.set("n", "<leader>cd", function()
-	require("dapui").toggle()
-end, { desc = "Debug Adapter Protocol" })
-
 -- Folds
 vim.keymap.set("n", "zi", function()
 	if not vim.wo.foldenable then
