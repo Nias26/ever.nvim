@@ -42,23 +42,24 @@ return {
 			},
 			keymap = {
 				preset = "enter",
-				["<C-n>"] = {
-					function(cmp)
-						cmp.show({ providers = { "snippets" } })
-					end,
-				},
 				["<Up>"] = { "hide", "fallback" },
 				["<Down>"] = { "hide", "fallback" },
-				["<CR>"] = { "accept", "fallback" },
-				["<S-Tab>"] = { "select_prev", "fallback" },
-				["<Tab>"] = { "select_next", "fallback" },
-				["|"] = {
+				["<CR>"] = {
 					function(cmp)
 						if cmp.is_active() then
-							cmp.cancel()
+							return cmp.accept()
 						end
 					end,
 					"fallback",
+				},
+				["<S-Tab>"] = { "select_prev", "fallback" },
+				["<Tab>"] = { "select_next", "fallback" },
+				["<C-c>"] = {
+					function(cmp)
+						if cmp.is_active() then
+							return cmp.cancel()
+						end
+					end,
 				},
 				["<C-u>"] = { "scroll_documentation_up", "fallback" },
 				["<C-d>"] = { "scroll_documentation_down", "fallback" },
@@ -98,6 +99,12 @@ return {
 								end,
 							},
 						},
+					},
+				},
+				list = {
+					selection = {
+						preselect = false,
+						auto_insert = true,
 					},
 				},
 				documentation = { auto_show = true },
