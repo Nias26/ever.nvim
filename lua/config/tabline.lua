@@ -8,6 +8,13 @@ local function set_hl(hl)
 	return "%#" .. hl .. "#"
 end
 
+local function filterName(ft)
+	if ft == "oil" then
+		return "oil"
+	end
+	return nil
+end
+
 -- Create highlight groups
 vim.api.nvim_set_hl(0, "TablineActive", { fg = "#161616", bg = "#41be65", bold = true })
 vim.api.nvim_set_hl(0, "TablineInactive", { fg = "#bbc2cf", bg = "#282c34" })
@@ -46,6 +53,12 @@ tabline.tabs = function(config)
 			local win = vim.api.nvim_tabpage_get_win(tab)
 			local buf = vim.api.nvim_win_get_buf(win)
 			local name = vim.api.nvim_buf_get_name(buf)
+
+			local ft_name = filterName(vim.bo.filetype)
+
+			if ft_name ~= nil then
+				name = ft_name
+			end
 
 			-- Format name: show filename or [No Name]
 			local display_name = (name ~= "" and vim.fn.fnamemodify(name, ":t")) or "[No Name]"
