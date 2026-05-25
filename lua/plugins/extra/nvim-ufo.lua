@@ -4,9 +4,13 @@ return {
 		{ mode = "n", "z" },
 	},
 	dependencies = { "kevinhwang91/promise-async", lazy = true },
-	config = function()
+	opts = {
+		provider_selector = function()
+			return { "treesitter", "indent" }
+		end,
+	},
+	config = function(_, opts)
 		vim.opt.foldcolumn = "1"
-		-- vim.o.foldnestmax = 1
 		vim.opt.foldlevel = 99
 		vim.opt.foldlevelstart = 99
 		vim.opt.foldenable = false
@@ -17,11 +21,7 @@ return {
 		-- Fold Highlightning group
 		vim.api.nvim_set_hl(0, "FoldColumn", { fg = "#525252", bg = "NONE" })
 
-		require("ufo").setup({
-			provider_selector = function()
-				return { "treesitter", "indent" }
-			end,
-		})
+		require("ufo").setup(opts)
 
 		-- Disable folding in certain filetypes
 		vim.api.nvim_create_autocmd("FileType", {
