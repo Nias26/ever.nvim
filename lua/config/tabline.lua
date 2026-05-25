@@ -11,6 +11,8 @@ end
 local function filterName(ft)
 	if ft == "oil" then
 		return "oil"
+	elseif ft == "TelescopePrompt" then
+		return "Telescope"
 	end
 	return nil
 end
