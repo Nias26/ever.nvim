@@ -74,13 +74,3 @@ end, { desc = "Toggle Numbers", noremap = true })
 vim.keymap.set("n", "<F6>", function()
 	vim.wo.nu = not vim.wo.nu
 end, { desc = "Toggle Relative Numbers", noremap = true })
-
--- Folds
-vim.keymap.set("n", "zi", function()
-	if not vim.wo.foldenable then
-		vim.wo.foldcolumn = "0"
-	else
-		vim.wo.foldcolumn = "1"
-	end
-	vim.cmd([[ normal! zi ]])
-end, { noremap = true, desc = "Toggle folds" })

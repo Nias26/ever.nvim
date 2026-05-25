@@ -18,6 +18,15 @@ return {
 		vim.opt.foldmethod = "expr"
 		vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
+		vim.keymap.set("n", "zi", function()
+			if not vim.wo.foldenable then
+				vim.wo.foldcolumn = "0"
+			else
+				vim.wo.foldcolumn = "1"
+			end
+			vim.cmd([[ normal! zi ]])
+		end, { noremap = true, desc = "Toggle folds" })
+
 		-- Fold Highlightning group
 		vim.api.nvim_set_hl(0, "FoldColumn", { fg = "#525252", bg = "NONE" })
 
