@@ -24,17 +24,6 @@ return {
 
 		vim.api.nvim_create_autocmd("FileType", {
 			callback = function(opts)
-				local lang = vim.treesitter.language.get_lang(opts.match)
-
-				if not lang then
-					return
-				end
-
-				local installed = ts.get_installed()
-				if not vim.tbl_contains(installed, lang) then
-					ts.install(lang)
-				end
-
 				pcall(vim.treesitter.start, opts.buf)
 			end,
 		})
