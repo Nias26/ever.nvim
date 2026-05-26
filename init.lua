@@ -7,5 +7,4 @@ require("config.autocmds")
 
 -- TODO: Add gitsigns.nvim
 -- TODO: Create Terminal command for vsplit term, split term, floating term, new tab term or whole buffer term
--- TODO: fix ts_ls sending double requests (like open documentation)
 -- TODO: Fix Conform failing on js files
