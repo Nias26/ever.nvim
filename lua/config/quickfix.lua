@@ -47,7 +47,6 @@ function _G.qftf(info)
 		end
 		table.insert(ret, str)
 	end
-	vim.wo.colorcolumn = "0"
 	return ret
 end
 
