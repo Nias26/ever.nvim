@@ -37,7 +37,7 @@ local options = {
   expandtab = true,                                    -- Expand tabs into spaces
   autochdir = false,                                   -- Auto change directory
   clipboard = "unnamedplus",                           -- Sync with system clipboard
-  wrap = false,                                        -- Disable line wrap
+  wrap = true,                                         -- Disable line wrap
   grepprg = "rg --vimgrep --smart-case",               -- Use ripgrep instead of grep
   grepformat = "%f:%l:%c:%m",                          -- Grep formatting
   formatexpr = "v:lua.require'conform'.formatexpr()",  -- Format function
@@ -72,5 +72,8 @@ vim.diagnostic.config({
     source = true,
   },
 })
+
+-- Foldcolumn
+vim.wo.foldcolumn = "1"
 
 -- stylua: ignore end
