@@ -5,5 +5,40 @@
       "$TM_SELECTED_TEXT"
     ],
     "description": "Copy and paste text with snippet"
+  },
+  "Todo Comment": {
+    "prefix": ["todo"],
+    "body": [
+      "$LINE_COMMENT TODO: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE - ${VIM:\\$USER}: ${0}"
+    ],
+    "description": "Add a dated todo comment"
+  },
+  "Warn Comment": {
+    "prefix": ["warn"],
+    "body": [
+      "$LINE_COMMENT WARN: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE - ${VIM:\\$USER}: ${0}"
+    ],
+    "description": "Add a dated warn comment"
+  },
+  "Bug Comment": {
+    "prefix": ["bug"],
+    "body": [
+      "$LINE_COMMENT BUG: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE - ${VIM:\\$USER}: ${0}"
+    ],
+    "description": "Add a dated bug comment"
+  },
+  "Info Comment": {
+    "prefix": ["info"],
+    "body": [
+      "$LINE_COMMENT INFO: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE - ${VIM:\\$USER}: ${0}"
+    ],
+    "description": "Add a dated info comment"
+  },
+  "Perf Comment": {
+    "prefix": ["perf"],
+    "body": [
+      "$LINE_COMMENT PERF: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE - ${VIM:\\$USER}: ${0}"
+    ],
+    "description": "Add a dated perf comment"
   }
 }
