@@ -18,7 +18,7 @@ vim.keymap.set("n", "[t", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
 vim.keymap.set("n", "]t", "<cmd>tabnext<CR>", { desc = "Next tab" })
 
 -- Remove highlightning
-vim.keymap.set("n", "<ESC><ESC>", "<cmd>nohlsearch<CR>")
+vim.keymap.set("n", "<ESC>", "<cmd>nohlsearch<CR>")
 
 -- Comment
 vim.keymap.set("n", "cc", "gcc", { desc = "Comment line", remap = true })
