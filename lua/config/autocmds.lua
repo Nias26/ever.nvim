@@ -127,9 +127,9 @@ end, {
 	bang = true,
 })
 
--- vim.api.nvim_create_autocmd("FileType", {
--- 	pattern = "qf",
--- 	callback = function()
--- 		vim.treesitter.stop()
--- 	end,
--- })
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "qf",
+	callback = function()
+		require("config.quickfix")
+	end,
+})
