@@ -1,6 +1,6 @@
 {
   "Clangd config": {
-    "prefix": ["conf"],
+    "prefix": ["set_cpp_standard"],
     "body": [
       "If:",
       " PathMatch: .*\\.cpp",
@@ -10,7 +10,7 @@
       "",
       "---"
     ],
-    "description": "Basic configuration for clangd",
+    "description": "Set C++ standard for clangd",
     "scope": "yaml",
     "include": ".clangd"
   }
