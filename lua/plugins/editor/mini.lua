@@ -1,20 +1,52 @@
 return {
-	{
-		"nvim-mini/mini.cursorword",
-		event = {"BufReadPost", "BufNewFile" },
-		version = "*",
-		opts = {},
+	"nvim-mini/mini.nvim",
+	version = false,
+	event = { "InsertEnter", "BufReadPost", "BufNewFile" },
+	keys = {
+		{ mode = "n", "f" },
+		{ mode = "n", "F" },
+		{ mode = "n", "t" },
+		{ mode = "n", "T" },
+		{ mode = "n", "sa" },
+		{ mode = "n", "sd" },
+		{ mode = "n", "sf" },
+		{ mode = "n", "sF" },
+		{ mode = "n", "sh" },
+		{ mode = "n", "sr" },
+		{ mode = "n", "sn" },
+		{ mode = "o", "a" },
+		{ mode = "o", "i" },
+		{ mode = "n", "g" },
 	},
-	{
-		"nvim-mini/mini.jump",
-		version = "*",
-		keys = {
-			{ mode = "n", "f" },
-			{ mode = "n", "F" },
-			{ mode = "n", "t" },
-			{ mode = "n", "T" },
-		},
-		opts = {
+	config = function()
+		require("mini.ai").setup()
+		require("mini.cursorword").setup()
+		require("mini.hipatterns").setup({
+			highlighters = {
+				hex_color = require("mini.hipatterns").gen_highlighter.hex_color(),
+			},
+		})
+		require("mini.indentscope").setup({
+			draw = {
+				predicate = function(scope)
+					local ft = {
+						"dashboard",
+						"lazy",
+						"checkhealth",
+						"help",
+						"man",
+						"Terminal",
+						"TelescopePrompt",
+						"TelescopeResults",
+						"mason",
+						"qf",
+					}
+					return not scope.body.is_incomplete and not vim.tbl_contains(ft, vim.bo.filetype)
+				end,
+			},
+			symbol = "|",
+		})
+		require("mini.jump").setup({
 			keys = { "f", "F", "t", "T" },
 			mappings = {
 				forward = "f",
@@ -27,42 +59,8 @@ return {
 				highlight = 250,
 				idle_stop = 1500,
 			},
-		},
-	},
-	{
-		"nvim-mini/mini.surround",
-		version = "*",
-		keys = {
-			{ mode = "n", "sa" },
-			{ mode = "n", "sd" },
-			{ mode = "n", "sf" },
-			{ mode = "n", "sF" },
-			{ mode = "n", "sh" },
-			{ mode = "n", "sr" },
-			{ mode = "n", "sn" },
-		},
-		opts = {},
-	},
-	{
-		"nvim-mini/mini.ai",
-		version = "*",
-		keys = {
-			{ mode = "o", "a" },
-			{ mode = "o", "i" },
-			{ mode = "n", "g" },
-		},
-		opts = {},
-	},
-	{
-		"nvim-mini/mini.hipatterns",
-		version = "*",
-		event = { "BufReadPost", "BufNewFile" },
-		config = function()
-			require("mini.hipatterns").setup({
-				highlighters = {
-					hex_color = require("mini.hipatterns").gen_highlighter.hex_color(),
-				},
-			})
-		end,
-	},
+		})
+		require("mini.pairs").setup()
+		require("mini.surround").setup()
+	end,
 }
