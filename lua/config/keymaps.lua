@@ -10,29 +10,14 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to the left window" })
 vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv", { desc = "Move line upwards", silent = true })
 vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv", { desc = "Move line downwards", silent = true })
 vim.keymap.set("t", "<ESC>", "<C-\\><C-n>", { desc = "Exit Terminal Mode", noremap = true })
+vim.keymap.set("n", "n", "nzzzv", { desc = "Find next", silent = true })
+vim.keymap.set("n", "N", "Nzzzv", { desc = "Find previous", silent = true })
 
 -- Tabs
 vim.keymap.set("n", "<leader>t", "<cmd>tabnew<CR>", { desc = "Create new Tab" })
 vim.keymap.set("n", "<leader>D", "<cmd>tabclose<CR>", { desc = "Close current Tab" })
 vim.keymap.set("n", "[t", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
 vim.keymap.set("n", "]t", "<cmd>tabnext<CR>", { desc = "Next tab" })
-
--- Remove highlightning
-vim.keymap.set("n", "<ESC>", function()
-	vim.cmd([[ nohlsearch | normal! ]])
-end, { silent = true })
-vim.keymap.set("n", "h", function()
-	vim.cmd([[ nohlsearch | normal! h]])
-end, { silent = true })
-vim.keymap.set("n", "j", function()
-	vim.cmd([[ nohlsearch | normal! j]])
-end, { silent = true })
-vim.keymap.set("n", "k", function()
-	vim.cmd([[ nohlsearch | normal! k]])
-end, { silent = true })
-vim.keymap.set("n", "l", function()
-	vim.cmd([[ nohlsearch | normal! l]])
-end, { silent = true })
 
 -- Comment
 vim.keymap.set("n", "cc", "gcc", { desc = "Comment line", remap = true })

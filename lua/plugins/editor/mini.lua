@@ -60,7 +60,6 @@ return {
 				idle_stop = 1500,
 			},
 		})
-		require("mini.pairs").setup()
 		require("mini.surround").setup()
 	end,
 }
