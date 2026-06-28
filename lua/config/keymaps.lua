@@ -18,7 +18,21 @@ vim.keymap.set("n", "[t", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
 vim.keymap.set("n", "]t", "<cmd>tabnext<CR>", { desc = "Next tab" })
 
 -- Remove highlightning
-vim.keymap.set("n", "<ESC>", "<cmd>nohlsearch<CR>")
+vim.keymap.set("n", "<ESC>", function()
+	vim.cmd([[ nohlsearch | normal! ]])
+end, { silent = true })
+vim.keymap.set("n", "h", function()
+	vim.cmd([[ nohlsearch | normal! h]])
+end, { silent = true })
+vim.keymap.set("n", "j", function()
+	vim.cmd([[ nohlsearch | normal! j]])
+end, { silent = true })
+vim.keymap.set("n", "k", function()
+	vim.cmd([[ nohlsearch | normal! k]])
+end, { silent = true })
+vim.keymap.set("n", "l", function()
+	vim.cmd([[ nohlsearch | normal! l]])
+end, { silent = true })
 
 -- Comment
 vim.keymap.set("n", "cc", "gcc", { desc = "Comment line", remap = true })
@@ -45,7 +59,7 @@ end, { desc = "Toggle Quickfix", noremap = true, silent = true })
 vim.keymap.set("n", "==", "mzggVG=`zzz", { desc = "Indent whole page", noremap = true })
 
 -- Set Makeprg
-vim.keymap.set("n", "<leader>cm", function()
+local function change_makeprg()
 	vim.ui.input({
 		prompt = "Enter Makeprg: ",
 		default = vim.o.makeprg,
@@ -54,10 +68,13 @@ vim.keymap.set("n", "<leader>cm", function()
 			vim.o.makeprg = input
 		end
 	end)
-end, { desc = " Makeprg" })
+end
+
+vim.keymap.set("n", "<leader>cm", change_makeprg, { desc = " Makeprg" })
+vim.keymap.set("n", "<C-m>", change_makeprg, { desc = " Makeprg" })
 
 -- Grug-far
-vim.keymap.set("n", ";r", function()
+vim.keymap.set("n", "<A-;>r", function()
 	require("grug-far").open({
 		prefills = {
 			search = vim.fn.expand("<cword>"),
