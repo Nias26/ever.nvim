@@ -76,4 +76,7 @@ vim.diagnostic.config({
 -- Foldcolumn
 vim.wo.foldcolumn = "1"
 
+-- Quickfix
+require("config.quickfix")
+
 -- stylua: ignore end
