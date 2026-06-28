@@ -53,7 +53,7 @@ return {
 				backward = "F",
 				forward_till = "t",
 				backward_till = "T",
-				repeat_jump = ".",
+				repeat_jump = ";",
 			},
 			delay = {
 				highlight = 250,
