@@ -128,30 +128,8 @@ end, {
 })
 
 vim.api.nvim_create_user_command("Make", function(args)
-	local function run_make()
-		vim.cmd("make")
+	if #args.args > 1 then
+		vim.opt.makeprg = args.args
 	end
-
-	local function prompt_makeprg()
-		vim.ui.input({
-			prompt = " Makeprg: ",
-			default = vim.o.makeprg,
-		}, function(input)
-			if not input then
-				return
-			end
-
-			if input ~= "" then
-				vim.o.makeprg = input
-			end
-
-			run_make()
-		end)
-	end
-
-	if args.bang or vim.o.makeprg == "" then
-		prompt_makeprg()
-	else
-		run_make()
-	end
-end, { bang = true })
+	vim.cmd("make")
+end, { bang = true, nargs = "*" })
