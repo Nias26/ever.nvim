@@ -9,5 +9,7 @@ return {
 			["Redo"] = "<C-r>",
 			["Exit"] = "<Esc>",
 		}
+
+		vim.keymap.set("n", "<C-\\>", "<Plug>(VM-Add-Cursor-At-Pos)")
 	end,
 }
