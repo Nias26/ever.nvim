@@ -43,21 +43,6 @@ end, { desc = "Toggle Quickfix", noremap = true, silent = true })
 -- Indent whole page
 vim.keymap.set("n", "==", "mzggVG=`zzz", { desc = "Indent whole page", noremap = true })
 
--- Set Makeprg
-local function change_makeprg()
-	vim.ui.input({
-		prompt = "Enter Makeprg: ",
-		default = vim.o.makeprg,
-	}, function(input)
-		if input and input ~= "" then
-			vim.o.makeprg = input
-		end
-	end)
-end
-
-vim.keymap.set("n", "<leader>cm", change_makeprg, { desc = " Makeprg" })
-vim.keymap.set("n", "<C-m>", change_makeprg, { desc = " Makeprg" })
-
 -- Grug-far
 vim.keymap.set("n", "<A-;>r", function()
 	require("grug-far").open({
