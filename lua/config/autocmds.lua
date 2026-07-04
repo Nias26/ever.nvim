@@ -112,15 +112,15 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_user_command("Grep", function(args)
+	local match = args.fargs[1]
+	local pattern = args.fargs[2]
 	if args.bang then
-		local match = args.fargs[1]
-		local pattern = args.fargs[2]
 		if pattern == nil then
 			pattern = "%"
 		end
 		vim.cmd("silent vimgrep /\\v" .. match .. "/gj " .. pattern .. "|copen")
 	else
-		vim.cmd("silent grep! " .. args.args .. "|copen")
+		vim.cmd("silent grep! '" .. match .. "' " .. pattern .. "|copen")
 	end
 end, {
 	nargs = "+",
@@ -132,4 +132,4 @@ vim.api.nvim_create_user_command("Make", function(args)
 		vim.opt.makeprg = args.args
 	end
 	vim.cmd("make")
-end, { bang = true, nargs = "*" })
+end, { nargs = "*" })
