@@ -28,8 +28,20 @@ vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Previous buffer" })
 vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Next buffer" })
 vim.keymap.set("n", "Q", "<cmd>bd!<CR>", { desc = "Quit current buffer [force]" })
 vim.keymap.set("n", "<C-q>", function()
-	Snacks.bufdelete()
-end, { desc = "Quit current buffer" })
+	local bufnr = vim.api.nvim_get_current_buf()
+
+	-- Replace this buffer in every window displaying it.
+	for _, win in ipairs(vim.fn.win_findbuf(bufnr)) do
+		vim.api.nvim_win_call(win, function()
+			vim.cmd("bnext")
+			if vim.api.nvim_get_current_buf() == bufnr then
+				vim.cmd("enew")
+			end
+		end)
+	end
+
+	vim.api.nvim_buf_delete(bufnr, {})
+end, { desc = "Delete current buffer" })
 
 -- Quickfix
 vim.keymap.set("n", "<C-c>", function()
