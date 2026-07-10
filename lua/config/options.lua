@@ -53,6 +53,11 @@ local options = {
   gdefault = true,                                     -- Always substitute globally
   path = { ".", "**" },                                -- Search path
   splitkeep = "screen",                                -- Keep text on screen line
+	foldlevel = 99,                                      -- Fold level
+	foldlevelstart = 99,                                 -- Starting fold level
+	foldenable = false,                                  -- Enable folds
+	foldmethod = "expr",                                 -- Fold method
+  foldexpr = "v:lua.vim.treesitter.foldexpr()",        -- Fold method expression
 }
 
 for k, v in pairs(options) do
