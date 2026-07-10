@@ -27,6 +27,7 @@ return {
 			-- Code -> 
 			{ "<leader>c", group = " Code" },
 			{ "<leader>cl", group = " [LSP]" },
+			{ "<leader>cg", group = " Gitsigns" },
 			-- Search -> 
 			{ "<leader>s", group = " Search" },
 			-- Buffer -> 󰓩
