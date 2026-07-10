@@ -120,6 +120,9 @@ vim.api.nvim_create_user_command("Grep", function(args)
 		end
 		vim.cmd("silent vimgrep /\\v" .. match .. "/gj " .. pattern .. "|copen")
 	else
+		if pattern == nil then
+			pattern = ""
+		end
 		vim.cmd("silent grep! '" .. match .. "' " .. pattern .. "|copen")
 	end
 end, {
