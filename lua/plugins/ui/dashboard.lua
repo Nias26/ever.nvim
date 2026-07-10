@@ -71,7 +71,7 @@ return {
 					key = "f",
 					key_hl = "@string",
 					key_format = " %s",
-					action = "Telescope file_browser",
+					action = "Telescope find_files",
 				},
 				{
 					icon = "󰊢  ",
