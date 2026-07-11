@@ -114,6 +114,21 @@ return {
 			sources = {
 				default = { "lsp", "snippets", "path", "buffer" },
 			},
+			cmdline = {
+				keymap = {
+					preset = "inherit",
+				},
+				completion = {
+					list = {
+						selection = {
+							preselect = false,
+						},
+					},
+					menu = {
+						auto_show = true,
+					},
+				},
+			},
 		})
 
 		local hl = vim.api.nvim_set_hl
