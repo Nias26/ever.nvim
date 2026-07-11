@@ -15,6 +15,7 @@ return {
 				"TelescopeResults",
 				"mason",
 				"qf",
+				"diff",
 			},
 			filetypes = {
 				"dashboard",
@@ -27,6 +28,7 @@ return {
 				"TelescopeResults",
 				"mason",
 				"qf",
+				"diff",
 			},
 		},
 		indent = {
