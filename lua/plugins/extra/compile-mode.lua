@@ -19,6 +19,16 @@ return {
 			else
 				vim.cmd("Compile " .. args.args)
 			end
-		end, { nargs = "*" })
+		end, {
+			nargs = "*",
+			complete = function(arglead)
+				local is_path = arglead:find("/", 1, true)
+					or vim.startswith(arglead, "~")
+					or vim.startswith(arglead, ".")
+					or vim.startswith(arglead, "/")
+
+				return vim.fn.getcompletion(arglead, is_path and "file" or "shellcmd")
+			end,
+		})
 	end,
 }
