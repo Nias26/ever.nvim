@@ -32,5 +32,14 @@
     "description": "Create new C++ project",
     "scope": "cmake",
     "include": "CMakeLists.txt"
+  },
+  "Cmake link libraries": {
+    "prefix": ["link_libraries"],
+    "body": [
+      "target_link_libraries(${1:TARGET} \"${2:LIB}\")"
+    ],
+    "description": "Link target with a library",
+    "scope": "cmake",
+    "include": "CMakeLists.txy"
   }
 }
