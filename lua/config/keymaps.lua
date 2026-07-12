@@ -73,3 +73,6 @@ end, { desc = "Toggle Numbers", noremap = true })
 vim.keymap.set("n", "<F6>", function()
 	vim.wo.nu = not vim.wo.nu
 end, { desc = "Toggle Relative Numbers", noremap = true })
+
+-- Search
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
