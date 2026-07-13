@@ -9,15 +9,15 @@
     " LANGUAGES ${5|CXX,C|}",
     ")",
     "",
-    "set(CMAKE_CXX_STANDARD $6)",
-    "set(CMAKE_CXX_STANDARD_REQUIRED ON)",
+    "set(CMAKE_${5}_STANDARD ${6:23})",
+    "set(CMAKE_${5}_STANDARD_REQUIRED ${7|ON,OFF|})",
     "",
     "file(GLOB_RECURSE SRC_FILES",
     " CONFIGURE_DEPENDS",
-    " \"\\${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp\"",
+    " \"\\${CMAKE_CURRENT_SOURCE_DIR}/src/*.${8|cpp,c|}\"",
     ")",
     "",
-    "add_executable($2 \\${SRC_FILES})",
+    "add_executable(\"$2\" \\${SRC_FILES})",
     "",
     "message(STATUS \"\")",
     "message(STATUS \"_*_ Build Info _*_\")",
@@ -27,7 +27,9 @@
     "endif()",
     "message(STATUS \"Bin Dir: \\${CMAKE_RUNTIME_OUTPUT_DIRECTORY}\")",
     "message(STATUS \"Build Type: \\${CMAKE_BUILD_TYPE}\")",
-    "message(STATUS \"C++ Standard: \\${CMAKE_CXX_STANDARD}\")"
+    "if (\\${CMAKE_${5}_STANDARD_REQUIRED})",
+    "  message(STATUS \"${5/(CXX|C)/(?1:C++:C)/} Standard: \\${CMAKE_${5}_STANDARD}\")",
+    "endif()"
     ],
     "description": "Create new C++ project",
     "scope": "cmake",
@@ -40,6 +42,6 @@
     ],
     "description": "Link target with a library",
     "scope": "cmake",
-    "include": "CMakeLists.txy"
+    "include": "CMakeLists.txt"
   }
 }
