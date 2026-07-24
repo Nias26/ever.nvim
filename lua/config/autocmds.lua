@@ -128,6 +128,7 @@ vim.api.nvim_create_user_command("Grep", function(args)
 end, {
 	nargs = "+",
 	bang = true,
+	complete = "history",
 })
 
 vim.api.nvim_create_user_command("Make", function(args)
@@ -135,4 +136,4 @@ vim.api.nvim_create_user_command("Make", function(args)
 		vim.opt.makeprg = args.args
 	end
 	vim.cmd("make")
-end, { nargs = "*" })
+end, { nargs = "*", complete = "history" })
