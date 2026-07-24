@@ -1,3 +1,13 @@
+local cmdline_view = {
+	position = {
+		col = 7,
+	},
+	size = {
+		min_width = 100,
+		width = "auto",
+		height = "auto",
+	},
+}
 return {
 	"folke/noice.nvim",
 	event = "VeryLazy",
@@ -10,17 +20,10 @@ return {
 	},
 	opts = {
 		views = {
-			cmdline = {
-				position = {
-					-- row = 0,
-					col = 7,
-				},
-				size = {
-					min_width = 100,
-					width = "auto",
-					height = "auto",
-				},
-			},
+			popup = cmdline_view,
+			cmdline = cmdline_view,
+			cmdline_popup = cmdline_view,
+			cmdline_input = cmdline_view,
 		},
 		cmdline = {
 			enabled = true,
@@ -43,7 +46,7 @@ return {
 					lang = "regex",
 				},
 				highlight = { pattern = { "^:hi ", "^:highlight " }, icon = "󰌵", lang = "vim" },
-				input = {},
+				input = { view = "cmdline" },
 			},
 		},
 		lsp = {
