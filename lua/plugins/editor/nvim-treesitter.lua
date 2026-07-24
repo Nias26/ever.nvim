@@ -22,10 +22,10 @@ return {
 			pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
 		})
 
-		vim.api.nvim_create_autocmd("FileType", {
-			callback = function(opts)
-				pcall(vim.treesitter.start, opts.buf)
-			end,
-		})
+		-- vim.api.nvim_create_autocmd("FileType", {
+		-- 	callback = function(opts)
+		-- 		pcall(vim.treesitter.start, opts.buf)
+		-- 	end,
+		-- })
 	end,
 }
