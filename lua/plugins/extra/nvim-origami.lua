@@ -3,7 +3,7 @@ return {
 	event = "VeryLazy",
 	opts = {
 		foldText = {
-			disableOnFt = { "Trouble", "lazy", "dashboard", "TelescopePrompt", "neo-tree", "" },
+			disableOnFt = { "Trouble", "lazy", "dashboard", "TelescopePrompt", "neo-tree", "markdown", "" },
 		},
 	},
 	config = function(_, opts)
