@@ -98,6 +98,7 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
 })
 
 -- Help pages keybinds
+vim.api.nvim_create_augroup("HelpMappings", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "help", "man" },
 	callback = function()
