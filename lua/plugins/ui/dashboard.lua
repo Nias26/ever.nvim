@@ -4,6 +4,7 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons", lazy = true },
 	opts = {
 		theme = "doom",
+		hide = { statusline = false },
 		config = {
 			header = {
 				"                                   ",
