@@ -10,31 +10,28 @@ return {
 	},
 	opts = {
 		views = {
-			cmdline_popup = {
+			cmdline = {
 				position = {
-					row = 0,
-					col = 0,
+					-- row = 0,
+					col = 7,
 				},
 				size = {
 					min_width = 100,
-					width = "99%",
+					width = "auto",
 					height = "auto",
-				},
-				border = {
-					style = "none",
-					padding = { 1, 2 },
 				},
 			},
 		},
 		cmdline = {
 			enabled = true,
+			view = "cmdline",
 			opts = {
 				win_options = {
 					winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
 				},
 			},
 			format = {
-				cmdline = { pattern = "^:", icon = " ", lang = "vim" },
+				cmdline = { pattern = "^:", icon = ":", lang = "vim" },
 				search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex" },
 				search_up = { kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
 				filter = { pattern = "^:%s*!", icon = "$", lang = "bash" },
