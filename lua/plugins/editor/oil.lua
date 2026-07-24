@@ -32,6 +32,52 @@ return {
 			win_options = {
 				winbar = "%!v:lua.get_oil_winbar()",
 			},
+			keymaps = {
+				["~"] = { "<cmd>edit ~/<CR>", desc = "Go to ~" },
+				["`"] = { "actions.tcd", desc = "Cd to cwd" },
+				["gy"] = {
+					function()
+						local oil = require("oil")
+						vim.fn.setreg("+", oil.get_current_dir(0))
+						print("Copied the cwd to the clipboard")
+					end,
+					desc = "Copy cwd to system clipboard",
+				},
+				["."] = {
+					function()
+						local oil = require("oil")
+						local entry = oil.get_cursor_entry()
+						if not entry then
+							return
+						end
+
+						local dir = oil.get_current_dir()
+						local path = vim.fs.joinpath(dir, entry.name)
+						path = vim.fn.fnamemodify(path, ":.")
+						path = vim.fn.fnameescape(path)
+						local keys = vim.keycode(": " .. path .. "<Home>")
+						vim.api.nvim_feedkeys(keys, "n", false)
+					end,
+					desc = "Execute command on file",
+				},
+				["!"] = {
+					function()
+						local oil = require("oil")
+						local entry = oil.get_cursor_entry()
+						if not entry then
+							return
+						end
+
+						local dir = oil.get_current_dir()
+						local path = vim.fs.joinpath(dir, entry.name)
+						path = vim.fn.fnamemodify(path, ":.")
+						path = vim.fn.fnameescape(path)
+						local keys = vim.keycode(":! " .. path .. "<Home><Right>")
+						vim.api.nvim_feedkeys(keys, "n", false)
+					end,
+					desc = "Execute shell command on file",
+				},
+			},
 		})
 	end,
 }
