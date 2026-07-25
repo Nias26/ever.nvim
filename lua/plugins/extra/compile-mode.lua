@@ -11,6 +11,7 @@ return {
 	config = function()
 		vim.g.compile_mode = {
 			input_word_completion = true,
+			focus_compilation_buffer = true,
 		}
 
 		vim.api.nvim_create_user_command("Cc", function(args)
