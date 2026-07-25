@@ -26,22 +26,28 @@ vim.keymap.set("v", "cc", "gc", { desc = "Comment selection", remap = true })
 -- Buffer managing
 vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Previous buffer" })
 vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Next buffer" })
-vim.keymap.set("n", "Q", "<cmd>bd!<CR>", { desc = "Quit current buffer [force]" })
-vim.keymap.set("n", "<C-q>", function()
+vim.keymap.set("n", "Q", function()
 	local bufnr = vim.api.nvim_get_current_buf()
+	if vim.bo[bufnr].filetype == "gitcommit" then
+		vim.cmd("bd!")
+		return
+	end
 
-	-- Replace this buffer in every window displaying it.
-	for _, win in ipairs(vim.fn.win_findbuf(bufnr)) do
-		vim.api.nvim_win_call(win, function()
-			vim.cmd("bnext")
-			if vim.api.nvim_get_current_buf() == bufnr then
-				vim.cmd("enew")
-			end
-		end)
+	if #vim.api.nvim_tabpage_list_wins(0) > 1 then
+		vim.api.nvim_win_close(0, false)
+		vim.api.nvim_buf_delete(bufnr, {})
+		return
+	end
+
+	vim.cmd("bnext")
+
+	if vim.api.nvim_get_current_buf() == bufnr then
+		vim.cmd("enew")
 	end
 
 	vim.api.nvim_buf_delete(bufnr, {})
 end, { desc = "Delete current buffer" })
+vim.keymap.set("n", "<C-q>", "<cmd>tabclose<CR>", { desc = "Close current tab" })
 
 -- Quickfix
 vim.keymap.set("n", "<C-c>", function()
