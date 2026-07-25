@@ -18,7 +18,7 @@
     " \"\\${CMAKE_CURRENT_SOURCE_DIR}/src/*.${9|cpp,c|}\"",
     ")",
     "",
-    "add_executable(\"$2\" \\${SRC_FILES})",
+    "add_executable(\"${10:$2}\" \\${SRC_FILES})",
     "",
     "message(STATUS \"\")",
     "message(STATUS \"_*_ Build Info _*_\")",
