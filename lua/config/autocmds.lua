@@ -6,11 +6,14 @@ vim.api.nvim_set_hl(0, "DashboardFooter", { fg = "#08A045" })
 vim.api.nvim_set_hl(0, "Comment", { fg = "#525252", italic = false })
 
 -- User commands
-local function sudo_write()
-	local filepath = vim.fn.expand("%:p")
-	if filepath == "" then
-		vim.notify("E32: No file name", vim.log.levels.ERROR)
-		return
+local function sudo_write(args)
+  local filename = args.fargs[1];
+	if not filename then
+		filename = vim.fn.expand("%:p")
+		if filename == "" then
+			vim.notify("E32: No file name", vim.log.levels.ERROR)
+			return
+		end
 	end
 
 	vim.fn.inputsave()
@@ -39,7 +42,7 @@ local function sudo_write()
 		"",
 		"dd",
 		"if=" .. tmpfile,
-		"of=" .. filepath,
+		"of=" .. filename,
 		"bs=1M",
 	}, {
 		stdin = password .. "\n",
@@ -57,7 +60,7 @@ local function sudo_write()
 	vim.fn.delete(tmpfile)
 end
 
-vim.api.nvim_create_user_command("W", sudo_write, {})
+vim.api.nvim_create_user_command("W", sudo_write, { nargs = "*" })
 
 -- Show diagnostics under the cursor when holding position
 vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
