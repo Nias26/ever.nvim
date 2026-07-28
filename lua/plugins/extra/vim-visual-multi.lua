@@ -1,5 +1,4 @@
 return {
-  -- TODO: 2026-07-27 14:40 - Nias: Replace with multiple-cursors.nvim
 	"mg979/vim-visual-multi",
 	event = { "BufNewFile", "BufReadPost" },
 	init = function()
