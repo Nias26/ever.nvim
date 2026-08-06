@@ -4,7 +4,7 @@ return {
 	cmd = "TodoTelescope",
 	dependencies = { "nvim-lua/plenary.nvim", lazy = true },
 	keys = {
-		{ ";t", "<cmd>TodoTelescope<CR>", desc = "Todos" },
+		{ "<A-;>t", "<cmd>TodoTelescope<CR>", desc = "Todos" },
 	},
 	opts = {
 		keywords = {
