@@ -1,6 +1,6 @@
 return {
 	"chrisgrieser/nvim-origami",
-	event = "VeryLazy",
+	event = "BufEnter",
 	opts = {
 		foldText = {
 			disableOnFt = { "Trouble", "lazy", "dashboard", "TelescopePrompt", "neo-tree", "markdown", "" },
