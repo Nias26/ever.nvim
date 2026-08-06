@@ -34,6 +34,14 @@ vim.keymap.set("n", "Q", function()
 		return
 	end
 
+	if vim.api.nvim_buf_get_option(bufnr, "modified") then
+	  error(
+			("E89: No write since last change for buffer %s (add ! to override)"):format(bufnr),
+			vim.log.levels.ERROR
+		)
+		return
+	end
+
 	if #vim.api.nvim_tabpage_list_wins(0) > 1 then
 		vim.api.nvim_win_close(0, false)
 		vim.api.nvim_buf_delete(bufnr, {})
