@@ -38,7 +38,7 @@
   "Cmake link libraries": {
     "prefix": ["link_libraries"],
     "body": [
-      "target_link_libraries(\"${1:TARGET}\" PRIVATE \"\\${CMAKE_CURRENT_SOURCE_DIR}/${2:LIB}\")"
+    "target_link_libraries(\"${1:TARGET}\" \"${2:LIBS}\")"
     ],
     "description": "Link target with a library",
     "scope": "cmake",
@@ -56,7 +56,7 @@
   "Cmake link directories": {
     "prefix": ["link_directories"],
     "body" : [
-    "target_link_directories(\"${1:TARGET}\" \"${2:LIBS}\")"
+      "target_link_directories(\"${1:TARGET}\" PRIVATE \"\\${CMAKE_CURRENT_SOURCE_DIR}/${2:LIB}\")"
     ],
     "description": "Libs files for target to link",
     "scope": "cmake",
