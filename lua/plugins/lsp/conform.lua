@@ -18,13 +18,19 @@ return {
 	end,
 	opts = {
 		log_level = vim.log.levels.DEBUG,
-		formatters = { clang_format = { append_args = { "--style={BasedOnStyle:LLVM}" } } },
+		formatters = {
+			clang_format = {
+				append_args = {
+					"--style={BasedOnStyle: LLVM, BreakTemplateDeclarations: Yes, AllowShortFunctionsOnASingleLine: None, AllowShortBlocksOnASingleLine: Never}",
+				},
+			},
+		},
 		formatters_by_ft = {
 			lua = {
 				"stylua",
 			},
-			cpp = { "clang-format" },
-			c = { "clang-format" },
+			cpp = { "clang_format" },
+			c = { "clang_format" },
 			python = {
 				"black",
 			},
