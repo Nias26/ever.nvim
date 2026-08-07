@@ -139,5 +139,5 @@ vim.api.nvim_create_user_command("Make", function(args)
 	if #args.args > 1 then
 		vim.opt.makeprg = args.args
 	end
-	vim.cmd("silent make")
-end, { nargs = "*", complete = "history" })
+	vim.cmd("make")
+end, { nargs = "*", bar = true, complete = "history" })
