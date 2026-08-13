@@ -143,3 +143,51 @@ vim.api.nvim_create_user_command("Make", function(args)
 	end
 	vim.cmd("make")
 end, { nargs = "*", bar = true, complete = "history" })
+
+-- Binary FileType
+local function is_binary(path)
+	local fd = vim.uv.fs_open(path, "r", 0)
+	if not fd then
+		return false
+	end
+
+	local data = vim.uv.fs_read(fd, 4096, 0)
+	vim.uv.fs_close(fd)
+
+	return data ~= nil and data:find("\0", 1, true) ~= nil
+end
+
+vim.filetype.add({
+	pattern = {
+		[".*"] = function(path)
+			if is_binary(path) then
+				return "bin"
+			end
+		end,
+	},
+})
+
+vim.api.nvim_create_augroup("BinaryFileOptions", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "bin",
+	callback = function(args)
+		local buf = args.buf
+		local win = vim.fn.bufwinid(buf)
+
+		vim.bo[buf].swapfile = false
+		vim.bo[buf].syntax = ""
+		vim.bo[buf].undofile = false
+
+		if win ~= -1 then
+			vim.wo[win].wrap = false
+			vim.wo[win].spell = false
+			vim.wo[win].colorcolumn = ""
+			vim.wo[win].cursorline = false
+			vim.wo[win].cursorcolumn = false
+		end
+
+		vim.treesitter.stop(buf)
+		vim.diagnostic.enable(false, { bufnr = buf })
+	end,
+	group = "BinaryFileOptions",
+})
