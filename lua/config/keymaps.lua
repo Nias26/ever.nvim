@@ -28,8 +28,9 @@ vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Previous buffer" })
 vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Next buffer" })
 vim.keymap.set("n", "Q", function()
 	local bufnr = vim.api.nvim_get_current_buf()
-	local excluded = { "gitcommit", "crun" }
-	if vim.tbl_contains(excluded, vim.bo[bufnr].filetype) then
+	local excluded_ft = { "gitcommit", "crun" }
+  local excluded_bt = { "terminal" }
+	if vim.tbl_contains(excluded_ft, vim.bo[bufnr].filetype) or vim.tbl_contains(excluded_bt, vim.bo[bufnr].buftype) then
 		vim.cmd("bd!")
 		return
 	end
