@@ -114,6 +114,7 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.keymap.set("n", "S", "?\\|\\zs\\S\\+\\ze\\|<CR>", { buffer = true, noremap = true, silent = true })
 		vim.wo.colorcolumn = "0"
 	end,
+	group = "HelpMappings",
 })
 
 vim.api.nvim_create_user_command("Grep", function(args)
