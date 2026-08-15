@@ -3,7 +3,6 @@ vim.cmd.colorscheme("oxocarbon")
 
 -- Highlight groups
 vim.api.nvim_set_hl(0, "DashboardFooter", { fg = "#08A045" })
-vim.api.nvim_set_hl(0, "Comment", { fg = "#525252", italic = false })
 vim.api.nvim_set_hl(0, "SpecialKey", { fg = "#3ddbd9" })
 
 -- User commands
