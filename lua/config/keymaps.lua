@@ -29,17 +29,16 @@ vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Next buffer" })
 vim.keymap.set("n", "Q", function()
 	local bufnr = vim.api.nvim_get_current_buf()
 	local excluded_ft = { "gitcommit", "crun" }
-  local excluded_bt = { "terminal" }
-	if vim.tbl_contains(excluded_ft, vim.bo[bufnr].filetype) or vim.tbl_contains(excluded_bt, vim.bo[bufnr].buftype) then
+	local excluded_bt = { "terminal" }
+	if
+		vim.tbl_contains(excluded_ft, vim.bo[bufnr].filetype) or vim.tbl_contains(excluded_bt, vim.bo[bufnr].buftype)
+	then
 		vim.cmd("bd!")
 		return
 	end
 
 	if vim.api.nvim_buf_get_option(bufnr, "modified") then
-	  error(
-			("E89: No write since last change for buffer %s (add ! to override)"):format(bufnr),
-			vim.log.levels.ERROR
-		)
+		error(("E89: No write since last change for buffer %s (add ! to override)"):format(bufnr), vim.log.levels.ERROR)
 		return
 	end
 
