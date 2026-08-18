@@ -188,3 +188,12 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 	group = "BinaryFileOptions",
 })
+
+vim.api.nvim_create_user_command("Term", "term", {})
+vim.api.nvim_create_user_command("Ters", "sp | term", {})
+vim.api.nvim_create_user_command("Terv", "vs | term", {})
+vim.cmd([[
+  cnoreabbrev <expr> term (getcmdtype() ==# ':' && getcmdline() =~# 'term') ? 'Term' : 'term'
+  cnoreabbrev <expr> ters (getcmdtype() ==# ':' && getcmdline() =~# 'ters') ? 'Ters' : 'ters'
+  cnoreabbrev <expr> terv (getcmdtype() ==# ':' && getcmdline() =~# 'terv') ? 'Terv' : 'terv'
+]])
