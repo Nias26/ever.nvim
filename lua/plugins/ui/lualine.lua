@@ -8,18 +8,19 @@ return {
 		local lualine = require("lualine")
 
 		-- Color table for highlights
+		-- TODO: 2026-08-17 00:04 - Nias: Make colors `colorscheme dependant`. Same goes for the spacing (test with kanagawa)
     -- stylua: ignore
-		local colors = {
-			bg        = "#161616",
-			fg        = "#bbc2cf",
-			grey      = "#262626",
-			green     = "#42be65",
-			orange    = "#FF8800",
-			violet    = "#be95ff",
-			red       = "#ee5396",
-			cyan      = "#3ddbd9",
-			blue      = "#33b1ff",
-		}
+    local colors = {
+      bg        = "#161616",
+      fg        = "#bbc2cf",
+      grey      = "#262626",
+      green     = "#42be65",
+      orange    = "#FF8800",
+      violet    = "#be95ff",
+      red       = "#ee5396",
+      cyan      = "#3ddbd9",
+      blue      = "#33b1ff",
+    }
 
 		local conditions = {
 			buffer_not_empty = function()
