@@ -118,18 +118,16 @@ vim.api.nvim_create_autocmd("FileType", {
 
 vim.api.nvim_create_user_command("Grep", function(args)
 	local match = args.fargs[1] or ""
-	local pattern = args.fargs[2] or ""
-	print("match: " .. match)
-	print("pattern: " .. pattern)
+	local pattern = args.fargs[2]
 	if args.bang then
-		if pattern == nil then
-			pattern = "%"
-		end
-		vim.cmd("silent vimgrep /\\v" .. match .. "/gj " .. pattern .. "|copen")
+		pattern = (pattern and pattern ~= "") and pattern or "%"
+		vim.cmd(("silent vimgrep /\\v%s/gj %s"):format(match, pattern))
 	else
-		match = vim.fn.shellescape(match)
-		vim.cmd("silent grep! '" .. match .. "' " .. pattern .. "|copen")
+		pattern = pattern or ""
+		local escaped_match = vim.fn.shellescape(match)
+		vim.cmd(("silent grep! -- %s %s"):format(escaped_match, pattern))
 	end
+  vim.cmd("copen")
 end, {
 	nargs = "+",
 	bang = true,
