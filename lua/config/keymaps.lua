@@ -30,8 +30,11 @@ vim.keymap.set("n", "Q", function()
 	local bufnr = vim.api.nvim_get_current_buf()
 	local excluded_ft = { "gitcommit", "crun" }
 	local excluded_bt = { "terminal" }
+
 	if
-		vim.tbl_contains(excluded_ft, vim.bo[bufnr].filetype) or vim.tbl_contains(excluded_bt, vim.bo[bufnr].buftype)
+		vim.tbl_contains(excluded_ft, vim.bo[bufnr].filetype)
+		or vim.tbl_contains(excluded_bt, vim.bo[bufnr].buftype)
+		or vim.api.nvim_win_get_config(0).relative ~= ""
 	then
 		vim.cmd("bd!")
 		return
