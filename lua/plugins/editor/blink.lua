@@ -110,7 +110,7 @@ return {
 				documentation = { auto_show = true },
 				ghost_text = { enabled = true },
 			},
-			signature = { enabled = false },
+			signature = { enabled = true },
 			sources = {
 				default = { "lsp", "snippets", "path", "buffer" },
 			},
