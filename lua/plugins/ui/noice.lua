@@ -1,13 +1,24 @@
 local cmdline_view = {
+	relative = "editor",
 	position = {
+		row = "100%",
 		col = 7,
 	},
 	size = {
-		min_width = 100,
-		width = "auto",
 		height = "auto",
+		width = math.max(20, vim.o.columns - 14),
+	},
+	border = {
+		style = "none",
+	},
+	win_options = {
+		winhighlight = {
+			Normal = "NormalFloat",
+			FloatBorder = "FloatBorder",
+		},
 	},
 }
+
 return {
 	"folke/noice.nvim",
 	event = "VeryLazy",
@@ -24,15 +35,11 @@ return {
 			cmdline = cmdline_view,
 			cmdline_popup = cmdline_view,
 			cmdline_input = cmdline_view,
+			confirm = cmdline_view,
 		},
 		cmdline = {
 			enabled = true,
 			view = "cmdline",
-			opts = {
-				win_options = {
-					winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
-				},
-			},
 			format = {
 				cmdline = { pattern = "^:", icon = ":", lang = "vim" },
 				search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex" },
