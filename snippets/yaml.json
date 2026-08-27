@@ -2,9 +2,6 @@
   "Clangd config": {
     "prefix": ["set_cpp_standard"],
     "body": [
-      "If:",
-      " PathMatch: .*\\.cpp",
-      "",
       "CompileFlags:",
       " Add: [--std=c++${1:23}]",
       "",
