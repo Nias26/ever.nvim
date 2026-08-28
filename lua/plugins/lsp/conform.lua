@@ -21,7 +21,7 @@ return {
 		formatters = {
 			clang_format = {
 				append_args = {
-					"--style={BasedOnStyle: LLVM, BreakTemplateDeclarations: Yes, AllowShortFunctionsOnASingleLine: None, AllowShortBlocksOnASingleLine: Never}",
+					"--style={BasedOnStyle: LLVM, BreakTemplateDeclarations: Yes, AllowShortFunctionsOnASingleLine: None, AllowShortBlocksOnASingleLine: Never, AllowShortIfStatementsOnASingleLine: Always}",
 				},
 			},
 		},
