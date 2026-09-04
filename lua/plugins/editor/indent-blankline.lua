@@ -5,16 +5,8 @@ return {
 	opts = {
 		exclude = {
 			buftypes = {
-				"dashboard",
-				"lazy",
-				"checkhealth",
-				"help",
-				"man",
-				"Terminal",
-				"TelescopePrompt",
-				"TelescopeResults",
-				"mason",
-				"qf",
+				"terminal",
+				"quickfix",
 				"diff",
 			},
 			filetypes = {
@@ -23,12 +15,11 @@ return {
 				"checkhealth",
 				"help",
 				"man",
-				"Terminal",
 				"TelescopePrompt",
 				"TelescopeResults",
 				"mason",
-				"qf",
-				"diff",
+        "oil",
+        "oil_preview",
 			},
 		},
 		indent = {

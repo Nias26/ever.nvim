@@ -35,11 +35,11 @@ return {
 						"checkhealth",
 						"help",
 						"man",
-						"Terminal",
 						"TelescopePrompt",
 						"TelescopeResults",
 						"mason",
-						"qf",
+						"oil",
+						"oil_preview",
 					}
 					return not scope.body.is_incomplete and not vim.tbl_contains(ft, vim.bo.filetype)
 				end,
