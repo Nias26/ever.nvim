@@ -138,7 +138,7 @@ vim.api.nvim_create_user_command("Make", function(args)
 	if #args.args > 1 then
 		vim.opt.makeprg = args.args
 	end
-	vim.cmd("make")
+	vim.cmd("silent make | copen")
 end, { nargs = "*", bar = true, complete = "history" })
 
 -- Binary FileType
