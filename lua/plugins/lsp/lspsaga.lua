@@ -29,7 +29,7 @@ return {
 			collapse = "",
 		},
 		symbol_in_winbar = {
-			enable = true,
+			enable = false,
 		},
 		lightbulb = {
 			enable = true,
