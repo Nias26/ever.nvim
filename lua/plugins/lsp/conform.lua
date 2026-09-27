@@ -6,9 +6,7 @@ return {
 			mode = { "n", "v" },
 			"cf",
 			function()
-				require("conform").format({
-					async = true,
-				})
+				require("conform").format({ async = true })
 			end,
 			desc = "Format code",
 		},
@@ -26,14 +24,10 @@ return {
 			},
 		},
 		formatters_by_ft = {
-			lua = {
-				"stylua",
-			},
+			lua = { "stylua" },
 			cpp = { "clang_format" },
 			c = { "clang_format" },
-			python = {
-				"black",
-			},
+			python = { "black" },
 			rust = { "rustfmt" },
 			typescript = { "prettierd" },
 			javascript = { "prettierd" },
