@@ -70,6 +70,14 @@ return {
 			},
 		})
 
+		vim.lsp.config("bashls", {
+			settings = {
+				bashIde = {
+					shellcheckPath = "shellcheck",
+				},
+			},
+		})
+
 		require("mason-lspconfig").setup({
 			automatic_enable = true,
 		})
