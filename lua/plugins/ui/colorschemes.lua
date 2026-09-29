@@ -70,9 +70,6 @@ return {
 				"FoldColumn",
 				"CursorColumn",
 				"CursorLineSign",
-				-- Trouble
-				"TroubleNormal",
-				"TroubleNormalNC",
 				-- Window Separator
 				"WinSeparator",
 				-- Folds
@@ -85,8 +82,6 @@ return {
 				"NeoTreeNormal",
 				"NeoTreeNormalNC",
 				"NeoTreeEndOfBuffer",
-				-- Tabline
-				"TablineHeader",
 				-- Lsp CodeLens
 				"LspCodeLens",
 				-- nvim-bqf
@@ -107,11 +102,6 @@ return {
 					"BlinkCmpDoc",
 					-- Neovim
 					"NormalFloat",
-					-- NeoTree
-					"NeoTreeFloatNormal",
-					-- Tabline
-					"TablineActive",
-					"TablineInactive",
 				},
 			})
 		end,
