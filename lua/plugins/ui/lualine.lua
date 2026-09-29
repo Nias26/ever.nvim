@@ -6,39 +6,32 @@ return {
 	},
 	config = function()
 		local lualine = require("lualine")
-
-		-- Color table for highlights
-		-- TODO: 2026-08-17 00:04 - Nias: Make colors `colorscheme dependant`. Same goes for the spacing (test with kanagawa)
-    -- stylua: ignore
-    local colors = {
-      bg        = "#161616",
-      fg        = "#bbc2cf",
-      grey      = "#262626",
-      green     = "#42be65",
-      orange    = "#FF8800",
-      violet    = "#be95ff",
-      red       = "#ee5396",
-      cyan      = "#3ddbd9",
-      blue      = "#33b1ff",
-    }
+		local noice = require("noice")
 
 		local conditions = {
 			buffer_not_empty = function()
 				return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
 			end,
-			hide_in_width = function()
-				return vim.fn.winwidth(0) > 80
-			end,
 			check_git_workspace = function()
 				local filepath = vim.fn.expand("%:p:h")
 				local gitdir = vim.fn.finddir(".git", filepath .. ";")
-				return gitdir and #gitdir > 0 and #gitdir < #filepath
+
+				if not gitdir or #gitdir == 0 or #gitdir >= #filepath then
+					return false
+				end
+
+				require("lazy").load({ plugins = { "vim-fugitive" } })
+				return true
 			end,
 		}
 
+		local function hl_fg(name)
+			local hl = vim.api.nvim_get_hl(0, { name = name, link = false })
+			return hl.fg and { fg = string.format("#%06x", hl.fg) } or nil
+		end
+
 		lualine.setup({
 			options = {
-				-- Disable sections and component separators
 				component_separators = " ",
 				section_separators = "",
 				theme = "auto",
@@ -51,59 +44,45 @@ return {
 
 				lualine_c = {
 					{
-						-- Mode
 						function()
 							local mode = vim.api.nvim_get_mode().mode
-
-							local function _print(mode_id)
-								return " " .. mode_id .. " "
-							end
-
-							if mode == "n" or mode == "nt" then
-								return _print("RW")
-							elseif mode == "i" or mode == "ic" then
-								return _print("**")
-							elseif mode == "v" or mode == "V" or mode == "" then
-								return _print("**")
-							elseif mode == "o" or mode == "no" or mode == "s" then
-								return _print("!!")
-							elseif mode == "R" then
-								return _print("RA")
-							elseif mode == "c" then
-								return _print("VIEX")
-							elseif mode == "t" then
-								return _print("")
-							else
-								return _print(mode)
-							end
+							local labels = {
+								n = "RW",
+								nt = "RW",
+								i = "**",
+								ic = "**",
+								v = "**",
+								V = "**",
+								["\022"] = "**",
+								o = "!!",
+								no = "!!",
+								s = "!!",
+								R = "RA",
+								c = "VIEX",
+								t = "",
+							}
+							return " " .. (labels[mode] or mode) .. " "
 						end,
 						color = function()
-							-- auto change color according to neovims mode
 							local mode = vim.api.nvim_get_mode().mode
-
-							local function _ctable(color)
-								return { bg = color, fg = colors.bg, gui = "bold" }
-							end
-
-							if mode == "n" or mode == "nt" then
-								return _ctable("#82cfff")
-							elseif mode == "i" or mode == "ic" then
-								return _ctable("#ff7eb6")
-							elseif mode == "v" or mode == "V" or mode == "\022" then
-								return _ctable("#be95ff")
-							elseif mode == "o" or mode == "no" or mode == "s" then
-								return _ctable("#ee5396")
-							elseif mode == "R" then
-								return _ctable("#3ddbd9")
-							elseif mode == "c" then
-								return _ctable("#42be65")
-							elseif mode == "t" then
-								return _ctable("#33b1ff")
-							else
-								return _ctable(colors.bg)
-							end
+							local colors = {
+								n = "lualine_a_normal",
+								nt = "lualine_a_normal",
+								i = "lualine_a_insert",
+								ic = "lualine_a_insert",
+								v = "lualine_a_insert",
+								V = "lualine_a_insert",
+								["\022"] = "lualine_a_insert",
+								o = "lualine_a_normal",
+								no = "lualine_a_normal",
+								s = "lualine_a_normal",
+								R = "lualine_a_replace",
+								c = "lualine_a_command",
+								t = "lualine_a_terminal",
+							}
+							return colors[mode] or "lualine_a_normal"
 						end,
-						padding = { rignt = 1 },
+						padding = { left = 0, right = 0 },
 					},
 					{
 						"filename",
@@ -111,83 +90,86 @@ return {
 						symbols = false,
 						color = function()
 							if vim.bo.readonly then
-								return { bg = colors.bg, fg = colors.red }
+								return hl_fg("OxocarbonRed")
 							elseif vim.bo.modified then
-								return { bg = colors.bg, fg = colors.cyan }
-							else
-								return { bg = colors.bg, fg = colors.fg }
+								return hl_fg("OxocarbonCyan")
 							end
 						end,
 						cond = conditions.buffer_not_empty,
-						padding = -1,
+						padding = 1,
 					},
 					{
 						function()
-							local branch = vim.api.nvim_buf_get_var(0, "gitsigns_status_dict") or { head = "" }
-							local is_head_empty = branch.head ~= ""
-							return is_head_empty and string.format("(λ  #%s) ", branch.head) or ""
+							local branch = vim.fn.FugitiveHead()
+							if branch == "" then
+								return ""
+							end
+							return string.format("(λ  #%s) ", branch)
 						end,
-
 						icon = "",
-						color = { bg = colors.bg, fg = colors.fg, gui = "bold" },
+						color = { gui = "bold" },
 						cond = conditions.check_git_workspace,
-						padding = -1,
+						padding = { left = 0, right = 1 },
 					},
 					{
 						function()
 							return vim.api.nvim_get_current_buf()
 						end,
-						color = { bg = colors.bg, fg = colors.grey },
-						padding = -1,
+						color = function()
+							return hl_fg("OxocarbonGray")
+						end,
+						padding = 0,
 					},
 				},
 				lualine_x = {
 					{
-						require("noice").api.status.search.get, ---@diagnostic disable-line: undefined-field
-						cond = require("noice").api.status.search.has, ---@diagnostic disable-line: undefined-field
+						noice.api.status.search.get,
+						cond = noice.api.status.search.has,
 						icon = " ",
-						color = { bg = colors.bg, fg = colors.blue },
-						padding = -1,
+						color = function()
+							return hl_fg("OxocarbonBlue")
+						end,
+						padding = 1,
 					},
 					{
-						require("noice").api.status.mode.get, ---@diagnostic disable-line: undefined-field
-						cond = require("noice").api.status.mode.has, ---@diagnostic disable-line: undefined-field
-						color = { bg = colors.bg, fg = colors.red },
-						padding = -1,
-					},
-					{
-						require("noice").api.status.command.get, ---@diagnostic disable-line: undefined-field
-						cond = require("noice").api.status.command.has, ---@diagnostic disable-line: undefined-field
+						noice.api.status.command.get,
+						cond = noice.api.status.command.has,
 						icon = "",
-						color = { bg = colors.bg, fg = colors.green },
-						padding = -1,
+						color = function()
+							return hl_fg("OxocarbonGreen")
+						end,
+						padding = 1,
 					},
 					{
 						function()
-							local result = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
-							return result or 0
+							return #vim.diagnostic.get(0, {
+								severity = vim.diagnostic.severity.WARN,
+							})
 						end,
-						color = { bg = colors.bg, fg = colors.violet },
-						padding = -1,
+						color = function()
+							return hl_fg("DiagnosticWarn")
+						end,
+						padding = 0,
 					},
 					{
 						function()
-							local result = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
-							return result or 0
+							return #vim.diagnostic.get(0, {
+								severity = vim.diagnostic.severity.ERROR,
+							})
 						end,
-						padding = -1,
-						color = { bg = colors.bg, fg = colors.red },
+						color = function()
+							return hl_fg("DiagnosticError")
+						end,
+						padding = 0,
 					},
 					{
 						"filetype",
 						icons_enabled = false,
-						color = { bg = colors.bg, fg = colors.fg },
-						padding = -1,
+						padding = { left = 1 },
 					},
 					{
 						"location",
-						color = { bg = colors.bg, fg = colors.fg },
-						padding = -1,
+						padding = 0,
 					},
 				},
 			},

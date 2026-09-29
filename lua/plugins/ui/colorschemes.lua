@@ -2,8 +2,11 @@ return {
 	{
 		"nyoom-engineering/oxocarbon.nvim",
 		build = false,
+		priority = 1000,
+		lazy = false,
 		config = function()
 			vim.opt.background = "dark"
+
 			vim.schedule(function()
 				vim.api.nvim_set_hl(0, "Comment", { fg = "#525252", italic = false })
 				for _, s in ipairs({ "Error", "Warn", "Info", "Hint", "Ok", "Unnecessary" }) do
@@ -11,6 +14,33 @@ return {
 					vim.api.nvim_set_hl(0, "DiagnosticUnderline" .. s, { undercurl = true, sp = fg, fg = "NONE" })
 				end
 			end)
+
+      -- stylua: ignore start
+      local palette = {
+        bg         = "#161616",
+        fg         = "#dde1e6",
+        gray       = "#292929",
+        green      = "#42be65",
+        violet     = "#be95ff",
+        red        = "#ee5396",
+        cyan       = "#3ddbd9",
+        blue       = "#33b1ff",
+        light_blue = "#82cfff",
+        pink       = "#ff7eb6",
+      }
+			-- stylua: ignore end
+
+      local hl = vim.api.nvim_set_hl
+      hl(0, "OxocarbonBg", { bg = palette.bg })
+      hl(0, "OxocarbonFg", { fg = palette.fg })
+      hl(0, "OxocarbonGray", { fg = palette.gray })
+      hl(0, "OxocarbonGreen", { fg = palette.green })
+      hl(0, "OxocarbonViolet", { fg = palette.violet })
+      hl(0, "OxocarbonRed", { fg = palette.red })
+      hl(0, "OxocarbonCyan", { fg = palette.cyan })
+      hl(0, "OxocarbonBlue", { fg = palette.blue })
+      hl(0, "OxocarbonLightBlue", { fg = palette.light_blue })
+      hl(0, "OxocarbonPink", { fg = palette.pink })
 		end,
 	},
 	{
