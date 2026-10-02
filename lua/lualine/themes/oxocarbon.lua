@@ -13,8 +13,8 @@ local palette = {
 local function mode(a_bg)
 	return {
 		a = { bg = a_bg, fg = palette.bg, gui = "bold" },
-		b = { bg = palette.bg, fg = palette.fg },
-		c = { bg = palette.bg, fg = palette.fg },
+		b = { bg = "NONE", fg = palette.fg },
+		c = { bg = "NONE", fg = palette.fg },
 	}
 end
 
