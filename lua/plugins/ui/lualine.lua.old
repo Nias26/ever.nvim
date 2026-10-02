@@ -37,7 +37,12 @@ return {
 				theme = "auto",
 			},
 			sections = {
-				lualine_a = {
+				lualine_a = {},
+				lualine_b = {},
+				lualine_y = {},
+				lualine_z = {},
+
+				lualine_c = {
 					{
 						function()
 							local mode = vim.api.nvim_get_mode().mode
@@ -58,10 +63,27 @@ return {
 							}
 							return " " .. (labels[mode] or mode) .. " "
 						end,
+						color = function()
+							local mode = vim.api.nvim_get_mode().mode
+							local colors = {
+								n = "lualine_a_normal",
+								nt = "lualine_a_normal",
+								i = "lualine_a_insert",
+								ic = "lualine_a_insert",
+								v = "lualine_a_insert",
+								V = "lualine_a_insert",
+								["\022"] = "lualine_a_insert",
+								o = "lualine_a_normal",
+								no = "lualine_a_normal",
+								s = "lualine_a_normal",
+								R = "lualine_a_replace",
+								c = "lualine_a_command",
+								t = "lualine_a_terminal",
+							}
+							return colors[mode] or "lualine_a_normal"
+						end,
 						padding = { left = 0, right = 0 },
 					},
-				},
-				lualine_b = {
 					{
 						"filename",
 						file_status = false,
@@ -76,8 +98,6 @@ return {
 						cond = conditions.buffer_not_empty,
 						padding = 1,
 					},
-				},
-				lualine_c = {
 					{
 						function()
 							local branch = vim.fn.FugitiveHead()
@@ -120,8 +140,6 @@ return {
 						end,
 						padding = 1,
 					},
-				},
-				lualine_y = {
 					{
 						function()
 							return #vim.diagnostic.get(0, {
@@ -154,7 +172,6 @@ return {
 						padding = 0,
 					},
 				},
-				lualine_z = {},
 			},
 			inactive_sections = {
 				lualine_a = {},
