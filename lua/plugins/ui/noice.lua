@@ -30,6 +30,10 @@ return {
 		{ "<leader>oh", "<cmd>Noice history<CR>", desc = "Notification history" },
 	},
 	opts = {
+		presets = {
+			command_palette = true,
+			long_message_to_split = true,
+		},
 		views = {
 			popup = cmdline_view,
 			cmdline = cmdline_view,

@@ -78,6 +78,8 @@ return {
 				-- Winbar
 				"WinBar",
 				"WinBarNC",
+        -- Floating Windows
+        "NormalFloat",
 				-- NeoTree
 				"NeoTreeNormal",
 				"NeoTreeNormalNC",
@@ -100,8 +102,6 @@ return {
 					"BlinkCmpDoc",
 					"BlinkCmpDocBorder",
 					"BlinkCmpDoc",
-					-- Neovim
-					"NormalFloat",
 				},
 			})
 		end,
