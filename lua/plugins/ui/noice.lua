@@ -6,7 +6,7 @@ local cmdline_view = {
 	},
 	size = {
 		height = "auto",
-		width = math.max(20, vim.o.columns - 14),
+		width = ("%s%%"):format(math.max(20, vim.o.columns - 14) / vim.o.columns * 100),
 	},
 	border = {
 		style = "none",
@@ -21,7 +21,7 @@ local cmdline_view = {
 
 return {
 	"folke/noice.nvim",
-  lazy = false,
+	lazy = false,
 	dependencies = {
 		{ "MunifTanjim/nui.nvim" },
 		{ "nvim-treesitter/nvim-treesitter" },
