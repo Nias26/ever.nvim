@@ -21,10 +21,10 @@ local cmdline_view = {
 
 return {
 	"folke/noice.nvim",
-	event = "VeryLazy",
+  lazy = false,
 	dependencies = {
-		{ "MunifTanjim/nui.nvim", lazy = true },
-		{ "nvim-treesitter/nvim-treesitter", lazy = true },
+		{ "MunifTanjim/nui.nvim" },
+		{ "nvim-treesitter/nvim-treesitter" },
 	},
 	keys = {
 		{ "<leader>oh", "<cmd>Noice history<CR>", desc = "Notification history" },

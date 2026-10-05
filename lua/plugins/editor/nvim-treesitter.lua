@@ -21,7 +21,6 @@ return {
 		vim.filetype.add({
 			pattern = {
 				[".*/hypr/.*%.conf"] = "hyprlang",
-				[".*%.sh"] = "bash",
 				[".*"] = {
 					function(_, bufnr)
 						local line = vim.api.nvim_buf_get_lines(bufnr, 0, 1, false)[1] or ""
@@ -34,11 +33,15 @@ return {
 			},
 		})
 
-    vim.treesitter.language.register("bash", { "sh", "bash" })
-
 		vim.api.nvim_create_autocmd("FileType", {
-			callback = function(opts)
-				pcall(vim.treesitter.start, opts.buf)
+			pattern = "*",
+			callback = function(ev)
+				local ft = vim.bo[ev.buf].filetype
+				local lang = vim.treesitter.language.get_lang(ft)
+				if vim.treesitter.language.add(lang) then
+					vim.treesitter.start(ev.buf, lang)
+					vim.bo[ev.buf].syntax = "on"
+				end
 			end,
 		})
 	end,
