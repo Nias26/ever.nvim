@@ -1,6 +1,7 @@
 return {
 	"mg979/vim-visual-multi",
 	event = { "BufNewFile", "BufReadPost" },
+  keys = { "<C-n>", "<C-\\>", "\\" },
 	init = function()
 		vim.g.VM_leader = "\\"
 		vim.g.VM_set_statusline = 0
