@@ -112,6 +112,14 @@ return {
 						padding = 1,
 					},
 					{
+						noice.api.status.mode.get,
+						cond = noice.api.status.mode.has,
+						color = function ()
+						  return hl_fg("OxocarbonRed")
+						end,
+						padding = 1,
+					},
+					{
 						noice.api.status.command.get,
 						cond = noice.api.status.command.has,
 						icon = "",
