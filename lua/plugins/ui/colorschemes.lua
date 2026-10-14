@@ -88,6 +88,8 @@ return {
 				"LspCodeLens",
 				-- nvim-bqf
 				"BqfPreviewBorder",
+				-- Which-key
+				"WhichKeyBorder",
 			})
 
 			-- Exclude groups
