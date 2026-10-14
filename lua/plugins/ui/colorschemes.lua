@@ -30,17 +30,17 @@ return {
       }
 			-- stylua: ignore end
 
-      local hl = vim.api.nvim_set_hl
-      hl(0, "OxocarbonBg", { bg = palette.bg })
-      hl(0, "OxocarbonFg", { fg = palette.fg })
-      hl(0, "OxocarbonGray", { fg = palette.gray })
-      hl(0, "OxocarbonGreen", { fg = palette.green })
-      hl(0, "OxocarbonViolet", { fg = palette.violet })
-      hl(0, "OxocarbonRed", { fg = palette.red })
-      hl(0, "OxocarbonCyan", { fg = palette.cyan })
-      hl(0, "OxocarbonBlue", { fg = palette.blue })
-      hl(0, "OxocarbonLightBlue", { fg = palette.light_blue })
-      hl(0, "OxocarbonPink", { fg = palette.pink })
+			local hl = vim.api.nvim_set_hl
+			hl(0, "OxocarbonBg", { bg = palette.bg })
+			hl(0, "OxocarbonFg", { fg = palette.fg })
+			hl(0, "OxocarbonGray", { fg = palette.gray })
+			hl(0, "OxocarbonGreen", { fg = palette.green })
+			hl(0, "OxocarbonViolet", { fg = palette.violet })
+			hl(0, "OxocarbonRed", { fg = palette.red })
+			hl(0, "OxocarbonCyan", { fg = palette.cyan })
+			hl(0, "OxocarbonBlue", { fg = palette.blue })
+			hl(0, "OxocarbonLightBlue", { fg = palette.light_blue })
+			hl(0, "OxocarbonPink", { fg = palette.pink })
 		end,
 	},
 	{
@@ -78,8 +78,8 @@ return {
 				-- Winbar
 				"WinBar",
 				"WinBarNC",
-        -- Floating Windows
-        "NormalFloat",
+				-- Floating Windows
+				"NormalFloat",
 				-- NeoTree
 				"NeoTreeNormal",
 				"NeoTreeNormalNC",
