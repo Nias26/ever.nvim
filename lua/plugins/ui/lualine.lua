@@ -25,11 +25,6 @@ return {
 			end,
 		}
 
-		local function hl_fg(name)
-			local hl = vim.api.nvim_get_hl(0, { name = name, link = false })
-			return hl.fg and { fg = string.format("#%06x", hl.fg) } or nil
-		end
-
 		lualine.setup({
 			options = {
 				component_separators = " ",
@@ -68,9 +63,9 @@ return {
 						symbols = false,
 						color = function()
 							if vim.bo.readonly then
-								return hl_fg("OxocarbonRed")
+								return { bg = "NONE", fg = "#ee5396" }
 							elseif vim.bo.modified then
-								return hl_fg("OxocarbonCyan")
+								return { bg = "NONE", fg = "#3ddbd9" }
 							end
 						end,
 						cond = conditions.buffer_not_empty,
@@ -91,41 +86,19 @@ return {
 						cond = conditions.check_git_workspace,
 						padding = { left = 0, right = 1 },
 					},
-					{
-						function()
-							return vim.api.nvim_get_current_buf()
-						end,
-						color = function()
-							return hl_fg("OxocarbonGray")
-						end,
-						padding = 0,
-					},
 				},
 				lualine_x = {
 					{
-						noice.api.status.search.get,
-						cond = noice.api.status.search.has,
-						icon = " ",
-						color = function()
-							return hl_fg("OxocarbonBlue")
-						end,
-						padding = 1,
-					},
-					{
 						noice.api.status.mode.get,
 						cond = noice.api.status.mode.has,
-						color = function ()
-						  return hl_fg("OxocarbonRed")
-						end,
+						color = { fg = "#ee5396" },
 						padding = 1,
 					},
 					{
 						noice.api.status.command.get,
 						cond = noice.api.status.command.has,
 						icon = "",
-						color = function()
-							return hl_fg("OxocarbonGreen")
-						end,
+						color = { fg = "#42be95" },
 						padding = 1,
 					},
 				},
@@ -136,9 +109,7 @@ return {
 								severity = vim.diagnostic.severity.WARN,
 							})
 						end,
-						color = function()
-							return hl_fg("DiagnosticWarn")
-						end,
+						color = { fg = "#be95ff" },
 						padding = 0,
 					},
 					{
@@ -147,9 +118,7 @@ return {
 								severity = vim.diagnostic.severity.ERROR,
 							})
 						end,
-						color = function()
-							return hl_fg("DiagnosticError")
-						end,
+						color = { fg = "#ee5396" },
 						padding = 0,
 					},
 					{
