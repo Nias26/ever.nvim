@@ -7,16 +7,13 @@ return {
 		{ "<A-;>t", "<cmd>TodoTelescope<CR>", desc = "Todos" },
 	},
 	opts = {
-		keywords = {
-			DONE = { icon = " ", color = "success" },
-			HERE = { icon = " ", color = "error" },
-			TEST = { icon = "⏲ ", color = "test", alt = nil },
-			TESTING = { icon = "⏲ ", color = "warning" },
-			PASSED = { icon = " ", color = "success" },
-			FAILED = { icon = " ", color = "error" },
-		},
-		colors = {
-			success = { "#42be65" },
-		},
+    gui_style = {
+      bg = "BOLD",
+    },
+    highlight = {
+      multiline = false,
+      keyword = "wide_fg",
+      after = ""
+    }
 	},
 }
