@@ -6,6 +6,5 @@ return {
 		{ "!", ":Cc ", desc = "Exec command on Quickfix" },
 		{ "<A-c>", "<cmd>Ctoggle<CR>", desc = "Toggle Crun buffer" },
 	},
-	opts = {
-	},
+	opts = {},
 }
