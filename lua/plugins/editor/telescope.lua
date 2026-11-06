@@ -23,11 +23,6 @@ return {
 		extensions = {
 			scope = {},
 		},
-		pickers = {
-			buffers = {
-				initial_mode = "normal",
-			},
-		},
 	},
 	config = function(_, opts)
 		require("telescope").setup(opts)
