@@ -5,6 +5,9 @@ return {
 		foldText = {
 			disableOnFt = { "Trouble", "lazy", "dashboard", "TelescopePrompt", "neo-tree", "markdown", "" },
 		},
+    foldKeymaps = {
+      closeOnlyOnFirstColumn = true
+    }
 	},
 	config = function(_, opts)
 		require("origami").setup(opts)
