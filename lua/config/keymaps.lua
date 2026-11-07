@@ -84,8 +84,8 @@ vim.keymap.set("n", "<A-;>r", function()
 end, { desc = "Grug-Far" })
 
 -- Toggle (relative)numbers
-vim.keymap.set("n", "<F5>", "<cmd>set number!<CR>", { desc = "Toggle Numbers", noremap = true })
-vim.keymap.set("n", "<F6>", "<cmd>set relativenumber!<CR>", { desc = "Toggle Relative Numbers", noremap = true })
+vim.keymap.set("n", "<F2>", "<cmd>set number!<CR>", { desc = "Toggle Numbers", noremap = true })
+vim.keymap.set("n", "<F3>", "<cmd>set relativenumber!<CR>", { desc = "Toggle Relative Numbers", noremap = true })
 
 -- Search
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
