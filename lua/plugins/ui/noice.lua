@@ -26,9 +26,6 @@ return {
 		{ "MunifTanjim/nui.nvim" },
 		{ "nvim-treesitter/nvim-treesitter" },
 	},
-	keys = {
-		{ "<leader>oh", "<cmd>Noice history<CR>", desc = "Notification history" },
-	},
 	opts = {
 		presets = {
 			command_palette = true,

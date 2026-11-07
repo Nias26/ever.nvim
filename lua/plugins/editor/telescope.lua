@@ -17,7 +17,6 @@ return {
 		{ "<A-;>f", "<cmd>Telescope find_files<CR>", desc = "Find Files" },
 		{ "<A-;>x", "<cmd>Telescope oldfiles<CR>", desc = "Old Files" },
 		{ "<A-;>d", "<cmd>Telescope diagnostics<CR>", desc = "Diagnostics" },
-		{ "<F2>", "<cmd>Telescope find_files<CR>", desc = "Find Files" },
 	},
 	opts = {
 		extensions = {
