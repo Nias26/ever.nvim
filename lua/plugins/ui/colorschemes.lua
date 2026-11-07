@@ -38,7 +38,14 @@ return {
 
 			vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
 				callback = function()
-					vim.schedule(diagnostic_text_styling)
+					vim.schedule(function()
+						diagnostic_text_styling()
+
+						vim.api.nvim_set_hl(0, "DapBreakpoint", { bg = "#5F213C" })
+						vim.api.nvim_set_hl(0, "DapStopped", { bg = "#393939" })
+						vim.fn.sign_define("DapBreakpoint", { text = "", linehl = "DapBreakpoint" })
+						vim.fn.sign_define("DapStopped", { text = "", linehl = "DapStopped" })
+					end)
 				end,
 			})
 		end,
