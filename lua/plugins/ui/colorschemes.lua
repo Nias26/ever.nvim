@@ -45,6 +45,7 @@ return {
 						vim.api.nvim_set_hl(0, "DapStopped", { bg = "#393939" })
 						vim.fn.sign_define("DapBreakpoint", { text = "", linehl = "DapBreakpoint" })
 						vim.fn.sign_define("DapStopped", { text = "", linehl = "DapStopped" })
+            vim.api.nvim_set_hl(0, "Comment", { italic = false, update = true })
 					end)
 				end,
 			})
